@@ -1,0 +1,26 @@
+#!/bin/sh
+echo '[git hook] executing spotless:apply to format code before commit'
+
+# Stash any unstaged changes
+git stash -q --keep-index
+
+# Run spotless:apply
+# We pass in ratchetFrom here to ensure that we only format the files that have changed since the last commit
+if command -v mvn > /dev/null 2>&1 # Check if mvn command exists to support GitHub Desktop on Windows
+then
+    mvn spotless:apply -DratchetFrom=HEAD # Requires Maven to be installed
+else
+  ./mvnw spotless:apply -DratchetFrom=HEAD # Otherwise call maven wrapper for Mac-OS / Unix / Git for Windows
+fi
+
+# Store the last exit code in a variable
+RESULT=$?
+
+# Stage formatting changes
+git add -u
+
+# Un-stash the stashed changes
+git stash pop -q
+
+# Return the 'spotless:apply' exit code
+exit $RESULT

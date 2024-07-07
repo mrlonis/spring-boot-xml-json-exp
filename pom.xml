@@ -8,9 +8,9 @@
     <relativePath/>
   </parent>
   <groupId>com.mrlonis.example</groupId>
-  <artifactId>spring-boot-2-7-xml</artifactId>
+  <artifactId>spring-boot-xml-json-exp</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <name>spring-boot-2-7-xml</name>
+  <name>spring-boot-xml-json-exp</name>
   <description>Demo project for Spring Boot 2.7.18 XML</description>
   <url/>
   <properties>

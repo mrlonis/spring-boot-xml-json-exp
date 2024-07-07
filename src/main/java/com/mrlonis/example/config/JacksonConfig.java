@@ -6,11 +6,15 @@ import com.fasterxml.jackson.module.jaxb.JaxbAnnotationModule;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * This is a Jackson configuration class that registers additional Jackson modules not included in the default Spring
+ * Boot autoconfiguration.
+ */
 @Configuration
 public class JacksonConfig {
     /**
-     * Register the JaxbAnnotationModule for Spring Boot. This module is used to add support for JAXB (javax.xml.*)
-     * annotations.
+     * Registers the JaxbAnnotationModule for Spring Boot. This module is used to add support for the JAXB annotations
+     * (javax.xml.bind.annotation.*).
      *
      * @return {@link JaxbAnnotationModule}
      */
@@ -20,8 +24,8 @@ public class JacksonConfig {
     }
 
     /**
-     * Register the JakartaXmlBindAnnotationModule for Spring Boot. This module is used to add support for Jakarta XML
-     * Bind (jakarta.xml.bind.*) annotations.
+     * Register the JakartaXmlBindAnnotationModule for Spring Boot. This module is used to add support for the Jakarta
+     * XML Bind API annotations (jakarta.xml.bind.annotation.*).
      *
      * @return {@link JakartaXmlBindAnnotationModule}
      */

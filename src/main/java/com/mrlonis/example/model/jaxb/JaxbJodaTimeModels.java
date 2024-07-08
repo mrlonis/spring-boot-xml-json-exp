@@ -9,6 +9,7 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import lombok.experimental.SuperBuilder;
 import lombok.experimental.UtilityClass;
 import lombok.extern.jackson.Jacksonized;
@@ -73,6 +74,7 @@ public class JaxbJodaTimeModels {
     @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(propOrder = {"id", "name", "date", "tags"})
     @EqualsAndHashCode(callSuper = true)
+    @ToString(callSuper = true)
     @Data
     @Jacksonized
     @SuperBuilder

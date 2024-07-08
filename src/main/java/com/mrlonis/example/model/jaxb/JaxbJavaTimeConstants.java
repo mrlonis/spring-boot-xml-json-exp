@@ -21,7 +21,7 @@ public class JaxbJavaTimeConstants {
                     .name(NAME)
                     .author(AUTHOR)
                     .date(JAVA_TIME_LOCAL_DATE_TIME)
-                    .tags(TAGS)
+                    .tag(TAGS)
                     .build();
     private static final JaxbJavaTimeModels.JaxbJavaTimeNoZoneAccessTypeNone JAXB_JAVA_TIME_NO_ZONE_ACCESS_TYPE_NONE =
             JaxbJavaTimeModels.JaxbJavaTimeNoZoneAccessTypeNone.builder()
@@ -29,7 +29,7 @@ public class JaxbJavaTimeConstants {
                     .name(NAME)
                     .author(AUTHOR)
                     .date(JAVA_TIME_LOCAL_DATE_TIME)
-                    .tags(TAGS)
+                    .tag(TAGS)
                     .build();
     private static final JaxbJavaTimeModels.JaxbJavaTimeNoZoneAccessTypeProperty
             JAXB_JAVA_TIME_NO_ZONE_ACCESS_TYPE_PROPERTY =
@@ -38,7 +38,7 @@ public class JaxbJavaTimeConstants {
                             .name(NAME)
                             .author(AUTHOR)
                             .date(JAVA_TIME_LOCAL_DATE_TIME)
-                            .tags(TAGS)
+                            .tag(TAGS)
                             .build();
     private static final JaxbJavaTimeModels.JaxbJavaTimeNoZoneAccessTypePublicMember
             JAXB_JAVA_TIME_NO_ZONE_ACCESS_TYPE_PUBLIC_MEMBER =
@@ -47,7 +47,7 @@ public class JaxbJavaTimeConstants {
                             .name(NAME)
                             .author(AUTHOR)
                             .date(JAVA_TIME_LOCAL_DATE_TIME)
-                            .tags(TAGS)
+                            .tag(TAGS)
                             .build();
 
     private static final Map<String, BaseModel<?>> JAXB_JAVA_TIME_NO_ZONE_MAP = Map.of(
@@ -66,7 +66,7 @@ public class JaxbJavaTimeConstants {
                     .name(NAME)
                     .author(AUTHOR)
                     .date(JAVA_TIME_ZONED_DATE_TIME)
-                    .tags(TAGS)
+                    .tag(TAGS)
                     .build();
     private static final JaxbJavaTimeModels.JaxbJavaTimeZonedAccessTypeNone JAXB_JAVA_TIME_ZONED_ACCESS_TYPE_NONE =
             JaxbJavaTimeModels.JaxbJavaTimeZonedAccessTypeNone.builder()
@@ -74,7 +74,7 @@ public class JaxbJavaTimeConstants {
                     .name(NAME)
                     .author(AUTHOR)
                     .date(JAVA_TIME_ZONED_DATE_TIME)
-                    .tags(TAGS)
+                    .tag(TAGS)
                     .build();
     private static final JaxbJavaTimeModels.JaxbJavaTimeZonedAccessTypeProperty
             JAXB_JAVA_TIME_ZONED_ACCESS_TYPE_PROPERTY = JaxbJavaTimeModels.JaxbJavaTimeZonedAccessTypeProperty.builder()
@@ -82,7 +82,7 @@ public class JaxbJavaTimeConstants {
                     .name(NAME)
                     .author(AUTHOR)
                     .date(JAVA_TIME_ZONED_DATE_TIME)
-                    .tags(TAGS)
+                    .tag(TAGS)
                     .build();
     private static final JaxbJavaTimeModels.JaxbJavaTimeZonedAccessTypePublicMember
             JAXB_JAVA_TIME_ZONED_ACCESS_TYPE_PUBLIC_MEMBER =
@@ -91,7 +91,7 @@ public class JaxbJavaTimeConstants {
                             .name(NAME)
                             .author(AUTHOR)
                             .date(JAVA_TIME_ZONED_DATE_TIME)
-                            .tags(TAGS)
+                            .tag(TAGS)
                             .build();
 
     private static final Map<String, BaseModel<?>> JAXB_JAVA_TIME_ZONED_MAP = Map.of(

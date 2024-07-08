@@ -21,7 +21,7 @@ public class JacksonJavaTimeConstants {
                     .name(NAME)
                     .author(AUTHOR)
                     .date(JAVA_TIME_LOCAL_DATE_TIME)
-                    .tags(TAGS)
+                    .tag(TAGS)
                     .build();
 
     private static final Map<String, BaseModel<?>> JACKSON_JAVA_TIME_NO_ZONE_MAP = Map.of(
@@ -36,7 +36,7 @@ public class JacksonJavaTimeConstants {
                     .name(NAME)
                     .author(AUTHOR)
                     .date(JAVA_TIME_ZONED_DATE_TIME)
-                    .tags(TAGS)
+                    .tag(TAGS)
                     .build();
 
     private static final Map<String, BaseModel<?>> JACKSON_JAVA_TIME_ZONED_MAP = Map.of(

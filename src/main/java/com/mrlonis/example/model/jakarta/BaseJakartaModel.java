@@ -1,6 +1,7 @@
 package com.mrlonis.example.model.jakarta;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.mrlonis.example.model.BaseModel;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -23,7 +24,8 @@ public abstract class BaseJakartaModel<T> implements BaseModel<T> {
     @XmlTransient
     private String author;
 
+    @JacksonXmlElementWrapper(localName = "tags")
     @XmlElementWrapper(name = "tags")
     @XmlElement(name = "tag")
-    private List<String> tags;
+    private List<String> tag;
 }

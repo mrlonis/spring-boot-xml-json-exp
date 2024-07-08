@@ -22,7 +22,7 @@ public class JakartaJavaTimeConstants {
                             .name(NAME)
                             .author(AUTHOR)
                             .date(JAVA_TIME_LOCAL_DATE_TIME)
-                            .tags(TAGS)
+                            .tag(TAGS)
                             .build();
     private static final JakartaJavaTimeModels.JakartaJavaTimeNoZoneAccessTypeNone
             JAKARTA_JAVA_TIME_NO_ZONE_ACCESS_TYPE_NONE =
@@ -31,7 +31,7 @@ public class JakartaJavaTimeConstants {
                             .name(NAME)
                             .author(AUTHOR)
                             .date(JAVA_TIME_LOCAL_DATE_TIME)
-                            .tags(TAGS)
+                            .tag(TAGS)
                             .build();
     private static final JakartaJavaTimeModels.JakartaJavaTimeNoZoneAccessTypeProperty
             JAKARTA_JAVA_TIME_NO_ZONE_ACCESS_TYPE_PROPERTY =
@@ -40,7 +40,7 @@ public class JakartaJavaTimeConstants {
                             .name(NAME)
                             .author(AUTHOR)
                             .date(JAVA_TIME_LOCAL_DATE_TIME)
-                            .tags(TAGS)
+                            .tag(TAGS)
                             .build();
     private static final JakartaJavaTimeModels.JakartaJavaTimeNoZoneAccessTypePublicMember
             JAKARTA_JAVA_TIME_NO_ZONE_ACCESS_TYPE_PUBLIC_MEMBER =
@@ -49,7 +49,7 @@ public class JakartaJavaTimeConstants {
                             .name(NAME)
                             .author(AUTHOR)
                             .date(JAVA_TIME_LOCAL_DATE_TIME)
-                            .tags(TAGS)
+                            .tag(TAGS)
                             .build();
 
     private static final Map<String, BaseModel<?>> JAKARTA_JAVA_TIME_NO_ZONE_MAP = Map.of(
@@ -69,7 +69,7 @@ public class JakartaJavaTimeConstants {
                             .name(NAME)
                             .author(AUTHOR)
                             .date(JAVA_TIME_ZONED_DATE_TIME)
-                            .tags(TAGS)
+                            .tag(TAGS)
                             .build();
     private static final JakartaJavaTimeModels.JakartaJavaTimeZonedAccessTypeNone
             JAKARTA_JAVA_TIME_ZONED_ACCESS_TYPE_NONE =
@@ -78,7 +78,7 @@ public class JakartaJavaTimeConstants {
                             .name(NAME)
                             .author(AUTHOR)
                             .date(JAVA_TIME_ZONED_DATE_TIME)
-                            .tags(TAGS)
+                            .tag(TAGS)
                             .build();
     private static final JakartaJavaTimeModels.JakartaJavaTimeZonedAccessTypeProperty
             JAKARTA_JAVA_TIME_ZONED_ACCESS_TYPE_PROPERTY =
@@ -87,7 +87,7 @@ public class JakartaJavaTimeConstants {
                             .name(NAME)
                             .author(AUTHOR)
                             .date(JAVA_TIME_ZONED_DATE_TIME)
-                            .tags(TAGS)
+                            .tag(TAGS)
                             .build();
     private static final JakartaJavaTimeModels.JakartaJavaTimeZonedAccessTypePublicMember
             JAKARTA_JAVA_TIME_ZONED_ACCESS_TYPE_PUBLIC_MEMBER =
@@ -96,7 +96,7 @@ public class JakartaJavaTimeConstants {
                             .name(NAME)
                             .author(AUTHOR)
                             .date(JAVA_TIME_ZONED_DATE_TIME)
-                            .tags(TAGS)
+                            .tag(TAGS)
                             .build();
 
     private static final Map<String, BaseModel<?>> JAKARTA_JAVA_TIME_ZONED_MAP = Map.of(

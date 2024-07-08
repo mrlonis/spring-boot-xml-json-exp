@@ -22,7 +22,7 @@ public class JacksonJaxbJavaTimeConstants {
                             .name(NAME)
                             .author(AUTHOR)
                             .date(JAVA_TIME_LOCAL_DATE_TIME)
-                            .tags(TAGS)
+                            .tag(TAGS)
                             .build();
     private static final JacksonJaxbJavaTimeModels.JacksonJaxbJavaTimeNoZoneAccessTypeNone
             JACKSON_JAXB_JAVA_TIME_NO_ZONE_ACCESS_TYPE_NONE =
@@ -31,7 +31,7 @@ public class JacksonJaxbJavaTimeConstants {
                             .name(NAME)
                             .author(AUTHOR)
                             .date(JAVA_TIME_LOCAL_DATE_TIME)
-                            .tags(TAGS)
+                            .tag(TAGS)
                             .build();
     private static final JacksonJaxbJavaTimeModels.JacksonJaxbJavaTimeNoZoneAccessTypeProperty
             JACKSON_JAXB_JAVA_TIME_NO_ZONE_ACCESS_TYPE_PROPERTY =
@@ -40,7 +40,7 @@ public class JacksonJaxbJavaTimeConstants {
                             .name(NAME)
                             .author(AUTHOR)
                             .date(JAVA_TIME_LOCAL_DATE_TIME)
-                            .tags(TAGS)
+                            .tag(TAGS)
                             .build();
     private static final JacksonJaxbJavaTimeModels.JacksonJaxbJavaTimeNoZoneAccessTypePublicMember
             JACKSON_JAXB_JAVA_TIME_NO_ZONE_ACCESS_TYPE_PUBLIC_MEMBER =
@@ -49,7 +49,7 @@ public class JacksonJaxbJavaTimeConstants {
                             .name(NAME)
                             .author(AUTHOR)
                             .date(JAVA_TIME_LOCAL_DATE_TIME)
-                            .tags(TAGS)
+                            .tag(TAGS)
                             .build();
 
     private static final Map<String, BaseModel<?>> JACKSON_JAXB_JAVA_TIME_NO_ZONE_MAP = Map.of(
@@ -65,7 +65,7 @@ public class JacksonJaxbJavaTimeConstants {
                             .name(NAME)
                             .author(AUTHOR)
                             .date(JAVA_TIME_ZONED_DATE_TIME)
-                            .tags(TAGS)
+                            .tag(TAGS)
                             .build();
     private static final JacksonJaxbJavaTimeModels.JacksonJaxbJavaTimeZonedAccessTypeNone
             JACKSON_JAXB_JAVA_TIME_ZONED_ACCESS_TYPE_NONE =
@@ -74,7 +74,7 @@ public class JacksonJaxbJavaTimeConstants {
                             .name(NAME)
                             .author(AUTHOR)
                             .date(JAVA_TIME_ZONED_DATE_TIME)
-                            .tags(TAGS)
+                            .tag(TAGS)
                             .build();
     private static final JacksonJaxbJavaTimeModels.JacksonJaxbJavaTimeZonedAccessTypeProperty
             JACKSON_JAXB_JAVA_TIME_ZONED_ACCESS_TYPE_PROPERTY =
@@ -83,7 +83,7 @@ public class JacksonJaxbJavaTimeConstants {
                             .name(NAME)
                             .author(AUTHOR)
                             .date(JAVA_TIME_ZONED_DATE_TIME)
-                            .tags(TAGS)
+                            .tag(TAGS)
                             .build();
     private static final JacksonJaxbJavaTimeModels.JacksonJaxbJavaTimeZonedAccessTypePublicMember
             JACKSON_JAXB_JAVA_TIME_ZONED_ACCESS_TYPE_PUBLIC_MEMBER =
@@ -92,7 +92,7 @@ public class JacksonJaxbJavaTimeConstants {
                             .name(NAME)
                             .author(AUTHOR)
                             .date(JAVA_TIME_ZONED_DATE_TIME)
-                            .tags(TAGS)
+                            .tag(TAGS)
                             .build();
 
     private static final Map<String, BaseModel<?>> JACKSON_JAXB_JAVA_TIME_ZONED_MAP = Map.of(

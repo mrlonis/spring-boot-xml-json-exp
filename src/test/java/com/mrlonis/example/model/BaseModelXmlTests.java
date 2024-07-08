@@ -57,6 +57,7 @@ class BaseModelXmlTests {
     private MockMvc mockMvc;
 
     private final XmlMapper xmlMapper = (XmlMapper) new XmlMapper()
+            .findAndRegisterModules()
             .registerModule(new JodaModule())
             .registerModule(new JavaTimeModule())
             .registerModule(new JaxbAnnotationModule())
@@ -240,7 +241,7 @@ class BaseModelXmlTests {
         BaseModel<?> model2 = xmlMapper.readValue(requestBody, model.getClass());
         assertEquals(model.getId(), model2.getId());
         assertEquals(model.getName(), model2.getName());
-        assertEquals(model.getTags(), model2.getTags());
+        assertEquals(model.getTag(), model2.getTag());
         assertNotEquals(model.getAuthor(), model2.getAuthor());
 
         mockMvc.perform(post(builder.build().toUriString())

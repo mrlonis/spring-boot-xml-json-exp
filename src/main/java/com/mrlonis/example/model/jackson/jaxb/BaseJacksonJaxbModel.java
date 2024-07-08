@@ -1,6 +1,7 @@
 package com.mrlonis.example.model.jackson.jaxb;
 
 import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.mrlonis.example.model.BaseModel;
@@ -18,7 +19,7 @@ public abstract class BaseJacksonJaxbModel<T> implements BaseModel<T> {
     private long id;
 
     @JacksonXmlProperty(localName = "title")
-    @Getter(onMethod_ = {@JsonGetter("title")})
+    @JsonProperty("title")
     private String name;
 
     @XmlTransient
@@ -27,5 +28,5 @@ public abstract class BaseJacksonJaxbModel<T> implements BaseModel<T> {
     @JacksonXmlElementWrapper(localName = "tags")
     @JacksonXmlProperty(localName = "tag")
     @Getter(onMethod_ = {@JsonGetter("tag")})
-    private List<String> tags;
+    private List<String> tag;
 }

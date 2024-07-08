@@ -22,7 +22,7 @@ public class JacksonJakartaJodaTimeConstants {
                             .name(NAME)
                             .author(AUTHOR)
                             .date(JODA_LOCAL_DATE_TIME)
-                            .tags(TAGS)
+                            .tag(TAGS)
                             .build();
     private static final JacksonJakartaJodaTimeModels.JacksonJakartaJodaTimeNoZoneAccessTypeNone
             JACKSON_JAKARTA_JODA_TIME_NO_ZONE_ACCESS_TYPE_NONE =
@@ -31,7 +31,7 @@ public class JacksonJakartaJodaTimeConstants {
                             .name(NAME)
                             .author(AUTHOR)
                             .date(JODA_LOCAL_DATE_TIME)
-                            .tags(TAGS)
+                            .tag(TAGS)
                             .build();
     private static final JacksonJakartaJodaTimeModels.JacksonJakartaJodaTimeNoZoneAccessTypeProperty
             JACKSON_JAKARTA_JODA_TIME_NO_ZONE_ACCESS_TYPE_PROPERTY =
@@ -40,7 +40,7 @@ public class JacksonJakartaJodaTimeConstants {
                             .name(NAME)
                             .author(AUTHOR)
                             .date(JODA_LOCAL_DATE_TIME)
-                            .tags(TAGS)
+                            .tag(TAGS)
                             .build();
     private static final JacksonJakartaJodaTimeModels.JacksonJakartaJodaTimeNoZoneAccessTypePublicMember
             JACKSON_JAKARTA_JODA_TIME_NO_ZONE_ACCESS_TYPE_PUBLIC_MEMBER =
@@ -49,7 +49,7 @@ public class JacksonJakartaJodaTimeConstants {
                             .name(NAME)
                             .author(AUTHOR)
                             .date(JODA_LOCAL_DATE_TIME)
-                            .tags(TAGS)
+                            .tag(TAGS)
                             .build();
 
     private static final Map<String, BaseModel<?>> JACKSON_JAKARTA_JODA_TIME_NO_ZONE_MAP = Map.of(
@@ -65,7 +65,7 @@ public class JacksonJakartaJodaTimeConstants {
                             .name(NAME)
                             .author(AUTHOR)
                             .date(JODA_DATE_TIME)
-                            .tags(TAGS)
+                            .tag(TAGS)
                             .build();
     private static final JacksonJakartaJodaTimeModels.JacksonJakartaJodaTimeZonedAccessTypeNone
             JACKSON_JAKARTA_JODA_TIME_ZONED_ACCESS_TYPE_NONE =
@@ -74,7 +74,7 @@ public class JacksonJakartaJodaTimeConstants {
                             .name(NAME)
                             .author(AUTHOR)
                             .date(JODA_DATE_TIME)
-                            .tags(TAGS)
+                            .tag(TAGS)
                             .build();
     private static final JacksonJakartaJodaTimeModels.JacksonJakartaJodaTimeZonedAccessTypeProperty
             JACKSON_JAKARTA_JODA_TIME_ZONED_ACCESS_TYPE_PROPERTY =
@@ -83,7 +83,7 @@ public class JacksonJakartaJodaTimeConstants {
                             .name(NAME)
                             .author(AUTHOR)
                             .date(JODA_DATE_TIME)
-                            .tags(TAGS)
+                            .tag(TAGS)
                             .build();
     private static final JacksonJakartaJodaTimeModels.JacksonJakartaJodaTimeZonedAccessTypePublicMember
             JACKSON_JAKARTA_JODA_TIME_ZONED_ACCESS_TYPE_PUBLIC_MEMBER =
@@ -92,7 +92,7 @@ public class JacksonJakartaJodaTimeConstants {
                             .name(NAME)
                             .author(AUTHOR)
                             .date(JODA_DATE_TIME)
-                            .tags(TAGS)
+                            .tag(TAGS)
                             .build();
 
     private static final Map<String, BaseModel<?>> JACKSON_JAKARTA_JODA_TIME_ZONED_MAP = Map.of(

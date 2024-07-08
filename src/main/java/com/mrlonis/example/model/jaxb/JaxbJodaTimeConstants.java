@@ -21,7 +21,7 @@ public class JaxbJodaTimeConstants {
                     .name(NAME)
                     .author(AUTHOR)
                     .date(JODA_LOCAL_DATE_TIME)
-                    .tags(TAGS)
+                    .tag(TAGS)
                     .build();
     private static final JaxbJodaTimeModels.JaxbJodaTimeNoZoneAccessTypeNone JAXB_JODA_TIME_NO_ZONE_ACCESS_TYPE_NONE =
             JaxbJodaTimeModels.JaxbJodaTimeNoZoneAccessTypeNone.builder()
@@ -29,7 +29,7 @@ public class JaxbJodaTimeConstants {
                     .name(NAME)
                     .author(AUTHOR)
                     .date(JODA_LOCAL_DATE_TIME)
-                    .tags(TAGS)
+                    .tag(TAGS)
                     .build();
     private static final JaxbJodaTimeModels.JaxbJodaTimeNoZoneAccessTypeProperty
             JAXB_JODA_TIME_NO_ZONE_ACCESS_TYPE_PROPERTY =
@@ -38,7 +38,7 @@ public class JaxbJodaTimeConstants {
                             .name(NAME)
                             .author(AUTHOR)
                             .date(JODA_LOCAL_DATE_TIME)
-                            .tags(TAGS)
+                            .tag(TAGS)
                             .build();
     private static final JaxbJodaTimeModels.JaxbJodaTimeNoZoneAccessTypePublicMember
             JAXB_JODA_TIME_NO_ZONE_ACCESS_TYPE_PUBLIC_MEMBER =
@@ -47,7 +47,7 @@ public class JaxbJodaTimeConstants {
                             .name(NAME)
                             .author(AUTHOR)
                             .date(JODA_LOCAL_DATE_TIME)
-                            .tags(TAGS)
+                            .tag(TAGS)
                             .build();
 
     private static final Map<String, BaseModel<?>> JAXB_JODA_TIME_NO_ZONE_MAP = Map.of(
@@ -66,7 +66,7 @@ public class JaxbJodaTimeConstants {
                     .name(NAME)
                     .author(AUTHOR)
                     .date(JODA_DATE_TIME)
-                    .tags(TAGS)
+                    .tag(TAGS)
                     .build();
     private static final JaxbJodaTimeModels.JaxbJodaTimeZonedAccessTypeNone JAXB_JODA_TIME_ZONED_ACCESS_TYPE_NONE =
             JaxbJodaTimeModels.JaxbJodaTimeZonedAccessTypeNone.builder()
@@ -74,7 +74,7 @@ public class JaxbJodaTimeConstants {
                     .name(NAME)
                     .author(AUTHOR)
                     .date(JODA_DATE_TIME)
-                    .tags(TAGS)
+                    .tag(TAGS)
                     .build();
     private static final JaxbJodaTimeModels.JaxbJodaTimeZonedAccessTypeProperty
             JAXB_JODA_TIME_ZONED_ACCESS_TYPE_PROPERTY = JaxbJodaTimeModels.JaxbJodaTimeZonedAccessTypeProperty.builder()
@@ -82,7 +82,7 @@ public class JaxbJodaTimeConstants {
                     .name(NAME)
                     .author(AUTHOR)
                     .date(JODA_DATE_TIME)
-                    .tags(TAGS)
+                    .tag(TAGS)
                     .build();
     private static final JaxbJodaTimeModels.JaxbJodaTimeZonedAccessTypePublicMember
             JAXB_JODA_TIME_ZONED_ACCESS_TYPE_PUBLIC_MEMBER =
@@ -91,7 +91,7 @@ public class JaxbJodaTimeConstants {
                             .name(NAME)
                             .author(AUTHOR)
                             .date(JODA_DATE_TIME)
-                            .tags(TAGS)
+                            .tag(TAGS)
                             .build();
 
     private static final Map<String, BaseModel<?>> JAXB_JODA_TIME_ZONED_MAP = Map.of(

@@ -238,9 +238,9 @@ public interface BaseModel<T> {
 
     BaseModel<T> setDate(T date);
 
-    List<String> getTags();
+    List<String> getTag();
 
-    BaseModel<T> setTags(List<String> tags);
+    BaseModel<T> setTag(List<String> tags);
 
     boolean equals(Object o);
 

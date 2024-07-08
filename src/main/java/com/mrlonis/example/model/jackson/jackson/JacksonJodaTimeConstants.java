@@ -21,7 +21,7 @@ public class JacksonJodaTimeConstants {
                     .name(NAME)
                     .author(AUTHOR)
                     .date(JODA_LOCAL_DATE_TIME)
-                    .tags(TAGS)
+                    .tag(TAGS)
                     .build();
 
     private static final Map<String, BaseModel<?>> JACKSON_JODA_TIME_NO_ZONE_MAP = Map.of(
@@ -36,7 +36,7 @@ public class JacksonJodaTimeConstants {
                     .name(NAME)
                     .author(AUTHOR)
                     .date(JODA_DATE_TIME)
-                    .tags(TAGS)
+                    .tag(TAGS)
                     .build();
 
     private static final Map<String, BaseModel<?>> JACKSON_JODA_TIME_ZONED_MAP = Map.of(

@@ -12,11 +12,19 @@ import static com.mrlonis.example.util.Constants.PROPERTY;
 import static com.mrlonis.example.util.Constants.PUBLIC_MEMBER;
 import static com.mrlonis.example.util.Constants.ZONED;
 import static org.hamcrest.Matchers.equalTo;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.joda.JodaModule;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import com.fasterxml.jackson.module.jakarta.xmlbind.JakartaXmlBindAnnotationModule;
+import com.fasterxml.jackson.module.jaxb.JaxbAnnotationModule;
 import com.mrlonis.example.util.FetchModelUtil;
 import jakarta.annotation.Nullable;
 import java.util.HashMap;
@@ -47,6 +55,12 @@ class BaseModelJsonTests {
 
     @Autowired
     private MockMvc mockMvc;
+
+    private final ObjectMapper xmlMapper = new ObjectMapper()
+            .registerModule(new JodaModule())
+            .registerModule(new JavaTimeModule())
+            .registerModule(new JaxbAnnotationModule())
+            .registerModule(new JakartaXmlBindAnnotationModule());
 
     static Stream<Arguments> jsonTestArguments() {
         return Stream.of(
@@ -140,6 +154,14 @@ class BaseModelJsonTests {
         performGetTest(formatLibrary, accessType, dateLibrary, zoned, xmlAnnotationLibrary);
     }
 
+    @ParameterizedTest
+    @MethodSource("jsonTestArguments")
+    void testDeserialization(
+            String formatLibrary, String accessType, String dateLibrary, String zoned, String xmlAnnotationLibrary)
+            throws Exception {
+        performPostTest(formatLibrary, accessType, dateLibrary, zoned, xmlAnnotationLibrary);
+    }
+
     private void performGetTest(
             String formatLibrary,
             String accessType,
@@ -175,6 +197,56 @@ class BaseModelJsonTests {
         }
 
         mockMvc.perform(get(builder.build().toUriString()).header(HttpHeaders.ACCEPT, MediaType.APPLICATION_JSON_VALUE))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
+                .andExpect(content().string(equalTo(json)));
+    }
+
+    private void performPostTest(
+            String formatLibrary,
+            String accessType,
+            String dateLibrary,
+            String zoned,
+            @Nullable String xmlAnnotationLibrary)
+            throws Exception {
+        String json;
+        if (ZONED.equals(zoned)) {
+            json = JSON_ZONED;
+        } else {
+            json = NO_ZONE.equals(zoned) ? JSON : null;
+        }
+        if (json == null) {
+            throw new IllegalArgumentException("Invalid zoned value: " + zoned);
+        }
+
+        BaseModel<?> model =
+                FetchModelUtil.fetchModel(formatLibrary, accessType, dateLibrary, zoned, xmlAnnotationLibrary);
+        String className = model.getClass().getName();
+        className = className.substring(className.lastIndexOf('.') + 1);
+        Map<String, String> valuesMap = new HashMap<>();
+        valuesMap.put("className", className);
+        StringSubstitutor sub = new StringSubstitutor(valuesMap);
+        json = sub.replace(json);
+
+        UriComponentsBuilder builder = UriComponentsBuilder.fromPath(XML_PATH + "/deserialize");
+
+        if (xmlAnnotationLibrary != null) {
+            builder.queryParam("xmlAnnotationLibrary", xmlAnnotationLibrary);
+        }
+
+        String requestBody = xmlMapper.writeValueAsString(model);
+        log.info("Request body: {}", requestBody);
+
+        BaseModel<?> model2 = xmlMapper.readValue(requestBody, model.getClass());
+        assertEquals(model.getId(), model2.getId());
+        assertEquals(model.getName(), model2.getName());
+        assertEquals(model.getTags(), model2.getTags());
+        assertNotEquals(model.getAuthor(), model2.getAuthor());
+
+        mockMvc.perform(post(builder.build().toUriString())
+                        .header(HttpHeaders.ACCEPT, MediaType.APPLICATION_JSON_VALUE)
+                        .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
+                        .content(requestBody))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(content().string(equalTo(json)));

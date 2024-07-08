@@ -52,7 +52,7 @@ public class JakartaJavaTimeConstants {
                             .tags(TAGS)
                             .build();
 
-    private static final Map<String, BaseModel> JAKARTA_JAVA_TIME_NO_ZONE_MAP = Map.of(
+    private static final Map<String, BaseModel<?>> JAKARTA_JAVA_TIME_NO_ZONE_MAP = Map.of(
             "field",
             JAKARTA_JAVA_TIME_NO_ZONE_ACCESS_TYPE_FIELD,
             "none",
@@ -99,7 +99,7 @@ public class JakartaJavaTimeConstants {
                             .tags(TAGS)
                             .build();
 
-    private static final Map<String, BaseModel> JAKARTA_JAVA_TIME_ZONED_MAP = Map.of(
+    private static final Map<String, BaseModel<?>> JAKARTA_JAVA_TIME_ZONED_MAP = Map.of(
             "field",
             JAKARTA_JAVA_TIME_ZONED_ACCESS_TYPE_FIELD,
             "none",
@@ -109,6 +109,6 @@ public class JakartaJavaTimeConstants {
             "public_member",
             JAKARTA_JAVA_TIME_ZONED_ACCESS_TYPE_PUBLIC_MEMBER);
 
-    public static final Map<String, Map<String, BaseModel>> JAKARTA_JAVA_TIME_MAP =
+    public static final Map<String, Map<String, BaseModel<?>>> JAKARTA_JAVA_TIME_MAP =
             Map.of(ZONED, JAKARTA_JAVA_TIME_ZONED_MAP, NO_ZONE, JAKARTA_JAVA_TIME_NO_ZONE_MAP);
 }

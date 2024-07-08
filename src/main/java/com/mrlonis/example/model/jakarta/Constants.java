@@ -11,6 +11,6 @@ import lombok.experimental.UtilityClass;
 
 @UtilityClass
 public class Constants {
-    public static final Map<String, Map<String, Map<String, BaseModel>>> JAKARTA_MAP =
+    public static final Map<String, Map<String, Map<String, BaseModel<?>>>> JAKARTA_MAP =
             Map.of(JODA, JAKARTA_JODA_TIME_MAP, JAVA, JAKARTA_JAVA_TIME_MAP);
 }

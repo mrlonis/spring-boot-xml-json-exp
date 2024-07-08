@@ -52,7 +52,7 @@ public class JacksonJaxbJodaTimeConstants {
                             .tags(TAGS)
                             .build();
 
-    private static final Map<String, BaseModel> JACKSON_JAXB_JODA_TIME_NO_ZONE_MAP = Map.of(
+    private static final Map<String, BaseModel<?>> JACKSON_JAXB_JODA_TIME_NO_ZONE_MAP = Map.of(
             "field", JACKSON_JAXB_JODA_TIME_NO_ZONE_ACCESS_TYPE_FIELD,
             "none", JACKSON_JAXB_JODA_TIME_NO_ZONE_ACCESS_TYPE_NONE,
             "property", JACKSON_JAXB_JODA_TIME_NO_ZONE_ACCESS_TYPE_PROPERTY,
@@ -95,7 +95,7 @@ public class JacksonJaxbJodaTimeConstants {
                             .tags(TAGS)
                             .build();
 
-    private static final Map<String, BaseModel> JACKSON_JAXB_JODA_TIME_ZONED_MAP = Map.of(
+    private static final Map<String, BaseModel<?>> JACKSON_JAXB_JODA_TIME_ZONED_MAP = Map.of(
             "field",
             JACKSON_JAXB_JODA_TIME_ZONED_ACCESS_TYPE_FIELD,
             "none",
@@ -105,6 +105,6 @@ public class JacksonJaxbJodaTimeConstants {
             "public_member",
             JACKSON_JAXB_JODA_TIME_ZONED_ACCESS_TYPE_PUBLIC_MEMBER);
 
-    public static final Map<String, Map<String, BaseModel>> JACKSON_JAXB_JODA_TIME_MAP =
+    public static final Map<String, Map<String, BaseModel<?>>> JACKSON_JAXB_JODA_TIME_MAP =
             Map.of(ZONED, JACKSON_JAXB_JODA_TIME_ZONED_MAP, NO_ZONE, JACKSON_JAXB_JODA_TIME_NO_ZONE_MAP);
 }

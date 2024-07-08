@@ -10,6 +10,6 @@ import lombok.experimental.UtilityClass;
 
 @UtilityClass
 public class Constants {
-    public static final Map<String, Map<String, Map<String, Map<String, BaseModel>>>> JACKSON_MAP =
+    public static final Map<String, Map<String, Map<String, Map<String, BaseModel<?>>>>> JACKSON_MAP =
             Map.of("jaxb", JACKSON_JAXB_MAP, "jakarta", JACKSON_JAKARTA_MAP, "jackson", JACKSON_JACKSON_MAP);
 }

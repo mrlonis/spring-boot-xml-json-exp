@@ -14,10 +14,10 @@ import lombok.extern.slf4j.Slf4j;
 @UtilityClass
 @Slf4j
 public class FetchModelUtil {
-    private static final Map<String, Map<String, Map<String, Map<String, BaseModel>>>> XML_MODELS_BY_TYPE =
+    private static final Map<String, Map<String, Map<String, Map<String, BaseModel<?>>>>> XML_MODELS_BY_TYPE =
             Map.of(JAXB, JAXB_MAP, JAKARTA, JAKARTA_MAP);
 
-    public BaseModel fetchModel(
+    public static BaseModel<?> fetchModel(
             String formatLibrary, String accessType, String dateLibrary, String zoned, String xmlAnnotationLibrary) {
         log.info(
                 "FetchModelUtil: fetchModel(): formatLibrary: {} | dateLibrary: {} | zoned: {} | | accessType: {}, xmlAnnotationLibrary: {}",

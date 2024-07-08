@@ -52,7 +52,7 @@ public class JacksonJakartaJavaTimeConstants {
                             .tags(TAGS)
                             .build();
 
-    private static final Map<String, BaseModel> JACKSON_JAKARTA_JAVA_TIME_NO_ZONE_MAP = Map.of(
+    private static final Map<String, BaseModel<?>> JACKSON_JAKARTA_JAVA_TIME_NO_ZONE_MAP = Map.of(
             "field", JACKSON_JAKARTA_JAVA_TIME_NO_ZONE_ACCESS_TYPE_FIELD,
             "none", JACKSON_JAKARTA_JAVA_TIME_NO_ZONE_ACCESS_TYPE_NONE,
             "property", JACKSON_JAKARTA_JAVA_TIME_NO_ZONE_ACCESS_TYPE_PROPERTY,
@@ -95,12 +95,12 @@ public class JacksonJakartaJavaTimeConstants {
                             .tags(TAGS)
                             .build();
 
-    private static final Map<String, BaseModel> JACKSON_JAKARTA_JAVA_TIME_ZONED_MAP = Map.of(
+    private static final Map<String, BaseModel<?>> JACKSON_JAKARTA_JAVA_TIME_ZONED_MAP = Map.of(
             "field", JACKSON_JAKARTA_JAVA_TIME_ZONED_ACCESS_TYPE_FIELD,
             "none", JACKSON_JAKARTA_JAVA_TIME_ZONED_ACCESS_TYPE_NONE,
             "property", JACKSON_JAKARTA_JAVA_TIME_ZONED_ACCESS_TYPE_PROPERTY,
             "public_member", JACKSON_JAKARTA_JAVA_TIME_ZONED_ACCESS_TYPE_PUBLIC_MEMBER);
 
-    public static final Map<String, Map<String, BaseModel>> JACKSON_JAKARTA_JAVA_TIME_MAP =
+    public static final Map<String, Map<String, BaseModel<?>>> JACKSON_JAKARTA_JAVA_TIME_MAP =
             Map.of(ZONED, JACKSON_JAKARTA_JAVA_TIME_ZONED_MAP, NO_ZONE, JACKSON_JAKARTA_JAVA_TIME_NO_ZONE_MAP);
 }

@@ -50,7 +50,7 @@ public class JaxbJavaTimeConstants {
                             .tags(TAGS)
                             .build();
 
-    private static final Map<String, BaseModel> JAXB_JAVA_TIME_NO_ZONE_MAP = Map.of(
+    private static final Map<String, BaseModel<?>> JAXB_JAVA_TIME_NO_ZONE_MAP = Map.of(
             "field",
             JAXB_JAVA_TIME_NO_ZONE_ACCESS_TYPE_FIELD,
             "none",
@@ -94,7 +94,7 @@ public class JaxbJavaTimeConstants {
                             .tags(TAGS)
                             .build();
 
-    private static final Map<String, BaseModel> JAXB_JAVA_TIME_ZONED_MAP = Map.of(
+    private static final Map<String, BaseModel<?>> JAXB_JAVA_TIME_ZONED_MAP = Map.of(
             "field",
             JAXB_JAVA_TIME_ZONED_ACCESS_TYPE_FIELD,
             "none",
@@ -104,6 +104,6 @@ public class JaxbJavaTimeConstants {
             "public_member",
             JAXB_JAVA_TIME_ZONED_ACCESS_TYPE_PUBLIC_MEMBER);
 
-    public static final Map<String, Map<String, BaseModel>> JAXB_JAVA_TIME_MAP =
+    public static final Map<String, Map<String, BaseModel<?>>> JAXB_JAVA_TIME_MAP =
             Map.of(ZONED, JAXB_JAVA_TIME_ZONED_MAP, NO_ZONE, JAXB_JAVA_TIME_NO_ZONE_MAP);
 }

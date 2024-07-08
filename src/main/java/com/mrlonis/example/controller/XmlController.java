@@ -11,11 +11,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/xml")
-@SuppressWarnings("rawtypes")
 @Slf4j
 public class XmlController {
     @GetMapping("/{formatLibrary}")
-    public BaseModel getModel(
+    public BaseModel<?> getModel(
             @PathVariable String formatLibrary,
             @RequestParam String accessType,
             @RequestParam String dateLibrary,

@@ -24,7 +24,7 @@ public class JacksonJodaTimeConstants {
                     .tags(TAGS)
                     .build();
 
-    private static final Map<String, BaseModel> JACKSON_JODA_TIME_NO_ZONE_MAP = Map.of(
+    private static final Map<String, BaseModel<?>> JACKSON_JODA_TIME_NO_ZONE_MAP = Map.of(
             "field", JACKSON_JODA_TIME_NO_ZONE,
             "none", JACKSON_JODA_TIME_NO_ZONE,
             "property", JACKSON_JODA_TIME_NO_ZONE,
@@ -39,12 +39,12 @@ public class JacksonJodaTimeConstants {
                     .tags(TAGS)
                     .build();
 
-    private static final Map<String, BaseModel> JACKSON_JODA_TIME_ZONED_MAP = Map.of(
+    private static final Map<String, BaseModel<?>> JACKSON_JODA_TIME_ZONED_MAP = Map.of(
             "field", JACKSON_JODA_TIME_ZONED,
             "none", JACKSON_JODA_TIME_ZONED,
             "property", JACKSON_JODA_TIME_ZONED,
             "public_member", JACKSON_JODA_TIME_ZONED);
 
-    public static final Map<String, Map<String, BaseModel>> JACKSON_JODA_TIME_MAP =
+    public static final Map<String, Map<String, BaseModel<?>>> JACKSON_JODA_TIME_MAP =
             Map.of(ZONED, JACKSON_JODA_TIME_ZONED_MAP, NO_ZONE, JACKSON_JODA_TIME_NO_ZONE_MAP);
 }

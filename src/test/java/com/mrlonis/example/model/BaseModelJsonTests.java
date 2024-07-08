@@ -137,10 +137,10 @@ class BaseModelJsonTests {
     void testSerialization(
             String formatLibrary, String accessType, String dateLibrary, String zoned, String xmlAnnotationLibrary)
             throws Exception {
-        performTest(formatLibrary, accessType, dateLibrary, zoned, xmlAnnotationLibrary);
+        performGetTest(formatLibrary, accessType, dateLibrary, zoned, xmlAnnotationLibrary);
     }
 
-    private void performTest(
+    private void performGetTest(
             String formatLibrary,
             String accessType,
             String dateLibrary,

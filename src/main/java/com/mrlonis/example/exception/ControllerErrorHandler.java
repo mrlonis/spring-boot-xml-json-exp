@@ -1,6 +1,5 @@
 package com.mrlonis.example.exception;
 
-import javax.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,15 +12,13 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @Slf4j
 public class ControllerErrorHandler {
     @ExceptionHandler(HttpMessageNotReadableException.class)
-    public ResponseEntity<String> handleHttpMessageNotReadableException(
-            HttpMessageNotReadableException exception, HttpServletRequest request) {
+    public ResponseEntity<String> handleHttpMessageNotReadableException(HttpMessageNotReadableException exception) {
         log.error(exception.getMessage(), exception);
         return new ResponseEntity<>(exception.getMessage(), HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(HttpMessageNotWritableException.class)
-    public ResponseEntity<String> handleHttpMessageNotWritableException(
-            HttpMessageNotWritableException exception, HttpServletRequest request) {
+    public ResponseEntity<String> handleHttpMessageNotWritableException(HttpMessageNotWritableException exception) {
         log.error(exception.getMessage(), exception);
         return new ResponseEntity<>(exception.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
     }

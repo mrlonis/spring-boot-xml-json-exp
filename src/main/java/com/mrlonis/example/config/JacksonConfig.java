@@ -1,6 +1,7 @@
 package com.mrlonis.example.config;
 
 import com.fasterxml.jackson.databind.Module;
+import com.fasterxml.jackson.datatype.joda.JodaModule;
 import com.fasterxml.jackson.module.jakarta.xmlbind.JakartaXmlBindAnnotationModule;
 import com.fasterxml.jackson.module.jaxb.JaxbAnnotationModule;
 import org.springframework.context.annotation.Bean;
@@ -32,5 +33,10 @@ public class JacksonConfig {
     @Bean
     public Module jakartaXmlBindAnnotationModule() {
         return new JakartaXmlBindAnnotationModule();
+    }
+
+    @Bean
+    public Module jodaModule() {
+        return new JodaModule();
     }
 }

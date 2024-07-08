@@ -27,6 +27,13 @@ public class XmlController {
 
     @PostMapping("/deserialize")
     public BaseModel<?> deserializeModel(@RequestBody BaseModel<?> model) {
+        log.info("XmlController: deserializeModel(): model.getId(): {}", model.getId());
+        log.info("XmlController: deserializeModel(): model.getName(): {}", model.getName());
+        log.info("XmlController: deserializeModel(): model.getAuthor(): {}", model.getAuthor());
+        log.info("XmlController: deserializeModel(): model.getDate(): {}", model.getDate());
+        log.info("XmlController: deserializeModel(): model.getTags(): {}", model.getTags());
+        log.info("XmlController: deserializeModel(): model.hashCode(): {}", model.hashCode());
+        log.info("XmlController: deserializeModel(): model.toString(): {}", model.toString());
         return model;
     }
 }

@@ -8,6 +8,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.SuperBuilder;
 import lombok.experimental.UtilityClass;
+import lombok.extern.jackson.Jacksonized;
 
 @UtilityClass
 public class JacksonJavaTimeModels {
@@ -15,6 +16,7 @@ public class JacksonJavaTimeModels {
     @JsonPropertyOrder({"id", "name", "date", "tags"})
     @EqualsAndHashCode(callSuper = true)
     @Data
+    @Jacksonized
     @SuperBuilder
     public static class JacksonJavaTimeNoZone extends BaseJacksonModel<LocalDateTime> {}
 
@@ -22,6 +24,7 @@ public class JacksonJavaTimeModels {
     @JsonPropertyOrder({"id", "name", "date", "tags"})
     @EqualsAndHashCode(callSuper = true)
     @Data
+    @Jacksonized
     @SuperBuilder
     public static class JacksonJavaTimeZoned extends BaseJacksonModel<ZonedDateTime> {}
 }

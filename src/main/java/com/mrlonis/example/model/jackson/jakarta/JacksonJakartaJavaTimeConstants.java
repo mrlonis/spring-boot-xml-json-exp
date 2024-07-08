@@ -58,36 +58,36 @@ public class JacksonJakartaJavaTimeConstants {
             "property", JACKSON_JAKARTA_JAVA_TIME_NO_ZONE_ACCESS_TYPE_PROPERTY,
             "public_member", JACKSON_JAKARTA_JAVA_TIME_NO_ZONE_ACCESS_TYPE_PUBLIC_MEMBER);
 
-    private static final JacksonJakartaJavaTimeModels.JacksonJakartaModelAccessTypeField
+    private static final JacksonJakartaJavaTimeModels.JacksonJakartaJavaTimeZonedAccessTypeField
             JACKSON_JAKARTA_JAVA_TIME_ZONED_ACCESS_TYPE_FIELD =
-                    JacksonJakartaJavaTimeModels.JacksonJakartaModelAccessTypeField.builder()
+                    JacksonJakartaJavaTimeModels.JacksonJakartaJavaTimeZonedAccessTypeField.builder()
                             .id(ID)
                             .name(NAME)
                             .author(AUTHOR)
                             .date(JAVA_TIME_ZONED_DATE_TIME)
                             .tags(TAGS)
                             .build();
-    private static final JacksonJakartaJavaTimeModels.JacksonJakartaModelAccessTypeNone
+    private static final JacksonJakartaJavaTimeModels.JacksonJakartaJavaTimeZonedAccessTypeNone
             JACKSON_JAKARTA_JAVA_TIME_ZONED_ACCESS_TYPE_NONE =
-                    JacksonJakartaJavaTimeModels.JacksonJakartaModelAccessTypeNone.builder()
+                    JacksonJakartaJavaTimeModels.JacksonJakartaJavaTimeZonedAccessTypeNone.builder()
                             .id(ID)
                             .name(NAME)
                             .author(AUTHOR)
                             .date(JAVA_TIME_ZONED_DATE_TIME)
                             .tags(TAGS)
                             .build();
-    private static final JacksonJakartaJavaTimeModels.JacksonJakartaModelAccessTypeProperty
+    private static final JacksonJakartaJavaTimeModels.JacksonJakartaJavaTimeZonedAccessTypeProperty
             JACKSON_JAKARTA_JAVA_TIME_ZONED_ACCESS_TYPE_PROPERTY =
-                    JacksonJakartaJavaTimeModels.JacksonJakartaModelAccessTypeProperty.builder()
+                    JacksonJakartaJavaTimeModels.JacksonJakartaJavaTimeZonedAccessTypeProperty.builder()
                             .id(ID)
                             .name(NAME)
                             .author(AUTHOR)
                             .date(JAVA_TIME_ZONED_DATE_TIME)
                             .tags(TAGS)
                             .build();
-    private static final JacksonJakartaJavaTimeModels.JacksonJakartaModelAccessTypePublicMember
+    private static final JacksonJakartaJavaTimeModels.JacksonJakartaJavaTimeZonedAccessTypePublicMember
             JACKSON_JAKARTA_JAVA_TIME_ZONED_ACCESS_TYPE_PUBLIC_MEMBER =
-                    JacksonJakartaJavaTimeModels.JacksonJakartaModelAccessTypePublicMember.builder()
+                    JacksonJakartaJavaTimeModels.JacksonJakartaJavaTimeZonedAccessTypePublicMember.builder()
                             .id(ID)
                             .name(NAME)
                             .author(AUTHOR)

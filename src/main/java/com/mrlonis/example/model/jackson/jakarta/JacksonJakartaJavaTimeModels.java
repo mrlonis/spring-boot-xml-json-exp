@@ -10,6 +10,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.SuperBuilder;
 import lombok.experimental.UtilityClass;
+import lombok.extern.jackson.Jacksonized;
 
 @UtilityClass
 public class JacksonJakartaJavaTimeModels {
@@ -18,6 +19,7 @@ public class JacksonJakartaJavaTimeModels {
     @XmlType(propOrder = {"id", "name", "date", "tags"})
     @EqualsAndHashCode(callSuper = true)
     @Data
+    @Jacksonized
     @SuperBuilder
     public static class JacksonJakartaJavaTimeNoZoneAccessTypeField extends BaseJacksonJakartaModel<LocalDateTime> {}
 
@@ -26,6 +28,7 @@ public class JacksonJakartaJavaTimeModels {
     @XmlType(propOrder = {"id", "name", "date", "tags"})
     @EqualsAndHashCode(callSuper = true)
     @Data
+    @Jacksonized
     @SuperBuilder
     public static class JacksonJakartaJavaTimeNoZoneAccessTypeNone extends BaseJacksonJakartaModel<LocalDateTime> {}
 
@@ -34,6 +37,7 @@ public class JacksonJakartaJavaTimeModels {
     @XmlType(propOrder = {"id", "name", "date", "tags"})
     @EqualsAndHashCode(callSuper = true)
     @Data
+    @Jacksonized
     @SuperBuilder
     public static class JacksonJakartaJavaTimeNoZoneAccessTypeProperty extends BaseJacksonJakartaModel<LocalDateTime> {}
 
@@ -42,6 +46,7 @@ public class JacksonJakartaJavaTimeModels {
     @XmlType(propOrder = {"id", "name", "date", "tags"})
     @EqualsAndHashCode(callSuper = true)
     @Data
+    @Jacksonized
     @SuperBuilder
     public static class JacksonJakartaJavaTimeNoZoneAccessTypePublicMember
             extends BaseJacksonJakartaModel<LocalDateTime> {}
@@ -51,30 +56,35 @@ public class JacksonJakartaJavaTimeModels {
     @XmlType(propOrder = {"id", "name", "date", "tags"})
     @EqualsAndHashCode(callSuper = true)
     @Data
+    @Jacksonized
     @SuperBuilder
-    public static class JacksonJakartaModelAccessTypeField extends BaseJacksonJakartaModel<ZonedDateTime> {}
+    public static class JacksonJakartaJavaTimeZonedAccessTypeField extends BaseJacksonJakartaModel<ZonedDateTime> {}
 
     @JacksonXmlRootElement(localName = "book")
     @XmlAccessorType(XmlAccessType.NONE)
     @XmlType(propOrder = {"id", "name", "date", "tags"})
     @EqualsAndHashCode(callSuper = true)
     @Data
+    @Jacksonized
     @SuperBuilder
-    public static class JacksonJakartaModelAccessTypeNone extends BaseJacksonJakartaModel<ZonedDateTime> {}
+    public static class JacksonJakartaJavaTimeZonedAccessTypeNone extends BaseJacksonJakartaModel<ZonedDateTime> {}
 
     @JacksonXmlRootElement(localName = "book")
     @XmlAccessorType(XmlAccessType.PROPERTY)
     @XmlType(propOrder = {"id", "name", "date", "tags"})
     @EqualsAndHashCode(callSuper = true)
     @Data
+    @Jacksonized
     @SuperBuilder
-    public static class JacksonJakartaModelAccessTypeProperty extends BaseJacksonJakartaModel<ZonedDateTime> {}
+    public static class JacksonJakartaJavaTimeZonedAccessTypeProperty extends BaseJacksonJakartaModel<ZonedDateTime> {}
 
     @JacksonXmlRootElement(localName = "book")
     @XmlAccessorType(XmlAccessType.PUBLIC_MEMBER)
     @XmlType(propOrder = {"id", "name", "date", "tags"})
     @EqualsAndHashCode(callSuper = true)
     @Data
+    @Jacksonized
     @SuperBuilder
-    public static class JacksonJakartaModelAccessTypePublicMember extends BaseJacksonJakartaModel<ZonedDateTime> {}
+    public static class JacksonJakartaJavaTimeZonedAccessTypePublicMember
+            extends BaseJacksonJakartaModel<ZonedDateTime> {}
 }

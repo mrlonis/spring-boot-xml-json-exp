@@ -4,14 +4,20 @@ import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.SerializerProvider;
+import jakarta.annotation.Nullable;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
 import lombok.experimental.UtilityClass;
+import lombok.extern.slf4j.Slf4j;
 
 @UtilityClass
+@Slf4j
 public class TimeAdapterUtil {
-    public static <T> T unmarshal(String v, Class<T> type) {
+    private static final String UNSUPPORTED_TYPE = "Unsupported type: ";
+
+    public static <T> T unmarshal(String v, @Nullable Class<T> type) {
+        log.info("TimeAdapterUtil: unmarshal(): v: {}, type: {}", v, type != null ? type.getName() : null);
         if (type == LocalDateTime.class) {
             return type.cast(JavaTimeUtil.unmarshalLocalDateTime(v));
         } else if (type == ZonedDateTime.class) {
@@ -21,10 +27,16 @@ public class TimeAdapterUtil {
         } else if (type == org.joda.time.DateTime.class) {
             return type.cast(JodaTimeUtil.unmarshalDateTime(v));
         }
-        throw new UnsupportedOperationException("Unsupported type: " + type.getName());
+        String errorMessage = UNSUPPORTED_TYPE + (type != null ? type.getName() : null);
+        log.error(errorMessage);
+        throw new UnsupportedOperationException(errorMessage);
     }
 
     public static <T> String marshal(T v) {
+        log.info(
+                "TimeAdapterUtil: marshal(): v: {}, v.getClass(): {}",
+                v,
+                v.getClass().getName());
         if (v instanceof LocalDateTime localDateTime) {
             return JavaTimeUtil.marshalLocalDateTime(localDateTime);
         } else if (v instanceof ZonedDateTime zonedDateTime) {
@@ -34,11 +46,16 @@ public class TimeAdapterUtil {
         } else if (v instanceof org.joda.time.DateTime jodaDateTime) {
             return JodaTimeUtil.marshalDateTime(jodaDateTime);
         }
-        throw new UnsupportedOperationException(
-                "Unsupported type: " + v.getClass().getName());
+        String errorMessage = UNSUPPORTED_TYPE + v.getClass().getName();
+        log.error(errorMessage);
+        throw new UnsupportedOperationException(errorMessage);
     }
 
     public static <T> void serialize(T v, JsonGenerator gen, SerializerProvider arg2) throws IOException {
+        log.info(
+                "TimeAdapterUtil: serialize(): v: {}, v.getClass(): {}",
+                v,
+                v.getClass().getName());
         if (v instanceof LocalDateTime localDateTime) {
             JavaTimeUtil.serializeLocalDateTime(localDateTime, gen, arg2);
             return;
@@ -52,12 +69,14 @@ public class TimeAdapterUtil {
             JodaTimeUtil.serializeDateTime(jodaDateTime, gen, arg2);
             return;
         }
-        throw new UnsupportedOperationException(
-                "Unsupported type: " + v.getClass().getName());
+        String errorMessage = UNSUPPORTED_TYPE + v.getClass().getName();
+        log.error(errorMessage);
+        throw new UnsupportedOperationException(errorMessage);
     }
 
-    public static <T> T deserialize(JsonParser jsonparser, DeserializationContext context, Class<T> type)
+    public static <T> T deserialize(JsonParser jsonparser, DeserializationContext context, @Nullable Class<T> type)
             throws IOException {
+        log.info("TimeAdapterUtil: deserialize(): type: {}", type != null ? type.getName() : null);
         if (type == LocalDateTime.class) {
             return type.cast(JavaTimeUtil.deserializeLocalDateTime(jsonparser, context));
         } else if (type == ZonedDateTime.class) {
@@ -67,6 +86,8 @@ public class TimeAdapterUtil {
         } else if (type == org.joda.time.DateTime.class) {
             return type.cast(JodaTimeUtil.deserializeDateTime(jsonparser, context));
         }
-        throw new UnsupportedOperationException("Unsupported type: " + type.getName());
+        String errorMessage = UNSUPPORTED_TYPE + (type != null ? type.getName() : null);
+        log.error(errorMessage);
+        throw new UnsupportedOperationException(errorMessage);
     }
 }

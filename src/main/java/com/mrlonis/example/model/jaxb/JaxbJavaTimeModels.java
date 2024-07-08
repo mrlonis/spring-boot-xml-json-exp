@@ -10,6 +10,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.SuperBuilder;
 import lombok.experimental.UtilityClass;
+import lombok.extern.jackson.Jacksonized;
 
 @UtilityClass
 public class JaxbJavaTimeModels {
@@ -18,6 +19,7 @@ public class JaxbJavaTimeModels {
     @XmlType(propOrder = {"id", "name", "date", "tags"})
     @EqualsAndHashCode(callSuper = true)
     @Data
+    @Jacksonized
     @SuperBuilder
     public static class JaxbJavaTimeNoZoneAccessTypeField extends BaseJaxbModel<LocalDateTime> {}
 
@@ -26,6 +28,7 @@ public class JaxbJavaTimeModels {
     @XmlType(propOrder = {"id", "name", "date", "tags"})
     @EqualsAndHashCode(callSuper = true)
     @Data
+    @Jacksonized
     @SuperBuilder
     public static class JaxbJavaTimeNoZoneAccessTypeNone extends BaseJaxbModel<LocalDateTime> {}
 
@@ -34,6 +37,7 @@ public class JaxbJavaTimeModels {
     @XmlType(propOrder = {"id", "name", "date", "tags"})
     @EqualsAndHashCode(callSuper = true)
     @Data
+    @Jacksonized
     @SuperBuilder
     public static class JaxbJavaTimeNoZoneAccessTypeProperty extends BaseJaxbModel<LocalDateTime> {}
 
@@ -42,6 +46,7 @@ public class JaxbJavaTimeModels {
     @XmlType(propOrder = {"id", "name", "date", "tags"})
     @EqualsAndHashCode(callSuper = true)
     @Data
+    @Jacksonized
     @SuperBuilder
     public static class JaxbJavaTimeNoZoneAccessTypePublicMember extends BaseJaxbModel<LocalDateTime> {}
 
@@ -50,6 +55,7 @@ public class JaxbJavaTimeModels {
     @XmlType(propOrder = {"id", "name", "date", "tags"})
     @EqualsAndHashCode(callSuper = true)
     @Data
+    @Jacksonized
     @SuperBuilder
     public static class JaxbJavaTimeZonedAccessTypeField extends BaseJaxbModel<ZonedDateTime> {}
 
@@ -58,6 +64,7 @@ public class JaxbJavaTimeModels {
     @XmlType(propOrder = {"id", "name", "date", "tags"})
     @EqualsAndHashCode(callSuper = true)
     @Data
+    @Jacksonized
     @SuperBuilder
     public static class JaxbJavaTimeZonedAccessTypeNone extends BaseJaxbModel<ZonedDateTime> {}
 
@@ -66,6 +73,7 @@ public class JaxbJavaTimeModels {
     @XmlType(propOrder = {"id", "name", "date", "tags"})
     @EqualsAndHashCode(callSuper = true)
     @Data
+    @Jacksonized
     @SuperBuilder
     public static class JaxbJavaTimeZonedAccessTypeProperty extends BaseJaxbModel<ZonedDateTime> {}
 
@@ -74,6 +82,7 @@ public class JaxbJavaTimeModels {
     @XmlType(propOrder = {"id", "name", "date", "tags"})
     @EqualsAndHashCode(callSuper = true)
     @Data
+    @Jacksonized
     @SuperBuilder
     public static class JaxbJavaTimeZonedAccessTypePublicMember extends BaseJaxbModel<ZonedDateTime> {}
 }

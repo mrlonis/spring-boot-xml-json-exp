@@ -8,6 +8,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.SuperBuilder;
 import lombok.experimental.UtilityClass;
+import lombok.extern.jackson.Jacksonized;
 import org.joda.time.DateTime;
 import org.joda.time.LocalDateTime;
 
@@ -18,6 +19,7 @@ public class JakartaJodaTimeModels {
     @XmlType(propOrder = {"id", "name", "date", "tags"})
     @EqualsAndHashCode(callSuper = true)
     @Data
+    @Jacksonized
     @SuperBuilder
     public static class JakartaJodaTimeNoZoneAccessTypeField extends BaseJakartaModel<LocalDateTime> {}
 
@@ -26,6 +28,7 @@ public class JakartaJodaTimeModels {
     @XmlType(propOrder = {"id", "name", "date", "tags"})
     @EqualsAndHashCode(callSuper = true)
     @Data
+    @Jacksonized
     @SuperBuilder
     public static class JakartaJodaTimeNoZoneAccessTypeNone extends BaseJakartaModel<LocalDateTime> {}
 
@@ -34,6 +37,7 @@ public class JakartaJodaTimeModels {
     @XmlType(propOrder = {"id", "name", "date", "tags"})
     @EqualsAndHashCode(callSuper = true)
     @Data
+    @Jacksonized
     @SuperBuilder
     public static class JakartaJodaTimeNoZoneAccessTypeProperty extends BaseJakartaModel<LocalDateTime> {}
 
@@ -42,6 +46,7 @@ public class JakartaJodaTimeModels {
     @XmlType(propOrder = {"id", "name", "date", "tags"})
     @EqualsAndHashCode(callSuper = true)
     @Data
+    @Jacksonized
     @SuperBuilder
     public static class JakartaJodaTimeNoZoneAccessTypePublicMember extends BaseJakartaModel<LocalDateTime> {}
 
@@ -50,6 +55,7 @@ public class JakartaJodaTimeModels {
     @XmlType(propOrder = {"id", "name", "date", "tags"})
     @EqualsAndHashCode(callSuper = true)
     @Data
+    @Jacksonized
     @SuperBuilder
     public static class JakartaJodaTimeZonedAccessTypeField extends BaseJakartaModel<DateTime> {}
 
@@ -58,6 +64,7 @@ public class JakartaJodaTimeModels {
     @XmlType(propOrder = {"id", "name", "date", "tags"})
     @EqualsAndHashCode(callSuper = true)
     @Data
+    @Jacksonized
     @SuperBuilder
     public static class JakartaJodaTimeZonedAccessTypeNone extends BaseJakartaModel<DateTime> {}
 
@@ -66,6 +73,7 @@ public class JakartaJodaTimeModels {
     @XmlType(propOrder = {"id", "name", "date", "tags"})
     @EqualsAndHashCode(callSuper = true)
     @Data
+    @Jacksonized
     @SuperBuilder
     public static class JakartaJodaTimeZonedAccessTypeProperty extends BaseJakartaModel<DateTime> {}
 
@@ -74,6 +82,7 @@ public class JakartaJodaTimeModels {
     @XmlType(propOrder = {"id", "name", "date", "tags"})
     @EqualsAndHashCode(callSuper = true)
     @Data
+    @Jacksonized
     @SuperBuilder
     public static class JakartaJodaTimeZonedAccessTypePublicMember extends BaseJakartaModel<DateTime> {}
 }

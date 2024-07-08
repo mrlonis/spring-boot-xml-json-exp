@@ -14,12 +14,22 @@ import static com.mrlonis.example.util.Constants.ZONED;
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
+import com.fasterxml.jackson.datatype.joda.JodaModule;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import com.fasterxml.jackson.module.jakarta.xmlbind.JakartaXmlBindAnnotationModule;
+import com.fasterxml.jackson.module.jaxb.JaxbAnnotationModule;
+import com.mrlonis.example.util.FetchModelUtil;
 import jakarta.annotation.Nullable;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.stream.Stream;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.text.StringSubstitutor;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -36,13 +46,20 @@ import org.springframework.web.util.UriComponentsBuilder;
 @Slf4j
 class BaseModelXmlTests {
     public static final String XML =
-            "<book id=\"1\"><title>name</title><date>2024-07-05T14:06:07.617</date><tags><tag>tag1</tag><tag>tag2</tag><tag>tag3</tag></tags></book>";
+            "<book type=\"${className}\" id=\"1\"><title>name</title><date>2024-07-05T14:06:07.617</date><tags><tag>tag1</tag><tag>tag2</tag><tag>tag3</tag></tags></book>";
     public static final String XML_ZONED =
-            "<book id=\"1\"><title>name</title><date>2024-07-05T14:06:07.617Z</date><tags><tag>tag1</tag><tag>tag2</tag><tag>tag3</tag></tags></book>";
+            "<book type=\"${className}\" id=\"1\"><title>name</title><date>2024-07-05T14:06:07.617Z</date><tags><tag>tag1</tag><tag>tag2</tag><tag>tag3</tag></tags></book>";
     private static final String XML_PATH = "/xml";
 
     @Autowired
     private MockMvc mockMvc;
+
+    private final XmlMapper xmlMapper = (XmlMapper) new XmlMapper()
+            .findAndRegisterModules()
+            .registerModule(new JodaModule())
+            .registerModule(new JavaTimeModule())
+            .registerModule(new JaxbAnnotationModule())
+            .registerModule(new JakartaXmlBindAnnotationModule());
 
     static Stream<Arguments> xmlTestArguments() {
         return Stream.of(
@@ -128,15 +145,67 @@ class BaseModelXmlTests {
                 arguments(JACKSON, PUBLIC_MEMBER, JAVA, NO_ZONE, "jackson"));
     }
 
+    static Stream<Arguments> xmlTestPostArguments() {
+        return Stream.of(arguments(JAXB, FIELD, JODA, ZONED, null));
+    }
+
     @ParameterizedTest
     @MethodSource("xmlTestArguments")
     void testSerialization(
             String formatLibrary, String accessType, String dateLibrary, String zoned, String xmlAnnotationLibrary)
             throws Exception {
-        performTest(formatLibrary, accessType, dateLibrary, zoned, xmlAnnotationLibrary);
+        performGetTest(formatLibrary, accessType, dateLibrary, zoned, xmlAnnotationLibrary);
     }
 
-    private void performTest(
+    @ParameterizedTest
+    @MethodSource("xmlTestPostArguments")
+    void testDeserialization(
+            String formatLibrary, String accessType, String dateLibrary, String zoned, String xmlAnnotationLibrary)
+            throws Exception {
+        performPostTest(formatLibrary, accessType, dateLibrary, zoned, xmlAnnotationLibrary);
+    }
+
+    private void performGetTest(
+            String formatLibrary,
+            String accessType,
+            String dateLibrary,
+            String zoned,
+            @Nullable String xmlAnnotationLibrary)
+            throws Exception {
+        String xml;
+        if (ZONED.equals(zoned)) {
+            xml = XML_ZONED;
+        } else {
+            xml = NO_ZONE.equals(zoned) ? XML : null;
+        }
+        if (xml == null) {
+            throw new IllegalArgumentException("Invalid zoned value: " + zoned);
+        }
+        BaseModel<?> model =
+                FetchModelUtil.fetchModel(formatLibrary, accessType, dateLibrary, zoned, xmlAnnotationLibrary);
+        String className = model.getClass().getName();
+        className = className.substring(className.lastIndexOf('.') + 1);
+        Map<String, String> valuesMap = new HashMap<>();
+        valuesMap.put("className", className);
+        StringSubstitutor sub = new StringSubstitutor(valuesMap);
+        xml = sub.replace(xml);
+
+        UriComponentsBuilder builder = UriComponentsBuilder.fromPath(XML_PATH + "/" + formatLibrary)
+                .queryParam("accessType", accessType)
+                .queryParam("dateLibrary", dateLibrary)
+                .queryParam("zoned", zoned);
+
+        if (xmlAnnotationLibrary != null) {
+            builder.queryParam("xmlAnnotationLibrary", xmlAnnotationLibrary);
+        }
+
+        mockMvc.perform(get(builder.build().toUriString()).header(HttpHeaders.ACCEPT, MediaType.APPLICATION_XML_VALUE))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_XML_VALUE + ";charset=UTF-8"))
+                .andExpect(content().string(equalTo(xml)));
+    }
+
+    private void performPostTest(
             String formatLibrary,
             String accessType,
             String dateLibrary,
@@ -153,16 +222,27 @@ class BaseModelXmlTests {
             throw new IllegalArgumentException("Invalid zoned value: " + zoned);
         }
 
-        UriComponentsBuilder builder = UriComponentsBuilder.fromPath(XML_PATH + "/" + formatLibrary)
-                .queryParam("accessType", accessType)
-                .queryParam("dateLibrary", dateLibrary)
-                .queryParam("zoned", zoned);
+        BaseModel<?> model =
+                FetchModelUtil.fetchModel(formatLibrary, accessType, dateLibrary, zoned, xmlAnnotationLibrary);
+        String className = model.getClass().getName();
+        className = className.substring(className.lastIndexOf('.') + 1);
+        Map<String, String> valuesMap = new HashMap<>();
+        valuesMap.put("className", className);
+        StringSubstitutor sub = new StringSubstitutor(valuesMap);
+        xml = sub.replace(xml);
+
+        UriComponentsBuilder builder = UriComponentsBuilder.fromPath(XML_PATH + "/deserialize");
 
         if (xmlAnnotationLibrary != null) {
             builder.queryParam("xmlAnnotationLibrary", xmlAnnotationLibrary);
         }
 
-        mockMvc.perform(get(builder.build().toUriString()).header(HttpHeaders.ACCEPT, MediaType.APPLICATION_XML_VALUE))
+        String requestBody = xmlMapper.writeValueAsString(model);
+        log.info("Request body: {}", requestBody);
+        mockMvc.perform(post(builder.build().toUriString())
+                        .header(HttpHeaders.ACCEPT, MediaType.APPLICATION_XML_VALUE)
+                        .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_XML_VALUE)
+                        .content(requestBody))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_XML_VALUE + ";charset=UTF-8"))
                 .andExpect(content().string(equalTo(xml)));

@@ -7,7 +7,6 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.SuperBuilder;
@@ -73,9 +72,9 @@ public class JaxbJodaTimeModels {
     @XmlRootElement(name = "book")
     @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(propOrder = {"id", "name", "date", "tags"})
-    @AllArgsConstructor
     @EqualsAndHashCode(callSuper = true)
     @Data
+    @Jacksonized
     @SuperBuilder
     public static class JaxbJodaTimeZonedAccessTypeField extends BaseJaxbModel<DateTime> {
         @XmlElement

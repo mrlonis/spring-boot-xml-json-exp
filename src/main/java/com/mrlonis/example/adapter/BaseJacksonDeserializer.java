@@ -8,10 +8,10 @@ import java.io.IOException;
 import lombok.Getter;
 
 @Getter
-public class JacksonDeserializer<T> extends JsonDeserializer<T> {
+public abstract class BaseJacksonDeserializer<T> extends JsonDeserializer<T> {
     private final Class<T> type;
 
-    public JacksonDeserializer(Class<T> type) {
+    protected BaseJacksonDeserializer(Class<T> type) {
         this.type = type;
     }
 

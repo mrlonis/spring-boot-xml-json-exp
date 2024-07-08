@@ -1,9 +1,12 @@
 package com.mrlonis.example.model.jaxb;
 
+import com.mrlonis.example.adapter.JaxbJodaTimeAdapters;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -22,7 +25,11 @@ public class JaxbJodaTimeModels {
     @Data
     @Jacksonized
     @SuperBuilder
-    public static class JaxbJodaTimeNoZoneAccessTypeField extends BaseJaxbModel<LocalDateTime> {}
+    public static class JaxbJodaTimeNoZoneAccessTypeField extends BaseJaxbModel<LocalDateTime> {
+        @XmlElement
+        @XmlJavaTypeAdapter(JaxbJodaTimeAdapters.JaxbLocalDateTimeAdapter.class)
+        private LocalDateTime date;
+    }
 
     @XmlRootElement(name = "book")
     @XmlAccessorType(XmlAccessType.NONE)
@@ -31,7 +38,11 @@ public class JaxbJodaTimeModels {
     @Data
     @Jacksonized
     @SuperBuilder
-    public static class JaxbJodaTimeNoZoneAccessTypeNone extends BaseJaxbModel<LocalDateTime> {}
+    public static class JaxbJodaTimeNoZoneAccessTypeNone extends BaseJaxbModel<LocalDateTime> {
+        @XmlElement
+        @XmlJavaTypeAdapter(JaxbJodaTimeAdapters.JaxbLocalDateTimeAdapter.class)
+        private LocalDateTime date;
+    }
 
     @XmlRootElement(name = "book")
     @XmlAccessorType(XmlAccessType.PROPERTY)
@@ -40,7 +51,11 @@ public class JaxbJodaTimeModels {
     @Data
     @Jacksonized
     @SuperBuilder
-    public static class JaxbJodaTimeNoZoneAccessTypeProperty extends BaseJaxbModel<LocalDateTime> {}
+    public static class JaxbJodaTimeNoZoneAccessTypeProperty extends BaseJaxbModel<LocalDateTime> {
+        @XmlElement
+        @XmlJavaTypeAdapter(JaxbJodaTimeAdapters.JaxbLocalDateTimeAdapter.class)
+        private LocalDateTime date;
+    }
 
     @XmlRootElement(name = "book")
     @XmlAccessorType
@@ -49,7 +64,11 @@ public class JaxbJodaTimeModels {
     @Data
     @Jacksonized
     @SuperBuilder
-    public static class JaxbJodaTimeNoZoneAccessTypePublicMember extends BaseJaxbModel<LocalDateTime> {}
+    public static class JaxbJodaTimeNoZoneAccessTypePublicMember extends BaseJaxbModel<LocalDateTime> {
+        @XmlElement
+        @XmlJavaTypeAdapter(JaxbJodaTimeAdapters.JaxbLocalDateTimeAdapter.class)
+        private LocalDateTime date;
+    }
 
     @XmlRootElement(name = "book")
     @XmlAccessorType(XmlAccessType.FIELD)
@@ -58,7 +77,11 @@ public class JaxbJodaTimeModels {
     @EqualsAndHashCode(callSuper = true)
     @Data
     @SuperBuilder
-    public static class JaxbJodaTimeZonedAccessTypeField extends BaseJaxbModel<DateTime> {}
+    public static class JaxbJodaTimeZonedAccessTypeField extends BaseJaxbModel<DateTime> {
+        @XmlElement
+        @XmlJavaTypeAdapter(JaxbJodaTimeAdapters.JaxbDateTimeAdapter.class)
+        private DateTime date;
+    }
 
     @XmlRootElement(name = "book")
     @XmlAccessorType(XmlAccessType.NONE)
@@ -67,7 +90,11 @@ public class JaxbJodaTimeModels {
     @Data
     @Jacksonized
     @SuperBuilder
-    public static class JaxbJodaTimeZonedAccessTypeNone extends BaseJaxbModel<DateTime> {}
+    public static class JaxbJodaTimeZonedAccessTypeNone extends BaseJaxbModel<DateTime> {
+        @XmlElement
+        @XmlJavaTypeAdapter(JaxbJodaTimeAdapters.JaxbDateTimeAdapter.class)
+        private DateTime date;
+    }
 
     @XmlRootElement(name = "book")
     @XmlAccessorType(XmlAccessType.PROPERTY)
@@ -76,7 +103,11 @@ public class JaxbJodaTimeModels {
     @Data
     @Jacksonized
     @SuperBuilder
-    public static class JaxbJodaTimeZonedAccessTypeProperty extends BaseJaxbModel<DateTime> {}
+    public static class JaxbJodaTimeZonedAccessTypeProperty extends BaseJaxbModel<DateTime> {
+        @XmlElement
+        @XmlJavaTypeAdapter(JaxbJodaTimeAdapters.JaxbDateTimeAdapter.class)
+        private DateTime date;
+    }
 
     @XmlRootElement(name = "book")
     @XmlAccessorType
@@ -85,5 +116,9 @@ public class JaxbJodaTimeModels {
     @Data
     @Jacksonized
     @SuperBuilder
-    public static class JaxbJodaTimeZonedAccessTypePublicMember extends BaseJaxbModel<DateTime> {}
+    public static class JaxbJodaTimeZonedAccessTypePublicMember extends BaseJaxbModel<DateTime> {
+        @XmlElement
+        @XmlJavaTypeAdapter(JaxbJodaTimeAdapters.JaxbDateTimeAdapter.class)
+        private DateTime date;
+    }
 }

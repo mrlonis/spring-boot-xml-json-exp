@@ -1,18 +1,16 @@
 package com.mrlonis.example.adapter;
 
 import com.mrlonis.example.util.TimeAdapterUtil;
-import javax.xml.bind.annotation.adapters.XmlAdapter;
+import jakarta.xml.bind.annotation.adapters.XmlAdapter;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @Getter
 @Slf4j
-@NoArgsConstructor
-public class JaxbTimeAdapter<T> extends XmlAdapter<String, T> {
-    private Class<T> type;
+public abstract class BaseJakartaAdapter<T> extends XmlAdapter<String, T> {
+    private final Class<T> type;
 
-    public JaxbTimeAdapter(Class<T> type) {
+    protected BaseJakartaAdapter(Class<T> type) {
         this.type = type;
     }
 

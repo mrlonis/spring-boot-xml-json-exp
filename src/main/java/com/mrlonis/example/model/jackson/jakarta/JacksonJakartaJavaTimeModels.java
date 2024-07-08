@@ -1,13 +1,18 @@
 package com.mrlonis.example.model.jackson.jakarta;
 
+import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
+import com.mrlonis.example.adapter.JakartaJavaTimeAdapters;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.experimental.SuperBuilder;
 import lombok.experimental.UtilityClass;
 import lombok.extern.jackson.Jacksonized;
@@ -21,7 +26,12 @@ public class JacksonJakartaJavaTimeModels {
     @Data
     @Jacksonized
     @SuperBuilder
-    public static class JacksonJakartaJavaTimeNoZoneAccessTypeField extends BaseJacksonJakartaModel<LocalDateTime> {}
+    public static class JacksonJakartaJavaTimeNoZoneAccessTypeField extends BaseJacksonJakartaModel<LocalDateTime> {
+        @JacksonXmlProperty
+        @XmlJavaTypeAdapter(JakartaJavaTimeAdapters.JakartaLocalDateTimeAdapter.class)
+        @Getter(onMethod_ = {@JsonGetter})
+        private LocalDateTime date;
+    }
 
     @JacksonXmlRootElement(localName = "book")
     @XmlAccessorType(XmlAccessType.NONE)
@@ -30,7 +40,12 @@ public class JacksonJakartaJavaTimeModels {
     @Data
     @Jacksonized
     @SuperBuilder
-    public static class JacksonJakartaJavaTimeNoZoneAccessTypeNone extends BaseJacksonJakartaModel<LocalDateTime> {}
+    public static class JacksonJakartaJavaTimeNoZoneAccessTypeNone extends BaseJacksonJakartaModel<LocalDateTime> {
+        @JacksonXmlProperty
+        @XmlJavaTypeAdapter(JakartaJavaTimeAdapters.JakartaLocalDateTimeAdapter.class)
+        @Getter(onMethod_ = {@JsonGetter})
+        private LocalDateTime date;
+    }
 
     @JacksonXmlRootElement(localName = "book")
     @XmlAccessorType(XmlAccessType.PROPERTY)
@@ -39,7 +54,12 @@ public class JacksonJakartaJavaTimeModels {
     @Data
     @Jacksonized
     @SuperBuilder
-    public static class JacksonJakartaJavaTimeNoZoneAccessTypeProperty extends BaseJacksonJakartaModel<LocalDateTime> {}
+    public static class JacksonJakartaJavaTimeNoZoneAccessTypeProperty extends BaseJacksonJakartaModel<LocalDateTime> {
+        @JacksonXmlProperty
+        @XmlJavaTypeAdapter(JakartaJavaTimeAdapters.JakartaLocalDateTimeAdapter.class)
+        @Getter(onMethod_ = {@JsonGetter})
+        private LocalDateTime date;
+    }
 
     @JacksonXmlRootElement(localName = "book")
     @XmlAccessorType(XmlAccessType.PUBLIC_MEMBER)
@@ -49,7 +69,12 @@ public class JacksonJakartaJavaTimeModels {
     @Jacksonized
     @SuperBuilder
     public static class JacksonJakartaJavaTimeNoZoneAccessTypePublicMember
-            extends BaseJacksonJakartaModel<LocalDateTime> {}
+            extends BaseJacksonJakartaModel<LocalDateTime> {
+        @JacksonXmlProperty
+        @XmlJavaTypeAdapter(JakartaJavaTimeAdapters.JakartaLocalDateTimeAdapter.class)
+        @Getter(onMethod_ = {@JsonGetter})
+        private LocalDateTime date;
+    }
 
     @JacksonXmlRootElement(localName = "book")
     @XmlAccessorType(XmlAccessType.FIELD)
@@ -58,7 +83,12 @@ public class JacksonJakartaJavaTimeModels {
     @Data
     @Jacksonized
     @SuperBuilder
-    public static class JacksonJakartaJavaTimeZonedAccessTypeField extends BaseJacksonJakartaModel<ZonedDateTime> {}
+    public static class JacksonJakartaJavaTimeZonedAccessTypeField extends BaseJacksonJakartaModel<ZonedDateTime> {
+        @JacksonXmlProperty
+        @XmlJavaTypeAdapter(JakartaJavaTimeAdapters.JakartaZonedDateTimeAdapter.class)
+        @Getter(onMethod_ = {@JsonGetter})
+        private ZonedDateTime date;
+    }
 
     @JacksonXmlRootElement(localName = "book")
     @XmlAccessorType(XmlAccessType.NONE)
@@ -67,7 +97,12 @@ public class JacksonJakartaJavaTimeModels {
     @Data
     @Jacksonized
     @SuperBuilder
-    public static class JacksonJakartaJavaTimeZonedAccessTypeNone extends BaseJacksonJakartaModel<ZonedDateTime> {}
+    public static class JacksonJakartaJavaTimeZonedAccessTypeNone extends BaseJacksonJakartaModel<ZonedDateTime> {
+        @JacksonXmlProperty
+        @XmlJavaTypeAdapter(JakartaJavaTimeAdapters.JakartaZonedDateTimeAdapter.class)
+        @Getter(onMethod_ = {@JsonGetter})
+        private ZonedDateTime date;
+    }
 
     @JacksonXmlRootElement(localName = "book")
     @XmlAccessorType(XmlAccessType.PROPERTY)
@@ -76,7 +111,12 @@ public class JacksonJakartaJavaTimeModels {
     @Data
     @Jacksonized
     @SuperBuilder
-    public static class JacksonJakartaJavaTimeZonedAccessTypeProperty extends BaseJacksonJakartaModel<ZonedDateTime> {}
+    public static class JacksonJakartaJavaTimeZonedAccessTypeProperty extends BaseJacksonJakartaModel<ZonedDateTime> {
+        @JacksonXmlProperty
+        @XmlJavaTypeAdapter(JakartaJavaTimeAdapters.JakartaZonedDateTimeAdapter.class)
+        @Getter(onMethod_ = {@JsonGetter})
+        private ZonedDateTime date;
+    }
 
     @JacksonXmlRootElement(localName = "book")
     @XmlAccessorType(XmlAccessType.PUBLIC_MEMBER)
@@ -86,5 +126,10 @@ public class JacksonJakartaJavaTimeModels {
     @Jacksonized
     @SuperBuilder
     public static class JacksonJakartaJavaTimeZonedAccessTypePublicMember
-            extends BaseJacksonJakartaModel<ZonedDateTime> {}
+            extends BaseJacksonJakartaModel<ZonedDateTime> {
+        @JacksonXmlProperty
+        @XmlJavaTypeAdapter(JakartaJavaTimeAdapters.JakartaZonedDateTimeAdapter.class)
+        @Getter(onMethod_ = {@JsonGetter})
+        private ZonedDateTime date;
+    }
 }

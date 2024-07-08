@@ -1,5 +1,6 @@
 package com.mrlonis.example.model.jakarta;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.mrlonis.example.model.BaseModel;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -16,6 +17,7 @@ public abstract class BaseJakartaModel<T> implements BaseModel<T> {
     private long id;
 
     @XmlElement(name = "title")
+    @JsonProperty("title")
     private String name;
 
     @XmlTransient

@@ -12,6 +12,8 @@ import static com.mrlonis.example.util.Constants.PROPERTY;
 import static com.mrlonis.example.util.Constants.PUBLIC_MEMBER;
 import static com.mrlonis.example.util.Constants.ZONED;
 import static org.hamcrest.Matchers.equalTo;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -55,7 +57,6 @@ class BaseModelXmlTests {
     private MockMvc mockMvc;
 
     private final XmlMapper xmlMapper = (XmlMapper) new XmlMapper()
-            .findAndRegisterModules()
             .registerModule(new JodaModule())
             .registerModule(new JavaTimeModule())
             .registerModule(new JaxbAnnotationModule())
@@ -145,10 +146,6 @@ class BaseModelXmlTests {
                 arguments(JACKSON, PUBLIC_MEMBER, JAVA, NO_ZONE, "jackson"));
     }
 
-    static Stream<Arguments> xmlTestPostArguments() {
-        return Stream.of(arguments(JAXB, FIELD, JODA, ZONED, null));
-    }
-
     @ParameterizedTest
     @MethodSource("xmlTestArguments")
     void testSerialization(
@@ -158,7 +155,7 @@ class BaseModelXmlTests {
     }
 
     @ParameterizedTest
-    @MethodSource("xmlTestPostArguments")
+    @MethodSource("xmlTestArguments")
     void testDeserialization(
             String formatLibrary, String accessType, String dateLibrary, String zoned, String xmlAnnotationLibrary)
             throws Exception {
@@ -239,12 +236,19 @@ class BaseModelXmlTests {
 
         String requestBody = xmlMapper.writeValueAsString(model);
         log.info("Request body: {}", requestBody);
+
+        BaseModel<?> model2 = xmlMapper.readValue(requestBody, model.getClass());
+        assertEquals(model.getId(), model2.getId());
+        assertEquals(model.getName(), model2.getName());
+        assertEquals(model.getTags(), model2.getTags());
+        assertNotEquals(model.getAuthor(), model2.getAuthor());
+
         mockMvc.perform(post(builder.build().toUriString())
                         .header(HttpHeaders.ACCEPT, MediaType.APPLICATION_XML_VALUE)
                         .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_XML_VALUE)
                         .content(requestBody))
                 .andExpect(status().isOk())
-                .andExpect(content().contentType(MediaType.APPLICATION_XML_VALUE + ";charset=UTF-8"))
+                .andExpect(content().contentType(MediaType.APPLICATION_XML_VALUE))
                 .andExpect(content().string(equalTo(xml)));
     }
 }

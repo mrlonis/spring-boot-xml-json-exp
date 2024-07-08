@@ -15,62 +15,66 @@ import org.joda.time.format.ISODateTimeFormat;
 @UtilityClass
 @Slf4j
 public class JodaTimeUtil {
-    public static final DateTimeFormatter DATE_TIME_FORMATTER = ISODateTimeFormat.dateTime();
+    public static final DateTimeFormatter PARSE_FORMAT = ISODateTimeFormat.dateTime();
 
     public static DateTime unmarshalDateTime(String v) {
-        log.info("JodaTimeUtil: unmarshalDateTime(): Received value: {}", v);
+        log.info("unmarshalDateTime(): Received value: {}", v);
 
         try {
             DateTime result = DateTime.parse(v);
-            log.info("JodaTimeUtil: unmarshalDateTime(): Returning result: {}", result);
+            log.info("unmarshalDateTime(): Returning result: {}", result);
             return result;
         } catch (IllegalArgumentException e) {
-            log.error("JodaTimeUtil: unmarshalDateTime(): Error: {}", e.getMessage());
-            log.info("JodaTimeUtil: unmarshalDateTime(): Trying to parse with formatter: {}", DATE_TIME_FORMATTER);
-            DateTime result = DateTime.parse(v, DATE_TIME_FORMATTER);
-            log.info("JodaTimeUtil: unmarshalDateTime(): Returning result: {}", result);
+            log.error("unmarshalDateTime(): Error: {}", e.getMessage());
+            log.info("unmarshalDateTime(): Trying to parse with formatter: {}", PARSE_FORMAT);
+            DateTime result = DateTime.parse(v, PARSE_FORMAT);
+            log.info("unmarshalDateTime(): Returning result: {}", result);
             return result;
         }
     }
 
     public static String marshalDateTime(DateTime v) {
-        return v.toString();
+        String dateString = PARSE_FORMAT.print(v);
+        log.info("marshalDateTime(): Returning value: {}", dateString);
+        return dateString;
     }
 
     public static LocalDateTime unmarshalLocalDateTime(String v) {
-        log.info("JodaTimeUtil: unmarshalLocalDateTime(): Received value: {}", v);
+        log.info("unmarshalLocalDateTime(): Received value: {}", v);
 
         try {
             LocalDateTime result = LocalDateTime.parse(v);
-            log.info("JodaTimeUtil: unmarshalLocalDateTime(): Returning result: {}", result);
+            log.info("unmarshalLocalDateTime(): Returning result: {}", result);
             return result;
         } catch (IllegalArgumentException e) {
-            log.error("JodaTimeUtil: unmarshalLocalDateTime(): Error: {}", e.getMessage());
-            log.info("JodaTimeUtil: unmarshalLocalDateTime(): Trying to parse with formatter: {}", DATE_TIME_FORMATTER);
-            LocalDateTime result = LocalDateTime.parse(v, DATE_TIME_FORMATTER);
-            log.info("JodaTimeUtil: unmarshalLocalDateTime(): Returning result: {}", result);
+            log.error("unmarshalLocalDateTime(): Error: {}", e.getMessage());
+            log.info("unmarshalLocalDateTime(): Trying to parse with formatter: {}", PARSE_FORMAT);
+            LocalDateTime result = LocalDateTime.parse(v, PARSE_FORMAT);
+            log.info("unmarshalLocalDateTime(): Returning result: {}", result);
             return result;
         }
     }
 
     public static String marshalLocalDateTime(LocalDateTime v) {
-        return v.toString();
+        String dateString = PARSE_FORMAT.print(v);
+        log.info("marshalDateTime(): Returning value: {}", dateString);
+        return dateString;
     }
 
     public static DateTime deserializeDateTime(JsonParser jsonparser, DeserializationContext context)
             throws IOException {
         String v = jsonparser.getText();
-        log.info("JodaTimeUtil: deserializeDateTime(): Received value: {}", v);
+        log.info("deserializeDateTime(): Received value: {}", v);
 
         try {
             DateTime result = DateTime.parse(v);
-            log.info("JodaTimeUtil: deserializeDateTime(): Returning result: {}", result);
+            log.info("deserializeDateTime(): Returning result: {}", result);
             return result;
         } catch (IllegalArgumentException e) {
-            log.error("JodaTimeUtil: deserializeDateTime(): Error: {}", e.getMessage());
-            log.info("JodaTimeUtil: deserializeDateTime(): Trying to parse with formatter: {}", DATE_TIME_FORMATTER);
-            DateTime result = DateTime.parse(v, DATE_TIME_FORMATTER);
-            log.info("JodaTimeUtil: deserializeDateTime(): Returning result: {}", result);
+            log.error("deserializeDateTime(): Error: {}", e.getMessage());
+            log.info("deserializeDateTime(): Trying to parse with formatter: {}", PARSE_FORMAT);
+            DateTime result = DateTime.parse(v, PARSE_FORMAT);
+            log.info("deserializeDateTime(): Returning result: {}", result);
             return result;
         }
     }
@@ -86,19 +90,17 @@ public class JodaTimeUtil {
     public static LocalDateTime deserializeLocalDateTime(JsonParser jsonparser, DeserializationContext context)
             throws IOException {
         String v = jsonparser.getText();
-        log.info("JodaTimeUtil: deserializeLocalDateTime(): Received value: {}", v);
+        log.info("deserializeLocalDateTime(): Received value: {}", v);
 
         try {
             LocalDateTime result = LocalDateTime.parse(v);
-            log.info("JodaTimeUtil: deserializeLocalDateTime(): Returning result: {}", result);
+            log.info("deserializeLocalDateTime(): Returning result: {}", result);
             return result;
         } catch (IllegalArgumentException e) {
-            log.error("JodaTimeUtil: deserializeLocalDateTime(): Error: {}", e.getMessage());
-            log.info(
-                    "JodaTimeUtil: deserializeLocalDateTime(): Trying to parse with formatter: {}",
-                    DATE_TIME_FORMATTER);
-            LocalDateTime result = LocalDateTime.parse(v, DATE_TIME_FORMATTER);
-            log.info("JodaTimeUtil: deserializeLocalDateTime(): Returning result: {}", result);
+            log.error("deserializeLocalDateTime(): Error: {}", e.getMessage());
+            log.info("deserializeLocalDateTime(): Trying to parse with formatter: {}", PARSE_FORMAT);
+            LocalDateTime result = LocalDateTime.parse(v, PARSE_FORMAT);
+            log.info("deserializeLocalDateTime(): Returning result: {}", result);
             return result;
         }
     }

@@ -1,19 +1,15 @@
 package com.mrlonis.example.model.jaxb;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.mrlonis.example.model.BaseModel;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlTransient;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
-@AllArgsConstructor
-@NoArgsConstructor
 @Data
 @SuperBuilder
 public abstract class BaseJaxbModel<T> implements BaseModel<T> {
@@ -21,7 +17,7 @@ public abstract class BaseJaxbModel<T> implements BaseModel<T> {
     private long id;
 
     @XmlElement(name = "title")
-    @Getter(onMethod_ = {@XmlElement(name = "title")})
+    @JsonProperty("title")
     private String name;
 
     @XmlTransient

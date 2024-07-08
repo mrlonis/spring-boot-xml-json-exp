@@ -33,4 +33,19 @@ public class JacksonConfig {
     public Module jakartaXmlBindAnnotationModule() {
         return new JakartaXmlBindAnnotationModule();
     }
+
+    //    @Bean
+    //    public Module jacksonXmlModule() {
+    //        return new JacksonXmlModule();
+    //    }
+    //
+    //    @Bean
+    //    public Module javaTimeModule() {
+    //        return new JavaTimeModule();
+    //    }
+    //
+    //    @Bean
+    //    public Module jodaModule() {
+    //        return new JodaModule();
+    //    }
 }

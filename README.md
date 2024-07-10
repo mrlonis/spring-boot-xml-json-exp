@@ -1,5 +1,16 @@
 # spring-boot-xml-json-exp
 
+<!-- TOC -->
+* [spring-boot-xml-json-exp](#spring-boot-xml-json-exp)
+  * [Goals](#goals)
+  * [Sample Output](#sample-output)
+    * [XML](#xml)
+    * [JSON](#json)
+  * [Branches](#branches)
+  * [Git pre-commit/post-commit scripts](#git-pre-commitpost-commit-scripts)
+    * [Testing Scenarios](#testing-scenarios)
+<!-- TOC -->
+
 ## Goals
 
 The goal is to have the application return the same XML/JSON output for various different POJOs using different XML
@@ -11,7 +22,7 @@ annotation libraries.
 
 ```xml
 
-<book id="1">
+<book type="${className}" id="1">
   <title>name</title>
   <date>2024-07-05T14:06:07.617Z</date>
   <tags>
@@ -26,6 +37,7 @@ annotation libraries.
 
 ```json
 {
+  "type": "${className}",
   "id": 1,
   "title": "name",
   "date": "2024-07-05T14:06:07.617Z",
@@ -37,7 +49,41 @@ annotation libraries.
 }
 ```
 
-## Git pre-commit script
+## Branches
+
+- `main`
+  - The default Spring Boot 2.7.x branch
+  - Data Formats: `[JAXB, Jakarta, Jackson]`
+- `feature/spring-boot-2/jaxb`
+  - Data Formats: `[JAXB]`
+- `feature/spring-boot-2/jakarta`
+  - Data Formats: `[Jakarta]`
+- `feature/spring-boot-2/jackson`
+  - Data Formats: `[Jackson]`
+- `feature/spring-boot-3`
+  - The Spring Boot 3.x.x branch
+  - Data Formats: `[JAXB, Jakarta, Jackson]`
+- `feature/spring-boot-3/jaxb`
+  - Data Formats: `[JAXB]`
+- `feature/spring-boot-3/jakarta`
+  - Data Formats: `[Jakarta]`
+- `feature/spring-boot-3/jackson`
+  - Data Formats: `[Jackson]`
+
+## Git pre-commit/post-commit scripts
+
+This project uses a pre-commit script to format the code before committing. The script is located in the
+`.hooks/pre-commit` file. The script is written in bash and uses spotless to format the code. The script is executed
+before the commit takes place. If the script fails, the commit is aborted.
+
+This project also uses a post-commit script to format the code after committing. The script is located in the
+`.hooks/post-commit` file. The script is written in bash and uses spotless to format the code. The script is executed
+after the commit takes place. The goal of this script is to ensure that the code is always formatted correctly. This
+ensures that if a
+commit is made, unstaged files will be formatted. Additionally, this helps cover scenarios where the un-staged file is
+identical to the staged file **pre**-formatting, resulting in the bad formatting persisting
+after the `pre-commit` script is executed, the change is just unstaged and not committed. This `post-commit` script will
+format the file in this case so that the file is removed from the staging area.
 
 ### Testing Scenarios
 

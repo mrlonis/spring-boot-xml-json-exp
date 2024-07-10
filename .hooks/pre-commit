@@ -40,7 +40,7 @@ if [ -n "$conflictedFiles" ]; then
       ./mvnw spotless:apply -DspotlessFiles="$conflictedFile" -q
     fi
 
-    for stagedFile in $$STAGED_FILES; do
+    for stagedFile in $STAGED_FILES; do
       echo "[git pre-commit hook] - Checking if $stagedFile is the same as $conflictedFile"
       if [ "$stagedFile" = "$conflictedFile" ]; then
         echo "[git pre-commit hook] - Adding $conflictedFile back to staged files"

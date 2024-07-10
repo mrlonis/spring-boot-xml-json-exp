@@ -10,10 +10,10 @@ import org.joda.time.DateTime;
 @UtilityClass
 public class Constants {
     public static final String JAXB = "jaxb";
-    public static final String JAVA = "java";
-    public static final String JODA = "joda";
     public static final String JAKARTA = "jakarta";
     public static final String JACKSON = "jackson";
+    public static final String JAVA = "java";
+    public static final String JODA = "joda";
     public static final String FIELD = "field";
     public static final String NONE = "none";
     public static final String PROPERTY = "property";

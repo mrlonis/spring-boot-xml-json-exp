@@ -10,13 +10,8 @@ spotlessApply() {
 
 echo "[git pre-commit hook] - Stashing unstaged changes"
 # Add unstaged changes to staged files so that we can prevent conflicts when un-stashing
-git add "$(git diff --name-only --cached)"
+git diff --name-only --cached --diff-filter=ad | xargs git add
 
-#STASHED_HASH=$(git stash create)
-#if [ -n "$STASHED_HASH" ]; then
-#  git stash store "$STASHED_HASH"
-#  git checkout -- .
-#fi
 git stash -q --keep-index
 
 echo "[git pre-commit hook] - Running spotless:apply"
@@ -26,7 +21,6 @@ SPOTLESS_APPLY_RESULT=$?
 echo "[git pre-commit hook] - Staging formatting changes"
 git add -u
 
-#if [ -n "$STASHED_HASH" ]; then
 echo "[git pre-commit hook] - Un-stashing changes"
 git stash apply -q
 
@@ -41,7 +35,6 @@ if [ -n "$conflictedFiles" ]; then
 fi
 
 git stash drop -q
-#fi
 
 git diff --cached --quiet
 GIT_DIFF=$?

@@ -21,11 +21,13 @@ if [ "$GIT_DIFF" -eq 0 ]; then
   exit 0
 fi
 
-# Stashing unstaged changes
 # Add unstaged changes to staged files so that we can prevent conflicts when un-stashing
 STAGED_FILES=$(git diff --name-only --cached --diff-filter=ad)
-echo "$STAGED_FILES" | xargs git add
+if [ -n "$STAGED_FILES" ]; then
+  echo "$STAGED_FILES" | xargs git add
+fi
 
+# Stashing unstaged changes - Clear stashes before stashing to prevent conflicts
 git stash clear
 git stash -q --keep-index
 
@@ -33,12 +35,13 @@ echo "[git pre-commit hook] - Running spotless:apply"
 spotlessApply
 SPOTLESS_APPLY_RESULT=$?
 
-# Staging formatting changes
+# Staging spotless changes
 git add -u
 
 # Un-stashing changes
 git stash pop -q
 
+# Resolve conflicts if any
 conflictedFiles="$(git diff --name-only --diff-filter=U)"
 if [ -n "$conflictedFiles" ]; then
   for conflictedFile in $conflictedFiles; do

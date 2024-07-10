@@ -148,6 +148,7 @@
             <format>
               <includes>
                 <include>.hooks/pre-commit</include>
+                <include>.hooks/post-commit</include>
                 <include>.mvn/wrapper/maven-wrapper.properties</include>
                 <include>.gitattributes</include>
                 <include>.gitignore</include>

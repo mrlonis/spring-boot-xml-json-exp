@@ -254,6 +254,7 @@
         <configuration>
           <installHooks>
             <pre-commit>.hooks/pre-commit</pre-commit>
+            <post-commit>.hooks/post-commit</post-commit>
           </installHooks>
         </configuration>
         <executions>

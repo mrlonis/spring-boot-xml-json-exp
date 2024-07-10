@@ -1,7 +1,7 @@
 #!/bin/sh
 spotlessApply() {
   # We pass in ratchetFrom here to ensure that we only format the files that have changed since the last commit
-  if command -v mvn >/dev/null 2>&1; then # Check if mvn command exists to support GitHub Desktop on Windows
+  if command -v mvn >/dev/null 2>&1; then    # Check if mvn command exists to support GitHub Desktop on Windows
     mvn spotless:apply -DratchetFrom=HEAD -q # Requires Maven to be installed
   else
     ./mvnw spotless:apply -DratchetFrom=HEAD -q # Otherwise call maven wrapper for Mac-OS / Unix / Git for Windows
@@ -10,7 +10,8 @@ spotlessApply() {
 
 echo "[git pre-commit hook] - Stashing unstaged changes"
 # Add unstaged changes to staged files so that we can prevent conflicts when un-stashing
-git diff --name-only --cached --diff-filter=ad | xargs git add
+STAGED_FILES=$(git diff --name-only --cached --diff-filter=ad)
+echo "$STAGED_FILES" | xargs git add
 
 git stash -q --keep-index
 
@@ -22,7 +23,7 @@ echo "[git pre-commit hook] - Staging formatting changes"
 git add -u
 
 echo "[git pre-commit hook] - Un-stashing changes"
-git stash apply -q
+git stash pop -q
 
 conflictedFiles="$(git diff --name-only --diff-filter=U)"
 if [ -n "$conflictedFiles" ]; then
@@ -31,10 +32,23 @@ if [ -n "$conflictedFiles" ]; then
   for conflictedFile in $conflictedFiles; do
     git checkout --theirs "$(pwd)/$conflictedFile"
     git restore --staged "$(pwd)/$conflictedFile"
+
+    if command -v mvn >/dev/null 2>&1; then
+      mvn spotless:apply -DspotlessFiles="$conflictedFile" -q
+    else
+      ./mvnw spotless:apply -DspotlessFiles="$conflictedFile" -q
+    fi
+
+    for stagedFile in $$STAGED_FILES; do
+      if [ "$stagedFile" = "$conflictedFile" ]; then
+        echo "[git pre-commit hook] - Adding $conflictedFile back to staged files"
+        git add "$conflictedFile"
+      fi
+    done
+
+#    echo "$STAGED_FILES" | xargs git add
   done
 fi
-
-git stash drop -q
 
 git diff --cached --quiet
 GIT_DIFF=$?

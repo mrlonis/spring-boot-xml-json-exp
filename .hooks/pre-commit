@@ -8,7 +8,7 @@ spotlessApply() {
   fi
 }
 
-echo "[git pre-commit hook] - Stashing unstaged changes"
+# Stashing unstaged changes
 # Add unstaged changes to staged files so that we can prevent conflicts when un-stashing
 STAGED_FILES=$(git diff --name-only --cached --diff-filter=ad)
 echo "$STAGED_FILES" | xargs git add
@@ -19,10 +19,10 @@ echo "[git pre-commit hook] - Running spotless:apply"
 spotlessApply
 SPOTLESS_APPLY_RESULT=$?
 
-echo "[git pre-commit hook] - Staging formatting changes"
+# Staging formatting changes
 git add -u
 
-echo "[git pre-commit hook] - Un-stashing changes"
+# Un-stashing changes
 git stash pop -q
 
 conflictedFiles="$(git diff --name-only --diff-filter=U)"
@@ -33,9 +33,9 @@ if [ -n "$conflictedFiles" ]; then
     git restore --staged "$(pwd)/$conflictedFile"
 
     if command -v mvn >/dev/null 2>&1; then
-      mvn spotless:apply -DspotlessFiles=".*$conflictedFile"
+      mvn spotless:apply -DspotlessFiles=".*$conflictedFile" -q
     else
-      ./mvnw spotless:apply -DspotlessFiles=".*$conflictedFile"
+      ./mvnw spotless:apply -DspotlessFiles=".*$conflictedFile" -q
     fi
 
     for stagedFile in $STAGED_FILES; do
@@ -50,7 +50,7 @@ fi
 git diff --cached --quiet
 GIT_DIFF=$?
 if [ "$GIT_DIFF" -eq 0 ]; then
-  echo "[git pre-commit hook] - No changes to commit"
+  echo "[git pre-commit hook] - No changes to commit! Aborting commit!"
   # We end up with no changes to commit here due to the stashing and un-stashing of changes
   # where we stash a bad formatting change, apply the formatting, and then un-stash the bad formatting change.
   #

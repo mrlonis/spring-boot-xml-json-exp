@@ -8,6 +8,12 @@ spotlessApply() {
   fi
 }
 
+if [ -f .git/MERGE_HEAD ]
+then
+  echo "[git pre-commit hook] - Merge in progress. Exiting pre-commit hook."
+  exit 0
+fi
+
 git diff --cached --quiet
 GIT_DIFF=$?
 if [ "$GIT_DIFF" -eq 0 ]; then

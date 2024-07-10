@@ -34,8 +34,8 @@ if [ -n "$STASHED_HASH" ]; then
     echo "[git pre-commit hook] - Conflicted files: $conflictedFiles"
 
     for conflictedFile in $conflictedFiles; do
-      git checkout --theirs "$(pwd)/$conflictedFile"
       git restore --staged "$(pwd)/$conflictedFile"
+      git checkout --theirs "$(pwd)/$conflictedFile"
     done
   fi
 

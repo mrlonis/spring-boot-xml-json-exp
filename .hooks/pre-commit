@@ -8,6 +8,13 @@ spotlessApply() {
   fi
 }
 
+git diff --cached --quiet
+GIT_DIFF=$?
+if [ "$GIT_DIFF" -eq 0 ]; then
+  echo "[git pre-commit hook] - No changes to commit! This is likely a rebase or merge commit. Exiting pre-commit hook."
+  exit 0
+fi
+
 # Stashing unstaged changes
 # Add unstaged changes to staged files so that we can prevent conflicts when un-stashing
 STAGED_FILES=$(git diff --name-only --cached --diff-filter=ad)

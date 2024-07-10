@@ -9,6 +9,7 @@
   * [Branches](#branches)
   * [Git pre-commit/post-commit scripts](#git-pre-commitpost-commit-scripts)
     * [Testing Scenarios](#testing-scenarios)
+  * [Spotless](#spotless)
 
 <!-- TOC -->
 
@@ -98,3 +99,5 @@ format the file in this case so that the file is removed from the staging area.
 - [ ] Scenario 6: File is modified, and added to git for commit. The file is then re-modified. A commit takes place
   without adding the new changes to the commit. This causes us to have staged and unstaged changes. The pre-commit
   script handle this merge and result in a file that is formatted and ready for commit.
+
+## Spotless

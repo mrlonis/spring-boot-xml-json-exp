@@ -13,6 +13,7 @@ spotlessApply() {
 STAGED_FILES=$(git diff --name-only --cached --diff-filter=ad)
 echo "$STAGED_FILES" | xargs git add
 
+git stash clear
 git stash -q --keep-index
 
 echo "[git pre-commit hook] - Running spotless:apply"

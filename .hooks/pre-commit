@@ -30,6 +30,7 @@ if [ -n "$conflictedFiles" ]; then
   echo "[git pre-commit hook] - Conflicted files: $conflictedFiles"
 
   for conflictedFile in $conflictedFiles; do
+    echo "[git pre-commit hook] - Resolving conflict for $conflictedFile"
     git checkout --theirs "$(pwd)/$conflictedFile"
     git restore --staged "$(pwd)/$conflictedFile"
 
@@ -40,6 +41,7 @@ if [ -n "$conflictedFiles" ]; then
     fi
 
     for stagedFile in $$STAGED_FILES; do
+      echo "[git pre-commit hook] - Checking if $stagedFile is the same as $conflictedFile"
       if [ "$stagedFile" = "$conflictedFile" ]; then
         echo "[git pre-commit hook] - Adding $conflictedFile back to staged files"
         git add "$conflictedFile"

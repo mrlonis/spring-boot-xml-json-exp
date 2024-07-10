@@ -47,8 +47,6 @@ if [ -n "$conflictedFiles" ]; then
         git add "$conflictedFile"
       fi
     done
-
-#    echo "$STAGED_FILES" | xargs git add
   done
 fi
 

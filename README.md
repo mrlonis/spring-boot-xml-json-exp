@@ -9,6 +9,7 @@
   * [Branches](#branches)
   * [Git pre-commit/post-commit scripts](#git-pre-commitpost-commit-scripts)
     * [Testing Scenarios](#testing-scenarios)
+
 <!-- TOC -->
 
 ## Goals

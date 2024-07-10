@@ -29,6 +29,9 @@ conflictedFiles="$(git diff --name-only --diff-filter=U)"
 if [ -n "$conflictedFiles" ]; then
   echo "[git pre-commit hook] - Conflicted files: $conflictedFiles"
 
+  echo "git status --porcelain"
+  git status --porcelain
+
   for conflictedFile in $conflictedFiles; do
     echo "[git pre-commit hook] - Resolving conflict for $conflictedFile"
     git checkout --theirs "$(pwd)/$conflictedFile"
@@ -45,9 +48,13 @@ if [ -n "$conflictedFiles" ]; then
       if [ "$stagedFile" = "$conflictedFile" ]; then
         echo "[git pre-commit hook] - Adding $conflictedFile back to staged files"
         git add "$conflictedFile"
+        break # Break out of the loop since we found the conflicted file
       fi
     done
   done
+
+  echo "git status --porcelain"
+  git status --porcelain
 fi
 
 git diff --cached --quiet
@@ -68,6 +75,9 @@ if [ "$GIT_DIFF" -eq 0 ]; then
   spotlessApply
   exit 1
 fi
+
+echo "git status --porcelain"
+git status --porcelain
 
 # Return the 'spotless:apply' exit code
 exit $SPOTLESS_APPLY_RESULT

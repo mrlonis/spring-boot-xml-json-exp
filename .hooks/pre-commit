@@ -1,26 +1,65 @@
 #!/bin/sh
-echo '[git hook] executing spotless:apply to format code before commit'
+spotlessApply() {
+  # We pass in ratchetFrom here to ensure that we only format the files that have changed since the last commit
+  if command -v mvn >/dev/null 2>&1; then # Check if mvn command exists to support GitHub Desktop on Windows
+    mvn spotless:apply -DratchetFrom=HEAD -q # Requires Maven to be installed
+  else
+    ./mvnw spotless:apply -DratchetFrom=HEAD -q # Otherwise call maven wrapper for Mac-OS / Unix / Git for Windows
+  fi
+}
 
-# Stash any unstaged changes
-git stash -q --keep-index
+echo "[git pre-commit hook] - Stashing unstaged changes"
+# Add unstaged changes to staged files so that we can prevent conflicts when un-stashing
+git add "$(git diff --name-only --cached)"
 
-# Run spotless:apply
-# We pass in ratchetFrom here to ensure that we only format the files that have changed since the last commit
-if command -v mvn > /dev/null 2>&1 # Check if mvn command exists to support GitHub Desktop on Windows
-then
-    mvn spotless:apply -DratchetFrom=HEAD # Requires Maven to be installed
-else
-  ./mvnw spotless:apply -DratchetFrom=HEAD # Otherwise call maven wrapper for Mac-OS / Unix / Git for Windows
+STASHED_HASH=$(git stash create)
+if [ -n "$STASHED_HASH" ]; then
+  git stash store "$STASHED_HASH"
+  git checkout -- .
 fi
 
-# Store the last exit code in a variable
-RESULT=$?
+echo "[git pre-commit hook] - Running spotless:apply"
+spotlessApply
+SPOTLESS_APPLY_RESULT=$?
 
-# Stage formatting changes
+echo "[git pre-commit hook] - Staging formatting changes"
 git add -u
 
-# Un-stash the stashed changes
-git stash pop -q
+if [ -n "$STASHED_HASH" ]; then
+  echo "[git pre-commit hook] - Un-stashing changes"
+  git stash apply -q
+
+  conflictedFiles="$(git diff --name-only --diff-filter=U)"
+  if [ -n "$conflictedFiles" ]; then
+    echo "[git pre-commit hook] - Conflicted files: $conflictedFiles"
+
+    for conflictedFile in $conflictedFiles; do
+      git checkout --theirs "$(pwd)/$conflictedFile"
+      git restore --staged "$(pwd)/$conflictedFile"
+    done
+  fi
+
+  git stash drop -q
+fi
+
+git diff --cached --quiet
+GIT_DIFF=$?
+if [ "$GIT_DIFF" -eq 0 ]; then
+  echo "[git pre-commit hook] - No changes to commit"
+  # We end up with no changes to commit here due to the stashing and un-stashing of changes
+  # where we stash a bad formatting change, apply the formatting, and then un-stash the bad formatting change.
+  #
+  # Example:
+  #   - We accidentally indented 1 line in a file by an extra space. This causes us to stash the extra space, apply the
+  #     formatting which will remove the extra space, and then un-stash the extra space back into the file that the
+  #     formatter just removed. By re-running spotless:apply, we remove the extra space again and remove the file from
+  #     the staging area.
+  #
+  # This results in no changes to commit, so we exit with 1 to prevent committing an empty commit.
+  # We run spotless:apply again here to ensure that the files are formatted correctly and to remove the file from the staging area.
+  spotlessApply
+  exit 1
+fi
 
 # Return the 'spotless:apply' exit code
-exit $RESULT
+exit $SPOTLESS_APPLY_RESULT

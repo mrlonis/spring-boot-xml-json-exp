@@ -1,0 +1,42 @@
+package com.mrlonis.xml.all.model.jackson.jackson;
+
+import com.mrlonis.xml.all.model.BaseModel;
+import com.mrlonis.xml.all.util.Constants;
+import java.util.Map;
+import lombok.experimental.UtilityClass;
+
+@UtilityClass
+public class JacksonJavaTimeConstants {
+    private static final JacksonJavaTimeModels.JacksonJavaTimeNoZone JACKSON_JAVA_TIME_NO_ZONE =
+            JacksonJavaTimeModels.JacksonJavaTimeNoZone.builder()
+                    .id(Constants.ID)
+                    .name(Constants.NAME)
+                    .author(Constants.AUTHOR)
+                    .date(Constants.JAVA_TIME_LOCAL_DATE_TIME)
+                    .tag(Constants.TAGS)
+                    .build();
+
+    private static final Map<String, BaseModel<?>> JACKSON_JAVA_TIME_NO_ZONE_MAP = Map.of(
+            "field", JACKSON_JAVA_TIME_NO_ZONE,
+            "none", JACKSON_JAVA_TIME_NO_ZONE,
+            "property", JACKSON_JAVA_TIME_NO_ZONE,
+            "public_member", JACKSON_JAVA_TIME_NO_ZONE);
+
+    private static final JacksonJavaTimeModels.JacksonJavaTimeZoned JACKSON_JAVA_TIME_ZONED =
+            JacksonJavaTimeModels.JacksonJavaTimeZoned.builder()
+                    .id(Constants.ID)
+                    .name(Constants.NAME)
+                    .author(Constants.AUTHOR)
+                    .date(Constants.JAVA_TIME_ZONED_DATE_TIME)
+                    .tag(Constants.TAGS)
+                    .build();
+
+    private static final Map<String, BaseModel<?>> JACKSON_JAVA_TIME_ZONED_MAP = Map.of(
+            "field", JACKSON_JAVA_TIME_ZONED,
+            "none", JACKSON_JAVA_TIME_ZONED,
+            "property", JACKSON_JAVA_TIME_ZONED,
+            "public_member", JACKSON_JAVA_TIME_ZONED);
+
+    public static final Map<String, Map<String, BaseModel<?>>> JACKSON_JAVA_TIME_MAP =
+            Map.of(Constants.ZONED, JACKSON_JAVA_TIME_ZONED_MAP, Constants.NO_ZONE, JACKSON_JAVA_TIME_NO_ZONE_MAP);
+}

@@ -7,12 +7,16 @@
     <version>2.7.18</version>
     <relativePath/>
   </parent>
-  <groupId>com.mrlonis.example</groupId>
+  <groupId>com.mrlonis.xml</groupId>
   <artifactId>spring-boot-xml-json-exp</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
   <name>spring-boot-xml-json-exp</name>
   <description>Demo project for Spring Boot 2.7.18 XML</description>
-  <url/>
+  <modules>
+    <module>jaxb</module>
+    <module>all</module>
+  </modules>
   <properties>
     <cleanthat.vesion>2.20</cleanthat.vesion>
     <commons-lang3.version>3.14.0</commons-lang3.version>
@@ -162,11 +166,11 @@
               <includes>
                 <include>.github/**/*.yml</include>
                 <include>.vscode/**/*.json</include>
-                <include>src/**/*.json</include>
-                <include>src/**/*.html</include>
-                <include>src/**/*.xml</include>
-                <include>src/**/*.yaml</include>
-                <include>src/**/*.yml</include>
+                <include>**/src/**/*.json</include>
+                <include>**/src/**/*.html</include>
+                <include>**/src/**/*.xml</include>
+                <include>**/src/**/*.yaml</include>
+                <include>**/src/**/*.yml</include>
               </includes>
               <prettier>
                 <npmInstallCache>true</npmInstallCache>
@@ -213,7 +217,7 @@
           </java>
           <pom>
             <includes>
-              <include>pom.xml</include>
+              <include>**/pom.xml</include>
             </includes>
             <sortPom>
               <expandEmptyElements>false</expandEmptyElements>
@@ -233,7 +237,7 @@
               <include>**/*.md</include>
             </includes>
             <excludes>
-              <exclude>target/**/*.md</exclude>
+              <exclude>**/target/**/*.md</exclude>
             </excludes>
             <flexmark/>
             <trimTrailingWhitespace/>

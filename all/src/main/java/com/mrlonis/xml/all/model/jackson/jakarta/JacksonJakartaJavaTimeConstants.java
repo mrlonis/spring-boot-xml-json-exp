@@ -1,0 +1,101 @@
+package com.mrlonis.xml.all.model.jackson.jakarta;
+
+import com.mrlonis.xml.all.model.BaseModel;
+import com.mrlonis.xml.all.util.Constants;
+import java.util.Map;
+import lombok.experimental.UtilityClass;
+
+@UtilityClass
+public class JacksonJakartaJavaTimeConstants {
+    private static final JacksonJakartaJavaTimeModels.JacksonJakartaJavaTimeNoZoneAccessTypeField
+            JACKSON_JAKARTA_JAVA_TIME_NO_ZONE_ACCESS_TYPE_FIELD =
+                    JacksonJakartaJavaTimeModels.JacksonJakartaJavaTimeNoZoneAccessTypeField.builder()
+                            .id(Constants.ID)
+                            .name(Constants.NAME)
+                            .author(Constants.AUTHOR)
+                            .date(Constants.JAVA_TIME_LOCAL_DATE_TIME)
+                            .tag(Constants.TAGS)
+                            .build();
+    private static final JacksonJakartaJavaTimeModels.JacksonJakartaJavaTimeNoZoneAccessTypeNone
+            JACKSON_JAKARTA_JAVA_TIME_NO_ZONE_ACCESS_TYPE_NONE =
+                    JacksonJakartaJavaTimeModels.JacksonJakartaJavaTimeNoZoneAccessTypeNone.builder()
+                            .id(Constants.ID)
+                            .name(Constants.NAME)
+                            .author(Constants.AUTHOR)
+                            .date(Constants.JAVA_TIME_LOCAL_DATE_TIME)
+                            .tag(Constants.TAGS)
+                            .build();
+    private static final JacksonJakartaJavaTimeModels.JacksonJakartaJavaTimeNoZoneAccessTypeProperty
+            JACKSON_JAKARTA_JAVA_TIME_NO_ZONE_ACCESS_TYPE_PROPERTY =
+                    JacksonJakartaJavaTimeModels.JacksonJakartaJavaTimeNoZoneAccessTypeProperty.builder()
+                            .id(Constants.ID)
+                            .name(Constants.NAME)
+                            .author(Constants.AUTHOR)
+                            .date(Constants.JAVA_TIME_LOCAL_DATE_TIME)
+                            .tag(Constants.TAGS)
+                            .build();
+    private static final JacksonJakartaJavaTimeModels.JacksonJakartaJavaTimeNoZoneAccessTypePublicMember
+            JACKSON_JAKARTA_JAVA_TIME_NO_ZONE_ACCESS_TYPE_PUBLIC_MEMBER =
+                    JacksonJakartaJavaTimeModels.JacksonJakartaJavaTimeNoZoneAccessTypePublicMember.builder()
+                            .id(Constants.ID)
+                            .name(Constants.NAME)
+                            .author(Constants.AUTHOR)
+                            .date(Constants.JAVA_TIME_LOCAL_DATE_TIME)
+                            .tag(Constants.TAGS)
+                            .build();
+
+    private static final Map<String, BaseModel<?>> JACKSON_JAKARTA_JAVA_TIME_NO_ZONE_MAP = Map.of(
+            "field", JACKSON_JAKARTA_JAVA_TIME_NO_ZONE_ACCESS_TYPE_FIELD,
+            "none", JACKSON_JAKARTA_JAVA_TIME_NO_ZONE_ACCESS_TYPE_NONE,
+            "property", JACKSON_JAKARTA_JAVA_TIME_NO_ZONE_ACCESS_TYPE_PROPERTY,
+            "public_member", JACKSON_JAKARTA_JAVA_TIME_NO_ZONE_ACCESS_TYPE_PUBLIC_MEMBER);
+
+    private static final JacksonJakartaJavaTimeModels.JacksonJakartaJavaTimeZonedAccessTypeField
+            JACKSON_JAKARTA_JAVA_TIME_ZONED_ACCESS_TYPE_FIELD =
+                    JacksonJakartaJavaTimeModels.JacksonJakartaJavaTimeZonedAccessTypeField.builder()
+                            .id(Constants.ID)
+                            .name(Constants.NAME)
+                            .author(Constants.AUTHOR)
+                            .date(Constants.JAVA_TIME_ZONED_DATE_TIME)
+                            .tag(Constants.TAGS)
+                            .build();
+    private static final JacksonJakartaJavaTimeModels.JacksonJakartaJavaTimeZonedAccessTypeNone
+            JACKSON_JAKARTA_JAVA_TIME_ZONED_ACCESS_TYPE_NONE =
+                    JacksonJakartaJavaTimeModels.JacksonJakartaJavaTimeZonedAccessTypeNone.builder()
+                            .id(Constants.ID)
+                            .name(Constants.NAME)
+                            .author(Constants.AUTHOR)
+                            .date(Constants.JAVA_TIME_ZONED_DATE_TIME)
+                            .tag(Constants.TAGS)
+                            .build();
+    private static final JacksonJakartaJavaTimeModels.JacksonJakartaJavaTimeZonedAccessTypeProperty
+            JACKSON_JAKARTA_JAVA_TIME_ZONED_ACCESS_TYPE_PROPERTY =
+                    JacksonJakartaJavaTimeModels.JacksonJakartaJavaTimeZonedAccessTypeProperty.builder()
+                            .id(Constants.ID)
+                            .name(Constants.NAME)
+                            .author(Constants.AUTHOR)
+                            .date(Constants.JAVA_TIME_ZONED_DATE_TIME)
+                            .tag(Constants.TAGS)
+                            .build();
+    private static final JacksonJakartaJavaTimeModels.JacksonJakartaJavaTimeZonedAccessTypePublicMember
+            JACKSON_JAKARTA_JAVA_TIME_ZONED_ACCESS_TYPE_PUBLIC_MEMBER =
+                    JacksonJakartaJavaTimeModels.JacksonJakartaJavaTimeZonedAccessTypePublicMember.builder()
+                            .id(Constants.ID)
+                            .name(Constants.NAME)
+                            .author(Constants.AUTHOR)
+                            .date(Constants.JAVA_TIME_ZONED_DATE_TIME)
+                            .tag(Constants.TAGS)
+                            .build();
+
+    private static final Map<String, BaseModel<?>> JACKSON_JAKARTA_JAVA_TIME_ZONED_MAP = Map.of(
+            "field", JACKSON_JAKARTA_JAVA_TIME_ZONED_ACCESS_TYPE_FIELD,
+            "none", JACKSON_JAKARTA_JAVA_TIME_ZONED_ACCESS_TYPE_NONE,
+            "property", JACKSON_JAKARTA_JAVA_TIME_ZONED_ACCESS_TYPE_PROPERTY,
+            "public_member", JACKSON_JAKARTA_JAVA_TIME_ZONED_ACCESS_TYPE_PUBLIC_MEMBER);
+
+    public static final Map<String, Map<String, BaseModel<?>>> JACKSON_JAKARTA_JAVA_TIME_MAP = Map.of(
+            Constants.ZONED,
+            JACKSON_JAKARTA_JAVA_TIME_ZONED_MAP,
+            Constants.NO_ZONE,
+            JACKSON_JAKARTA_JAVA_TIME_NO_ZONE_MAP);
+}

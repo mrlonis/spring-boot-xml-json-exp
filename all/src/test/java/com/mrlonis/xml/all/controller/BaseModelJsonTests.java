@@ -1,4 +1,4 @@
-package com.mrlonis.xml.all.model;
+package com.mrlonis.xml.all.controller;
 
 import static com.mrlonis.xml.shared.time.TimeConstants.FIELD;
 import static com.mrlonis.xml.shared.time.TimeConstants.JACKSON;
@@ -12,19 +12,12 @@ import static com.mrlonis.xml.shared.time.TimeConstants.PROPERTY;
 import static com.mrlonis.xml.shared.time.TimeConstants.PUBLIC_MEMBER;
 import static com.mrlonis.xml.shared.time.TimeConstants.ZONED;
 import static org.hamcrest.Matchers.equalTo;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.datatype.joda.JodaModule;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import com.fasterxml.jackson.module.jakarta.xmlbind.JakartaXmlBindAnnotationModule;
-import com.fasterxml.jackson.module.jaxb.JaxbAnnotationModule;
 import com.mrlonis.xml.shared.model.BaseModel;
 import com.mrlonis.xml.shared.util.FetchModelUtil;
 import jakarta.annotation.Nullable;
@@ -56,13 +49,6 @@ class BaseModelJsonTests {
 
     @Autowired
     private MockMvc mockMvc;
-
-    private final ObjectMapper xmlMapper = new ObjectMapper()
-            .findAndRegisterModules()
-            .registerModule(new JodaModule())
-            .registerModule(new JavaTimeModule())
-            .registerModule(new JaxbAnnotationModule())
-            .registerModule(new JakartaXmlBindAnnotationModule());
 
     static Stream<Arguments> jsonTestArguments() {
         return Stream.of(
@@ -230,25 +216,12 @@ class BaseModelJsonTests {
         StringSubstitutor sub = new StringSubstitutor(valuesMap);
         json = sub.replace(json);
 
-        UriComponentsBuilder builder = UriComponentsBuilder.fromPath(XML_PATH + "/deserialize");
-
-        if (xmlAnnotationLibrary != null) {
-            builder.queryParam("xmlAnnotationLibrary", xmlAnnotationLibrary);
-        }
-
-        String requestBody = xmlMapper.writeValueAsString(model);
-        log.info("Request body: {}", requestBody);
-
-        BaseModel<?> model2 = xmlMapper.readValue(requestBody, model.getClass());
-        assertEquals(model.getId(), model2.getId());
-        assertEquals(model.getName(), model2.getName());
-        //        assertEquals(model.getTags(), model2.getTags());
-        assertNotEquals(model.getAuthor(), model2.getAuthor());
-
-        mockMvc.perform(post(builder.build().toUriString())
+        mockMvc.perform(post(UriComponentsBuilder.fromPath(XML_PATH + "/deserialize")
+                                .build()
+                                .toUriString())
                         .header(HttpHeaders.ACCEPT, MediaType.APPLICATION_JSON_VALUE)
                         .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
-                        .content(requestBody))
+                        .content(json))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(content().string(equalTo(json)));

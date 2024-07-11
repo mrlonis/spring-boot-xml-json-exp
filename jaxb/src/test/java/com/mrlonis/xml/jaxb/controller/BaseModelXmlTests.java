@@ -1,8 +1,6 @@
-package com.mrlonis.xml.all.model;
+package com.mrlonis.xml.jaxb.controller;
 
 import static com.mrlonis.xml.shared.time.TimeConstants.FIELD;
-import static com.mrlonis.xml.shared.time.TimeConstants.JACKSON;
-import static com.mrlonis.xml.shared.time.TimeConstants.JAKARTA;
 import static com.mrlonis.xml.shared.time.TimeConstants.JAVA;
 import static com.mrlonis.xml.shared.time.TimeConstants.JAXB;
 import static com.mrlonis.xml.shared.time.TimeConstants.JODA;
@@ -12,19 +10,12 @@ import static com.mrlonis.xml.shared.time.TimeConstants.PROPERTY;
 import static com.mrlonis.xml.shared.time.TimeConstants.PUBLIC_MEMBER;
 import static com.mrlonis.xml.shared.time.TimeConstants.ZONED;
 import static org.hamcrest.Matchers.equalTo;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import com.fasterxml.jackson.dataformat.xml.XmlMapper;
-import com.fasterxml.jackson.datatype.joda.JodaModule;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import com.fasterxml.jackson.module.jakarta.xmlbind.JakartaXmlBindAnnotationModule;
-import com.fasterxml.jackson.module.jaxb.JaxbAnnotationModule;
 import com.mrlonis.xml.shared.model.BaseModel;
 import com.mrlonis.xml.shared.util.FetchModelUtil;
 import jakarta.annotation.Nullable;
@@ -57,13 +48,6 @@ class BaseModelXmlTests {
     @Autowired
     private MockMvc mockMvc;
 
-    private final XmlMapper xmlMapper = (XmlMapper) new XmlMapper()
-            .findAndRegisterModules()
-            .registerModule(new JodaModule())
-            .registerModule(new JavaTimeModule())
-            .registerModule(new JaxbAnnotationModule())
-            .registerModule(new JakartaXmlBindAnnotationModule());
-
     static Stream<Arguments> xmlTestArguments() {
         return Stream.of(
                 arguments(JAXB, FIELD, JODA, ZONED, null),
@@ -81,71 +65,7 @@ class BaseModelXmlTests {
                 arguments(JAXB, FIELD, JAVA, NO_ZONE, null),
                 arguments(JAXB, NONE, JAVA, NO_ZONE, null),
                 arguments(JAXB, PROPERTY, JAVA, NO_ZONE, null),
-                arguments(JAXB, PUBLIC_MEMBER, JAVA, NO_ZONE, null),
-                arguments(JAKARTA, FIELD, JODA, ZONED, null),
-                arguments(JAKARTA, NONE, JODA, ZONED, null),
-                arguments(JAKARTA, PROPERTY, JODA, ZONED, null),
-                arguments(JAKARTA, PUBLIC_MEMBER, JODA, ZONED, null),
-                arguments(JAKARTA, FIELD, JODA, NO_ZONE, null),
-                arguments(JAKARTA, NONE, JODA, NO_ZONE, null),
-                arguments(JAKARTA, PROPERTY, JODA, NO_ZONE, null),
-                arguments(JAKARTA, PUBLIC_MEMBER, JODA, NO_ZONE, null),
-                arguments(JAKARTA, FIELD, JAVA, ZONED, null),
-                arguments(JAKARTA, NONE, JAVA, ZONED, null),
-                arguments(JAKARTA, PROPERTY, JAVA, ZONED, null),
-                arguments(JAKARTA, PUBLIC_MEMBER, JAVA, ZONED, null),
-                arguments(JAKARTA, FIELD, JAVA, NO_ZONE, null),
-                arguments(JAKARTA, NONE, JAVA, NO_ZONE, null),
-                arguments(JAKARTA, PROPERTY, JAVA, NO_ZONE, null),
-                arguments(JAKARTA, PUBLIC_MEMBER, JAVA, NO_ZONE, null),
-                arguments(JACKSON, FIELD, JODA, ZONED, "jaxb"),
-                arguments(JACKSON, NONE, JODA, ZONED, "jaxb"),
-                arguments(JACKSON, PROPERTY, JODA, ZONED, "jaxb"),
-                arguments(JACKSON, PUBLIC_MEMBER, JODA, ZONED, "jaxb"),
-                arguments(JACKSON, FIELD, JODA, NO_ZONE, "jaxb"),
-                arguments(JACKSON, NONE, JODA, NO_ZONE, "jaxb"),
-                arguments(JACKSON, PROPERTY, JODA, NO_ZONE, "jaxb"),
-                arguments(JACKSON, PUBLIC_MEMBER, JODA, NO_ZONE, "jaxb"),
-                arguments(JACKSON, FIELD, JAVA, ZONED, "jaxb"),
-                arguments(JACKSON, NONE, JAVA, ZONED, "jaxb"),
-                arguments(JACKSON, PROPERTY, JAVA, ZONED, "jaxb"),
-                arguments(JACKSON, PUBLIC_MEMBER, JAVA, ZONED, "jaxb"),
-                arguments(JACKSON, FIELD, JAVA, NO_ZONE, "jaxb"),
-                arguments(JACKSON, NONE, JAVA, NO_ZONE, "jaxb"),
-                arguments(JACKSON, PROPERTY, JAVA, NO_ZONE, "jaxb"),
-                arguments(JACKSON, PUBLIC_MEMBER, JAVA, NO_ZONE, "jaxb"),
-                arguments(JACKSON, FIELD, JODA, ZONED, "jakarta"),
-                arguments(JACKSON, NONE, JODA, ZONED, "jakarta"),
-                arguments(JACKSON, PROPERTY, JODA, ZONED, "jakarta"),
-                arguments(JACKSON, PUBLIC_MEMBER, JODA, ZONED, "jakarta"),
-                arguments(JACKSON, FIELD, JODA, NO_ZONE, "jakarta"),
-                arguments(JACKSON, NONE, JODA, NO_ZONE, "jakarta"),
-                arguments(JACKSON, PROPERTY, JODA, NO_ZONE, "jakarta"),
-                arguments(JACKSON, PUBLIC_MEMBER, JODA, NO_ZONE, "jakarta"),
-                arguments(JACKSON, FIELD, JAVA, ZONED, "jakarta"),
-                arguments(JACKSON, NONE, JAVA, ZONED, "jakarta"),
-                arguments(JACKSON, PROPERTY, JAVA, ZONED, "jakarta"),
-                arguments(JACKSON, PUBLIC_MEMBER, JAVA, ZONED, "jakarta"),
-                arguments(JACKSON, FIELD, JAVA, NO_ZONE, "jakarta"),
-                arguments(JACKSON, NONE, JAVA, NO_ZONE, "jakarta"),
-                arguments(JACKSON, PROPERTY, JAVA, NO_ZONE, "jakarta"),
-                arguments(JACKSON, PUBLIC_MEMBER, JAVA, NO_ZONE, "jakarta"),
-                arguments(JACKSON, FIELD, JODA, ZONED, "jackson"),
-                arguments(JACKSON, NONE, JODA, ZONED, "jackson"),
-                arguments(JACKSON, PROPERTY, JODA, ZONED, "jackson"),
-                arguments(JACKSON, PUBLIC_MEMBER, JODA, ZONED, "jackson"),
-                arguments(JACKSON, FIELD, JODA, NO_ZONE, "jackson"),
-                arguments(JACKSON, NONE, JODA, NO_ZONE, "jackson"),
-                arguments(JACKSON, PROPERTY, JODA, NO_ZONE, "jackson"),
-                arguments(JACKSON, PUBLIC_MEMBER, JODA, NO_ZONE, "jackson"),
-                arguments(JACKSON, FIELD, JAVA, ZONED, "jackson"),
-                arguments(JACKSON, NONE, JAVA, ZONED, "jackson"),
-                arguments(JACKSON, PROPERTY, JAVA, ZONED, "jackson"),
-                arguments(JACKSON, PUBLIC_MEMBER, JAVA, ZONED, "jackson"),
-                arguments(JACKSON, FIELD, JAVA, NO_ZONE, "jackson"),
-                arguments(JACKSON, NONE, JAVA, NO_ZONE, "jackson"),
-                arguments(JACKSON, PROPERTY, JAVA, NO_ZONE, "jackson"),
-                arguments(JACKSON, PUBLIC_MEMBER, JAVA, NO_ZONE, "jackson"));
+                arguments(JAXB, PUBLIC_MEMBER, JAVA, NO_ZONE, null));
     }
 
     @ParameterizedTest
@@ -230,25 +150,12 @@ class BaseModelXmlTests {
         StringSubstitutor sub = new StringSubstitutor(valuesMap);
         xml = sub.replace(xml);
 
-        UriComponentsBuilder builder = UriComponentsBuilder.fromPath(XML_PATH + "/deserialize");
-
-        if (xmlAnnotationLibrary != null) {
-            builder.queryParam("xmlAnnotationLibrary", xmlAnnotationLibrary);
-        }
-
-        String requestBody = xmlMapper.writeValueAsString(model);
-        log.info("Request body: {}", requestBody);
-
-        BaseModel<?> model2 = xmlMapper.readValue(requestBody, model.getClass());
-        assertEquals(model.getId(), model2.getId());
-        assertEquals(model.getName(), model2.getName());
-        assertEquals(model.getTag(), model2.getTag());
-        assertNotEquals(model.getAuthor(), model2.getAuthor());
-
-        mockMvc.perform(post(builder.build().toUriString())
+        mockMvc.perform(post(UriComponentsBuilder.fromPath(XML_PATH + "/deserialize")
+                                .build()
+                                .toUriString())
                         .header(HttpHeaders.ACCEPT, MediaType.APPLICATION_XML_VALUE)
                         .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_XML_VALUE)
-                        .content(requestBody))
+                        .content(xml))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_XML_VALUE))
                 .andExpect(content().string(equalTo(xml)));

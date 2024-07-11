@@ -11,10 +11,6 @@
   <version>0.0.1-SNAPSHOT</version>
   <name>jaxb</name>
   <description>jaxb</description>
-  <properties>
-    <javax.activation.version>1.1.1</javax.activation.version>
-    <jaxb-runtime.version>2.3.9</jaxb-runtime.version>
-  </properties>
   <dependencies>
     <dependency>
       <!-- TODO: Remove this. This module/app should be pure JAXB -->
@@ -59,12 +55,6 @@
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.glassfish.jaxb</groupId>
-      <artifactId>jaxb-runtime</artifactId>
-      <version>${jaxb-runtime.version}</version>
-      <scope>runtime</scope>
     </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>

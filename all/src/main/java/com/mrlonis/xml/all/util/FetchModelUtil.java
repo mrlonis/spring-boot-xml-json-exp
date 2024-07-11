@@ -4,7 +4,9 @@ import static com.mrlonis.xml.shared.time.TimeConstants.JAKARTA;
 import static com.mrlonis.xml.shared.time.TimeConstants.JAXB;
 
 import com.mrlonis.xml.all.model.BaseModel;
-import com.mrlonis.xml.all.model.jaxb.Constants;
+import com.mrlonis.xml.all.model.jackson.JacksonConstants;
+import com.mrlonis.xml.all.model.jakarta.JakartaConstants;
+import com.mrlonis.xml.all.model.jaxb.JaxbConstants;
 import java.util.Map;
 import lombok.experimental.UtilityClass;
 import lombok.extern.slf4j.Slf4j;
@@ -13,7 +15,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class FetchModelUtil {
     private static final Map<String, Map<String, Map<String, Map<String, BaseModel<?>>>>> XML_MODELS_BY_TYPE =
-            Map.of(JAXB, Constants.JAXB_MAP, JAKARTA, com.mrlonis.xml.all.model.jakarta.Constants.JAKARTA_MAP);
+            Map.of(JAXB, JaxbConstants.JAXB_MAP, JAKARTA, JakartaConstants.JAKARTA_MAP);
 
     public static BaseModel<?> fetchModel(
             String formatLibrary, String accessType, String dateLibrary, String zoned, String xmlAnnotationLibrary) {
@@ -28,7 +30,7 @@ public class FetchModelUtil {
             if ("jaxb".equals(xmlAnnotationLibrary)
                     || "jakarta".equals(xmlAnnotationLibrary)
                     || "jackson".equals(xmlAnnotationLibrary)) {
-                return com.mrlonis.xml.all.model.jackson.Constants.JACKSON_MAP
+                return JacksonConstants.JACKSON_MAP
                         .get(xmlAnnotationLibrary)
                         .get(dateLibrary)
                         .get(zoned)

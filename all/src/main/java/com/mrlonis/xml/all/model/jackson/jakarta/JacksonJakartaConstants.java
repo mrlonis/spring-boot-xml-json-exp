@@ -8,7 +8,7 @@ import java.util.Map;
 import lombok.experimental.UtilityClass;
 
 @UtilityClass
-public class Constants {
+public class JacksonJakartaConstants {
     public static final Map<String, Map<String, Map<String, BaseModel<?>>>> JACKSON_JAKARTA_MAP = Map.of(
             TimeConstants.JODA,
             JACKSON_JAKARTA_JODA_TIME_MAP,

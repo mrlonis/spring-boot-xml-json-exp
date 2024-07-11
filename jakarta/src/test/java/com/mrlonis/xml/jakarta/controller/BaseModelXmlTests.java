@@ -1,8 +1,8 @@
-package com.mrlonis.xml.jaxb.controller;
+package com.mrlonis.xml.jakarta.controller;
 
 import static com.mrlonis.xml.shared.time.TimeConstants.FIELD;
+import static com.mrlonis.xml.shared.time.TimeConstants.JAKARTA;
 import static com.mrlonis.xml.shared.time.TimeConstants.JAVA;
-import static com.mrlonis.xml.shared.time.TimeConstants.JAXB;
 import static com.mrlonis.xml.shared.time.TimeConstants.JODA;
 import static com.mrlonis.xml.shared.time.TimeConstants.NONE;
 import static com.mrlonis.xml.shared.time.TimeConstants.NO_ZONE;
@@ -50,22 +50,22 @@ class BaseModelXmlTests {
 
     static Stream<Arguments> xmlTestArguments() {
         return Stream.of(
-                arguments(JAXB, FIELD, JODA, ZONED, null),
-                arguments(JAXB, NONE, JODA, ZONED, null),
-                arguments(JAXB, PROPERTY, JODA, ZONED, null),
-                arguments(JAXB, PUBLIC_MEMBER, JODA, ZONED, null),
-                arguments(JAXB, FIELD, JODA, NO_ZONE, null),
-                arguments(JAXB, NONE, JODA, NO_ZONE, null),
-                arguments(JAXB, PROPERTY, JODA, NO_ZONE, null),
-                arguments(JAXB, PUBLIC_MEMBER, JODA, NO_ZONE, null),
-                arguments(JAXB, FIELD, JAVA, ZONED, null),
-                arguments(JAXB, NONE, JAVA, ZONED, null),
-                arguments(JAXB, PROPERTY, JAVA, ZONED, null),
-                arguments(JAXB, PUBLIC_MEMBER, JAVA, ZONED, null),
-                arguments(JAXB, FIELD, JAVA, NO_ZONE, null),
-                arguments(JAXB, NONE, JAVA, NO_ZONE, null),
-                arguments(JAXB, PROPERTY, JAVA, NO_ZONE, null),
-                arguments(JAXB, PUBLIC_MEMBER, JAVA, NO_ZONE, null));
+                arguments(JAKARTA, FIELD, JODA, ZONED, null),
+                arguments(JAKARTA, NONE, JODA, ZONED, null),
+                arguments(JAKARTA, PROPERTY, JODA, ZONED, null),
+                arguments(JAKARTA, PUBLIC_MEMBER, JODA, ZONED, null),
+                arguments(JAKARTA, FIELD, JODA, NO_ZONE, null),
+                arguments(JAKARTA, NONE, JODA, NO_ZONE, null),
+                arguments(JAKARTA, PROPERTY, JODA, NO_ZONE, null),
+                arguments(JAKARTA, PUBLIC_MEMBER, JODA, NO_ZONE, null),
+                arguments(JAKARTA, FIELD, JAVA, ZONED, null),
+                arguments(JAKARTA, NONE, JAVA, ZONED, null),
+                arguments(JAKARTA, PROPERTY, JAVA, ZONED, null),
+                arguments(JAKARTA, PUBLIC_MEMBER, JAVA, ZONED, null),
+                arguments(JAKARTA, FIELD, JAVA, NO_ZONE, null),
+                arguments(JAKARTA, NONE, JAVA, NO_ZONE, null),
+                arguments(JAKARTA, PROPERTY, JAVA, NO_ZONE, null),
+                arguments(JAKARTA, PUBLIC_MEMBER, JAVA, NO_ZONE, null));
     }
 
     @ParameterizedTest

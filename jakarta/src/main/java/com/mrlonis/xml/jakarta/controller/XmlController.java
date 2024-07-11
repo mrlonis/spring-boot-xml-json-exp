@@ -1,4 +1,4 @@
-package com.mrlonis.xml.jaxb.controller;
+package com.mrlonis.xml.jakarta.controller;
 
 import com.mrlonis.xml.shared.model.BaseModel;
 import com.mrlonis.xml.shared.util.FetchModelUtil;

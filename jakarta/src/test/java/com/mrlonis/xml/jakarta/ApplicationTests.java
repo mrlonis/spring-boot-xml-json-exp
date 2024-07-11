@@ -1,4 +1,4 @@
-package com.mrlonis.xml.jaxb;
+package com.mrlonis.xml.jakarta;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

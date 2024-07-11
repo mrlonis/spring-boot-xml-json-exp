@@ -1,4 +1,4 @@
-package com.mrlonis.xml.jaxb;
+package com.mrlonis.xml.jakarta;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

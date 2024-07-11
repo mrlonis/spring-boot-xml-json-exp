@@ -16,6 +16,7 @@
   <modules>
     <module>all</module>
     <module>jaxb</module>
+    <module>jakarta</module>
     <module>shared</module>
   </modules>
   <properties>

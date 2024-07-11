@@ -1,4 +1,4 @@
-package com.mrlonis.xml.jaxb.controller;
+package com.mrlonis.xml.jakarta.controller;
 
 import static com.mrlonis.xml.shared.time.TimeConstants.FIELD;
 import static com.mrlonis.xml.shared.time.TimeConstants.JAVA;
@@ -38,17 +38,17 @@ import org.springframework.web.util.UriComponentsBuilder;
 @SpringBootTest
 @AutoConfigureMockMvc
 @Slf4j
-class BaseModelJsonTests {
-    public static final String JSON =
-            "{\"type\":\"${className}\",\"id\":1,\"title\":\"name\",\"date\":\"2024-07-05T14:06:07.617\",\"tag\":[\"tag1\",\"tag2\",\"tag3\"]}";
-    public static final String JSON_ZONED =
-            "{\"type\":\"${className}\",\"id\":1,\"title\":\"name\",\"date\":\"2024-07-05T14:06:07.617Z\",\"tag\":[\"tag1\",\"tag2\",\"tag3\"]}";
+class BaseModelXmlTests {
+    public static final String XML =
+            "<book type=\"${className}\" id=\"1\"><title>name</title><date>2024-07-05T14:06:07.617</date><tags><tag>tag1</tag><tag>tag2</tag><tag>tag3</tag></tags></book>";
+    public static final String XML_ZONED =
+            "<book type=\"${className}\" id=\"1\"><title>name</title><date>2024-07-05T14:06:07.617Z</date><tags><tag>tag1</tag><tag>tag2</tag><tag>tag3</tag></tags></book>";
     private static final String XML_PATH = "/xml";
 
     @Autowired
     private MockMvc mockMvc;
 
-    static Stream<Arguments> jsonTestArguments() {
+    static Stream<Arguments> xmlTestArguments() {
         return Stream.of(
                 arguments(JAXB, FIELD, JODA, ZONED, null),
                 arguments(JAXB, NONE, JODA, ZONED, null),
@@ -69,7 +69,7 @@ class BaseModelJsonTests {
     }
 
     @ParameterizedTest
-    @MethodSource("jsonTestArguments")
+    @MethodSource("xmlTestArguments")
     void testSerialization(
             String formatLibrary, String accessType, String dateLibrary, String zoned, String xmlAnnotationLibrary)
             throws Exception {
@@ -77,7 +77,7 @@ class BaseModelJsonTests {
     }
 
     @ParameterizedTest
-    @MethodSource("jsonTestArguments")
+    @MethodSource("xmlTestArguments")
     void testDeserialization(
             String formatLibrary, String accessType, String dateLibrary, String zoned, String xmlAnnotationLibrary)
             throws Exception {
@@ -91,13 +91,13 @@ class BaseModelJsonTests {
             String zoned,
             @Nullable String xmlAnnotationLibrary)
             throws Exception {
-        String json;
+        String xml;
         if (ZONED.equals(zoned)) {
-            json = JSON_ZONED;
+            xml = XML_ZONED;
         } else {
-            json = NO_ZONE.equals(zoned) ? JSON : null;
+            xml = NO_ZONE.equals(zoned) ? XML : null;
         }
-        if (json == null) {
+        if (xml == null) {
             throw new IllegalArgumentException("Invalid zoned value: " + zoned);
         }
         BaseModel<?> model =
@@ -107,7 +107,7 @@ class BaseModelJsonTests {
         Map<String, String> valuesMap = new HashMap<>();
         valuesMap.put("className", className);
         StringSubstitutor sub = new StringSubstitutor(valuesMap);
-        json = sub.replace(json);
+        xml = sub.replace(xml);
 
         UriComponentsBuilder builder = UriComponentsBuilder.fromPath(XML_PATH + "/" + formatLibrary)
                 .queryParam("accessType", accessType)
@@ -118,10 +118,10 @@ class BaseModelJsonTests {
             builder.queryParam("xmlAnnotationLibrary", xmlAnnotationLibrary);
         }
 
-        mockMvc.perform(get(builder.build().toUriString()).header(HttpHeaders.ACCEPT, MediaType.APPLICATION_JSON_VALUE))
+        mockMvc.perform(get(builder.build().toUriString()).header(HttpHeaders.ACCEPT, MediaType.APPLICATION_XML_VALUE))
                 .andExpect(status().isOk())
-                .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
-                .andExpect(content().string(equalTo(json)));
+                .andExpect(content().contentType(MediaType.APPLICATION_XML_VALUE + ";charset=UTF-8"))
+                .andExpect(content().string(equalTo(xml)));
     }
 
     private void performPostTest(
@@ -131,13 +131,13 @@ class BaseModelJsonTests {
             String zoned,
             @Nullable String xmlAnnotationLibrary)
             throws Exception {
-        String json;
+        String xml;
         if (ZONED.equals(zoned)) {
-            json = JSON_ZONED;
+            xml = XML_ZONED;
         } else {
-            json = NO_ZONE.equals(zoned) ? JSON : null;
+            xml = NO_ZONE.equals(zoned) ? XML : null;
         }
-        if (json == null) {
+        if (xml == null) {
             throw new IllegalArgumentException("Invalid zoned value: " + zoned);
         }
 
@@ -148,16 +148,16 @@ class BaseModelJsonTests {
         Map<String, String> valuesMap = new HashMap<>();
         valuesMap.put("className", className);
         StringSubstitutor sub = new StringSubstitutor(valuesMap);
-        json = sub.replace(json);
+        xml = sub.replace(xml);
 
         mockMvc.perform(post(UriComponentsBuilder.fromPath(XML_PATH + "/deserialize")
                                 .build()
                                 .toUriString())
-                        .header(HttpHeaders.ACCEPT, MediaType.APPLICATION_JSON_VALUE)
-                        .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
-                        .content(json))
+                        .header(HttpHeaders.ACCEPT, MediaType.APPLICATION_XML_VALUE)
+                        .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_XML_VALUE)
+                        .content(xml))
                 .andExpect(status().isOk())
-                .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
-                .andExpect(content().string(equalTo(json)));
+                .andExpect(content().contentType(MediaType.APPLICATION_XML_VALUE))
+                .andExpect(content().string(equalTo(xml)));
     }
 }

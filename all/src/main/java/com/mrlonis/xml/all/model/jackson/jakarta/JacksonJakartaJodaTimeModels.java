@@ -3,7 +3,7 @@ package com.mrlonis.xml.all.model.jackson.jakarta;
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
-import com.mrlonis.xml.all.adapter.JakartaJodaTimeAdapters;
+import com.mrlonis.xml.shared.adapter.JakartaJodaTimeAdapters;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlType;

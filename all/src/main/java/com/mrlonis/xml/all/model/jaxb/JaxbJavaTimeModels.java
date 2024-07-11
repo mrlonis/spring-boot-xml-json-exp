@@ -1,6 +1,6 @@
 package com.mrlonis.xml.all.model.jaxb;
 
-import com.mrlonis.xml.all.adapter.JaxbJavaTimeAdapters;
+import com.mrlonis.xml.shared.adapter.JaxbJavaTimeAdapters;
 import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
 import javax.xml.bind.annotation.XmlAccessType;

@@ -1,6 +1,6 @@
 package com.mrlonis.xml.all.model.jaxb;
 
-import com.mrlonis.xml.all.adapter.JaxbJodaTimeAdapters;
+import com.mrlonis.xml.shared.adapter.JaxbJodaTimeAdapters;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;

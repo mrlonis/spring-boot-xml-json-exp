@@ -1,4 +1,4 @@
-package com.mrlonis.xml.all.adapter;
+package com.mrlonis.xml.shared.adapter;
 
 import java.time.LocalDateTime;
 import java.time.ZonedDateTime;

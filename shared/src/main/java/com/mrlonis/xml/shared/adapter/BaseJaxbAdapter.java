@@ -1,4 +1,4 @@
-package com.mrlonis.xml.all.adapter;
+package com.mrlonis.xml.shared.adapter;
 
 import com.mrlonis.xml.shared.time.TimeAdapterUtil;
 import javax.xml.bind.annotation.adapters.XmlAdapter;

@@ -3,7 +3,7 @@ package com.mrlonis.xml.all.model.jackson.jaxb;
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
-import com.mrlonis.xml.all.adapter.JaxbJavaTimeAdapters;
+import com.mrlonis.xml.shared.adapter.JaxbJavaTimeAdapters;
 import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
 import javax.xml.bind.annotation.XmlAccessType;

@@ -1,6 +1,6 @@
 package com.mrlonis.xml.all.model.jakarta;
 
-import com.mrlonis.xml.all.adapter.JakartaJodaTimeAdapters;
+import com.mrlonis.xml.shared.adapter.JakartaJodaTimeAdapters;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;

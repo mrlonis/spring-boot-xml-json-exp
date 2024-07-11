@@ -3,7 +3,7 @@ package com.mrlonis.xml.all.model.jackson.jaxb;
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
-import com.mrlonis.xml.all.adapter.JaxbJodaTimeAdapters;
+import com.mrlonis.xml.shared.adapter.JaxbJodaTimeAdapters;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;

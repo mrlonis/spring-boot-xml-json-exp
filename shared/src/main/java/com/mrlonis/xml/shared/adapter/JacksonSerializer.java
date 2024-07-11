@@ -1,4 +1,4 @@
-package com.mrlonis.xml.all.adapter;
+package com.mrlonis.xml.shared.adapter;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JsonSerializer;

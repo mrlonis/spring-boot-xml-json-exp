@@ -1,4 +1,4 @@
-package com.mrlonis.xml.all.util;
+package com.mrlonis.xml.shared.util;
 
 import static com.mrlonis.xml.shared.time.TimeConstants.JAKARTA;
 import static com.mrlonis.xml.shared.time.TimeConstants.JAXB;

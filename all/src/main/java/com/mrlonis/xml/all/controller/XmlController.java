@@ -1,7 +1,7 @@
 package com.mrlonis.xml.all.controller;
 
-import com.mrlonis.xml.all.util.FetchModelUtil;
 import com.mrlonis.xml.shared.model.BaseModel;
+import com.mrlonis.xml.shared.util.FetchModelUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -37,7 +37,7 @@ public class XmlController {
         log.info("XmlController: deserializeModel(): model.getDate(): {}", model.getDate());
         log.info("XmlController: deserializeModel(): model.getTags(): {}", model.getTag());
         log.info("XmlController: deserializeModel(): model.hashCode(): {}", model.hashCode());
-        log.info("XmlController: deserializeModel(): model.toString(): {}", model.toString());
+        log.info("XmlController: deserializeModel(): model.toString(): {}", model);
         return model;
     }
 }

@@ -3,7 +3,7 @@ package com.mrlonis.xml.all.adapter;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
-import com.mrlonis.xml.all.util.TimeAdapterUtil;
+import com.mrlonis.xml.shared.time.TimeAdapterUtil;
 import java.io.IOException;
 import lombok.Getter;
 

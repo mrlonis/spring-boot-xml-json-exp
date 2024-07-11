@@ -1,13 +1,13 @@
 package com.mrlonis.xml.all.model.jakarta;
 
-import static com.mrlonis.xml.all.util.Constants.AUTHOR;
-import static com.mrlonis.xml.all.util.Constants.ID;
-import static com.mrlonis.xml.all.util.Constants.JAVA_TIME_LOCAL_DATE_TIME;
-import static com.mrlonis.xml.all.util.Constants.JAVA_TIME_ZONED_DATE_TIME;
-import static com.mrlonis.xml.all.util.Constants.NAME;
-import static com.mrlonis.xml.all.util.Constants.NO_ZONE;
-import static com.mrlonis.xml.all.util.Constants.TAGS;
-import static com.mrlonis.xml.all.util.Constants.ZONED;
+import static com.mrlonis.xml.shared.time.TimeConstants.AUTHOR;
+import static com.mrlonis.xml.shared.time.TimeConstants.ID;
+import static com.mrlonis.xml.shared.time.TimeConstants.JAVA_TIME_LOCAL_DATE_TIME;
+import static com.mrlonis.xml.shared.time.TimeConstants.JAVA_TIME_ZONED_DATE_TIME;
+import static com.mrlonis.xml.shared.time.TimeConstants.NAME;
+import static com.mrlonis.xml.shared.time.TimeConstants.NO_ZONE;
+import static com.mrlonis.xml.shared.time.TimeConstants.TAGS;
+import static com.mrlonis.xml.shared.time.TimeConstants.ZONED;
 
 import com.mrlonis.xml.all.model.BaseModel;
 import java.util.Map;

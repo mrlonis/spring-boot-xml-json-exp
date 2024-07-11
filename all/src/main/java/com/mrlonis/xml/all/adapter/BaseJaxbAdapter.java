@@ -1,6 +1,6 @@
 package com.mrlonis.xml.all.adapter;
 
-import com.mrlonis.xml.all.util.TimeAdapterUtil;
+import com.mrlonis.xml.shared.time.TimeAdapterUtil;
 import javax.xml.bind.annotation.adapters.XmlAdapter;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;

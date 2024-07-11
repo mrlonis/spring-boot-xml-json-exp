@@ -1,16 +1,16 @@
 package com.mrlonis.xml.all.model;
 
-import static com.mrlonis.xml.all.util.Constants.FIELD;
-import static com.mrlonis.xml.all.util.Constants.JACKSON;
-import static com.mrlonis.xml.all.util.Constants.JAKARTA;
-import static com.mrlonis.xml.all.util.Constants.JAVA;
-import static com.mrlonis.xml.all.util.Constants.JAXB;
-import static com.mrlonis.xml.all.util.Constants.JODA;
-import static com.mrlonis.xml.all.util.Constants.NONE;
-import static com.mrlonis.xml.all.util.Constants.NO_ZONE;
-import static com.mrlonis.xml.all.util.Constants.PROPERTY;
-import static com.mrlonis.xml.all.util.Constants.PUBLIC_MEMBER;
-import static com.mrlonis.xml.all.util.Constants.ZONED;
+import static com.mrlonis.xml.shared.time.TimeConstants.FIELD;
+import static com.mrlonis.xml.shared.time.TimeConstants.JACKSON;
+import static com.mrlonis.xml.shared.time.TimeConstants.JAKARTA;
+import static com.mrlonis.xml.shared.time.TimeConstants.JAVA;
+import static com.mrlonis.xml.shared.time.TimeConstants.JAXB;
+import static com.mrlonis.xml.shared.time.TimeConstants.JODA;
+import static com.mrlonis.xml.shared.time.TimeConstants.NONE;
+import static com.mrlonis.xml.shared.time.TimeConstants.NO_ZONE;
+import static com.mrlonis.xml.shared.time.TimeConstants.PROPERTY;
+import static com.mrlonis.xml.shared.time.TimeConstants.PUBLIC_MEMBER;
+import static com.mrlonis.xml.shared.time.TimeConstants.ZONED;
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;

@@ -1,4 +1,4 @@
-package com.mrlonis.xml.all.util;
+package com.mrlonis.xml.shared.time;
 
 import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
@@ -8,7 +8,7 @@ import lombok.experimental.UtilityClass;
 import org.joda.time.DateTime;
 
 @UtilityClass
-public class Constants {
+public class TimeConstants {
     public static final String JAXB = "jaxb";
     public static final String JAKARTA = "jakarta";
     public static final String JACKSON = "jackson";

@@ -1,7 +1,7 @@
 package com.mrlonis.xml.all.util;
 
-import static com.mrlonis.xml.all.util.Constants.JAKARTA;
-import static com.mrlonis.xml.all.util.Constants.JAXB;
+import static com.mrlonis.xml.shared.time.TimeConstants.JAKARTA;
+import static com.mrlonis.xml.shared.time.TimeConstants.JAXB;
 
 import com.mrlonis.xml.all.model.BaseModel;
 import com.mrlonis.xml.all.model.jaxb.Constants;

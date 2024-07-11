@@ -1,4 +1,4 @@
-package com.mrlonis.xml.all.util;
+package com.mrlonis.xml.shared.time;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonParser;

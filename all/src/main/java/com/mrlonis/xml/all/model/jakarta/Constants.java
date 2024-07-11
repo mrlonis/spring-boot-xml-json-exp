@@ -1,8 +1,8 @@
 package com.mrlonis.xml.all.model.jakarta;
 
 import static com.mrlonis.xml.all.model.jakarta.JakartaJodaTimeConstants.JAKARTA_JODA_TIME_MAP;
-import static com.mrlonis.xml.all.util.Constants.JAVA;
-import static com.mrlonis.xml.all.util.Constants.JODA;
+import static com.mrlonis.xml.shared.time.TimeConstants.JAVA;
+import static com.mrlonis.xml.shared.time.TimeConstants.JODA;
 
 import com.mrlonis.xml.all.model.BaseModel;
 import java.util.Map;

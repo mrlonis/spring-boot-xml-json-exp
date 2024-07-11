@@ -14,8 +14,8 @@
   <name>spring-boot-xml-json-exp</name>
   <description>Demo project for Spring Boot 2.7.18 XML</description>
   <modules>
-    <module>jaxb</module>
     <module>all</module>
+    <module>jaxb</module>
     <module>shared</module>
   </modules>
   <properties>

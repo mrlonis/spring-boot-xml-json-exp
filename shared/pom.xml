@@ -28,6 +28,7 @@
     <dependency>
       <groupId>jakarta.annotation</groupId>
       <artifactId>jakarta.annotation-api</artifactId>
+      <optional>true</optional>
     </dependency>
     <dependency>
       <groupId>jakarta.xml.bind</groupId>

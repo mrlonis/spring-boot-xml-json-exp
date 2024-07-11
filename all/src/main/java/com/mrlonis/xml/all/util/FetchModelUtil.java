@@ -3,10 +3,10 @@ package com.mrlonis.xml.all.util;
 import static com.mrlonis.xml.shared.time.TimeConstants.JAKARTA;
 import static com.mrlonis.xml.shared.time.TimeConstants.JAXB;
 
-import com.mrlonis.xml.all.model.BaseModel;
-import com.mrlonis.xml.all.model.jackson.JacksonConstants;
-import com.mrlonis.xml.all.model.jakarta.JakartaConstants;
-import com.mrlonis.xml.all.model.jaxb.JaxbConstants;
+import com.mrlonis.xml.shared.model.BaseModel;
+import com.mrlonis.xml.shared.model.jackson.JacksonConstants;
+import com.mrlonis.xml.shared.model.jakarta.JakartaConstants;
+import com.mrlonis.xml.shared.model.jaxb.JaxbConstants;
 import java.util.Map;
 import lombok.experimental.UtilityClass;
 import lombok.extern.slf4j.Slf4j;

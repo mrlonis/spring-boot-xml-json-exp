@@ -1,7 +1,7 @@
 package com.mrlonis.xml.all.controller;
 
-import com.mrlonis.xml.all.model.BaseModel;
 import com.mrlonis.xml.all.util.FetchModelUtil;
+import com.mrlonis.xml.shared.model.BaseModel;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;

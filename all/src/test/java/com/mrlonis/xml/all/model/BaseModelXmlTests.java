@@ -26,6 +26,7 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.fasterxml.jackson.module.jakarta.xmlbind.JakartaXmlBindAnnotationModule;
 import com.fasterxml.jackson.module.jaxb.JaxbAnnotationModule;
 import com.mrlonis.xml.all.util.FetchModelUtil;
+import com.mrlonis.xml.shared.model.BaseModel;
 import jakarta.annotation.Nullable;
 import java.util.HashMap;
 import java.util.Map;

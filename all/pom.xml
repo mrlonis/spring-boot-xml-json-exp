@@ -97,23 +97,20 @@
             <configuration>
               <rules>
                 <rule>
-                  <element>CLASS</element>
+                  <element>BUNDLE</element>
                   <excludes>
-                    <exclude>com.mrlonis.example.config</exclude>
-                    <exclude>com.mrlonis.example.entity</exclude>
-                    <exclude>com.mrlonis.example.exception</exclude>
-                    <exclude>com.mrlonis.example.repository</exclude>
+                    <exclude>com.mrlonis.xml.all.config</exclude>
                   </excludes>
                   <limits>
                     <limit>
                       <counter>LINE</counter>
                       <value>COVEREDRATIO</value>
-                      <minimum>0.00</minimum>
+                      <minimum>0.88</minimum>
                     </limit>
                     <limit>
                       <counter>BRANCH</counter>
                       <value>COVEREDRATIO</value>
-                      <minimum>0.00</minimum>
+                      <minimum>1.00</minimum>
                     </limit>
                   </limits>
                 </rule>

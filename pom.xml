@@ -16,6 +16,9 @@
   <modules>
     <module>all</module>
     <module>jackson-all</module>
+    <module>jackson-jackson</module>
+    <module>jackson-jakarta</module>
+    <module>jackson-jaxb</module>
     <module>jakarta</module>
     <module>jaxb</module>
     <module>pure-jakarta</module>

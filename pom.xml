@@ -15,8 +15,10 @@
   <description>Demo project for Spring Boot 2.7.18 XML</description>
   <modules>
     <module>all</module>
-    <module>jaxb</module>
     <module>jakarta</module>
+    <module>jaxb</module>
+    <module>pure-jakarta</module>
+    <module>pure-jaxb</module>
     <module>shared</module>
   </modules>
   <properties>

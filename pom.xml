@@ -117,6 +117,7 @@
             <format>
               <includes>
                 <include>.github/**/*.yml</include>
+                <include>.mvn/**/*.xml</include>
                 <include>.vscode/**/*.json</include>
                 <include>**/src/**/*.json</include>
                 <include>**/src/**/*.html</include>

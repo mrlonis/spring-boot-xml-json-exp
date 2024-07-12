@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!---
  Licensed to the Apache Software Foundation (ASF) under one or more
  contributor license agreements.  See the NOTICE file distributed with
@@ -15,9 +15,11 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 -->
-<cache xmlns="http://maven.apache.org/BUILD-CACHE-CONFIG/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://maven.apache.org/BUILD-CACHE-CONFIG/1.0.0 https://maven.apache.org/xsd/build-cache-config-1.0.0.xsd">
-
+<cache
+  xmlns="http://maven.apache.org/BUILD-CACHE-CONFIG/1.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/BUILD-CACHE-CONFIG/1.0.0 https://maven.apache.org/xsd/build-cache-config-1.0.0.xsd"
+>
   <!--
       Template Maven build cache configuration
    -->
@@ -68,7 +70,7 @@
             <exclude tagName="directory"/>
           </excludes>
           <tagScanConfigs>
-            <tagScanConfig tagName="someProperty" glob="*.java" recursive="false"/>
+            <tagScanConfig glob="*.java" recursive="false" tagName="someProperty"/>
           </tagScanConfigs>
         </dirScan>
         <executions>
@@ -79,7 +81,7 @@
             </execIds>
             <dirScan mode="auto">
               <includes>
-                <include tagName="protolocation" recursive="false" glob="*.proto"/>
+                <include glob="*.proto" recursive="false" tagName="protolocation"/>
               </includes>
             </dirScan>
           </execution>

@@ -1,8 +1,10 @@
-package com.mrlonis.xml.jackson.all.controller;
+package com.mrlonis.xml.shared;
 
-import static com.mrlonis.xml.shared.TestUtils.generateTestArguments;
+import static com.mrlonis.xml.shared.TestConstants.JSON;
+import static com.mrlonis.xml.shared.TestConstants.JSON_ZONED;
 import static com.mrlonis.xml.shared.time.TimeConstants.NO_ZONE;
 import static com.mrlonis.xml.shared.time.TimeConstants.ZONED;
+import static com.mrlonis.xml.shared.util.Constants.XML_PATH;
 import static org.hamcrest.Matchers.equalTo;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -17,36 +19,30 @@ import java.util.Map;
 import java.util.stream.Stream;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.text.StringSubstitutor;
+import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.web.util.UriComponentsBuilder;
 
-@SpringBootTest
-@AutoConfigureMockMvc
 @Slf4j
-class BaseModelJsonTests {
-    public static final String JSON =
-            "{\"type\":\"${className}\",\"id\":1,\"title\":\"name\",\"date\":\"2024-07-05T14:06:07.617\",\"tag\":[\"tag1\",\"tag2\",\"tag3\"]}";
-    public static final String JSON_ZONED =
-            "{\"type\":\"${className}\",\"id\":1,\"title\":\"name\",\"date\":\"2024-07-05T14:06:07.617Z\",\"tag\":[\"tag1\",\"tag2\",\"tag3\"]}";
-    private static final String XML_PATH = "/xml";
-
-    @Autowired
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+public abstract class BaseJsonTest {
     private MockMvc mockMvc;
 
-    static Stream<Arguments> jsonTestArguments() {
-        return generateTestArguments(false, false, true, false, false, false);
+    public BaseJsonTest(MockMvc mockMvc) {
+        this.mockMvc = mockMvc;
     }
 
+    public abstract Stream<Arguments> testArguments();
+
+    public abstract MediaType getMediaType();
+
     @ParameterizedTest
-    @MethodSource("jsonTestArguments")
+    @MethodSource("testArguments")
     void testSerialization(
             String formatLibrary, String accessType, String dateLibrary, String zoned, String xmlAnnotationLibrary)
             throws Exception {
@@ -54,7 +50,7 @@ class BaseModelJsonTests {
     }
 
     @ParameterizedTest
-    @MethodSource("jsonTestArguments")
+    @MethodSource("testArguments")
     void testDeserialization(
             String formatLibrary, String accessType, String dateLibrary, String zoned, String xmlAnnotationLibrary)
             throws Exception {
@@ -95,9 +91,9 @@ class BaseModelJsonTests {
             builder.queryParam("xmlAnnotationLibrary", xmlAnnotationLibrary);
         }
 
-        mockMvc.perform(get(builder.build().toUriString()).header(HttpHeaders.ACCEPT, MediaType.APPLICATION_JSON_VALUE))
+        mockMvc.perform(get(builder.build().toUriString()).header(HttpHeaders.ACCEPT, getMediaType()))
                 .andExpect(status().isOk())
-                .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
+                .andExpect(content().contentType(getMediaType()))
                 .andExpect(content().string(equalTo(json)));
     }
 
@@ -130,11 +126,11 @@ class BaseModelJsonTests {
         mockMvc.perform(post(UriComponentsBuilder.fromPath(XML_PATH + "/deserialize")
                                 .build()
                                 .toUriString())
-                        .header(HttpHeaders.ACCEPT, MediaType.APPLICATION_JSON_VALUE)
-                        .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
+                        .header(HttpHeaders.ACCEPT, getMediaType())
+                        .header(HttpHeaders.CONTENT_TYPE, getMediaType())
                         .content(json))
                 .andExpect(status().isOk())
-                .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
+                .andExpect(content().contentType(getMediaType()))
                 .andExpect(content().string(equalTo(json)));
     }
 }

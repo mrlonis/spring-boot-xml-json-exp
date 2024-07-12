@@ -20,7 +20,7 @@ import lombok.experimental.UtilityClass;
 import org.junit.jupiter.params.provider.Arguments;
 
 @UtilityClass
-public class TestUtil {
+public class TestUtils {
     public static Stream<Arguments> generateTestArguments(
             boolean includeJaxb,
             boolean includeJakarta,

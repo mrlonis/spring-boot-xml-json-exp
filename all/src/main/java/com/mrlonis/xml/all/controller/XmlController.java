@@ -1,5 +1,7 @@
 package com.mrlonis.xml.all.controller;
 
+import static com.mrlonis.xml.shared.util.Constants.XML_PATH;
+
 import com.mrlonis.xml.shared.model.BaseModel;
 import com.mrlonis.xml.shared.util.FetchModelUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -13,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/xml")
+@RequestMapping(XML_PATH)
 @Slf4j
 public class XmlController {
     @GetMapping("/{formatLibrary}")

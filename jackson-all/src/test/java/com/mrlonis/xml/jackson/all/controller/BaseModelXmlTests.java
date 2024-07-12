@@ -1,6 +1,6 @@
 package com.mrlonis.xml.jackson.all.controller;
 
-import static com.mrlonis.xml.shared.TestUtil.generateTestArguments;
+import static com.mrlonis.xml.shared.TestUtils.generateTestArguments;
 import static com.mrlonis.xml.shared.time.TimeConstants.NO_ZONE;
 import static com.mrlonis.xml.shared.time.TimeConstants.ZONED;
 import static org.hamcrest.Matchers.equalTo;

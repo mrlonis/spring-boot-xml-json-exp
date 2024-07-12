@@ -1,16 +1,9 @@
 package com.mrlonis.xml.jackson.all.controller;
 
-import static com.mrlonis.xml.shared.time.TimeConstants.FIELD;
-import static com.mrlonis.xml.shared.time.TimeConstants.JACKSON;
-import static com.mrlonis.xml.shared.time.TimeConstants.JAVA;
-import static com.mrlonis.xml.shared.time.TimeConstants.JODA;
-import static com.mrlonis.xml.shared.time.TimeConstants.NONE;
+import static com.mrlonis.xml.shared.TestUtil.generateTestArguments;
 import static com.mrlonis.xml.shared.time.TimeConstants.NO_ZONE;
-import static com.mrlonis.xml.shared.time.TimeConstants.PROPERTY;
-import static com.mrlonis.xml.shared.time.TimeConstants.PUBLIC_MEMBER;
 import static com.mrlonis.xml.shared.time.TimeConstants.ZONED;
 import static org.hamcrest.Matchers.equalTo;
-import static org.junit.jupiter.params.provider.Arguments.arguments;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -49,55 +42,7 @@ class BaseModelXmlTests {
     private MockMvc mockMvc;
 
     static Stream<Arguments> xmlTestArguments() {
-        return Stream.of(
-                arguments(JACKSON, FIELD, JODA, ZONED, "jaxb"),
-                arguments(JACKSON, NONE, JODA, ZONED, "jaxb"),
-                arguments(JACKSON, PROPERTY, JODA, ZONED, "jaxb"),
-                arguments(JACKSON, PUBLIC_MEMBER, JODA, ZONED, "jaxb"),
-                arguments(JACKSON, FIELD, JODA, NO_ZONE, "jaxb"),
-                arguments(JACKSON, NONE, JODA, NO_ZONE, "jaxb"),
-                arguments(JACKSON, PROPERTY, JODA, NO_ZONE, "jaxb"),
-                arguments(JACKSON, PUBLIC_MEMBER, JODA, NO_ZONE, "jaxb"),
-                arguments(JACKSON, FIELD, JAVA, ZONED, "jaxb"),
-                arguments(JACKSON, NONE, JAVA, ZONED, "jaxb"),
-                arguments(JACKSON, PROPERTY, JAVA, ZONED, "jaxb"),
-                arguments(JACKSON, PUBLIC_MEMBER, JAVA, ZONED, "jaxb"),
-                arguments(JACKSON, FIELD, JAVA, NO_ZONE, "jaxb"),
-                arguments(JACKSON, NONE, JAVA, NO_ZONE, "jaxb"),
-                arguments(JACKSON, PROPERTY, JAVA, NO_ZONE, "jaxb"),
-                arguments(JACKSON, PUBLIC_MEMBER, JAVA, NO_ZONE, "jaxb"),
-                arguments(JACKSON, FIELD, JODA, ZONED, "jakarta"),
-                arguments(JACKSON, NONE, JODA, ZONED, "jakarta"),
-                arguments(JACKSON, PROPERTY, JODA, ZONED, "jakarta"),
-                arguments(JACKSON, PUBLIC_MEMBER, JODA, ZONED, "jakarta"),
-                arguments(JACKSON, FIELD, JODA, NO_ZONE, "jakarta"),
-                arguments(JACKSON, NONE, JODA, NO_ZONE, "jakarta"),
-                arguments(JACKSON, PROPERTY, JODA, NO_ZONE, "jakarta"),
-                arguments(JACKSON, PUBLIC_MEMBER, JODA, NO_ZONE, "jakarta"),
-                arguments(JACKSON, FIELD, JAVA, ZONED, "jakarta"),
-                arguments(JACKSON, NONE, JAVA, ZONED, "jakarta"),
-                arguments(JACKSON, PROPERTY, JAVA, ZONED, "jakarta"),
-                arguments(JACKSON, PUBLIC_MEMBER, JAVA, ZONED, "jakarta"),
-                arguments(JACKSON, FIELD, JAVA, NO_ZONE, "jakarta"),
-                arguments(JACKSON, NONE, JAVA, NO_ZONE, "jakarta"),
-                arguments(JACKSON, PROPERTY, JAVA, NO_ZONE, "jakarta"),
-                arguments(JACKSON, PUBLIC_MEMBER, JAVA, NO_ZONE, "jakarta"),
-                arguments(JACKSON, FIELD, JODA, ZONED, "jackson"),
-                arguments(JACKSON, NONE, JODA, ZONED, "jackson"),
-                arguments(JACKSON, PROPERTY, JODA, ZONED, "jackson"),
-                arguments(JACKSON, PUBLIC_MEMBER, JODA, ZONED, "jackson"),
-                arguments(JACKSON, FIELD, JODA, NO_ZONE, "jackson"),
-                arguments(JACKSON, NONE, JODA, NO_ZONE, "jackson"),
-                arguments(JACKSON, PROPERTY, JODA, NO_ZONE, "jackson"),
-                arguments(JACKSON, PUBLIC_MEMBER, JODA, NO_ZONE, "jackson"),
-                arguments(JACKSON, FIELD, JAVA, ZONED, "jackson"),
-                arguments(JACKSON, NONE, JAVA, ZONED, "jackson"),
-                arguments(JACKSON, PROPERTY, JAVA, ZONED, "jackson"),
-                arguments(JACKSON, PUBLIC_MEMBER, JAVA, ZONED, "jackson"),
-                arguments(JACKSON, FIELD, JAVA, NO_ZONE, "jackson"),
-                arguments(JACKSON, NONE, JAVA, NO_ZONE, "jackson"),
-                arguments(JACKSON, PROPERTY, JAVA, NO_ZONE, "jackson"),
-                arguments(JACKSON, PUBLIC_MEMBER, JAVA, NO_ZONE, "jackson"));
+        return generateTestArguments(false, false, true, false, false, false);
     }
 
     @ParameterizedTest

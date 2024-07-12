@@ -10,6 +10,8 @@ import static com.mrlonis.xml.shared.time.TimeConstants.NONE;
 import static com.mrlonis.xml.shared.time.TimeConstants.NO_ZONE;
 import static com.mrlonis.xml.shared.time.TimeConstants.PROPERTY;
 import static com.mrlonis.xml.shared.time.TimeConstants.PUBLIC_MEMBER;
+import static com.mrlonis.xml.shared.time.TimeConstants.PURE_JAKARTA;
+import static com.mrlonis.xml.shared.time.TimeConstants.PURE_JAXB;
 import static com.mrlonis.xml.shared.time.TimeConstants.ZONED;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
 
@@ -27,7 +29,9 @@ public class TestUtils {
             boolean includeAllJackson,
             boolean includeJaxbJackson,
             boolean includeJakartaJackson,
-            boolean includeJackson) {
+            boolean includeJackson,
+            boolean includePureJaxb,
+            boolean includePureJakarta) {
         List<Arguments> arguments = new ArrayList<>();
         if (includeJaxb) {
             arguments.add(arguments(JAXB, FIELD, JODA, ZONED, null));
@@ -118,6 +122,42 @@ public class TestUtils {
             arguments.add(arguments(JACKSON, NONE, JAVA, NO_ZONE, "jackson"));
             arguments.add(arguments(JACKSON, PROPERTY, JAVA, NO_ZONE, "jackson"));
             arguments.add(arguments(JACKSON, PUBLIC_MEMBER, JAVA, NO_ZONE, "jackson"));
+        }
+        if (includePureJaxb) {
+            arguments.add(arguments(PURE_JAXB, FIELD, JODA, ZONED, null));
+            arguments.add(arguments(PURE_JAXB, NONE, JODA, ZONED, null));
+            arguments.add(arguments(PURE_JAXB, PROPERTY, JODA, ZONED, null));
+            arguments.add(arguments(PURE_JAXB, PUBLIC_MEMBER, JODA, ZONED, null));
+            arguments.add(arguments(PURE_JAXB, FIELD, JODA, NO_ZONE, null));
+            arguments.add(arguments(PURE_JAXB, NONE, JODA, NO_ZONE, null));
+            arguments.add(arguments(PURE_JAXB, PROPERTY, JODA, NO_ZONE, null));
+            arguments.add(arguments(PURE_JAXB, PUBLIC_MEMBER, JODA, NO_ZONE, null));
+            arguments.add(arguments(PURE_JAXB, FIELD, JAVA, ZONED, null));
+            arguments.add(arguments(PURE_JAXB, NONE, JAVA, ZONED, null));
+            arguments.add(arguments(PURE_JAXB, PROPERTY, JAVA, ZONED, null));
+            arguments.add(arguments(PURE_JAXB, PUBLIC_MEMBER, JAVA, ZONED, null));
+            arguments.add(arguments(PURE_JAXB, FIELD, JAVA, NO_ZONE, null));
+            arguments.add(arguments(PURE_JAXB, NONE, JAVA, NO_ZONE, null));
+            arguments.add(arguments(PURE_JAXB, PROPERTY, JAVA, NO_ZONE, null));
+            arguments.add(arguments(PURE_JAXB, PUBLIC_MEMBER, JAVA, NO_ZONE, null));
+        }
+        if (includePureJakarta) {
+            arguments.add(arguments(PURE_JAKARTA, FIELD, JODA, ZONED, null));
+            arguments.add(arguments(PURE_JAKARTA, NONE, JODA, ZONED, null));
+            arguments.add(arguments(PURE_JAKARTA, PROPERTY, JODA, ZONED, null));
+            arguments.add(arguments(PURE_JAKARTA, PUBLIC_MEMBER, JODA, ZONED, null));
+            arguments.add(arguments(PURE_JAKARTA, FIELD, JODA, NO_ZONE, null));
+            arguments.add(arguments(PURE_JAKARTA, NONE, JODA, NO_ZONE, null));
+            arguments.add(arguments(PURE_JAKARTA, PROPERTY, JODA, NO_ZONE, null));
+            arguments.add(arguments(PURE_JAKARTA, PUBLIC_MEMBER, JODA, NO_ZONE, null));
+            arguments.add(arguments(PURE_JAKARTA, FIELD, JAVA, ZONED, null));
+            arguments.add(arguments(PURE_JAKARTA, NONE, JAVA, ZONED, null));
+            arguments.add(arguments(PURE_JAKARTA, PROPERTY, JAVA, ZONED, null));
+            arguments.add(arguments(PURE_JAKARTA, PUBLIC_MEMBER, JAVA, ZONED, null));
+            arguments.add(arguments(PURE_JAKARTA, FIELD, JAVA, NO_ZONE, null));
+            arguments.add(arguments(PURE_JAKARTA, NONE, JAVA, NO_ZONE, null));
+            arguments.add(arguments(PURE_JAKARTA, PROPERTY, JAVA, NO_ZONE, null));
+            arguments.add(arguments(PURE_JAKARTA, PUBLIC_MEMBER, JAVA, NO_ZONE, null));
         }
         return arguments.stream();
     }

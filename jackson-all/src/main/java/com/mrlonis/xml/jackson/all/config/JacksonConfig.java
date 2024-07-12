@@ -1,6 +1,7 @@
 package com.mrlonis.xml.jackson.all.config;
 
 import com.fasterxml.jackson.databind.Module;
+import com.fasterxml.jackson.module.jakarta.xmlbind.JakartaXmlBindAnnotationModule;
 import com.fasterxml.jackson.module.jaxb.JaxbAnnotationModule;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,5 +21,16 @@ public class JacksonConfig {
     @Bean
     public Module jaxbAnnotationModule() {
         return new JaxbAnnotationModule();
+    }
+
+    /**
+     * Register the JakartaXmlBindAnnotationModule for Spring Boot. This module is used to add support for the Jakarta
+     * XML Bind API annotations (jakarta.xml.bind.annotation.*).
+     *
+     * @return {@link JakartaXmlBindAnnotationModule}
+     */
+    @Bean
+    public Module jakartaXmlBindAnnotationModule() {
+        return new JakartaXmlBindAnnotationModule();
     }
 }

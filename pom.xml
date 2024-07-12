@@ -99,8 +99,6 @@
           <formats>
             <format>
               <includes>
-                <include>.hooks/pre-commit</include>
-                <include>.hooks/post-commit</include>
                 <include>.mvn/wrapper/maven-wrapper.properties</include>
                 <include>.gitattributes</include>
                 <include>.gitignore</include>
@@ -185,6 +183,7 @@
               <include>**/*.md</include>
             </includes>
             <excludes>
+              <exclude>.hooks/**/*.md</exclude>
               <exclude>**/target/**/*.md</exclude>
             </excludes>
             <flexmark/>

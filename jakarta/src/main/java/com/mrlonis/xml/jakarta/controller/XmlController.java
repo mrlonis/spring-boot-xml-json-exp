@@ -22,8 +22,9 @@ public class XmlController {
             @RequestParam String accessType,
             @RequestParam String dateLibrary,
             @RequestParam String zoned,
-            @RequestParam(required = false) String xmlAnnotationLibrary) {
-        return FetchModelUtil.fetchModel(formatLibrary, accessType, dateLibrary, zoned, xmlAnnotationLibrary);
+            @RequestParam(required = false) String xmlAnnotationLibrary,
+            @RequestParam(required = false) Boolean pure) {
+        return FetchModelUtil.fetchModel(formatLibrary, accessType, dateLibrary, zoned, xmlAnnotationLibrary, pure);
     }
 
     @PostMapping(

@@ -1,5 +1,6 @@
 package com.mrlonis.xml.shared.util;
 
+import static com.mrlonis.xml.shared.model.pure.PureConstants.PURE_MAP;
 import static com.mrlonis.xml.shared.time.TimeConstants.JAKARTA;
 import static com.mrlonis.xml.shared.time.TimeConstants.JAXB;
 
@@ -18,14 +19,23 @@ public class FetchModelUtil {
             Map.of(JAXB, JaxbConstants.JAXB_MAP, JAKARTA, JakartaConstants.JAKARTA_MAP);
 
     public static BaseModel<?> fetchModel(
-            String formatLibrary, String accessType, String dateLibrary, String zoned, String xmlAnnotationLibrary) {
+            String formatLibrary,
+            String accessType,
+            String dateLibrary,
+            String zoned,
+            String xmlAnnotationLibrary,
+            Boolean pure) {
         log.info(
-                "FetchModelUtil: fetchModel(): formatLibrary: {} | dateLibrary: {} | zoned: {} | | accessType: {}, xmlAnnotationLibrary: {}",
+                "FetchModelUtil: fetchModel(): formatLibrary: {} | dateLibrary: {} | zoned: {} | | accessType: {}, xmlAnnotationLibrary: {}, pure: {}",
                 formatLibrary,
                 dateLibrary,
                 zoned,
                 accessType,
-                xmlAnnotationLibrary);
+                xmlAnnotationLibrary,
+                pure);
+        if (Boolean.TRUE.equals(pure)) {
+            return PURE_MAP.get(formatLibrary).get(dateLibrary).get(zoned).get(accessType);
+        }
         if ("jackson".equals(formatLibrary)) {
             if ("jaxb".equals(xmlAnnotationLibrary)
                     || "jakarta".equals(xmlAnnotationLibrary)

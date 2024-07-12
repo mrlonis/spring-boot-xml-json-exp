@@ -101,7 +101,7 @@ class BaseModelJsonTests {
             throw new IllegalArgumentException("Invalid zoned value: " + zoned);
         }
         BaseModel<?> model =
-                FetchModelUtil.fetchModel(formatLibrary, accessType, dateLibrary, zoned, xmlAnnotationLibrary);
+                FetchModelUtil.fetchModel(formatLibrary, accessType, dateLibrary, zoned, xmlAnnotationLibrary, false);
         String className = model.getClass().getName();
         className = className.substring(className.lastIndexOf('.') + 1);
         Map<String, String> valuesMap = new HashMap<>();
@@ -142,7 +142,7 @@ class BaseModelJsonTests {
         }
 
         BaseModel<?> model =
-                FetchModelUtil.fetchModel(formatLibrary, accessType, dateLibrary, zoned, xmlAnnotationLibrary);
+                FetchModelUtil.fetchModel(formatLibrary, accessType, dateLibrary, zoned, xmlAnnotationLibrary, false);
         String className = model.getClass().getName();
         className = className.substring(className.lastIndexOf('.') + 1);
         Map<String, String> valuesMap = new HashMap<>();

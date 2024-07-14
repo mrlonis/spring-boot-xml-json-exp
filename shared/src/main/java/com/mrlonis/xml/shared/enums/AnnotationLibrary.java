@@ -7,5 +7,5 @@ public enum AnnotationLibrary {
     PURE_JAKARTA,
     JACKSON_JAXB,
     JACKSON_JAKARTA,
-    JACKSON_JACKSON;
+    JACKSON_JACKSON
 }

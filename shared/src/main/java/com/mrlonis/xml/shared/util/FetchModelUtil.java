@@ -7,6 +7,7 @@ import static com.mrlonis.xml.shared.model.pure.jakarta.PureJakartaConstants.PUR
 import static com.mrlonis.xml.shared.model.pure.jaxb.PureJaxbConstants.PURE_JAXB_MAP;
 
 import com.mrlonis.xml.shared.enums.AnnotationLibrary;
+import com.mrlonis.xml.shared.enums.TimeLibrary;
 import com.mrlonis.xml.shared.model.BaseModel;
 import com.mrlonis.xml.shared.model.jakarta.JakartaConstants;
 import com.mrlonis.xml.shared.model.jaxb.JaxbConstants;
@@ -17,7 +18,7 @@ import lombok.extern.slf4j.Slf4j;
 @UtilityClass
 @Slf4j
 public class FetchModelUtil {
-    private static final Map<AnnotationLibrary, Map<String, Map<String, Map<String, BaseModel<?>>>>>
+    private static final Map<AnnotationLibrary, Map<TimeLibrary, Map<String, Map<String, BaseModel<?>>>>>
             XML_MODELS_BY_TYPE = Map.of(
                     AnnotationLibrary.JAXB,
                     JaxbConstants.JAXB_MAP,
@@ -35,7 +36,7 @@ public class FetchModelUtil {
                     JACKSON_JACKSON_MAP);
 
     public static BaseModel<?> fetchModel(
-            AnnotationLibrary formatLibrary, String accessType, String dateLibrary, String zoned) {
+            AnnotationLibrary formatLibrary, String accessType, TimeLibrary dateLibrary, String zoned) {
         log.info(
                 "FetchModelUtil: fetchModel(): formatLibrary: {} | dateLibrary: {} | zoned: {} | | accessType: {}",
                 formatLibrary,

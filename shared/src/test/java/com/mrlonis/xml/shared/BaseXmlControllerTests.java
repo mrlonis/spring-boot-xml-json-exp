@@ -121,11 +121,13 @@ public abstract class BaseXmlControllerTests {
     }
 
     private String getTestJson(String formatLibrary, String accessType, String dateLibrary, String zoned) {
-        return replaceTypeInData(formatLibrary, accessType, dateLibrary, zoned, getDataByZone(zoned, JSON_ZONED, JSON_NO_ZONE));
+        return replaceTypeInData(
+                formatLibrary, accessType, dateLibrary, zoned, getDataByZone(zoned, JSON_ZONED, JSON_NO_ZONE));
     }
 
     private String getTestXml(String formatLibrary, String accessType, String dateLibrary, String zoned) {
-        return replaceTypeInData(formatLibrary, accessType, dateLibrary, zoned, getDataByZone(zoned, XML_ZONED, XML_NO_ZONE));
+        return replaceTypeInData(
+                formatLibrary, accessType, dateLibrary, zoned, getDataByZone(zoned, XML_ZONED, XML_NO_ZONE));
     }
 
     private String getDataByZone(String zonedIndicator, String zonedData, String noZoneData) {

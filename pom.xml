@@ -26,6 +26,7 @@
     <module>shared</module>
   </modules>
   <properties>
+    <checker-qual.version>3.45.0</checker-qual.version>
     <cleanthat.vesion>2.20</cleanthat.vesion>
     <commons-lang3.version>3.14.0</commons-lang3.version>
     <commons-text.version>1.12.0</commons-text.version>

@@ -155,6 +155,7 @@
               <mutators>
                 <mutator>SafeAndConsensual</mutator>
                 <mutator>SafeButNotConsensual</mutator>
+                <mutator>SafeButControversial</mutator>
               </mutators>
             </cleanthat>
             <palantirJavaFormat>

@@ -5,9 +5,8 @@ import static com.mrlonis.xml.shared.model.jackson.jakarta.JacksonJakartaConstan
 import static com.mrlonis.xml.shared.model.jackson.jaxb.JacksonJaxbConstants.JACKSON_JAXB_MAP;
 import static com.mrlonis.xml.shared.model.pure.jakarta.PureJakartaConstants.PURE_JAKARTA_MAP;
 import static com.mrlonis.xml.shared.model.pure.jaxb.PureJaxbConstants.PURE_JAXB_MAP;
-import static com.mrlonis.xml.shared.time.TimeConstants.*;
-import static com.mrlonis.xml.shared.time.TimeConstants.PURE_JAKARTA;
 
+import com.mrlonis.xml.shared.enums.AnnotationLibrary;
 import com.mrlonis.xml.shared.model.BaseModel;
 import com.mrlonis.xml.shared.model.jakarta.JakartaConstants;
 import com.mrlonis.xml.shared.model.jaxb.JaxbConstants;
@@ -18,23 +17,25 @@ import lombok.extern.slf4j.Slf4j;
 @UtilityClass
 @Slf4j
 public class FetchModelUtil {
-    private static final Map<String, Map<String, Map<String, Map<String, BaseModel<?>>>>> XML_MODELS_BY_TYPE = Map.of(
-            JAXB,
-            JaxbConstants.JAXB_MAP,
-            JAKARTA,
-            JakartaConstants.JAKARTA_MAP,
-            PURE_JAXB,
-            PURE_JAXB_MAP,
-            PURE_JAKARTA,
-            PURE_JAKARTA_MAP,
-            JACKSON_JAXB,
-            JACKSON_JAXB_MAP,
-            JACKSON_JAKARTA,
-            JACKSON_JAKARTA_MAP,
-            JACKSON_JACKSON,
-            JACKSON_JACKSON_MAP);
+    private static final Map<AnnotationLibrary, Map<String, Map<String, Map<String, BaseModel<?>>>>>
+            XML_MODELS_BY_TYPE = Map.of(
+                    AnnotationLibrary.JAXB,
+                    JaxbConstants.JAXB_MAP,
+                    AnnotationLibrary.JAKARTA,
+                    JakartaConstants.JAKARTA_MAP,
+                    AnnotationLibrary.PURE_JAXB,
+                    PURE_JAXB_MAP,
+                    AnnotationLibrary.PURE_JAKARTA,
+                    PURE_JAKARTA_MAP,
+                    AnnotationLibrary.JACKSON_JAXB,
+                    JACKSON_JAXB_MAP,
+                    AnnotationLibrary.JACKSON_JAKARTA,
+                    JACKSON_JAKARTA_MAP,
+                    AnnotationLibrary.JACKSON_JACKSON,
+                    JACKSON_JACKSON_MAP);
 
-    public static BaseModel<?> fetchModel(String formatLibrary, String accessType, String dateLibrary, String zoned) {
+    public static BaseModel<?> fetchModel(
+            AnnotationLibrary formatLibrary, String accessType, String dateLibrary, String zoned) {
         log.info(
                 "FetchModelUtil: fetchModel(): formatLibrary: {} | dateLibrary: {} | zoned: {} | | accessType: {}",
                 formatLibrary,

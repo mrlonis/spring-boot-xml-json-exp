@@ -3,6 +3,7 @@ package com.mrlonis.xml.shared.controller;
 import static com.mrlonis.xml.shared.util.Constants.DESERIALIZE_PATH;
 import static com.mrlonis.xml.shared.util.Constants.XML_PATH;
 
+import com.mrlonis.xml.shared.enums.AnnotationLibrary;
 import com.mrlonis.xml.shared.model.BaseModel;
 import com.mrlonis.xml.shared.util.FetchModelUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -21,7 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class XmlController {
     @GetMapping("/{formatLibrary}")
     public BaseModel<?> getModel(
-            @PathVariable String formatLibrary,
+            @PathVariable AnnotationLibrary formatLibrary,
             @RequestParam String accessType,
             @RequestParam String dateLibrary,
             @RequestParam String zoned) {

@@ -1,4 +1,7 @@
-package com.mrlonis.xml.jakarta.controller;
+package com.mrlonis.xml.shared.controller;
+
+import static com.mrlonis.xml.shared.util.Constants.DESERIALIZE_PATH;
+import static com.mrlonis.xml.shared.util.Constants.XML_PATH;
 
 import com.mrlonis.xml.shared.model.BaseModel;
 import com.mrlonis.xml.shared.util.FetchModelUtil;
@@ -13,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/xml")
+@RequestMapping(XML_PATH)
 @Slf4j
 public class XmlController {
     @GetMapping("/{formatLibrary}")
@@ -28,17 +31,17 @@ public class XmlController {
     }
 
     @PostMapping(
-            value = "/deserialize",
+            value = DESERIALIZE_PATH,
             produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
             consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     public BaseModel<?> deserializeModel(@RequestBody BaseModel<?> model) {
-        log.info("XmlController: deserializeModel(): model.getId(): {}", model.getId());
-        log.info("XmlController: deserializeModel(): model.getName(): {}", model.getName());
-        log.info("XmlController: deserializeModel(): model.getAuthor(): {}", model.getAuthor());
-        log.info("XmlController: deserializeModel(): model.getDate(): {}", model.getDate());
-        log.info("XmlController: deserializeModel(): model.getTags(): {}", model.getTag());
-        log.info("XmlController: deserializeModel(): model.hashCode(): {}", model.hashCode());
-        log.info("XmlController: deserializeModel(): model.toString(): {}", model);
+        log.info("deserializeModel(): model.getId(): {}", model.getId());
+        log.info("deserializeModel(): model.getName(): {}", model.getName());
+        log.info("deserializeModel(): model.getAuthor(): {}", model.getAuthor());
+        log.info("deserializeModel(): model.getDate(): {}", model.getDate());
+        log.info("deserializeModel(): model.getTags(): {}", model.getTag());
+        log.info("deserializeModel(): model.hashCode(): {}", model.hashCode());
+        log.info("deserializeModel(): model.toString(): {}", model);
         return model;
     }
 }

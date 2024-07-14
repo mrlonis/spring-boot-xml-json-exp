@@ -12,6 +12,8 @@
           <option name="goals">
             <list>
               <option value="verify" />
+              <option value="-T" />
+              <option value="10" />
             </list>
           </option>
           <option name="multimoduleDir" />

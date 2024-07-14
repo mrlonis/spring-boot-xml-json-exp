@@ -1,0 +1,11 @@
+#!/usr/bin/env sh
+./mvnw help:effective-pom -Doutput=effective-pom.xml
+./mvnw help:effective-pom -Doutput=effective-pom.xml -pl all
+./mvnw help:effective-pom -Doutput=effective-pom.xml -pl jackson-all
+./mvnw help:effective-pom -Doutput=effective-pom.xml -pl jackson-jakarta
+./mvnw help:effective-pom -Doutput=effective-pom.xml -pl jackson-jaxb
+./mvnw help:effective-pom -Doutput=effective-pom.xml -pl jakarta
+./mvnw help:effective-pom -Doutput=effective-pom.xml -pl jaxb
+./mvnw help:effective-pom -Doutput=effective-pom.xml -pl pure-jakarta
+./mvnw help:effective-pom -Doutput=effective-pom.xml -pl pure-jaxb
+./mvnw help:effective-pom -Doutput=effective-pom.xml -pl shared

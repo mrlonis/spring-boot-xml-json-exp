@@ -1,6 +1,9 @@
 package com.mrlonis.xml.shared;
 
-import static com.mrlonis.xml.shared.util.Constants.*;
+import static com.mrlonis.xml.shared.util.Constants.FIELD;
+import static com.mrlonis.xml.shared.util.Constants.NONE;
+import static com.mrlonis.xml.shared.util.Constants.PROPERTY;
+import static com.mrlonis.xml.shared.util.Constants.PUBLIC_MEMBER;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 import com.mrlonis.xml.shared.enums.AnnotationLibrary;

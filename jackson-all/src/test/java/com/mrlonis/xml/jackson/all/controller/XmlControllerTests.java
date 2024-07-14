@@ -20,7 +20,7 @@ class XmlControllerTests extends BaseXmlControllerTests {
     }
 
     public Stream<Arguments> testArguments() {
-        return generateTestArguments(false, false, true, true, true, true, false, false);
+        return generateTestArguments(false, false, true, true, true, false, false);
     }
 
     @Test

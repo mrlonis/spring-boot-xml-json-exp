@@ -1,12 +1,14 @@
 package com.mrlonis.xml.shared.util;
 
+import static com.mrlonis.xml.shared.model.jackson.jackson.JacksonJacksonConstants.JACKSON_JACKSON_MAP;
+import static com.mrlonis.xml.shared.model.jackson.jakarta.JacksonJakartaConstants.JACKSON_JAKARTA_MAP;
+import static com.mrlonis.xml.shared.model.jackson.jaxb.JacksonJaxbConstants.JACKSON_JAXB_MAP;
 import static com.mrlonis.xml.shared.model.pure.jakarta.PureJakartaConstants.PURE_JAKARTA_MAP;
 import static com.mrlonis.xml.shared.model.pure.jaxb.PureJaxbConstants.PURE_JAXB_MAP;
 import static com.mrlonis.xml.shared.time.TimeConstants.*;
 import static com.mrlonis.xml.shared.time.TimeConstants.PURE_JAKARTA;
 
 import com.mrlonis.xml.shared.model.BaseModel;
-import com.mrlonis.xml.shared.model.jackson.JacksonConstants;
 import com.mrlonis.xml.shared.model.jakarta.JakartaConstants;
 import com.mrlonis.xml.shared.model.jaxb.JaxbConstants;
 import java.util.Map;
@@ -24,29 +26,21 @@ public class FetchModelUtil {
             PURE_JAXB,
             PURE_JAXB_MAP,
             PURE_JAKARTA,
-            PURE_JAKARTA_MAP);
+            PURE_JAKARTA_MAP,
+            JACKSON_JAXB,
+            JACKSON_JAXB_MAP,
+            JACKSON_JAKARTA,
+            JACKSON_JAKARTA_MAP,
+            JACKSON_JACKSON,
+            JACKSON_JACKSON_MAP);
 
-    public static BaseModel<?> fetchModel(
-            String formatLibrary, String accessType, String dateLibrary, String zoned, String xmlAnnotationLibrary) {
+    public static BaseModel<?> fetchModel(String formatLibrary, String accessType, String dateLibrary, String zoned) {
         log.info(
-                "FetchModelUtil: fetchModel(): formatLibrary: {} | dateLibrary: {} | zoned: {} | | accessType: {}, xmlAnnotationLibrary: {}",
+                "FetchModelUtil: fetchModel(): formatLibrary: {} | dateLibrary: {} | zoned: {} | | accessType: {}",
                 formatLibrary,
                 dateLibrary,
                 zoned,
-                accessType,
-                xmlAnnotationLibrary);
-        if ("jackson".equals(formatLibrary)) {
-            if ("jaxb".equals(xmlAnnotationLibrary)
-                    || "jakarta".equals(xmlAnnotationLibrary)
-                    || "jackson".equals(xmlAnnotationLibrary)) {
-                return JacksonConstants.JACKSON_MAP
-                        .get(xmlAnnotationLibrary)
-                        .get(dateLibrary)
-                        .get(zoned)
-                        .get(accessType);
-            }
-            throw new IllegalArgumentException("Invalid xmlAnnotationLibrary: " + xmlAnnotationLibrary);
-        }
+                accessType);
         return XML_MODELS_BY_TYPE.get(formatLibrary).get(dateLibrary).get(zoned).get(accessType);
     }
 }

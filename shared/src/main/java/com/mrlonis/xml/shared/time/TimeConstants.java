@@ -13,7 +13,9 @@ public class TimeConstants {
     public static final String PURE_JAXB = "pure-jaxb";
     public static final String JAKARTA = "jakarta";
     public static final String PURE_JAKARTA = "pure-jakarta";
-    public static final String JACKSON = "jackson";
+    public static final String JACKSON_JAXB = "jackson-jaxb";
+    public static final String JACKSON_JAKARTA = "jackson-jakarta";
+    public static final String JACKSON_JACKSON = "jackson-jackson";
     public static final String JAVA = "java";
     public static final String JODA = "joda";
     public static final String NO_ZONE = "nozone";

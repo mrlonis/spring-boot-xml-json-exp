@@ -48,18 +48,8 @@ public abstract class BaseXmlControllerTests {
     void testJsonSerialization(
             String formatLibrary, String accessType, String dateLibrary, String zoned, String xmlAnnotationLibrary)
             throws Exception {
-        boolean pure = false;
-        if (PURE_JAXB.equals(formatLibrary) || PURE_JAKARTA.equals(formatLibrary)) {
-            pure = true;
-        }
         performGetTest(
-                formatLibrary,
-                accessType,
-                dateLibrary,
-                zoned,
-                xmlAnnotationLibrary,
-                MediaType.APPLICATION_JSON_VALUE,
-                pure);
+                formatLibrary, accessType, dateLibrary, zoned, xmlAnnotationLibrary, MediaType.APPLICATION_JSON_VALUE);
     }
 
     @ParameterizedTest
@@ -67,18 +57,8 @@ public abstract class BaseXmlControllerTests {
     void testJsonDeserialization(
             String formatLibrary, String accessType, String dateLibrary, String zoned, String xmlAnnotationLibrary)
             throws Exception {
-        boolean pure = false;
-        if (PURE_JAXB.equals(formatLibrary) || PURE_JAKARTA.equals(formatLibrary)) {
-            pure = true;
-        }
         performPostTest(
-                formatLibrary,
-                accessType,
-                dateLibrary,
-                zoned,
-                xmlAnnotationLibrary,
-                MediaType.APPLICATION_JSON_VALUE,
-                pure);
+                formatLibrary, accessType, dateLibrary, zoned, xmlAnnotationLibrary, MediaType.APPLICATION_JSON_VALUE);
     }
 
     @ParameterizedTest
@@ -86,18 +66,8 @@ public abstract class BaseXmlControllerTests {
     void testXmlSerialization(
             String formatLibrary, String accessType, String dateLibrary, String zoned, String xmlAnnotationLibrary)
             throws Exception {
-        boolean pure = false;
-        if (PURE_JAXB.equals(formatLibrary) || PURE_JAKARTA.equals(formatLibrary)) {
-            pure = true;
-        }
         performGetTest(
-                formatLibrary,
-                accessType,
-                dateLibrary,
-                zoned,
-                xmlAnnotationLibrary,
-                MediaType.APPLICATION_XML_VALUE,
-                pure);
+                formatLibrary, accessType, dateLibrary, zoned, xmlAnnotationLibrary, MediaType.APPLICATION_XML_VALUE);
     }
 
     @ParameterizedTest
@@ -105,18 +75,8 @@ public abstract class BaseXmlControllerTests {
     void testXmlDeserialization(
             String formatLibrary, String accessType, String dateLibrary, String zoned, String xmlAnnotationLibrary)
             throws Exception {
-        boolean pure = false;
-        if (PURE_JAXB.equals(formatLibrary) || PURE_JAKARTA.equals(formatLibrary)) {
-            pure = true;
-        }
         performPostTest(
-                formatLibrary,
-                accessType,
-                dateLibrary,
-                zoned,
-                xmlAnnotationLibrary,
-                MediaType.APPLICATION_XML_VALUE,
-                pure);
+                formatLibrary, accessType, dateLibrary, zoned, xmlAnnotationLibrary, MediaType.APPLICATION_XML_VALUE);
     }
 
     private void performGetTest(
@@ -125,8 +85,7 @@ public abstract class BaseXmlControllerTests {
             String dateLibrary,
             String zoned,
             @Nullable String xmlAnnotationLibrary,
-            String mediaType,
-            Boolean pure)
+            String mediaType)
             throws Exception {
         UriComponentsBuilder builder = UriComponentsBuilder.fromPath(XML_PATH + "/" + formatLibrary)
                 .queryParam("accessType", accessType)
@@ -136,18 +95,8 @@ public abstract class BaseXmlControllerTests {
         if (xmlAnnotationLibrary != null) {
             builder.queryParam("xmlAnnotationLibrary", xmlAnnotationLibrary);
         }
-        if (pure != null) {
-            builder.queryParam("pure", pure);
-        }
 
-        String json = getTestData(
-                formatLibrary,
-                accessType,
-                dateLibrary,
-                zoned,
-                xmlAnnotationLibrary,
-                mediaType,
-                Boolean.TRUE.equals(pure));
+        String json = getTestData(formatLibrary, accessType, dateLibrary, zoned, xmlAnnotationLibrary, mediaType);
         mockMvc.perform(get(builder.build().toUriString()).header(HttpHeaders.ACCEPT, mediaType))
                 .andExpect(status().isOk())
                 .andExpect(content()
@@ -164,17 +113,16 @@ public abstract class BaseXmlControllerTests {
             String dateLibrary,
             String zoned,
             @Nullable String xmlAnnotationLibrary,
-            String mediaType,
-            Boolean pure)
+            String mediaType)
             throws Exception {
-        String json = getTestData(formatLibrary, accessType, dateLibrary, zoned, xmlAnnotationLibrary, mediaType, pure);
+        String json = getTestData(formatLibrary, accessType, dateLibrary, zoned, xmlAnnotationLibrary, mediaType);
         var whatIsThis = mockMvc.perform(post(UriComponentsBuilder.fromPath(XML_PATH + "/deserialize")
                         .build()
                         .toUriString())
                 .header(HttpHeaders.ACCEPT, mediaType)
                 .header(HttpHeaders.CONTENT_TYPE, mediaType)
                 .content(json));
-        if (pure) {
+        if (PURE_JAXB.equals(formatLibrary) || PURE_JAKARTA.equals(formatLibrary)) {
             whatIsThis.andExpect(status().isBadRequest());
             return;
         }
@@ -191,12 +139,11 @@ public abstract class BaseXmlControllerTests {
             String dateLibrary,
             String zoned,
             @Nullable String xmlAnnotationLibrary,
-            String mediaType,
-            boolean pure) {
+            String mediaType) {
         if (MediaType.APPLICATION_XML_VALUE.equals(mediaType)) {
-            return getTestXml(formatLibrary, accessType, dateLibrary, zoned, xmlAnnotationLibrary, pure);
+            return getTestXml(formatLibrary, accessType, dateLibrary, zoned, xmlAnnotationLibrary);
         } else if (MediaType.APPLICATION_JSON_VALUE.equals(mediaType)) {
-            return getTestJson(formatLibrary, accessType, dateLibrary, zoned, xmlAnnotationLibrary, pure);
+            return getTestJson(formatLibrary, accessType, dateLibrary, zoned, xmlAnnotationLibrary);
         } else {
             throw new IllegalArgumentException("Invalid media type: " + mediaType);
         }
@@ -207,15 +154,13 @@ public abstract class BaseXmlControllerTests {
             String accessType,
             String dateLibrary,
             String zoned,
-            @Nullable String xmlAnnotationLibrary,
-            boolean pure) {
+            @Nullable String xmlAnnotationLibrary) {
         return replaceTypeInData(
                 formatLibrary,
                 accessType,
                 dateLibrary,
                 zoned,
                 xmlAnnotationLibrary,
-                pure,
                 getDataByZone(zoned, JSON_ZONED, JSON));
     }
 
@@ -224,15 +169,13 @@ public abstract class BaseXmlControllerTests {
             String accessType,
             String dateLibrary,
             String zoned,
-            @Nullable String xmlAnnotationLibrary,
-            boolean pure) {
+            @Nullable String xmlAnnotationLibrary) {
         return replaceTypeInData(
                 formatLibrary,
                 accessType,
                 dateLibrary,
                 zoned,
                 xmlAnnotationLibrary,
-                pure,
                 getDataByZone(zoned, XML_ZONED, XML));
     }
 
@@ -255,10 +198,9 @@ public abstract class BaseXmlControllerTests {
             String dateLibrary,
             String zoned,
             @Nullable String xmlAnnotationLibrary,
-            boolean pure,
             String stringToReplace) {
         BaseModel<?> model =
-                FetchModelUtil.fetchModel(formatLibrary, accessType, dateLibrary, zoned, xmlAnnotationLibrary, pure);
+                FetchModelUtil.fetchModel(formatLibrary, accessType, dateLibrary, zoned, xmlAnnotationLibrary);
         String className = model.getClass().getName();
         className = className.substring(className.lastIndexOf('.') + 1);
         Map<String, String> valuesMap = new HashMap<>();

@@ -1,11 +1,11 @@
 package com.mrlonis.xml.shared.model.jaxb;
 
-import static com.mrlonis.xml.shared.time.TimeConstants.AUTHOR;
-import static com.mrlonis.xml.shared.time.TimeConstants.ID;
-import static com.mrlonis.xml.shared.time.TimeConstants.JODA_DATE_TIME;
-import static com.mrlonis.xml.shared.time.TimeConstants.JODA_LOCAL_DATE_TIME;
-import static com.mrlonis.xml.shared.time.TimeConstants.NAME;
-import static com.mrlonis.xml.shared.time.TimeConstants.TAGS;
+import static com.mrlonis.xml.shared.util.Constants.AUTHOR;
+import static com.mrlonis.xml.shared.util.Constants.ID;
+import static com.mrlonis.xml.shared.util.Constants.JODA_DATE_TIME;
+import static com.mrlonis.xml.shared.util.Constants.JODA_LOCAL_DATE_TIME;
+import static com.mrlonis.xml.shared.util.Constants.NAME;
+import static com.mrlonis.xml.shared.util.Constants.TAGS;
 
 import com.mrlonis.xml.shared.enums.TimeZoneIndicator;
 import com.mrlonis.xml.shared.model.BaseModel;

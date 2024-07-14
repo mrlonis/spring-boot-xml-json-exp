@@ -4,8 +4,6 @@ import static com.mrlonis.xml.shared.TestConstants.JSON_NO_ZONE;
 import static com.mrlonis.xml.shared.TestConstants.JSON_ZONED;
 import static com.mrlonis.xml.shared.TestConstants.XML_NO_ZONE;
 import static com.mrlonis.xml.shared.TestConstants.XML_ZONED;
-import static com.mrlonis.xml.shared.util.Constants.DESERIALIZE_PATH;
-import static com.mrlonis.xml.shared.util.Constants.XML_PATH;
 import static org.hamcrest.Matchers.equalTo;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -16,6 +14,7 @@ import com.mrlonis.xml.shared.enums.AnnotationLibrary;
 import com.mrlonis.xml.shared.enums.TimeLibrary;
 import com.mrlonis.xml.shared.enums.TimeZoneIndicator;
 import com.mrlonis.xml.shared.model.BaseModel;
+import com.mrlonis.xml.shared.util.Constants;
 import com.mrlonis.xml.shared.util.FetchModelUtil;
 import java.util.HashMap;
 import java.util.Map;
@@ -81,7 +80,7 @@ public abstract class BaseXmlControllerTests {
             TimeZoneIndicator zoned,
             String mediaType)
             throws Exception {
-        UriComponentsBuilder builder = UriComponentsBuilder.fromPath(XML_PATH + "/" + formatLibrary)
+        UriComponentsBuilder builder = UriComponentsBuilder.fromPath(Constants.XML_PATH + "/" + formatLibrary)
                 .queryParam("accessType", accessType)
                 .queryParam("dateLibrary", dateLibrary)
                 .queryParam("zoned", zoned);
@@ -105,7 +104,7 @@ public abstract class BaseXmlControllerTests {
             String mediaType)
             throws Exception {
         String json = getTestData(formatLibrary, accessType, dateLibrary, zoned, mediaType);
-        var whatIsThis = mockMvc.perform(post(XML_PATH + DESERIALIZE_PATH)
+        var whatIsThis = mockMvc.perform(post(Constants.XML_PATH + Constants.DESERIALIZE_PATH)
                 .header(HttpHeaders.ACCEPT, mediaType)
                 .header(HttpHeaders.CONTENT_TYPE, mediaType)
                 .content(json));

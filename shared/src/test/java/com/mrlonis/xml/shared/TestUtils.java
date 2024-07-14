@@ -1,6 +1,6 @@
 package com.mrlonis.xml.shared;
 
-import static com.mrlonis.xml.shared.time.TimeConstants.*;
+import static com.mrlonis.xml.shared.util.Constants.*;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 import com.mrlonis.xml.shared.enums.AnnotationLibrary;

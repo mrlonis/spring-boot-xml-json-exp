@@ -1,12 +1,10 @@
 package com.mrlonis.xml.shared.controller;
 
-import static com.mrlonis.xml.shared.util.Constants.DESERIALIZE_PATH;
-import static com.mrlonis.xml.shared.util.Constants.XML_PATH;
-
 import com.mrlonis.xml.shared.enums.AnnotationLibrary;
 import com.mrlonis.xml.shared.enums.TimeLibrary;
 import com.mrlonis.xml.shared.enums.TimeZoneIndicator;
 import com.mrlonis.xml.shared.model.BaseModel;
+import com.mrlonis.xml.shared.util.Constants;
 import com.mrlonis.xml.shared.util.FetchModelUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
@@ -19,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(XML_PATH)
+@RequestMapping(Constants.XML_PATH)
 @Slf4j
 public class XmlController {
     @GetMapping("/{formatLibrary}")
@@ -32,7 +30,7 @@ public class XmlController {
     }
 
     @PostMapping(
-            value = DESERIALIZE_PATH,
+            value = Constants.DESERIALIZE_PATH,
             produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
             consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     public BaseModel<?> deserializeModel(@RequestBody BaseModel<?> model) {

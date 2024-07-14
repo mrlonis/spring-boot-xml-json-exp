@@ -5,6 +5,7 @@ import static com.mrlonis.xml.shared.util.Constants.XML_PATH;
 
 import com.mrlonis.xml.shared.enums.AnnotationLibrary;
 import com.mrlonis.xml.shared.enums.TimeLibrary;
+import com.mrlonis.xml.shared.enums.TimeZoneIndicator;
 import com.mrlonis.xml.shared.model.BaseModel;
 import com.mrlonis.xml.shared.util.FetchModelUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -26,7 +27,7 @@ public class XmlController {
             @PathVariable AnnotationLibrary formatLibrary,
             @RequestParam String accessType,
             @RequestParam TimeLibrary dateLibrary,
-            @RequestParam String zoned) {
+            @RequestParam TimeZoneIndicator zoned) {
         return FetchModelUtil.fetchModel(formatLibrary, accessType, dateLibrary, zoned);
     }
 

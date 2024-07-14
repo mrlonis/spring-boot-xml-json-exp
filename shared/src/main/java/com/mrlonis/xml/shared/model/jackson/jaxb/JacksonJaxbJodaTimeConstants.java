@@ -1,5 +1,6 @@
 package com.mrlonis.xml.shared.model.jackson.jaxb;
 
+import com.mrlonis.xml.shared.enums.TimeZoneIndicator;
 import com.mrlonis.xml.shared.model.BaseModel;
 import com.mrlonis.xml.shared.time.TimeConstants;
 import java.util.Map;
@@ -97,9 +98,9 @@ public class JacksonJaxbJodaTimeConstants {
             "public_member",
             JACKSON_JAXB_JODA_TIME_ZONED_ACCESS_TYPE_PUBLIC_MEMBER);
 
-    public static final Map<String, Map<String, BaseModel<?>>> JACKSON_JAXB_JODA_TIME_MAP = Map.of(
-            TimeConstants.ZONED,
+    public static final Map<TimeZoneIndicator, Map<String, BaseModel<?>>> JACKSON_JAXB_JODA_TIME_MAP = Map.of(
+            TimeZoneIndicator.ZONED,
             JACKSON_JAXB_JODA_TIME_ZONED_MAP,
-            TimeConstants.NO_ZONE,
+            TimeZoneIndicator.NO_ZONE,
             JACKSON_JAXB_JODA_TIME_NO_ZONE_MAP);
 }

@@ -5,10 +5,9 @@ import static com.mrlonis.xml.shared.time.TimeConstants.ID;
 import static com.mrlonis.xml.shared.time.TimeConstants.JODA_DATE_TIME;
 import static com.mrlonis.xml.shared.time.TimeConstants.JODA_LOCAL_DATE_TIME;
 import static com.mrlonis.xml.shared.time.TimeConstants.NAME;
-import static com.mrlonis.xml.shared.time.TimeConstants.NO_ZONE;
 import static com.mrlonis.xml.shared.time.TimeConstants.TAGS;
-import static com.mrlonis.xml.shared.time.TimeConstants.ZONED;
 
+import com.mrlonis.xml.shared.enums.TimeZoneIndicator;
 import com.mrlonis.xml.shared.model.BaseModel;
 import java.util.Map;
 import lombok.experimental.UtilityClass;
@@ -109,6 +108,9 @@ public class PureJaxbJodaTimeConstants {
             "public_member",
             PURE_JAXB_JODA_TIME_ZONED_ACCESS_TYPE_PUBLIC_MEMBER);
 
-    public static final Map<String, Map<String, BaseModel<?>>> PURE_JAXB_JODA_TIME_MAP =
-            Map.of(ZONED, PURE_JAXB_JODA_TIME_ZONED_MAP, NO_ZONE, PURE_JAXB_JODA_TIME_NO_ZONE_MAP);
+    public static final Map<TimeZoneIndicator, Map<String, BaseModel<?>>> PURE_JAXB_JODA_TIME_MAP = Map.of(
+            TimeZoneIndicator.ZONED,
+            PURE_JAXB_JODA_TIME_ZONED_MAP,
+            TimeZoneIndicator.NO_ZONE,
+            PURE_JAXB_JODA_TIME_NO_ZONE_MAP);
 }

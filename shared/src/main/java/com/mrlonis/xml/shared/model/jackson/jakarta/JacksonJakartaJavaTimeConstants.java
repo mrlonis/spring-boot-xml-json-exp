@@ -1,5 +1,6 @@
 package com.mrlonis.xml.shared.model.jackson.jakarta;
 
+import com.mrlonis.xml.shared.enums.TimeZoneIndicator;
 import com.mrlonis.xml.shared.model.BaseModel;
 import com.mrlonis.xml.shared.time.TimeConstants;
 import java.util.Map;
@@ -93,9 +94,9 @@ public class JacksonJakartaJavaTimeConstants {
             "property", JACKSON_JAKARTA_JAVA_TIME_ZONED_ACCESS_TYPE_PROPERTY,
             "public_member", JACKSON_JAKARTA_JAVA_TIME_ZONED_ACCESS_TYPE_PUBLIC_MEMBER);
 
-    public static final Map<String, Map<String, BaseModel<?>>> JACKSON_JAKARTA_JAVA_TIME_MAP = Map.of(
-            TimeConstants.ZONED,
+    public static final Map<TimeZoneIndicator, Map<String, BaseModel<?>>> JACKSON_JAKARTA_JAVA_TIME_MAP = Map.of(
+            TimeZoneIndicator.ZONED,
             JACKSON_JAKARTA_JAVA_TIME_ZONED_MAP,
-            TimeConstants.NO_ZONE,
+            TimeZoneIndicator.NO_ZONE,
             JACKSON_JAKARTA_JAVA_TIME_NO_ZONE_MAP);
 }

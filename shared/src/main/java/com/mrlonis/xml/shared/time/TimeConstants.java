@@ -9,8 +9,6 @@ import org.joda.time.DateTime;
 
 @UtilityClass
 public class TimeConstants {
-    public static final String NO_ZONE = "nozone";
-    public static final String ZONED = "zoned";
     public static final String FIELD = "field";
     public static final String NONE = "none";
     public static final String PROPERTY = "property";

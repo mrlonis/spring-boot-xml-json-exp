@@ -1,5 +1,6 @@
 package com.mrlonis.xml.shared.model.jakarta;
 
+import com.mrlonis.xml.shared.enums.TimeZoneIndicator;
 import com.mrlonis.xml.shared.model.BaseModel;
 import com.mrlonis.xml.shared.time.TimeConstants;
 import java.util.Map;
@@ -101,6 +102,9 @@ public class JakartaJodaTimeConstants {
             "public_member",
             JAKARTA_JODA_TIME_ZONED_ACCESS_TYPE_PUBLIC_MEMBER);
 
-    public static final Map<String, Map<String, BaseModel<?>>> JAKARTA_JODA_TIME_MAP = Map.of(
-            TimeConstants.ZONED, JAKARTA_JODA_TIME_ZONED_MAP, TimeConstants.NO_ZONE, JAKARTA_JODA_TIME_NO_ZONE_MAP);
+    public static final Map<TimeZoneIndicator, Map<String, BaseModel<?>>> JAKARTA_JODA_TIME_MAP = Map.of(
+            TimeZoneIndicator.ZONED,
+            JAKARTA_JODA_TIME_ZONED_MAP,
+            TimeZoneIndicator.NO_ZONE,
+            JAKARTA_JODA_TIME_NO_ZONE_MAP);
 }

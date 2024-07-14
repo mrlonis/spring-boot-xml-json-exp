@@ -11,8 +11,9 @@ import org.joda.time.DateTime;
 
 @UtilityClass
 public class Constants {
-    public static final String XML_PATH = "/xml";
-    public static final String DESERIALIZE_PATH = "/deserialize";
+    public static final String SLASH = "/";
+    public static final String XML_PATH = SLASH + "xml";
+    public static final String DESERIALIZE_PATH = SLASH + "deserialize";
 
     public static final String FIELD = "field";
     public static final String NONE = "none";

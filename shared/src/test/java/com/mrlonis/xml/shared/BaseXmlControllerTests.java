@@ -1,9 +1,5 @@
 package com.mrlonis.xml.shared;
 
-import static com.mrlonis.xml.shared.TestConstants.JSON_NO_ZONE;
-import static com.mrlonis.xml.shared.TestConstants.JSON_ZONED;
-import static com.mrlonis.xml.shared.TestConstants.XML_NO_ZONE;
-import static com.mrlonis.xml.shared.TestConstants.XML_ZONED;
 import static org.hamcrest.Matchers.equalTo;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -85,7 +81,7 @@ public abstract class BaseXmlControllerTests {
                 .queryParam("dateLibrary", dateLibrary)
                 .queryParam("zoned", zoned);
 
-        String json = getTestData(formatLibrary, accessType, dateLibrary, zoned, mediaType);
+        String json = getResponseData(formatLibrary, accessType, dateLibrary, zoned, mediaType);
         mockMvc.perform(get(builder.build().toUriString()).header(HttpHeaders.ACCEPT, mediaType))
                 .andExpect(status().isOk())
                 .andExpect(content()
@@ -103,15 +99,12 @@ public abstract class BaseXmlControllerTests {
             TimeZoneIndicator zoned,
             String mediaType)
             throws Exception {
-        String json = getTestData(formatLibrary, accessType, dateLibrary, zoned, mediaType);
+        String json = getResponseData(formatLibrary, accessType, dateLibrary, zoned, mediaType);
+        String jsonPost = getRequestData(formatLibrary, accessType, dateLibrary, zoned, mediaType);
         var whatIsThis = mockMvc.perform(post(Constants.XML_PATH + Constants.DESERIALIZE_PATH)
                 .header(HttpHeaders.ACCEPT, mediaType)
                 .header(HttpHeaders.CONTENT_TYPE, mediaType)
-                .content(json));
-        if (AnnotationLibrary.PURE_JAXB.equals(formatLibrary) || AnnotationLibrary.PURE_JAKARTA.equals(formatLibrary)) {
-            whatIsThis.andExpect(status().isBadRequest());
-            return;
-        }
+                .content(jsonPost));
 
         whatIsThis
                 .andExpect(status().isOk())
@@ -119,31 +112,43 @@ public abstract class BaseXmlControllerTests {
                 .andExpect(content().string(equalTo(json)));
     }
 
-    private String getTestData(
+    private String getResponseData(
             AnnotationLibrary formatLibrary,
             String accessType,
             TimeLibrary dateLibrary,
             TimeZoneIndicator zoned,
             String mediaType) {
         if (MediaType.APPLICATION_XML_VALUE.equals(mediaType)) {
-            return getTestXml(formatLibrary, accessType, dateLibrary, zoned);
+            return getResponseTestXml(formatLibrary, accessType, dateLibrary, zoned);
         } else if (MediaType.APPLICATION_JSON_VALUE.equals(mediaType)) {
-            return getTestJson(formatLibrary, accessType, dateLibrary, zoned);
+            return getResponseTestJson(formatLibrary, accessType, dateLibrary, zoned);
         } else {
             throw new IllegalArgumentException("Invalid media type: " + mediaType);
         }
     }
 
-    private String getTestJson(
+    private String getResponseTestJson(
             AnnotationLibrary formatLibrary, String accessType, TimeLibrary dateLibrary, TimeZoneIndicator zoned) {
+        String json_zoned = TestConstants.JSON_ZONED;
+        String json_no_zone = TestConstants.JSON_NO_ZONE;
+        if (AnnotationLibrary.PURE_JAXB.equals(formatLibrary) || AnnotationLibrary.PURE_JAKARTA.equals(formatLibrary)) {
+            json_zoned = TestConstants.JSON_ZONED_BAD;
+            json_no_zone = TestConstants.JSON_NO_ZONE_BAD;
+        }
         return replaceTypeInData(
-                formatLibrary, accessType, dateLibrary, zoned, getDataByZone(zoned, JSON_ZONED, JSON_NO_ZONE));
+                formatLibrary, accessType, dateLibrary, zoned, getDataByZone(zoned, json_zoned, json_no_zone));
     }
 
-    private String getTestXml(
+    private String getResponseTestXml(
             AnnotationLibrary formatLibrary, String accessType, TimeLibrary dateLibrary, TimeZoneIndicator zoned) {
+        String xml_zoned = TestConstants.XML_ZONED;
+        String xml_no_zone = TestConstants.XML_NO_ZONE;
+        if (AnnotationLibrary.PURE_JAXB.equals(formatLibrary) || AnnotationLibrary.PURE_JAKARTA.equals(formatLibrary)) {
+            xml_zoned = TestConstants.XML_ZONED_BAD;
+            xml_no_zone = TestConstants.XML_NO_ZONE_BAD;
+        }
         return replaceTypeInData(
-                formatLibrary, accessType, dateLibrary, zoned, getDataByZone(zoned, XML_ZONED, XML_NO_ZONE));
+                formatLibrary, accessType, dateLibrary, zoned, getDataByZone(zoned, xml_zoned, xml_no_zone));
     }
 
     private String getDataByZone(TimeZoneIndicator zonedIndicator, String zonedData, String noZoneData) {
@@ -172,5 +177,44 @@ public abstract class BaseXmlControllerTests {
         valuesMap.put("className", className);
         StringSubstitutor sub = new StringSubstitutor(valuesMap);
         return sub.replace(stringToReplace);
+    }
+
+    private String getRequestData(
+            AnnotationLibrary formatLibrary,
+            String accessType,
+            TimeLibrary dateLibrary,
+            TimeZoneIndicator zoned,
+            String mediaType) {
+        if (MediaType.APPLICATION_XML_VALUE.equals(mediaType)) {
+            return getRequestTestXml(formatLibrary, accessType, dateLibrary, zoned);
+        } else if (MediaType.APPLICATION_JSON_VALUE.equals(mediaType)) {
+            return getRequestTestJson(formatLibrary, accessType, dateLibrary, zoned);
+        } else {
+            throw new IllegalArgumentException("Invalid media type: " + mediaType);
+        }
+    }
+
+    private String getRequestTestJson(
+            AnnotationLibrary formatLibrary, String accessType, TimeLibrary dateLibrary, TimeZoneIndicator zoned) {
+        String json_zoned = TestConstants.JSON_ZONED;
+        String json_no_zone = TestConstants.JSON_NO_ZONE;
+        if (AnnotationLibrary.PURE_JAXB.equals(formatLibrary) || AnnotationLibrary.PURE_JAKARTA.equals(formatLibrary)) {
+            json_zoned = TestConstants.JSON_ZONED_BAD_POST;
+            json_no_zone = TestConstants.JSON_NO_ZONE_BAD_POST;
+        }
+        return replaceTypeInData(
+                formatLibrary, accessType, dateLibrary, zoned, getDataByZone(zoned, json_zoned, json_no_zone));
+    }
+
+    private String getRequestTestXml(
+            AnnotationLibrary formatLibrary, String accessType, TimeLibrary dateLibrary, TimeZoneIndicator zoned) {
+        String xml_zoned = TestConstants.XML_ZONED;
+        String xml_no_zone = TestConstants.XML_NO_ZONE;
+        if (AnnotationLibrary.PURE_JAXB.equals(formatLibrary) || AnnotationLibrary.PURE_JAKARTA.equals(formatLibrary)) {
+            xml_zoned = TestConstants.XML_ZONED_BAD_POST;
+            xml_no_zone = TestConstants.XML_NO_ZONE_BAD_POST;
+        }
+        return replaceTypeInData(
+                formatLibrary, accessType, dateLibrary, zoned, getDataByZone(zoned, xml_zoned, xml_no_zone));
     }
 }

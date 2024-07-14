@@ -1,8 +1,8 @@
 package com.mrlonis.xml.shared;
 
-import static com.mrlonis.xml.shared.TestConstants.JSON;
+import static com.mrlonis.xml.shared.TestConstants.JSON_NO_ZONE;
 import static com.mrlonis.xml.shared.TestConstants.JSON_ZONED;
-import static com.mrlonis.xml.shared.TestConstants.XML;
+import static com.mrlonis.xml.shared.TestConstants.XML_NO_ZONE;
 import static com.mrlonis.xml.shared.TestConstants.XML_ZONED;
 import static com.mrlonis.xml.shared.time.TimeConstants.NO_ZONE;
 import static com.mrlonis.xml.shared.time.TimeConstants.PURE_JAKARTA;
@@ -121,11 +121,11 @@ public abstract class BaseXmlControllerTests {
     }
 
     private String getTestJson(String formatLibrary, String accessType, String dateLibrary, String zoned) {
-        return replaceTypeInData(formatLibrary, accessType, dateLibrary, zoned, getDataByZone(zoned, JSON_ZONED, JSON));
+        return replaceTypeInData(formatLibrary, accessType, dateLibrary, zoned, getDataByZone(zoned, JSON_ZONED, JSON_NO_ZONE));
     }
 
     private String getTestXml(String formatLibrary, String accessType, String dateLibrary, String zoned) {
-        return replaceTypeInData(formatLibrary, accessType, dateLibrary, zoned, getDataByZone(zoned, XML_ZONED, XML));
+        return replaceTypeInData(formatLibrary, accessType, dateLibrary, zoned, getDataByZone(zoned, XML_ZONED, XML_NO_ZONE));
     }
 
     private String getDataByZone(String zonedIndicator, String zonedData, String noZoneData) {

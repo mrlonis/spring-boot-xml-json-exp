@@ -1,4 +1,4 @@
-package com.mrlonis.xml.shared.model.pure.jakarta.jakarta;
+package com.mrlonis.xml.shared.model.pure.jakarta.java;
 
 import com.mrlonis.xml.shared.adapter.JakartaJavaTimeAdapters;
 import com.mrlonis.xml.shared.model.BaseModel;
@@ -11,19 +11,19 @@ import jakarta.xml.bind.annotation.XmlRootElement;
 import jakarta.xml.bind.annotation.XmlTransient;
 import jakarta.xml.bind.annotation.XmlType;
 import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 import java.util.List;
 import lombok.Builder;
 import lombok.Data;
 import lombok.extern.jackson.Jacksonized;
 
 @XmlRootElement(name = "book")
-@XmlAccessorType(XmlAccessType.PUBLIC_MEMBER)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(propOrder = {"id", "name", "date", "tags"})
 @Data
 @Jacksonized
 @Builder
-public class PureJakartaJavaTimeNoZoneAccessTypePublicMember implements BaseModel<LocalDateTime> {
+public class PureJakartaJavaTimeZonedAccessTypeNone implements BaseModel<ZonedDateTime> {
     @XmlAttribute
     private long id;
 
@@ -34,8 +34,8 @@ public class PureJakartaJavaTimeNoZoneAccessTypePublicMember implements BaseMode
     private String author;
 
     @XmlElement
-    @XmlJavaTypeAdapter(JakartaJavaTimeAdapters.JakartaLocalDateTimeAdapter.class)
-    private LocalDateTime date;
+    @XmlJavaTypeAdapter(JakartaJavaTimeAdapters.JakartaZonedDateTimeAdapter.class)
+    private ZonedDateTime date;
 
     @XmlElementWrapper(name = "tags")
     @XmlElement(name = "tag")

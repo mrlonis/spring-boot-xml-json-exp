@@ -1,4 +1,4 @@
-package com.mrlonis.xml.shared.model.pure.jakarta.jakarta;
+package com.mrlonis.xml.shared.model.pure.jakarta.java;
 
 import static com.mrlonis.xml.shared.util.Constants.AUTHOR;
 import static com.mrlonis.xml.shared.util.Constants.ID;

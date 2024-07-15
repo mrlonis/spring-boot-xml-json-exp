@@ -18,7 +18,6 @@
   </properties>
   <dependencies>
     <dependency>
-      <!-- TODO: Remove this. This module/app should be pure Jakarta -->
       <groupId>com.fasterxml.jackson.dataformat</groupId>
       <artifactId>jackson-dataformat-xml</artifactId>
     </dependency>

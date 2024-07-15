@@ -1,4 +1,4 @@
-package com.mrlonis.xml.shared.model.pure.jakarta.jakarta;
+package com.mrlonis.xml.shared.model.pure.jakarta.java;
 
 import com.mrlonis.xml.shared.adapter.JakartaJavaTimeAdapters;
 import com.mrlonis.xml.shared.model.BaseModel;

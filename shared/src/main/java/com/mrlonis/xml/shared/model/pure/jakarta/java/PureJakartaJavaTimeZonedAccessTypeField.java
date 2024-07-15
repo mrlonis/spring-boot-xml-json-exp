@@ -1,4 +1,4 @@
-package com.mrlonis.xml.shared.model.pure.jakarta.jakarta;
+package com.mrlonis.xml.shared.model.pure.jakarta.java;
 
 import com.mrlonis.xml.shared.adapter.JakartaJavaTimeAdapters;
 import com.mrlonis.xml.shared.model.BaseModel;
@@ -18,12 +18,12 @@ import lombok.Data;
 import lombok.extern.jackson.Jacksonized;
 
 @XmlRootElement(name = "book")
-@XmlAccessorType(XmlAccessType.PUBLIC_MEMBER)
+@XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(propOrder = {"id", "name", "date", "tags"})
 @Data
 @Jacksonized
 @Builder
-public class PureJakartaJavaTimeZonedAccessTypePublicMember implements BaseModel<ZonedDateTime> {
+public class PureJakartaJavaTimeZonedAccessTypeField implements BaseModel<ZonedDateTime> {
     @XmlAttribute
     private long id;
 

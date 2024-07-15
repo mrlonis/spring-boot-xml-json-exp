@@ -82,11 +82,7 @@ public abstract class BaseXmlControllerTests {
         mockMvc.perform(MockMvcRequestBuilders.get(builder.build().toUriString())
                         .header(HttpHeaders.ACCEPT, mediaType))
                 .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(MockMvcResultMatchers.content()
-                        .contentType(
-                                MediaType.APPLICATION_XML_VALUE.equals(mediaType)
-                                        ? mediaType + ";charset=UTF-8"
-                                        : mediaType))
+                .andExpect(MockMvcResultMatchers.content().contentTypeCompatibleWith(mediaType))
                 .andExpect(MockMvcResultMatchers.content().string(Matchers.equalTo(json)));
     }
 

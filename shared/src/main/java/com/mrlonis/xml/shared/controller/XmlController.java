@@ -20,7 +20,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(Constants.XML_PATH)
 @Slf4j
 public class XmlController {
-    @GetMapping("/{formatLibrary}")
+    @GetMapping(
+            value = "/{formatLibrary}",
+            produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     public BaseModel<?> getModel(
             @PathVariable AnnotationLibrary formatLibrary,
             @RequestParam String accessType,

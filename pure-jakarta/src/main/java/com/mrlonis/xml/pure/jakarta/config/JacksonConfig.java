@@ -18,7 +18,7 @@ public class JacksonConfig {
      * @return {@link JakartaXmlBindAnnotationModule}
      */
     @Bean
-    public Module jaxbAnnotationModule() {
+    public Module jakartaXmlBindAnnotationModule() {
         return new JakartaXmlBindAnnotationModule();
     }
 }

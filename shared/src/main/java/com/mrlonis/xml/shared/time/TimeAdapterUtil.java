@@ -17,7 +17,6 @@ public class TimeAdapterUtil {
     private static final String UNSUPPORTED_TYPE = "Unsupported type: ";
 
     public static <T> T unmarshal(String v, @Nullable Class<T> type) {
-        log.info("TimeAdapterUtil: unmarshal(): v: {}, type: {}", v, type != null ? type.getName() : null);
         if (type == LocalDateTime.class) {
             return type.cast(JavaTimeUtil.unmarshalLocalDateTime(v));
         } else if (type == ZonedDateTime.class) {
@@ -33,10 +32,6 @@ public class TimeAdapterUtil {
     }
 
     public static <T> String marshal(T v) {
-        log.info(
-                "TimeAdapterUtil: marshal(): v: {}, v.getClass(): {}",
-                v,
-                v.getClass().getName());
         if (v instanceof LocalDateTime localDateTime) {
             return JavaTimeUtil.marshalLocalDateTime(localDateTime);
         } else if (v instanceof ZonedDateTime zonedDateTime) {
@@ -52,10 +47,6 @@ public class TimeAdapterUtil {
     }
 
     public static <T> void serialize(T v, JsonGenerator gen, SerializerProvider arg2) throws IOException {
-        log.info(
-                "TimeAdapterUtil: serialize(): v: {}, v.getClass(): {}",
-                v,
-                v.getClass().getName());
         if (v instanceof LocalDateTime localDateTime) {
             JavaTimeUtil.serializeLocalDateTime(localDateTime, gen, arg2);
             return;

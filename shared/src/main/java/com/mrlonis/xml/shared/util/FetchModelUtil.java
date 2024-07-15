@@ -14,10 +14,8 @@ import com.mrlonis.xml.shared.model.jakarta.JakartaConstants;
 import com.mrlonis.xml.shared.model.jaxb.JaxbConstants;
 import java.util.Map;
 import lombok.experimental.UtilityClass;
-import lombok.extern.slf4j.Slf4j;
 
 @UtilityClass
-@Slf4j
 public class FetchModelUtil {
     private static final Map<AnnotationLibrary, Map<TimeLibrary, Map<TimeZoneIndicator, Map<String, BaseModel<?>>>>>
             XML_MODELS_BY_TYPE = Map.of(
@@ -38,12 +36,6 @@ public class FetchModelUtil {
 
     public static BaseModel<?> fetchModel(
             AnnotationLibrary formatLibrary, String accessType, TimeLibrary dateLibrary, TimeZoneIndicator zoned) {
-        log.info(
-                "FetchModelUtil: fetchModel(): formatLibrary: {} | dateLibrary: {} | zoned: {} | | accessType: {}",
-                formatLibrary,
-                dateLibrary,
-                zoned,
-                accessType);
         return XML_MODELS_BY_TYPE.get(formatLibrary).get(dateLibrary).get(zoned).get(accessType);
     }
 }

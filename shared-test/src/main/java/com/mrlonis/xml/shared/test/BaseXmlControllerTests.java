@@ -11,7 +11,6 @@ import com.mrlonis.xml.shared.util.FetchModelUtil;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Stream;
-import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.text.StringSubstitutor;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.TestInstance;
@@ -25,7 +24,6 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.web.util.UriComponentsBuilder;
 
-@Slf4j
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public abstract class BaseXmlControllerTests {
     private final MockMvc mockMvc;

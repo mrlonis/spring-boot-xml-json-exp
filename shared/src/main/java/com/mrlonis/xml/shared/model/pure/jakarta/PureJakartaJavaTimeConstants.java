@@ -9,41 +9,46 @@ import static com.mrlonis.xml.shared.util.Constants.TAGS;
 
 import com.mrlonis.xml.shared.enums.TimeZoneIndicator;
 import com.mrlonis.xml.shared.model.BaseModel;
+import com.mrlonis.xml.shared.model.pure.jakarta.jakarta.PureJakartaJavaTimeNoZoneAccessTypeField;
+import com.mrlonis.xml.shared.model.pure.jakarta.jakarta.PureJakartaJavaTimeNoZoneAccessTypeNone;
+import com.mrlonis.xml.shared.model.pure.jakarta.jakarta.PureJakartaJavaTimeNoZoneAccessTypeProperty;
+import com.mrlonis.xml.shared.model.pure.jakarta.jakarta.PureJakartaJavaTimeNoZoneAccessTypePublicMember;
+import com.mrlonis.xml.shared.model.pure.jakarta.jakarta.PureJakartaJavaTimeZonedAccessTypeField;
+import com.mrlonis.xml.shared.model.pure.jakarta.jakarta.PureJakartaJavaTimeZonedAccessTypeNone;
+import com.mrlonis.xml.shared.model.pure.jakarta.jakarta.PureJakartaJavaTimeZonedAccessTypeProperty;
+import com.mrlonis.xml.shared.model.pure.jakarta.jakarta.PureJakartaJavaTimeZonedAccessTypePublicMember;
 import java.util.Map;
 import lombok.experimental.UtilityClass;
 
 @UtilityClass
 public class PureJakartaJavaTimeConstants {
-    private static final PureJakartaJavaTimeModels.PureJakartaJavaTimeNoZoneAccessTypeField
-            PURE_JAKARTA_JAVA_TIME_NO_ZONE_ACCESS_TYPE_FIELD =
-                    PureJakartaJavaTimeModels.PureJakartaJavaTimeNoZoneAccessTypeField.builder()
-                            .id(ID)
-                            .name(NAME)
-                            .author(AUTHOR)
-                            .date(JAVA_TIME_LOCAL_DATE_TIME)
-                            .tag(TAGS)
-                            .build();
-    private static final PureJakartaJavaTimeModels.PureJakartaJavaTimeNoZoneAccessTypeNone
-            PURE_JAKARTA_JAVA_TIME_NO_ZONE_ACCESS_TYPE_NONE =
-                    PureJakartaJavaTimeModels.PureJakartaJavaTimeNoZoneAccessTypeNone.builder()
-                            .id(ID)
-                            .name(NAME)
-                            .author(AUTHOR)
-                            .date(JAVA_TIME_LOCAL_DATE_TIME)
-                            .tag(TAGS)
-                            .build();
-    private static final PureJakartaJavaTimeModels.PureJakartaJavaTimeNoZoneAccessTypeProperty
-            PURE_JAKARTA_JAVA_TIME_NO_ZONE_ACCESS_TYPE_PROPERTY =
-                    PureJakartaJavaTimeModels.PureJakartaJavaTimeNoZoneAccessTypeProperty.builder()
-                            .id(ID)
-                            .name(NAME)
-                            .author(AUTHOR)
-                            .date(JAVA_TIME_LOCAL_DATE_TIME)
-                            .tag(TAGS)
-                            .build();
-    private static final PureJakartaJavaTimeModels.PureJakartaJavaTimeNoZoneAccessTypePublicMember
+    private static final PureJakartaJavaTimeNoZoneAccessTypeField PURE_JAKARTA_JAVA_TIME_NO_ZONE_ACCESS_TYPE_FIELD =
+            PureJakartaJavaTimeNoZoneAccessTypeField.builder()
+                    .id(ID)
+                    .name(NAME)
+                    .author(AUTHOR)
+                    .date(JAVA_TIME_LOCAL_DATE_TIME)
+                    .tag(TAGS)
+                    .build();
+    private static final PureJakartaJavaTimeNoZoneAccessTypeNone PURE_JAKARTA_JAVA_TIME_NO_ZONE_ACCESS_TYPE_NONE =
+            PureJakartaJavaTimeNoZoneAccessTypeNone.builder()
+                    .id(ID)
+                    .name(NAME)
+                    .author(AUTHOR)
+                    .date(JAVA_TIME_LOCAL_DATE_TIME)
+                    .tag(TAGS)
+                    .build();
+    private static final PureJakartaJavaTimeNoZoneAccessTypeProperty
+            PURE_JAKARTA_JAVA_TIME_NO_ZONE_ACCESS_TYPE_PROPERTY = PureJakartaJavaTimeNoZoneAccessTypeProperty.builder()
+                    .id(ID)
+                    .name(NAME)
+                    .author(AUTHOR)
+                    .date(JAVA_TIME_LOCAL_DATE_TIME)
+                    .tag(TAGS)
+                    .build();
+    private static final PureJakartaJavaTimeNoZoneAccessTypePublicMember
             PURE_JAKARTA_JAVA_TIME_NO_ZONE_ACCESS_TYPE_PUBLIC_MEMBER =
-                    PureJakartaJavaTimeModels.PureJakartaJavaTimeNoZoneAccessTypePublicMember.builder()
+                    PureJakartaJavaTimeNoZoneAccessTypePublicMember.builder()
                             .id(ID)
                             .name(NAME)
                             .author(AUTHOR)
@@ -61,36 +66,33 @@ public class PureJakartaJavaTimeConstants {
             "public_member",
             PURE_JAKARTA_JAVA_TIME_NO_ZONE_ACCESS_TYPE_PUBLIC_MEMBER);
 
-    private static final PureJakartaJavaTimeModels.PureJakartaJavaTimeZonedAccessTypeField
-            PURE_JAKARTA_JAVA_TIME_ZONED_ACCESS_TYPE_FIELD =
-                    PureJakartaJavaTimeModels.PureJakartaJavaTimeZonedAccessTypeField.builder()
-                            .id(ID)
-                            .name(NAME)
-                            .author(AUTHOR)
-                            .date(JAVA_TIME_ZONED_DATE_TIME)
-                            .tag(TAGS)
-                            .build();
-    private static final PureJakartaJavaTimeModels.PureJakartaJavaTimeZonedAccessTypeNone
-            PURE_JAKARTA_JAVA_TIME_ZONED_ACCESS_TYPE_NONE =
-                    PureJakartaJavaTimeModels.PureJakartaJavaTimeZonedAccessTypeNone.builder()
-                            .id(ID)
-                            .name(NAME)
-                            .author(AUTHOR)
-                            .date(JAVA_TIME_ZONED_DATE_TIME)
-                            .tag(TAGS)
-                            .build();
-    private static final PureJakartaJavaTimeModels.PureJakartaJavaTimeZonedAccessTypeProperty
-            PURE_JAKARTA_JAVA_TIME_ZONED_ACCESS_TYPE_PROPERTY =
-                    PureJakartaJavaTimeModels.PureJakartaJavaTimeZonedAccessTypeProperty.builder()
-                            .id(ID)
-                            .name(NAME)
-                            .author(AUTHOR)
-                            .date(JAVA_TIME_ZONED_DATE_TIME)
-                            .tag(TAGS)
-                            .build();
-    private static final PureJakartaJavaTimeModels.PureJakartaJavaTimeZonedAccessTypePublicMember
+    private static final PureJakartaJavaTimeZonedAccessTypeField PURE_JAKARTA_JAVA_TIME_ZONED_ACCESS_TYPE_FIELD =
+            PureJakartaJavaTimeZonedAccessTypeField.builder()
+                    .id(ID)
+                    .name(NAME)
+                    .author(AUTHOR)
+                    .date(JAVA_TIME_ZONED_DATE_TIME)
+                    .tag(TAGS)
+                    .build();
+    private static final PureJakartaJavaTimeZonedAccessTypeNone PURE_JAKARTA_JAVA_TIME_ZONED_ACCESS_TYPE_NONE =
+            PureJakartaJavaTimeZonedAccessTypeNone.builder()
+                    .id(ID)
+                    .name(NAME)
+                    .author(AUTHOR)
+                    .date(JAVA_TIME_ZONED_DATE_TIME)
+                    .tag(TAGS)
+                    .build();
+    private static final PureJakartaJavaTimeZonedAccessTypeProperty PURE_JAKARTA_JAVA_TIME_ZONED_ACCESS_TYPE_PROPERTY =
+            PureJakartaJavaTimeZonedAccessTypeProperty.builder()
+                    .id(ID)
+                    .name(NAME)
+                    .author(AUTHOR)
+                    .date(JAVA_TIME_ZONED_DATE_TIME)
+                    .tag(TAGS)
+                    .build();
+    private static final PureJakartaJavaTimeZonedAccessTypePublicMember
             PURE_JAKARTA_JAVA_TIME_ZONED_ACCESS_TYPE_PUBLIC_MEMBER =
-                    PureJakartaJavaTimeModels.PureJakartaJavaTimeZonedAccessTypePublicMember.builder()
+                    PureJakartaJavaTimeZonedAccessTypePublicMember.builder()
                             .id(ID)
                             .name(NAME)
                             .author(AUTHOR)

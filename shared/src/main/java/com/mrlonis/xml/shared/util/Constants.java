@@ -15,11 +15,6 @@ public class Constants {
     public static final String XML_PATH = SLASH + "xml";
     public static final String DESERIALIZE_PATH = SLASH + "deserialize";
 
-    public static final String FIELD = "field";
-    public static final String NONE = "none";
-    public static final String PROPERTY = "property";
-    public static final String PUBLIC_MEMBER = "public_member";
-
     public static final long ID = 1;
     public static final String NAME = "name";
     public static final String AUTHOR = "author";

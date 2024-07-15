@@ -3,6 +3,7 @@ package com.mrlonis.xml.shared.controller;
 import com.mrlonis.xml.shared.enums.AnnotationLibrary;
 import com.mrlonis.xml.shared.enums.TimeLibrary;
 import com.mrlonis.xml.shared.enums.TimeZoneIndicator;
+import com.mrlonis.xml.shared.enums.XmlAccessorType;
 import com.mrlonis.xml.shared.model.BaseModel;
 import com.mrlonis.xml.shared.util.Constants;
 import com.mrlonis.xml.shared.util.FetchModelUtil;
@@ -23,7 +24,7 @@ public class XmlController {
             produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     public BaseModel<?> getModel(
             @PathVariable AnnotationLibrary formatLibrary,
-            @RequestParam String accessType,
+            @RequestParam XmlAccessorType accessType,
             @RequestParam TimeLibrary dateLibrary,
             @RequestParam TimeZoneIndicator zoned) {
         return FetchModelUtil.fetchModel(formatLibrary, accessType, dateLibrary, zoned);

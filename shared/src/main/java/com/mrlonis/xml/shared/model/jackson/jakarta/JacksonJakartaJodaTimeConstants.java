@@ -1,6 +1,7 @@
 package com.mrlonis.xml.shared.model.jackson.jakarta;
 
 import com.mrlonis.xml.shared.enums.TimeZoneIndicator;
+import com.mrlonis.xml.shared.enums.XmlAccessorType;
 import com.mrlonis.xml.shared.model.BaseModel;
 import com.mrlonis.xml.shared.util.Constants;
 import java.util.Map;
@@ -45,11 +46,11 @@ public class JacksonJakartaJodaTimeConstants {
                             .tag(Constants.TAGS)
                             .build();
 
-    private static final Map<String, BaseModel<?>> JACKSON_JAKARTA_JODA_TIME_NO_ZONE_MAP = Map.of(
-            Constants.FIELD, JACKSON_JAKARTA_JODA_TIME_NO_ZONE_ACCESS_TYPE_FIELD,
-            Constants.NONE, JACKSON_JAKARTA_JODA_TIME_NO_ZONE_ACCESS_TYPE_NONE,
-            Constants.PROPERTY, JACKSON_JAKARTA_JODA_TIME_NO_ZONE_ACCESS_TYPE_PROPERTY,
-            Constants.PUBLIC_MEMBER, JACKSON_JAKARTA_JODA_TIME_NO_ZONE_ACCESS_TYPE_PUBLIC_MEMBER);
+    private static final Map<XmlAccessorType, BaseModel<?>> JACKSON_JAKARTA_JODA_TIME_NO_ZONE_MAP = Map.of(
+            XmlAccessorType.FIELD, JACKSON_JAKARTA_JODA_TIME_NO_ZONE_ACCESS_TYPE_FIELD,
+            XmlAccessorType.NONE, JACKSON_JAKARTA_JODA_TIME_NO_ZONE_ACCESS_TYPE_NONE,
+            XmlAccessorType.PROPERTY, JACKSON_JAKARTA_JODA_TIME_NO_ZONE_ACCESS_TYPE_PROPERTY,
+            XmlAccessorType.PUBLIC_MEMBER, JACKSON_JAKARTA_JODA_TIME_NO_ZONE_ACCESS_TYPE_PUBLIC_MEMBER);
 
     private static final JacksonJakartaJodaTimeModels.JacksonJakartaJodaTimeZonedAccessTypeField
             JACKSON_JAKARTA_JODA_TIME_ZONED_ACCESS_TYPE_FIELD =
@@ -88,19 +89,20 @@ public class JacksonJakartaJodaTimeConstants {
                             .tag(Constants.TAGS)
                             .build();
 
-    private static final Map<String, BaseModel<?>> JACKSON_JAKARTA_JODA_TIME_ZONED_MAP = Map.of(
-            Constants.FIELD,
+    private static final Map<XmlAccessorType, BaseModel<?>> JACKSON_JAKARTA_JODA_TIME_ZONED_MAP = Map.of(
+            XmlAccessorType.FIELD,
             JACKSON_JAKARTA_JODA_TIME_ZONED_ACCESS_TYPE_FIELD,
-            Constants.NONE,
+            XmlAccessorType.NONE,
             JACKSON_JAKARTA_JODA_TIME_ZONED_ACCESS_TYPE_NONE,
-            Constants.PROPERTY,
+            XmlAccessorType.PROPERTY,
             JACKSON_JAKARTA_JODA_TIME_ZONED_ACCESS_TYPE_PROPERTY,
-            Constants.PUBLIC_MEMBER,
+            XmlAccessorType.PUBLIC_MEMBER,
             JACKSON_JAKARTA_JODA_TIME_ZONED_ACCESS_TYPE_PUBLIC_MEMBER);
 
-    public static final Map<TimeZoneIndicator, Map<String, BaseModel<?>>> JACKSON_JAKARTA_JODA_TIME_MAP = Map.of(
-            TimeZoneIndicator.ZONED,
-            JACKSON_JAKARTA_JODA_TIME_ZONED_MAP,
-            TimeZoneIndicator.NO_ZONE,
-            JACKSON_JAKARTA_JODA_TIME_NO_ZONE_MAP);
+    public static final Map<TimeZoneIndicator, Map<XmlAccessorType, BaseModel<?>>> JACKSON_JAKARTA_JODA_TIME_MAP =
+            Map.of(
+                    TimeZoneIndicator.ZONED,
+                    JACKSON_JAKARTA_JODA_TIME_ZONED_MAP,
+                    TimeZoneIndicator.NO_ZONE,
+                    JACKSON_JAKARTA_JODA_TIME_NO_ZONE_MAP);
 }

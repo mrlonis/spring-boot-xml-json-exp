@@ -4,14 +4,15 @@ import static com.mrlonis.xml.shared.model.jackson.jakarta.JacksonJakartaJodaTim
 
 import com.mrlonis.xml.shared.enums.TimeLibrary;
 import com.mrlonis.xml.shared.enums.TimeZoneIndicator;
+import com.mrlonis.xml.shared.enums.XmlAccessorType;
 import com.mrlonis.xml.shared.model.BaseModel;
 import java.util.Map;
 import lombok.experimental.UtilityClass;
 
 @UtilityClass
 public class JacksonJakartaConstants {
-    public static final Map<TimeLibrary, Map<TimeZoneIndicator, Map<String, BaseModel<?>>>> JACKSON_JAKARTA_MAP =
-            Map.of(
+    public static final Map<TimeLibrary, Map<TimeZoneIndicator, Map<XmlAccessorType, BaseModel<?>>>>
+            JACKSON_JAKARTA_MAP = Map.of(
                     TimeLibrary.JODA,
                     JACKSON_JAKARTA_JODA_TIME_MAP,
                     TimeLibrary.JAVA,

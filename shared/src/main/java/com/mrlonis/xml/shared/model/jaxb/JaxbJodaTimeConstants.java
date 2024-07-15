@@ -8,8 +8,8 @@ import static com.mrlonis.xml.shared.util.Constants.NAME;
 import static com.mrlonis.xml.shared.util.Constants.TAGS;
 
 import com.mrlonis.xml.shared.enums.TimeZoneIndicator;
+import com.mrlonis.xml.shared.enums.XmlAccessorType;
 import com.mrlonis.xml.shared.model.BaseModel;
-import com.mrlonis.xml.shared.util.Constants;
 import java.util.Map;
 import lombok.experimental.UtilityClass;
 
@@ -50,14 +50,14 @@ public class JaxbJodaTimeConstants {
                             .tag(TAGS)
                             .build();
 
-    private static final Map<String, BaseModel<?>> JAXB_JODA_TIME_NO_ZONE_MAP = Map.of(
-            Constants.FIELD,
+    private static final Map<XmlAccessorType, BaseModel<?>> JAXB_JODA_TIME_NO_ZONE_MAP = Map.of(
+            XmlAccessorType.FIELD,
             JAXB_JODA_TIME_NO_ZONE_ACCESS_TYPE_FIELD,
-            Constants.NONE,
+            XmlAccessorType.NONE,
             JAXB_JODA_TIME_NO_ZONE_ACCESS_TYPE_NONE,
-            Constants.PROPERTY,
+            XmlAccessorType.PROPERTY,
             JAXB_JODA_TIME_NO_ZONE_ACCESS_TYPE_PROPERTY,
-            Constants.PUBLIC_MEMBER,
+            XmlAccessorType.PUBLIC_MEMBER,
             JAXB_JODA_TIME_NO_ZONE_ACCESS_TYPE_PUBLIC_MEMBER);
 
     private static final JaxbJodaTimeModels.JaxbJodaTimeZonedAccessTypeField JAXB_JODA_TIME_ZONED_ACCESS_TYPE_FIELD =
@@ -94,16 +94,16 @@ public class JaxbJodaTimeConstants {
                             .tag(TAGS)
                             .build();
 
-    private static final Map<String, BaseModel<?>> JAXB_JODA_TIME_ZONED_MAP = Map.of(
-            Constants.FIELD,
+    private static final Map<XmlAccessorType, BaseModel<?>> JAXB_JODA_TIME_ZONED_MAP = Map.of(
+            XmlAccessorType.FIELD,
             JAXB_JODA_TIME_ZONED_ACCESS_TYPE_FIELD,
-            Constants.NONE,
+            XmlAccessorType.NONE,
             JAXB_JODA_TIME_ZONED_ACCESS_TYPE_NONE,
-            Constants.PROPERTY,
+            XmlAccessorType.PROPERTY,
             JAXB_JODA_TIME_ZONED_ACCESS_TYPE_PROPERTY,
-            Constants.PUBLIC_MEMBER,
+            XmlAccessorType.PUBLIC_MEMBER,
             JAXB_JODA_TIME_ZONED_ACCESS_TYPE_PUBLIC_MEMBER);
 
-    public static final Map<TimeZoneIndicator, Map<String, BaseModel<?>>> JAXB_JODA_TIME_MAP = Map.of(
+    public static final Map<TimeZoneIndicator, Map<XmlAccessorType, BaseModel<?>>> JAXB_JODA_TIME_MAP = Map.of(
             TimeZoneIndicator.ZONED, JAXB_JODA_TIME_ZONED_MAP, TimeZoneIndicator.NO_ZONE, JAXB_JODA_TIME_NO_ZONE_MAP);
 }

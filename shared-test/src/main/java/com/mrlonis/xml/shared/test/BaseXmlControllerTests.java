@@ -5,6 +5,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import com.mrlonis.xml.shared.enums.AnnotationLibrary;
 import com.mrlonis.xml.shared.enums.TimeLibrary;
 import com.mrlonis.xml.shared.enums.TimeZoneIndicator;
+import com.mrlonis.xml.shared.enums.XmlAccessorType;
 import com.mrlonis.xml.shared.model.BaseModel;
 import com.mrlonis.xml.shared.util.Constants;
 import com.mrlonis.xml.shared.util.FetchModelUtil;
@@ -37,7 +38,10 @@ public abstract class BaseXmlControllerTests {
     @ParameterizedTest
     @MethodSource("testArguments")
     void testJsonSerialization(
-            AnnotationLibrary formatLibrary, String accessType, TimeLibrary dateLibrary, TimeZoneIndicator zoned)
+            AnnotationLibrary formatLibrary,
+            XmlAccessorType accessType,
+            TimeLibrary dateLibrary,
+            TimeZoneIndicator zoned)
             throws Exception {
         performGetTest(formatLibrary, accessType, dateLibrary, zoned, MediaType.APPLICATION_JSON_VALUE);
     }
@@ -45,7 +49,10 @@ public abstract class BaseXmlControllerTests {
     @ParameterizedTest
     @MethodSource("testArguments")
     void testJsonDeserialization(
-            AnnotationLibrary formatLibrary, String accessType, TimeLibrary dateLibrary, TimeZoneIndicator zoned)
+            AnnotationLibrary formatLibrary,
+            XmlAccessorType accessType,
+            TimeLibrary dateLibrary,
+            TimeZoneIndicator zoned)
             throws Exception {
         performPostTest(formatLibrary, accessType, dateLibrary, zoned, MediaType.APPLICATION_JSON_VALUE);
     }
@@ -53,7 +60,10 @@ public abstract class BaseXmlControllerTests {
     @ParameterizedTest
     @MethodSource("testArguments")
     void testXmlSerialization(
-            AnnotationLibrary formatLibrary, String accessType, TimeLibrary dateLibrary, TimeZoneIndicator zoned)
+            AnnotationLibrary formatLibrary,
+            XmlAccessorType accessType,
+            TimeLibrary dateLibrary,
+            TimeZoneIndicator zoned)
             throws Exception {
         performGetTest(formatLibrary, accessType, dateLibrary, zoned, MediaType.APPLICATION_XML_VALUE);
     }
@@ -61,14 +71,17 @@ public abstract class BaseXmlControllerTests {
     @ParameterizedTest
     @MethodSource("testArguments")
     void testXmlDeserialization(
-            AnnotationLibrary formatLibrary, String accessType, TimeLibrary dateLibrary, TimeZoneIndicator zoned)
+            AnnotationLibrary formatLibrary,
+            XmlAccessorType accessType,
+            TimeLibrary dateLibrary,
+            TimeZoneIndicator zoned)
             throws Exception {
         performPostTest(formatLibrary, accessType, dateLibrary, zoned, MediaType.APPLICATION_XML_VALUE);
     }
 
     private void performGetTest(
             AnnotationLibrary formatLibrary,
-            String accessType,
+            XmlAccessorType accessType,
             TimeLibrary dateLibrary,
             TimeZoneIndicator zoned,
             String mediaType)
@@ -89,7 +102,7 @@ public abstract class BaseXmlControllerTests {
 
     private void performPostTest(
             AnnotationLibrary formatLibrary,
-            String accessType,
+            XmlAccessorType accessType,
             TimeLibrary dateLibrary,
             TimeZoneIndicator zoned,
             String mediaType)
@@ -109,7 +122,7 @@ public abstract class BaseXmlControllerTests {
 
     private String getResponseData(
             AnnotationLibrary formatLibrary,
-            String accessType,
+            XmlAccessorType accessType,
             TimeLibrary dateLibrary,
             TimeZoneIndicator zoned,
             String mediaType) {
@@ -123,7 +136,10 @@ public abstract class BaseXmlControllerTests {
     }
 
     private String getResponseTestJson(
-            AnnotationLibrary formatLibrary, String accessType, TimeLibrary dateLibrary, TimeZoneIndicator zoned) {
+            AnnotationLibrary formatLibrary,
+            XmlAccessorType accessType,
+            TimeLibrary dateLibrary,
+            TimeZoneIndicator zoned) {
         return replaceTypeInData(
                 formatLibrary,
                 accessType,
@@ -133,7 +149,10 @@ public abstract class BaseXmlControllerTests {
     }
 
     private String getResponseTestXml(
-            AnnotationLibrary formatLibrary, String accessType, TimeLibrary dateLibrary, TimeZoneIndicator zoned) {
+            AnnotationLibrary formatLibrary,
+            XmlAccessorType accessType,
+            TimeLibrary dateLibrary,
+            TimeZoneIndicator zoned) {
         return replaceTypeInData(
                 formatLibrary,
                 accessType,
@@ -157,7 +176,7 @@ public abstract class BaseXmlControllerTests {
 
     private String replaceTypeInData(
             AnnotationLibrary formatLibrary,
-            String accessType,
+            XmlAccessorType accessType,
             TimeLibrary dateLibrary,
             TimeZoneIndicator zoned,
             String stringToReplace) {
@@ -172,7 +191,7 @@ public abstract class BaseXmlControllerTests {
 
     private String getRequestData(
             AnnotationLibrary formatLibrary,
-            String accessType,
+            XmlAccessorType accessType,
             TimeLibrary dateLibrary,
             TimeZoneIndicator zoned,
             String mediaType) {
@@ -186,7 +205,10 @@ public abstract class BaseXmlControllerTests {
     }
 
     private String getRequestTestJson(
-            AnnotationLibrary formatLibrary, String accessType, TimeLibrary dateLibrary, TimeZoneIndicator zoned) {
+            AnnotationLibrary formatLibrary,
+            XmlAccessorType accessType,
+            TimeLibrary dateLibrary,
+            TimeZoneIndicator zoned) {
         String json_zoned = TestConstants.JSON_ZONED;
         String json_no_zone = TestConstants.JSON_NO_ZONE;
         if (AnnotationLibrary.PURE_JAXB.equals(formatLibrary) || AnnotationLibrary.PURE_JAKARTA.equals(formatLibrary)) {
@@ -198,7 +220,10 @@ public abstract class BaseXmlControllerTests {
     }
 
     private String getRequestTestXml(
-            AnnotationLibrary formatLibrary, String accessType, TimeLibrary dateLibrary, TimeZoneIndicator zoned) {
+            AnnotationLibrary formatLibrary,
+            XmlAccessorType accessType,
+            TimeLibrary dateLibrary,
+            TimeZoneIndicator zoned) {
         String xml_zoned = TestConstants.XML_ZONED;
         String xml_no_zone = TestConstants.XML_NO_ZONE;
         if (AnnotationLibrary.PURE_JAXB.equals(formatLibrary) || AnnotationLibrary.PURE_JAKARTA.equals(formatLibrary)) {

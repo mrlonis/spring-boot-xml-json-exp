@@ -1,14 +1,11 @@
 package com.mrlonis.xml.shared.test;
 
-import static com.mrlonis.xml.shared.util.Constants.FIELD;
-import static com.mrlonis.xml.shared.util.Constants.NONE;
-import static com.mrlonis.xml.shared.util.Constants.PROPERTY;
-import static com.mrlonis.xml.shared.util.Constants.PUBLIC_MEMBER;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 import com.mrlonis.xml.shared.enums.AnnotationLibrary;
 import com.mrlonis.xml.shared.enums.TimeLibrary;
 import com.mrlonis.xml.shared.enums.TimeZoneIndicator;
+import com.mrlonis.xml.shared.enums.XmlAccessorType;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
@@ -27,240 +24,434 @@ public class TestUtils {
             boolean includePureJakarta) {
         List<Arguments> arguments = new ArrayList<>();
         if (includeJaxb) {
-            arguments.add(
-                    Arguments.arguments(AnnotationLibrary.JAXB, FIELD, TimeLibrary.JODA, TimeZoneIndicator.ZONED));
-            arguments.add(Arguments.arguments(AnnotationLibrary.JAXB, NONE, TimeLibrary.JODA, TimeZoneIndicator.ZONED));
-            arguments.add(
-                    Arguments.arguments(AnnotationLibrary.JAXB, PROPERTY, TimeLibrary.JODA, TimeZoneIndicator.ZONED));
             arguments.add(Arguments.arguments(
-                    AnnotationLibrary.JAXB, PUBLIC_MEMBER, TimeLibrary.JODA, TimeZoneIndicator.ZONED));
-            arguments.add(
-                    Arguments.arguments(AnnotationLibrary.JAXB, FIELD, TimeLibrary.JODA, TimeZoneIndicator.NO_ZONE));
-            arguments.add(
-                    Arguments.arguments(AnnotationLibrary.JAXB, NONE, TimeLibrary.JODA, TimeZoneIndicator.NO_ZONE));
-            arguments.add(
-                    Arguments.arguments(AnnotationLibrary.JAXB, PROPERTY, TimeLibrary.JODA, TimeZoneIndicator.NO_ZONE));
+                    AnnotationLibrary.JAXB, XmlAccessorType.FIELD, TimeLibrary.JODA, TimeZoneIndicator.ZONED));
             arguments.add(Arguments.arguments(
-                    AnnotationLibrary.JAXB, PUBLIC_MEMBER, TimeLibrary.JODA, TimeZoneIndicator.NO_ZONE));
-            arguments.add(
-                    Arguments.arguments(AnnotationLibrary.JAXB, FIELD, TimeLibrary.JAVA, TimeZoneIndicator.ZONED));
-            arguments.add(Arguments.arguments(AnnotationLibrary.JAXB, NONE, TimeLibrary.JAVA, TimeZoneIndicator.ZONED));
-            arguments.add(
-                    Arguments.arguments(AnnotationLibrary.JAXB, PROPERTY, TimeLibrary.JAVA, TimeZoneIndicator.ZONED));
+                    AnnotationLibrary.JAXB, XmlAccessorType.NONE, TimeLibrary.JODA, TimeZoneIndicator.ZONED));
             arguments.add(Arguments.arguments(
-                    AnnotationLibrary.JAXB, PUBLIC_MEMBER, TimeLibrary.JAVA, TimeZoneIndicator.ZONED));
-            arguments.add(
-                    Arguments.arguments(AnnotationLibrary.JAXB, FIELD, TimeLibrary.JAVA, TimeZoneIndicator.NO_ZONE));
-            arguments.add(
-                    Arguments.arguments(AnnotationLibrary.JAXB, NONE, TimeLibrary.JAVA, TimeZoneIndicator.NO_ZONE));
-            arguments.add(
-                    Arguments.arguments(AnnotationLibrary.JAXB, PROPERTY, TimeLibrary.JAVA, TimeZoneIndicator.NO_ZONE));
+                    AnnotationLibrary.JAXB, XmlAccessorType.PROPERTY, TimeLibrary.JODA, TimeZoneIndicator.ZONED));
             arguments.add(Arguments.arguments(
-                    AnnotationLibrary.JAXB, PUBLIC_MEMBER, TimeLibrary.JAVA, TimeZoneIndicator.NO_ZONE));
+                    AnnotationLibrary.JAXB, XmlAccessorType.PUBLIC_MEMBER, TimeLibrary.JODA, TimeZoneIndicator.ZONED));
+            arguments.add(Arguments.arguments(
+                    AnnotationLibrary.JAXB, XmlAccessorType.FIELD, TimeLibrary.JODA, TimeZoneIndicator.NO_ZONE));
+            arguments.add(Arguments.arguments(
+                    AnnotationLibrary.JAXB, XmlAccessorType.NONE, TimeLibrary.JODA, TimeZoneIndicator.NO_ZONE));
+            arguments.add(Arguments.arguments(
+                    AnnotationLibrary.JAXB, XmlAccessorType.PROPERTY, TimeLibrary.JODA, TimeZoneIndicator.NO_ZONE));
+            arguments.add(Arguments.arguments(
+                    AnnotationLibrary.JAXB,
+                    XmlAccessorType.PUBLIC_MEMBER,
+                    TimeLibrary.JODA,
+                    TimeZoneIndicator.NO_ZONE));
+            arguments.add(Arguments.arguments(
+                    AnnotationLibrary.JAXB, XmlAccessorType.FIELD, TimeLibrary.JAVA, TimeZoneIndicator.ZONED));
+            arguments.add(Arguments.arguments(
+                    AnnotationLibrary.JAXB, XmlAccessorType.NONE, TimeLibrary.JAVA, TimeZoneIndicator.ZONED));
+            arguments.add(Arguments.arguments(
+                    AnnotationLibrary.JAXB, XmlAccessorType.PROPERTY, TimeLibrary.JAVA, TimeZoneIndicator.ZONED));
+            arguments.add(Arguments.arguments(
+                    AnnotationLibrary.JAXB, XmlAccessorType.PUBLIC_MEMBER, TimeLibrary.JAVA, TimeZoneIndicator.ZONED));
+            arguments.add(Arguments.arguments(
+                    AnnotationLibrary.JAXB, XmlAccessorType.FIELD, TimeLibrary.JAVA, TimeZoneIndicator.NO_ZONE));
+            arguments.add(Arguments.arguments(
+                    AnnotationLibrary.JAXB, XmlAccessorType.NONE, TimeLibrary.JAVA, TimeZoneIndicator.NO_ZONE));
+            arguments.add(Arguments.arguments(
+                    AnnotationLibrary.JAXB, XmlAccessorType.PROPERTY, TimeLibrary.JAVA, TimeZoneIndicator.NO_ZONE));
+            arguments.add(Arguments.arguments(
+                    AnnotationLibrary.JAXB,
+                    XmlAccessorType.PUBLIC_MEMBER,
+                    TimeLibrary.JAVA,
+                    TimeZoneIndicator.NO_ZONE));
         }
         if (includeJakarta) {
-            arguments.add(
-                    Arguments.arguments(AnnotationLibrary.JAKARTA, FIELD, TimeLibrary.JODA, TimeZoneIndicator.ZONED));
-            arguments.add(
-                    Arguments.arguments(AnnotationLibrary.JAKARTA, NONE, TimeLibrary.JODA, TimeZoneIndicator.ZONED));
             arguments.add(Arguments.arguments(
-                    AnnotationLibrary.JAKARTA, PROPERTY, TimeLibrary.JODA, TimeZoneIndicator.ZONED));
+                    AnnotationLibrary.JAKARTA, XmlAccessorType.FIELD, TimeLibrary.JODA, TimeZoneIndicator.ZONED));
             arguments.add(Arguments.arguments(
-                    AnnotationLibrary.JAKARTA, PUBLIC_MEMBER, TimeLibrary.JODA, TimeZoneIndicator.ZONED));
-            arguments.add(
-                    Arguments.arguments(AnnotationLibrary.JAKARTA, FIELD, TimeLibrary.JODA, TimeZoneIndicator.NO_ZONE));
-            arguments.add(
-                    Arguments.arguments(AnnotationLibrary.JAKARTA, NONE, TimeLibrary.JODA, TimeZoneIndicator.NO_ZONE));
+                    AnnotationLibrary.JAKARTA, XmlAccessorType.NONE, TimeLibrary.JODA, TimeZoneIndicator.ZONED));
             arguments.add(Arguments.arguments(
-                    AnnotationLibrary.JAKARTA, PROPERTY, TimeLibrary.JODA, TimeZoneIndicator.NO_ZONE));
+                    AnnotationLibrary.JAKARTA, XmlAccessorType.PROPERTY, TimeLibrary.JODA, TimeZoneIndicator.ZONED));
             arguments.add(Arguments.arguments(
-                    AnnotationLibrary.JAKARTA, PUBLIC_MEMBER, TimeLibrary.JODA, TimeZoneIndicator.NO_ZONE));
-            arguments.add(
-                    Arguments.arguments(AnnotationLibrary.JAKARTA, FIELD, TimeLibrary.JAVA, TimeZoneIndicator.ZONED));
-            arguments.add(
-                    Arguments.arguments(AnnotationLibrary.JAKARTA, NONE, TimeLibrary.JAVA, TimeZoneIndicator.ZONED));
+                    AnnotationLibrary.JAKARTA,
+                    XmlAccessorType.PUBLIC_MEMBER,
+                    TimeLibrary.JODA,
+                    TimeZoneIndicator.ZONED));
             arguments.add(Arguments.arguments(
-                    AnnotationLibrary.JAKARTA, PROPERTY, TimeLibrary.JAVA, TimeZoneIndicator.ZONED));
+                    AnnotationLibrary.JAKARTA, XmlAccessorType.FIELD, TimeLibrary.JODA, TimeZoneIndicator.NO_ZONE));
             arguments.add(Arguments.arguments(
-                    AnnotationLibrary.JAKARTA, PUBLIC_MEMBER, TimeLibrary.JAVA, TimeZoneIndicator.ZONED));
-            arguments.add(
-                    Arguments.arguments(AnnotationLibrary.JAKARTA, FIELD, TimeLibrary.JAVA, TimeZoneIndicator.NO_ZONE));
-            arguments.add(
-                    Arguments.arguments(AnnotationLibrary.JAKARTA, NONE, TimeLibrary.JAVA, TimeZoneIndicator.NO_ZONE));
+                    AnnotationLibrary.JAKARTA, XmlAccessorType.NONE, TimeLibrary.JODA, TimeZoneIndicator.NO_ZONE));
             arguments.add(Arguments.arguments(
-                    AnnotationLibrary.JAKARTA, PROPERTY, TimeLibrary.JAVA, TimeZoneIndicator.NO_ZONE));
+                    AnnotationLibrary.JAKARTA, XmlAccessorType.PROPERTY, TimeLibrary.JODA, TimeZoneIndicator.NO_ZONE));
             arguments.add(Arguments.arguments(
-                    AnnotationLibrary.JAKARTA, PUBLIC_MEMBER, TimeLibrary.JAVA, TimeZoneIndicator.NO_ZONE));
+                    AnnotationLibrary.JAKARTA,
+                    XmlAccessorType.PUBLIC_MEMBER,
+                    TimeLibrary.JODA,
+                    TimeZoneIndicator.NO_ZONE));
+            arguments.add(Arguments.arguments(
+                    AnnotationLibrary.JAKARTA, XmlAccessorType.FIELD, TimeLibrary.JAVA, TimeZoneIndicator.ZONED));
+            arguments.add(Arguments.arguments(
+                    AnnotationLibrary.JAKARTA, XmlAccessorType.NONE, TimeLibrary.JAVA, TimeZoneIndicator.ZONED));
+            arguments.add(Arguments.arguments(
+                    AnnotationLibrary.JAKARTA, XmlAccessorType.PROPERTY, TimeLibrary.JAVA, TimeZoneIndicator.ZONED));
+            arguments.add(Arguments.arguments(
+                    AnnotationLibrary.JAKARTA,
+                    XmlAccessorType.PUBLIC_MEMBER,
+                    TimeLibrary.JAVA,
+                    TimeZoneIndicator.ZONED));
+            arguments.add(Arguments.arguments(
+                    AnnotationLibrary.JAKARTA, XmlAccessorType.FIELD, TimeLibrary.JAVA, TimeZoneIndicator.NO_ZONE));
+            arguments.add(Arguments.arguments(
+                    AnnotationLibrary.JAKARTA, XmlAccessorType.NONE, TimeLibrary.JAVA, TimeZoneIndicator.NO_ZONE));
+            arguments.add(Arguments.arguments(
+                    AnnotationLibrary.JAKARTA, XmlAccessorType.PROPERTY, TimeLibrary.JAVA, TimeZoneIndicator.NO_ZONE));
+            arguments.add(Arguments.arguments(
+                    AnnotationLibrary.JAKARTA,
+                    XmlAccessorType.PUBLIC_MEMBER,
+                    TimeLibrary.JAVA,
+                    TimeZoneIndicator.NO_ZONE));
         }
         if (includeJaxbJackson) {
             arguments.add(Arguments.arguments(
-                    AnnotationLibrary.JACKSON_JAXB, FIELD, TimeLibrary.JODA, TimeZoneIndicator.ZONED));
+                    AnnotationLibrary.JACKSON_JAXB, XmlAccessorType.FIELD, TimeLibrary.JODA, TimeZoneIndicator.ZONED));
             arguments.add(Arguments.arguments(
-                    AnnotationLibrary.JACKSON_JAXB, NONE, TimeLibrary.JODA, TimeZoneIndicator.ZONED));
+                    AnnotationLibrary.JACKSON_JAXB, XmlAccessorType.NONE, TimeLibrary.JODA, TimeZoneIndicator.ZONED));
             arguments.add(Arguments.arguments(
-                    AnnotationLibrary.JACKSON_JAXB, PROPERTY, TimeLibrary.JODA, TimeZoneIndicator.ZONED));
+                    AnnotationLibrary.JACKSON_JAXB,
+                    XmlAccessorType.PROPERTY,
+                    TimeLibrary.JODA,
+                    TimeZoneIndicator.ZONED));
             arguments.add(Arguments.arguments(
-                    AnnotationLibrary.JACKSON_JAXB, PUBLIC_MEMBER, TimeLibrary.JODA, TimeZoneIndicator.ZONED));
+                    AnnotationLibrary.JACKSON_JAXB,
+                    XmlAccessorType.PUBLIC_MEMBER,
+                    TimeLibrary.JODA,
+                    TimeZoneIndicator.ZONED));
             arguments.add(Arguments.arguments(
-                    AnnotationLibrary.JACKSON_JAXB, FIELD, TimeLibrary.JODA, TimeZoneIndicator.NO_ZONE));
+                    AnnotationLibrary.JACKSON_JAXB,
+                    XmlAccessorType.FIELD,
+                    TimeLibrary.JODA,
+                    TimeZoneIndicator.NO_ZONE));
             arguments.add(Arguments.arguments(
-                    AnnotationLibrary.JACKSON_JAXB, NONE, TimeLibrary.JODA, TimeZoneIndicator.NO_ZONE));
+                    AnnotationLibrary.JACKSON_JAXB, XmlAccessorType.NONE, TimeLibrary.JODA, TimeZoneIndicator.NO_ZONE));
             arguments.add(Arguments.arguments(
-                    AnnotationLibrary.JACKSON_JAXB, PROPERTY, TimeLibrary.JODA, TimeZoneIndicator.NO_ZONE));
+                    AnnotationLibrary.JACKSON_JAXB,
+                    XmlAccessorType.PROPERTY,
+                    TimeLibrary.JODA,
+                    TimeZoneIndicator.NO_ZONE));
             arguments.add(Arguments.arguments(
-                    AnnotationLibrary.JACKSON_JAXB, PUBLIC_MEMBER, TimeLibrary.JODA, TimeZoneIndicator.NO_ZONE));
+                    AnnotationLibrary.JACKSON_JAXB,
+                    XmlAccessorType.PUBLIC_MEMBER,
+                    TimeLibrary.JODA,
+                    TimeZoneIndicator.NO_ZONE));
             arguments.add(Arguments.arguments(
-                    AnnotationLibrary.JACKSON_JAXB, FIELD, TimeLibrary.JAVA, TimeZoneIndicator.ZONED));
+                    AnnotationLibrary.JACKSON_JAXB, XmlAccessorType.FIELD, TimeLibrary.JAVA, TimeZoneIndicator.ZONED));
             arguments.add(Arguments.arguments(
-                    AnnotationLibrary.JACKSON_JAXB, NONE, TimeLibrary.JAVA, TimeZoneIndicator.ZONED));
+                    AnnotationLibrary.JACKSON_JAXB, XmlAccessorType.NONE, TimeLibrary.JAVA, TimeZoneIndicator.ZONED));
             arguments.add(Arguments.arguments(
-                    AnnotationLibrary.JACKSON_JAXB, PROPERTY, TimeLibrary.JAVA, TimeZoneIndicator.ZONED));
+                    AnnotationLibrary.JACKSON_JAXB,
+                    XmlAccessorType.PROPERTY,
+                    TimeLibrary.JAVA,
+                    TimeZoneIndicator.ZONED));
             arguments.add(Arguments.arguments(
-                    AnnotationLibrary.JACKSON_JAXB, PUBLIC_MEMBER, TimeLibrary.JAVA, TimeZoneIndicator.ZONED));
+                    AnnotationLibrary.JACKSON_JAXB,
+                    XmlAccessorType.PUBLIC_MEMBER,
+                    TimeLibrary.JAVA,
+                    TimeZoneIndicator.ZONED));
             arguments.add(Arguments.arguments(
-                    AnnotationLibrary.JACKSON_JAXB, FIELD, TimeLibrary.JAVA, TimeZoneIndicator.NO_ZONE));
+                    AnnotationLibrary.JACKSON_JAXB,
+                    XmlAccessorType.FIELD,
+                    TimeLibrary.JAVA,
+                    TimeZoneIndicator.NO_ZONE));
             arguments.add(Arguments.arguments(
-                    AnnotationLibrary.JACKSON_JAXB, NONE, TimeLibrary.JAVA, TimeZoneIndicator.NO_ZONE));
+                    AnnotationLibrary.JACKSON_JAXB, XmlAccessorType.NONE, TimeLibrary.JAVA, TimeZoneIndicator.NO_ZONE));
             arguments.add(Arguments.arguments(
-                    AnnotationLibrary.JACKSON_JAXB, PROPERTY, TimeLibrary.JAVA, TimeZoneIndicator.NO_ZONE));
+                    AnnotationLibrary.JACKSON_JAXB,
+                    XmlAccessorType.PROPERTY,
+                    TimeLibrary.JAVA,
+                    TimeZoneIndicator.NO_ZONE));
             arguments.add(Arguments.arguments(
-                    AnnotationLibrary.JACKSON_JAXB, PUBLIC_MEMBER, TimeLibrary.JAVA, TimeZoneIndicator.NO_ZONE));
+                    AnnotationLibrary.JACKSON_JAXB,
+                    XmlAccessorType.PUBLIC_MEMBER,
+                    TimeLibrary.JAVA,
+                    TimeZoneIndicator.NO_ZONE));
         }
         if (includeJakartaJackson) {
             arguments.add(Arguments.arguments(
-                    AnnotationLibrary.JACKSON_JAKARTA, FIELD, TimeLibrary.JODA, TimeZoneIndicator.ZONED));
+                    AnnotationLibrary.JACKSON_JAKARTA,
+                    XmlAccessorType.FIELD,
+                    TimeLibrary.JODA,
+                    TimeZoneIndicator.ZONED));
             arguments.add(Arguments.arguments(
-                    AnnotationLibrary.JACKSON_JAKARTA, NONE, TimeLibrary.JODA, TimeZoneIndicator.ZONED));
+                    AnnotationLibrary.JACKSON_JAKARTA,
+                    XmlAccessorType.NONE,
+                    TimeLibrary.JODA,
+                    TimeZoneIndicator.ZONED));
             arguments.add(Arguments.arguments(
-                    AnnotationLibrary.JACKSON_JAKARTA, PROPERTY, TimeLibrary.JODA, TimeZoneIndicator.ZONED));
+                    AnnotationLibrary.JACKSON_JAKARTA,
+                    XmlAccessorType.PROPERTY,
+                    TimeLibrary.JODA,
+                    TimeZoneIndicator.ZONED));
             arguments.add(Arguments.arguments(
-                    AnnotationLibrary.JACKSON_JAKARTA, PUBLIC_MEMBER, TimeLibrary.JODA, TimeZoneIndicator.ZONED));
+                    AnnotationLibrary.JACKSON_JAKARTA,
+                    XmlAccessorType.PUBLIC_MEMBER,
+                    TimeLibrary.JODA,
+                    TimeZoneIndicator.ZONED));
             arguments.add(Arguments.arguments(
-                    AnnotationLibrary.JACKSON_JAKARTA, FIELD, TimeLibrary.JODA, TimeZoneIndicator.NO_ZONE));
+                    AnnotationLibrary.JACKSON_JAKARTA,
+                    XmlAccessorType.FIELD,
+                    TimeLibrary.JODA,
+                    TimeZoneIndicator.NO_ZONE));
             arguments.add(Arguments.arguments(
-                    AnnotationLibrary.JACKSON_JAKARTA, NONE, TimeLibrary.JODA, TimeZoneIndicator.NO_ZONE));
+                    AnnotationLibrary.JACKSON_JAKARTA,
+                    XmlAccessorType.NONE,
+                    TimeLibrary.JODA,
+                    TimeZoneIndicator.NO_ZONE));
             arguments.add(Arguments.arguments(
-                    AnnotationLibrary.JACKSON_JAKARTA, PROPERTY, TimeLibrary.JODA, TimeZoneIndicator.NO_ZONE));
+                    AnnotationLibrary.JACKSON_JAKARTA,
+                    XmlAccessorType.PROPERTY,
+                    TimeLibrary.JODA,
+                    TimeZoneIndicator.NO_ZONE));
             arguments.add(Arguments.arguments(
-                    AnnotationLibrary.JACKSON_JAKARTA, PUBLIC_MEMBER, TimeLibrary.JODA, TimeZoneIndicator.NO_ZONE));
+                    AnnotationLibrary.JACKSON_JAKARTA,
+                    XmlAccessorType.PUBLIC_MEMBER,
+                    TimeLibrary.JODA,
+                    TimeZoneIndicator.NO_ZONE));
             arguments.add(Arguments.arguments(
-                    AnnotationLibrary.JACKSON_JAKARTA, FIELD, TimeLibrary.JAVA, TimeZoneIndicator.ZONED));
+                    AnnotationLibrary.JACKSON_JAKARTA,
+                    XmlAccessorType.FIELD,
+                    TimeLibrary.JAVA,
+                    TimeZoneIndicator.ZONED));
             arguments.add(Arguments.arguments(
-                    AnnotationLibrary.JACKSON_JAKARTA, NONE, TimeLibrary.JAVA, TimeZoneIndicator.ZONED));
+                    AnnotationLibrary.JACKSON_JAKARTA,
+                    XmlAccessorType.NONE,
+                    TimeLibrary.JAVA,
+                    TimeZoneIndicator.ZONED));
             arguments.add(Arguments.arguments(
-                    AnnotationLibrary.JACKSON_JAKARTA, PROPERTY, TimeLibrary.JAVA, TimeZoneIndicator.ZONED));
+                    AnnotationLibrary.JACKSON_JAKARTA,
+                    XmlAccessorType.PROPERTY,
+                    TimeLibrary.JAVA,
+                    TimeZoneIndicator.ZONED));
             arguments.add(Arguments.arguments(
-                    AnnotationLibrary.JACKSON_JAKARTA, PUBLIC_MEMBER, TimeLibrary.JAVA, TimeZoneIndicator.ZONED));
+                    AnnotationLibrary.JACKSON_JAKARTA,
+                    XmlAccessorType.PUBLIC_MEMBER,
+                    TimeLibrary.JAVA,
+                    TimeZoneIndicator.ZONED));
             arguments.add(Arguments.arguments(
-                    AnnotationLibrary.JACKSON_JAKARTA, FIELD, TimeLibrary.JAVA, TimeZoneIndicator.NO_ZONE));
+                    AnnotationLibrary.JACKSON_JAKARTA,
+                    XmlAccessorType.FIELD,
+                    TimeLibrary.JAVA,
+                    TimeZoneIndicator.NO_ZONE));
             arguments.add(Arguments.arguments(
-                    AnnotationLibrary.JACKSON_JAKARTA, NONE, TimeLibrary.JAVA, TimeZoneIndicator.NO_ZONE));
+                    AnnotationLibrary.JACKSON_JAKARTA,
+                    XmlAccessorType.NONE,
+                    TimeLibrary.JAVA,
+                    TimeZoneIndicator.NO_ZONE));
             arguments.add(Arguments.arguments(
-                    AnnotationLibrary.JACKSON_JAKARTA, PROPERTY, TimeLibrary.JAVA, TimeZoneIndicator.NO_ZONE));
+                    AnnotationLibrary.JACKSON_JAKARTA,
+                    XmlAccessorType.PROPERTY,
+                    TimeLibrary.JAVA,
+                    TimeZoneIndicator.NO_ZONE));
             arguments.add(Arguments.arguments(
-                    AnnotationLibrary.JACKSON_JAKARTA, PUBLIC_MEMBER, TimeLibrary.JAVA, TimeZoneIndicator.NO_ZONE));
+                    AnnotationLibrary.JACKSON_JAKARTA,
+                    XmlAccessorType.PUBLIC_MEMBER,
+                    TimeLibrary.JAVA,
+                    TimeZoneIndicator.NO_ZONE));
         }
         if (includeJackson) {
             arguments.add(Arguments.arguments(
-                    AnnotationLibrary.JACKSON_JACKSON, FIELD, TimeLibrary.JODA, TimeZoneIndicator.ZONED));
+                    AnnotationLibrary.JACKSON_JACKSON,
+                    XmlAccessorType.FIELD,
+                    TimeLibrary.JODA,
+                    TimeZoneIndicator.ZONED));
             arguments.add(Arguments.arguments(
-                    AnnotationLibrary.JACKSON_JACKSON, NONE, TimeLibrary.JODA, TimeZoneIndicator.ZONED));
+                    AnnotationLibrary.JACKSON_JACKSON,
+                    XmlAccessorType.NONE,
+                    TimeLibrary.JODA,
+                    TimeZoneIndicator.ZONED));
             arguments.add(Arguments.arguments(
-                    AnnotationLibrary.JACKSON_JACKSON, PROPERTY, TimeLibrary.JODA, TimeZoneIndicator.ZONED));
+                    AnnotationLibrary.JACKSON_JACKSON,
+                    XmlAccessorType.PROPERTY,
+                    TimeLibrary.JODA,
+                    TimeZoneIndicator.ZONED));
             arguments.add(Arguments.arguments(
-                    AnnotationLibrary.JACKSON_JACKSON, PUBLIC_MEMBER, TimeLibrary.JODA, TimeZoneIndicator.ZONED));
+                    AnnotationLibrary.JACKSON_JACKSON,
+                    XmlAccessorType.PUBLIC_MEMBER,
+                    TimeLibrary.JODA,
+                    TimeZoneIndicator.ZONED));
             arguments.add(Arguments.arguments(
-                    AnnotationLibrary.JACKSON_JACKSON, FIELD, TimeLibrary.JODA, TimeZoneIndicator.NO_ZONE));
+                    AnnotationLibrary.JACKSON_JACKSON,
+                    XmlAccessorType.FIELD,
+                    TimeLibrary.JODA,
+                    TimeZoneIndicator.NO_ZONE));
             arguments.add(Arguments.arguments(
-                    AnnotationLibrary.JACKSON_JACKSON, NONE, TimeLibrary.JODA, TimeZoneIndicator.NO_ZONE));
+                    AnnotationLibrary.JACKSON_JACKSON,
+                    XmlAccessorType.NONE,
+                    TimeLibrary.JODA,
+                    TimeZoneIndicator.NO_ZONE));
             arguments.add(Arguments.arguments(
-                    AnnotationLibrary.JACKSON_JACKSON, PROPERTY, TimeLibrary.JODA, TimeZoneIndicator.NO_ZONE));
+                    AnnotationLibrary.JACKSON_JACKSON,
+                    XmlAccessorType.PROPERTY,
+                    TimeLibrary.JODA,
+                    TimeZoneIndicator.NO_ZONE));
             arguments.add(Arguments.arguments(
-                    AnnotationLibrary.JACKSON_JACKSON, PUBLIC_MEMBER, TimeLibrary.JODA, TimeZoneIndicator.NO_ZONE));
+                    AnnotationLibrary.JACKSON_JACKSON,
+                    XmlAccessorType.PUBLIC_MEMBER,
+                    TimeLibrary.JODA,
+                    TimeZoneIndicator.NO_ZONE));
             arguments.add(Arguments.arguments(
-                    AnnotationLibrary.JACKSON_JACKSON, FIELD, TimeLibrary.JAVA, TimeZoneIndicator.ZONED));
+                    AnnotationLibrary.JACKSON_JACKSON,
+                    XmlAccessorType.FIELD,
+                    TimeLibrary.JAVA,
+                    TimeZoneIndicator.ZONED));
             arguments.add(Arguments.arguments(
-                    AnnotationLibrary.JACKSON_JACKSON, NONE, TimeLibrary.JAVA, TimeZoneIndicator.ZONED));
+                    AnnotationLibrary.JACKSON_JACKSON,
+                    XmlAccessorType.NONE,
+                    TimeLibrary.JAVA,
+                    TimeZoneIndicator.ZONED));
             arguments.add(Arguments.arguments(
-                    AnnotationLibrary.JACKSON_JACKSON, PROPERTY, TimeLibrary.JAVA, TimeZoneIndicator.ZONED));
+                    AnnotationLibrary.JACKSON_JACKSON,
+                    XmlAccessorType.PROPERTY,
+                    TimeLibrary.JAVA,
+                    TimeZoneIndicator.ZONED));
             arguments.add(Arguments.arguments(
-                    AnnotationLibrary.JACKSON_JACKSON, PUBLIC_MEMBER, TimeLibrary.JAVA, TimeZoneIndicator.ZONED));
+                    AnnotationLibrary.JACKSON_JACKSON,
+                    XmlAccessorType.PUBLIC_MEMBER,
+                    TimeLibrary.JAVA,
+                    TimeZoneIndicator.ZONED));
             arguments.add(Arguments.arguments(
-                    AnnotationLibrary.JACKSON_JACKSON, FIELD, TimeLibrary.JAVA, TimeZoneIndicator.NO_ZONE));
+                    AnnotationLibrary.JACKSON_JACKSON,
+                    XmlAccessorType.FIELD,
+                    TimeLibrary.JAVA,
+                    TimeZoneIndicator.NO_ZONE));
             arguments.add(Arguments.arguments(
-                    AnnotationLibrary.JACKSON_JACKSON, NONE, TimeLibrary.JAVA, TimeZoneIndicator.NO_ZONE));
+                    AnnotationLibrary.JACKSON_JACKSON,
+                    XmlAccessorType.NONE,
+                    TimeLibrary.JAVA,
+                    TimeZoneIndicator.NO_ZONE));
             arguments.add(Arguments.arguments(
-                    AnnotationLibrary.JACKSON_JACKSON, PROPERTY, TimeLibrary.JAVA, TimeZoneIndicator.NO_ZONE));
+                    AnnotationLibrary.JACKSON_JACKSON,
+                    XmlAccessorType.PROPERTY,
+                    TimeLibrary.JAVA,
+                    TimeZoneIndicator.NO_ZONE));
             arguments.add(Arguments.arguments(
-                    AnnotationLibrary.JACKSON_JACKSON, PUBLIC_MEMBER, TimeLibrary.JAVA, TimeZoneIndicator.NO_ZONE));
+                    AnnotationLibrary.JACKSON_JACKSON,
+                    XmlAccessorType.PUBLIC_MEMBER,
+                    TimeLibrary.JAVA,
+                    TimeZoneIndicator.NO_ZONE));
         }
         if (includePureJaxb) {
-            arguments.add(
-                    Arguments.arguments(AnnotationLibrary.PURE_JAXB, FIELD, TimeLibrary.JODA, TimeZoneIndicator.ZONED));
-            arguments.add(
-                    Arguments.arguments(AnnotationLibrary.PURE_JAXB, NONE, TimeLibrary.JODA, TimeZoneIndicator.ZONED));
             arguments.add(Arguments.arguments(
-                    AnnotationLibrary.PURE_JAXB, PROPERTY, TimeLibrary.JODA, TimeZoneIndicator.ZONED));
+                    AnnotationLibrary.PURE_JAXB, XmlAccessorType.FIELD, TimeLibrary.JODA, TimeZoneIndicator.ZONED));
             arguments.add(Arguments.arguments(
-                    AnnotationLibrary.PURE_JAXB, PUBLIC_MEMBER, TimeLibrary.JODA, TimeZoneIndicator.ZONED));
+                    AnnotationLibrary.PURE_JAXB, XmlAccessorType.NONE, TimeLibrary.JODA, TimeZoneIndicator.ZONED));
             arguments.add(Arguments.arguments(
-                    AnnotationLibrary.PURE_JAXB, FIELD, TimeLibrary.JODA, TimeZoneIndicator.NO_ZONE));
+                    AnnotationLibrary.PURE_JAXB, XmlAccessorType.PROPERTY, TimeLibrary.JODA, TimeZoneIndicator.ZONED));
             arguments.add(Arguments.arguments(
-                    AnnotationLibrary.PURE_JAXB, NONE, TimeLibrary.JODA, TimeZoneIndicator.NO_ZONE));
+                    AnnotationLibrary.PURE_JAXB,
+                    XmlAccessorType.PUBLIC_MEMBER,
+                    TimeLibrary.JODA,
+                    TimeZoneIndicator.ZONED));
             arguments.add(Arguments.arguments(
-                    AnnotationLibrary.PURE_JAXB, PROPERTY, TimeLibrary.JODA, TimeZoneIndicator.NO_ZONE));
+                    AnnotationLibrary.PURE_JAXB, XmlAccessorType.FIELD, TimeLibrary.JODA, TimeZoneIndicator.NO_ZONE));
             arguments.add(Arguments.arguments(
-                    AnnotationLibrary.PURE_JAXB, PUBLIC_MEMBER, TimeLibrary.JODA, TimeZoneIndicator.NO_ZONE));
-            arguments.add(
-                    Arguments.arguments(AnnotationLibrary.PURE_JAXB, FIELD, TimeLibrary.JAVA, TimeZoneIndicator.ZONED));
-            arguments.add(
-                    Arguments.arguments(AnnotationLibrary.PURE_JAXB, NONE, TimeLibrary.JAVA, TimeZoneIndicator.ZONED));
+                    AnnotationLibrary.PURE_JAXB, XmlAccessorType.NONE, TimeLibrary.JODA, TimeZoneIndicator.NO_ZONE));
             arguments.add(Arguments.arguments(
-                    AnnotationLibrary.PURE_JAXB, PROPERTY, TimeLibrary.JAVA, TimeZoneIndicator.ZONED));
+                    AnnotationLibrary.PURE_JAXB,
+                    XmlAccessorType.PROPERTY,
+                    TimeLibrary.JODA,
+                    TimeZoneIndicator.NO_ZONE));
             arguments.add(Arguments.arguments(
-                    AnnotationLibrary.PURE_JAXB, PUBLIC_MEMBER, TimeLibrary.JAVA, TimeZoneIndicator.ZONED));
+                    AnnotationLibrary.PURE_JAXB,
+                    XmlAccessorType.PUBLIC_MEMBER,
+                    TimeLibrary.JODA,
+                    TimeZoneIndicator.NO_ZONE));
             arguments.add(Arguments.arguments(
-                    AnnotationLibrary.PURE_JAXB, FIELD, TimeLibrary.JAVA, TimeZoneIndicator.NO_ZONE));
+                    AnnotationLibrary.PURE_JAXB, XmlAccessorType.FIELD, TimeLibrary.JAVA, TimeZoneIndicator.ZONED));
             arguments.add(Arguments.arguments(
-                    AnnotationLibrary.PURE_JAXB, NONE, TimeLibrary.JAVA, TimeZoneIndicator.NO_ZONE));
+                    AnnotationLibrary.PURE_JAXB, XmlAccessorType.NONE, TimeLibrary.JAVA, TimeZoneIndicator.ZONED));
             arguments.add(Arguments.arguments(
-                    AnnotationLibrary.PURE_JAXB, PROPERTY, TimeLibrary.JAVA, TimeZoneIndicator.NO_ZONE));
+                    AnnotationLibrary.PURE_JAXB, XmlAccessorType.PROPERTY, TimeLibrary.JAVA, TimeZoneIndicator.ZONED));
             arguments.add(Arguments.arguments(
-                    AnnotationLibrary.PURE_JAXB, PUBLIC_MEMBER, TimeLibrary.JAVA, TimeZoneIndicator.NO_ZONE));
+                    AnnotationLibrary.PURE_JAXB,
+                    XmlAccessorType.PUBLIC_MEMBER,
+                    TimeLibrary.JAVA,
+                    TimeZoneIndicator.ZONED));
+            arguments.add(Arguments.arguments(
+                    AnnotationLibrary.PURE_JAXB, XmlAccessorType.FIELD, TimeLibrary.JAVA, TimeZoneIndicator.NO_ZONE));
+            arguments.add(Arguments.arguments(
+                    AnnotationLibrary.PURE_JAXB, XmlAccessorType.NONE, TimeLibrary.JAVA, TimeZoneIndicator.NO_ZONE));
+            arguments.add(Arguments.arguments(
+                    AnnotationLibrary.PURE_JAXB,
+                    XmlAccessorType.PROPERTY,
+                    TimeLibrary.JAVA,
+                    TimeZoneIndicator.NO_ZONE));
+            arguments.add(Arguments.arguments(
+                    AnnotationLibrary.PURE_JAXB,
+                    XmlAccessorType.PUBLIC_MEMBER,
+                    TimeLibrary.JAVA,
+                    TimeZoneIndicator.NO_ZONE));
         }
         if (includePureJakarta) {
             arguments.add(Arguments.arguments(
-                    AnnotationLibrary.PURE_JAKARTA, FIELD, TimeLibrary.JODA, TimeZoneIndicator.ZONED));
+                    AnnotationLibrary.PURE_JAKARTA, XmlAccessorType.FIELD, TimeLibrary.JODA, TimeZoneIndicator.ZONED));
             arguments.add(Arguments.arguments(
-                    AnnotationLibrary.PURE_JAKARTA, NONE, TimeLibrary.JODA, TimeZoneIndicator.ZONED));
+                    AnnotationLibrary.PURE_JAKARTA, XmlAccessorType.NONE, TimeLibrary.JODA, TimeZoneIndicator.ZONED));
             arguments.add(Arguments.arguments(
-                    AnnotationLibrary.PURE_JAKARTA, PROPERTY, TimeLibrary.JODA, TimeZoneIndicator.ZONED));
+                    AnnotationLibrary.PURE_JAKARTA,
+                    XmlAccessorType.PROPERTY,
+                    TimeLibrary.JODA,
+                    TimeZoneIndicator.ZONED));
             arguments.add(Arguments.arguments(
-                    AnnotationLibrary.PURE_JAKARTA, PUBLIC_MEMBER, TimeLibrary.JODA, TimeZoneIndicator.ZONED));
+                    AnnotationLibrary.PURE_JAKARTA,
+                    XmlAccessorType.PUBLIC_MEMBER,
+                    TimeLibrary.JODA,
+                    TimeZoneIndicator.ZONED));
             arguments.add(Arguments.arguments(
-                    AnnotationLibrary.PURE_JAKARTA, FIELD, TimeLibrary.JODA, TimeZoneIndicator.NO_ZONE));
+                    AnnotationLibrary.PURE_JAKARTA,
+                    XmlAccessorType.FIELD,
+                    TimeLibrary.JODA,
+                    TimeZoneIndicator.NO_ZONE));
             arguments.add(Arguments.arguments(
-                    AnnotationLibrary.PURE_JAKARTA, NONE, TimeLibrary.JODA, TimeZoneIndicator.NO_ZONE));
+                    AnnotationLibrary.PURE_JAKARTA, XmlAccessorType.NONE, TimeLibrary.JODA, TimeZoneIndicator.NO_ZONE));
             arguments.add(Arguments.arguments(
-                    AnnotationLibrary.PURE_JAKARTA, PROPERTY, TimeLibrary.JODA, TimeZoneIndicator.NO_ZONE));
+                    AnnotationLibrary.PURE_JAKARTA,
+                    XmlAccessorType.PROPERTY,
+                    TimeLibrary.JODA,
+                    TimeZoneIndicator.NO_ZONE));
             arguments.add(Arguments.arguments(
-                    AnnotationLibrary.PURE_JAKARTA, PUBLIC_MEMBER, TimeLibrary.JODA, TimeZoneIndicator.NO_ZONE));
+                    AnnotationLibrary.PURE_JAKARTA,
+                    XmlAccessorType.PUBLIC_MEMBER,
+                    TimeLibrary.JODA,
+                    TimeZoneIndicator.NO_ZONE));
             arguments.add(Arguments.arguments(
-                    AnnotationLibrary.PURE_JAKARTA, FIELD, TimeLibrary.JAVA, TimeZoneIndicator.ZONED));
+                    AnnotationLibrary.PURE_JAKARTA, XmlAccessorType.FIELD, TimeLibrary.JAVA, TimeZoneIndicator.ZONED));
             arguments.add(Arguments.arguments(
-                    AnnotationLibrary.PURE_JAKARTA, NONE, TimeLibrary.JAVA, TimeZoneIndicator.ZONED));
+                    AnnotationLibrary.PURE_JAKARTA, XmlAccessorType.NONE, TimeLibrary.JAVA, TimeZoneIndicator.ZONED));
             arguments.add(Arguments.arguments(
-                    AnnotationLibrary.PURE_JAKARTA, PROPERTY, TimeLibrary.JAVA, TimeZoneIndicator.ZONED));
+                    AnnotationLibrary.PURE_JAKARTA,
+                    XmlAccessorType.PROPERTY,
+                    TimeLibrary.JAVA,
+                    TimeZoneIndicator.ZONED));
             arguments.add(Arguments.arguments(
-                    AnnotationLibrary.PURE_JAKARTA, PUBLIC_MEMBER, TimeLibrary.JAVA, TimeZoneIndicator.ZONED));
+                    AnnotationLibrary.PURE_JAKARTA,
+                    XmlAccessorType.PUBLIC_MEMBER,
+                    TimeLibrary.JAVA,
+                    TimeZoneIndicator.ZONED));
             arguments.add(Arguments.arguments(
-                    AnnotationLibrary.PURE_JAKARTA, FIELD, TimeLibrary.JAVA, TimeZoneIndicator.NO_ZONE));
+                    AnnotationLibrary.PURE_JAKARTA,
+                    XmlAccessorType.FIELD,
+                    TimeLibrary.JAVA,
+                    TimeZoneIndicator.NO_ZONE));
             arguments.add(Arguments.arguments(
-                    AnnotationLibrary.PURE_JAKARTA, NONE, TimeLibrary.JAVA, TimeZoneIndicator.NO_ZONE));
+                    AnnotationLibrary.PURE_JAKARTA, XmlAccessorType.NONE, TimeLibrary.JAVA, TimeZoneIndicator.NO_ZONE));
             arguments.add(Arguments.arguments(
-                    AnnotationLibrary.PURE_JAKARTA, PROPERTY, TimeLibrary.JAVA, TimeZoneIndicator.NO_ZONE));
+                    AnnotationLibrary.PURE_JAKARTA,
+                    XmlAccessorType.PROPERTY,
+                    TimeLibrary.JAVA,
+                    TimeZoneIndicator.NO_ZONE));
             arguments.add(Arguments.arguments(
-                    AnnotationLibrary.PURE_JAKARTA, PUBLIC_MEMBER, TimeLibrary.JAVA, TimeZoneIndicator.NO_ZONE));
+                    AnnotationLibrary.PURE_JAKARTA,
+                    XmlAccessorType.PUBLIC_MEMBER,
+                    TimeLibrary.JAVA,
+                    TimeZoneIndicator.NO_ZONE));
         }
         return arguments.stream();
     }

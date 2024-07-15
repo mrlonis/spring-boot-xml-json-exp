@@ -9,6 +9,7 @@ import static com.mrlonis.xml.shared.util.Constants.TAGS;
 
 import com.mrlonis.xml.shared.enums.TimeZoneIndicator;
 import com.mrlonis.xml.shared.model.BaseModel;
+import com.mrlonis.xml.shared.util.Constants;
 import java.util.Map;
 import lombok.experimental.UtilityClass;
 
@@ -52,13 +53,13 @@ public class JakartaJavaTimeConstants {
                             .build();
 
     private static final Map<String, BaseModel<?>> JAKARTA_JAVA_TIME_NO_ZONE_MAP = Map.of(
-            "field",
+            Constants.FIELD,
             JAKARTA_JAVA_TIME_NO_ZONE_ACCESS_TYPE_FIELD,
-            "none",
+            Constants.NONE,
             JAKARTA_JAVA_TIME_NO_ZONE_ACCESS_TYPE_NONE,
-            "property",
+            Constants.PROPERTY,
             JAKARTA_JAVA_TIME_NO_ZONE_ACCESS_TYPE_PROPERTY,
-            "public_member",
+            Constants.PUBLIC_MEMBER,
             JAKARTA_JAVA_TIME_NO_ZONE_ACCESS_TYPE_PUBLIC_MEMBER);
 
     private static final JakartaJavaTimeModels.JakartaJavaTimeZonedAccessTypeField
@@ -99,13 +100,13 @@ public class JakartaJavaTimeConstants {
                             .build();
 
     private static final Map<String, BaseModel<?>> JAKARTA_JAVA_TIME_ZONED_MAP = Map.of(
-            "field",
+            Constants.FIELD,
             JAKARTA_JAVA_TIME_ZONED_ACCESS_TYPE_FIELD,
-            "none",
+            Constants.NONE,
             JAKARTA_JAVA_TIME_ZONED_ACCESS_TYPE_NONE,
-            "property",
+            Constants.PROPERTY,
             JAKARTA_JAVA_TIME_ZONED_ACCESS_TYPE_PROPERTY,
-            "public_member",
+            Constants.PUBLIC_MEMBER,
             JAKARTA_JAVA_TIME_ZONED_ACCESS_TYPE_PUBLIC_MEMBER);
 
     public static final Map<TimeZoneIndicator, Map<String, BaseModel<?>>> JAKARTA_JAVA_TIME_MAP = Map.of(

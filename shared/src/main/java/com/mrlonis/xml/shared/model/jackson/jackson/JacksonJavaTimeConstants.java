@@ -18,10 +18,10 @@ public class JacksonJavaTimeConstants {
                     .build();
 
     private static final Map<String, BaseModel<?>> JACKSON_JAVA_TIME_NO_ZONE_MAP = Map.of(
-            "field", JACKSON_JAVA_TIME_NO_ZONE,
-            "none", JACKSON_JAVA_TIME_NO_ZONE,
-            "property", JACKSON_JAVA_TIME_NO_ZONE,
-            "public_member", JACKSON_JAVA_TIME_NO_ZONE);
+            Constants.FIELD, JACKSON_JAVA_TIME_NO_ZONE,
+            Constants.NONE, JACKSON_JAVA_TIME_NO_ZONE,
+            Constants.PROPERTY, JACKSON_JAVA_TIME_NO_ZONE,
+            Constants.PUBLIC_MEMBER, JACKSON_JAVA_TIME_NO_ZONE);
 
     private static final JacksonJavaTimeModels.JacksonJavaTimeZoned JACKSON_JAVA_TIME_ZONED =
             JacksonJavaTimeModels.JacksonJavaTimeZoned.builder()
@@ -33,10 +33,10 @@ public class JacksonJavaTimeConstants {
                     .build();
 
     private static final Map<String, BaseModel<?>> JACKSON_JAVA_TIME_ZONED_MAP = Map.of(
-            "field", JACKSON_JAVA_TIME_ZONED,
-            "none", JACKSON_JAVA_TIME_ZONED,
-            "property", JACKSON_JAVA_TIME_ZONED,
-            "public_member", JACKSON_JAVA_TIME_ZONED);
+            Constants.FIELD, JACKSON_JAVA_TIME_ZONED,
+            Constants.NONE, JACKSON_JAVA_TIME_ZONED,
+            Constants.PROPERTY, JACKSON_JAVA_TIME_ZONED,
+            Constants.PUBLIC_MEMBER, JACKSON_JAVA_TIME_ZONED);
 
     public static final Map<TimeZoneIndicator, Map<String, BaseModel<?>>> JACKSON_JAVA_TIME_MAP = Map.of(
             TimeZoneIndicator.ZONED,

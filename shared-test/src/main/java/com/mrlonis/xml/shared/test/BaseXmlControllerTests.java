@@ -73,7 +73,8 @@ public abstract class BaseXmlControllerTests {
             TimeZoneIndicator zoned,
             String mediaType)
             throws Exception {
-        UriComponentsBuilder builder = UriComponentsBuilder.fromPath(Constants.XML_PATH + "/" + formatLibrary)
+        UriComponentsBuilder builder = UriComponentsBuilder.fromPath(
+                        Constants.XML_PATH + Constants.SLASH + formatLibrary)
                 .queryParam("accessType", accessType)
                 .queryParam("dateLibrary", dateLibrary)
                 .queryParam("zoned", zoned);

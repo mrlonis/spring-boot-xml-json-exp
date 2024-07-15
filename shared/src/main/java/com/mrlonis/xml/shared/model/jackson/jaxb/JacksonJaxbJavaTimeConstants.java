@@ -46,10 +46,10 @@ public class JacksonJaxbJavaTimeConstants {
                             .build();
 
     private static final Map<String, BaseModel<?>> JACKSON_JAXB_JAVA_TIME_NO_ZONE_MAP = Map.of(
-            "field", JACKSON_JAXB_JAVA_TIME_NO_ZONE_ACCESS_TYPE_FIELD,
-            "none", JACKSON_JAXB_JAVA_TIME_NO_ZONE_ACCESS_TYPE_NONE,
-            "property", JACKSON_JAXB_JAVA_TIME_NO_ZONE_ACCESS_TYPE_PROPERTY,
-            "public_member", JACKSON_JAXB_JAVA_TIME_NO_ZONE_ACCESS_TYPE_PUBLIC_MEMBER);
+            Constants.FIELD, JACKSON_JAXB_JAVA_TIME_NO_ZONE_ACCESS_TYPE_FIELD,
+            Constants.NONE, JACKSON_JAXB_JAVA_TIME_NO_ZONE_ACCESS_TYPE_NONE,
+            Constants.PROPERTY, JACKSON_JAXB_JAVA_TIME_NO_ZONE_ACCESS_TYPE_PROPERTY,
+            Constants.PUBLIC_MEMBER, JACKSON_JAXB_JAVA_TIME_NO_ZONE_ACCESS_TYPE_PUBLIC_MEMBER);
 
     private static final JacksonJaxbJavaTimeModels.JacksonJaxbJavaTimeZonedAccessTypeField
             JACKSON_JAXB_JAVA_TIME_ZONED_ACCESS_TYPE_FIELD =
@@ -89,10 +89,10 @@ public class JacksonJaxbJavaTimeConstants {
                             .build();
 
     private static final Map<String, BaseModel<?>> JACKSON_JAXB_JAVA_TIME_ZONED_MAP = Map.of(
-            "field", JACKSON_JAXB_JAVA_TIME_ZONED_ACCESS_TYPE_FIELD,
-            "none", JACKSON_JAXB_JAVA_TIME_ZONED_ACCESS_TYPE_NONE,
-            "property", JACKSON_JAXB_JAVA_TIME_ZONED_ACCESS_TYPE_PROPERTY,
-            "public_member", JACKSON_JAXB_JAVA_TIME_ZONED_ACCESS_TYPE_PUBLIC_MEMBER);
+            Constants.FIELD, JACKSON_JAXB_JAVA_TIME_ZONED_ACCESS_TYPE_FIELD,
+            Constants.NONE, JACKSON_JAXB_JAVA_TIME_ZONED_ACCESS_TYPE_NONE,
+            Constants.PROPERTY, JACKSON_JAXB_JAVA_TIME_ZONED_ACCESS_TYPE_PROPERTY,
+            Constants.PUBLIC_MEMBER, JACKSON_JAXB_JAVA_TIME_ZONED_ACCESS_TYPE_PUBLIC_MEMBER);
 
     public static final Map<TimeZoneIndicator, Map<String, BaseModel<?>>> JACKSON_JAXB_JAVA_TIME_MAP = Map.of(
             TimeZoneIndicator.ZONED,

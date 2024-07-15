@@ -18,10 +18,10 @@ public class JacksonJodaTimeConstants {
                     .build();
 
     private static final Map<String, BaseModel<?>> JACKSON_JODA_TIME_NO_ZONE_MAP = Map.of(
-            "field", JACKSON_JODA_TIME_NO_ZONE,
-            "none", JACKSON_JODA_TIME_NO_ZONE,
-            "property", JACKSON_JODA_TIME_NO_ZONE,
-            "public_member", JACKSON_JODA_TIME_NO_ZONE);
+            Constants.FIELD, JACKSON_JODA_TIME_NO_ZONE,
+            Constants.NONE, JACKSON_JODA_TIME_NO_ZONE,
+            Constants.PROPERTY, JACKSON_JODA_TIME_NO_ZONE,
+            Constants.PUBLIC_MEMBER, JACKSON_JODA_TIME_NO_ZONE);
 
     private static final JacksonJodaTimeModels.JacksonJodaTimeZoned JACKSON_JODA_TIME_ZONED =
             JacksonJodaTimeModels.JacksonJodaTimeZoned.builder()
@@ -33,10 +33,10 @@ public class JacksonJodaTimeConstants {
                     .build();
 
     private static final Map<String, BaseModel<?>> JACKSON_JODA_TIME_ZONED_MAP = Map.of(
-            "field", JACKSON_JODA_TIME_ZONED,
-            "none", JACKSON_JODA_TIME_ZONED,
-            "property", JACKSON_JODA_TIME_ZONED,
-            "public_member", JACKSON_JODA_TIME_ZONED);
+            Constants.FIELD, JACKSON_JODA_TIME_ZONED,
+            Constants.NONE, JACKSON_JODA_TIME_ZONED,
+            Constants.PROPERTY, JACKSON_JODA_TIME_ZONED,
+            Constants.PUBLIC_MEMBER, JACKSON_JODA_TIME_ZONED);
 
     public static final Map<TimeZoneIndicator, Map<String, BaseModel<?>>> JACKSON_JODA_TIME_MAP = Map.of(
             TimeZoneIndicator.ZONED,

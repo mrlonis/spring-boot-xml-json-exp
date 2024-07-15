@@ -43,13 +43,13 @@ public class PureJakartaJodaTimeConstants {
                             .build();
 
     private static final Map<String, BaseModel<?>> PURE_JAKARTA_JODA_TIME_NO_ZONE_MAP = Map.of(
-            "field",
+            Constants.FIELD,
             PURE_JAKARTA_JODA_TIME_NO_ZONE_ACCESS_TYPE_FIELD,
-            "none",
+            Constants.NONE,
             PURE_JAKARTA_JODA_TIME_NO_ZONE_ACCESS_TYPE_NONE,
-            "property",
+            Constants.PROPERTY,
             PURE_JAKARTA_JODA_TIME_NO_ZONE_ACCESS_TYPE_PROPERTY,
-            "public_member",
+            Constants.PUBLIC_MEMBER,
             PURE_JAKARTA_JODA_TIME_NO_ZONE_ACCESS_TYPE_PUBLIC_MEMBER);
 
     private static final PureJakartaJodaTimeZonedAccessTypeField PURE_JAKARTA_JODA_TIME_ZONED_ACCESS_TYPE_FIELD =
@@ -87,13 +87,13 @@ public class PureJakartaJodaTimeConstants {
                             .build();
 
     private static final Map<String, BaseModel<?>> PURE_JAKARTA_JODA_TIME_ZONED_MAP = Map.of(
-            "field",
+            Constants.FIELD,
             PURE_JAKARTA_JODA_TIME_ZONED_ACCESS_TYPE_FIELD,
-            "none",
+            Constants.NONE,
             PURE_JAKARTA_JODA_TIME_ZONED_ACCESS_TYPE_NONE,
-            "property",
+            Constants.PROPERTY,
             PURE_JAKARTA_JODA_TIME_ZONED_ACCESS_TYPE_PROPERTY,
-            "public_member",
+            Constants.PUBLIC_MEMBER,
             PURE_JAKARTA_JODA_TIME_ZONED_ACCESS_TYPE_PUBLIC_MEMBER);
 
     public static final Map<TimeZoneIndicator, Map<String, BaseModel<?>>> PURE_JAKARTA_JODA_TIME_MAP = Map.of(

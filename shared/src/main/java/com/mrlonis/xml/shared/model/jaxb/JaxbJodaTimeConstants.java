@@ -9,6 +9,7 @@ import static com.mrlonis.xml.shared.util.Constants.TAGS;
 
 import com.mrlonis.xml.shared.enums.TimeZoneIndicator;
 import com.mrlonis.xml.shared.model.BaseModel;
+import com.mrlonis.xml.shared.util.Constants;
 import java.util.Map;
 import lombok.experimental.UtilityClass;
 
@@ -50,13 +51,13 @@ public class JaxbJodaTimeConstants {
                             .build();
 
     private static final Map<String, BaseModel<?>> JAXB_JODA_TIME_NO_ZONE_MAP = Map.of(
-            "field",
+            Constants.FIELD,
             JAXB_JODA_TIME_NO_ZONE_ACCESS_TYPE_FIELD,
-            "none",
+            Constants.NONE,
             JAXB_JODA_TIME_NO_ZONE_ACCESS_TYPE_NONE,
-            "property",
+            Constants.PROPERTY,
             JAXB_JODA_TIME_NO_ZONE_ACCESS_TYPE_PROPERTY,
-            "public_member",
+            Constants.PUBLIC_MEMBER,
             JAXB_JODA_TIME_NO_ZONE_ACCESS_TYPE_PUBLIC_MEMBER);
 
     private static final JaxbJodaTimeModels.JaxbJodaTimeZonedAccessTypeField JAXB_JODA_TIME_ZONED_ACCESS_TYPE_FIELD =
@@ -94,13 +95,13 @@ public class JaxbJodaTimeConstants {
                             .build();
 
     private static final Map<String, BaseModel<?>> JAXB_JODA_TIME_ZONED_MAP = Map.of(
-            "field",
+            Constants.FIELD,
             JAXB_JODA_TIME_ZONED_ACCESS_TYPE_FIELD,
-            "none",
+            Constants.NONE,
             JAXB_JODA_TIME_ZONED_ACCESS_TYPE_NONE,
-            "property",
+            Constants.PROPERTY,
             JAXB_JODA_TIME_ZONED_ACCESS_TYPE_PROPERTY,
-            "public_member",
+            Constants.PUBLIC_MEMBER,
             JAXB_JODA_TIME_ZONED_ACCESS_TYPE_PUBLIC_MEMBER);
 
     public static final Map<TimeZoneIndicator, Map<String, BaseModel<?>>> JAXB_JODA_TIME_MAP = Map.of(

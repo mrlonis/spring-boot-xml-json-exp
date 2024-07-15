@@ -12,7 +12,6 @@ import com.mrlonis.xml.shared.model.jakarta.JakartaJavaTimeModels;
 import com.mrlonis.xml.shared.model.jakarta.JakartaJodaTimeModels;
 import com.mrlonis.xml.shared.model.jaxb.JaxbJavaTimeModels;
 import com.mrlonis.xml.shared.model.jaxb.JaxbJodaTimeModels;
-import com.mrlonis.xml.shared.model.pure.jakarta.PureJakartaJodaTimeModels;
 import com.mrlonis.xml.shared.model.pure.jakarta.jakarta.PureJakartaJavaTimeNoZoneAccessTypeField;
 import com.mrlonis.xml.shared.model.pure.jakarta.jakarta.PureJakartaJavaTimeNoZoneAccessTypeNone;
 import com.mrlonis.xml.shared.model.pure.jakarta.jakarta.PureJakartaJavaTimeNoZoneAccessTypeProperty;
@@ -21,6 +20,14 @@ import com.mrlonis.xml.shared.model.pure.jakarta.jakarta.PureJakartaJavaTimeZone
 import com.mrlonis.xml.shared.model.pure.jakarta.jakarta.PureJakartaJavaTimeZonedAccessTypeNone;
 import com.mrlonis.xml.shared.model.pure.jakarta.jakarta.PureJakartaJavaTimeZonedAccessTypeProperty;
 import com.mrlonis.xml.shared.model.pure.jakarta.jakarta.PureJakartaJavaTimeZonedAccessTypePublicMember;
+import com.mrlonis.xml.shared.model.pure.jakarta.joda.PureJakartaJodaTimeNoZoneAccessTypeField;
+import com.mrlonis.xml.shared.model.pure.jakarta.joda.PureJakartaJodaTimeNoZoneAccessTypeNone;
+import com.mrlonis.xml.shared.model.pure.jakarta.joda.PureJakartaJodaTimeNoZoneAccessTypeProperty;
+import com.mrlonis.xml.shared.model.pure.jakarta.joda.PureJakartaJodaTimeNoZoneAccessTypePublicMember;
+import com.mrlonis.xml.shared.model.pure.jakarta.joda.PureJakartaJodaTimeZonedAccessTypeField;
+import com.mrlonis.xml.shared.model.pure.jakarta.joda.PureJakartaJodaTimeZonedAccessTypeNone;
+import com.mrlonis.xml.shared.model.pure.jakarta.joda.PureJakartaJodaTimeZonedAccessTypeProperty;
+import com.mrlonis.xml.shared.model.pure.jakarta.joda.PureJakartaJodaTimeZonedAccessTypePublicMember;
 import com.mrlonis.xml.shared.model.pure.jaxb.PureJaxbJavaTimeModels;
 import com.mrlonis.xml.shared.model.pure.jaxb.PureJaxbJodaTimeModels;
 import java.util.List;
@@ -256,29 +263,29 @@ import java.util.List;
             value = PureJakartaJavaTimeZonedAccessTypePublicMember.class,
             name = "PureJakartaJavaTimeZonedAccessTypePublicMember"),
     @JsonSubTypes.Type(
-            value = PureJakartaJodaTimeModels.PureJakartaJodaTimeNoZoneAccessTypeField.class,
-            name = "PureJakartaJodaTimeModels" + "$" + "PureJakartaJodaTimeNoZoneAccessTypeField"),
+            value = PureJakartaJodaTimeNoZoneAccessTypeField.class,
+            name = "PureJakartaJodaTimeNoZoneAccessTypeField"),
     @JsonSubTypes.Type(
-            value = PureJakartaJodaTimeModels.PureJakartaJodaTimeNoZoneAccessTypeNone.class,
-            name = "PureJakartaJodaTimeModels" + "$" + "PureJakartaJodaTimeNoZoneAccessTypeNone"),
+            value = PureJakartaJodaTimeNoZoneAccessTypeNone.class,
+            name = "PureJakartaJodaTimeNoZoneAccessTypeNone"),
     @JsonSubTypes.Type(
-            value = PureJakartaJodaTimeModels.PureJakartaJodaTimeNoZoneAccessTypeProperty.class,
-            name = "PureJakartaJodaTimeModels" + "$" + "PureJakartaJodaTimeNoZoneAccessTypeProperty"),
+            value = PureJakartaJodaTimeNoZoneAccessTypeProperty.class,
+            name = "PureJakartaJodaTimeNoZoneAccessTypeProperty"),
     @JsonSubTypes.Type(
-            value = PureJakartaJodaTimeModels.PureJakartaJodaTimeNoZoneAccessTypePublicMember.class,
-            name = "PureJakartaJodaTimeModels" + "$" + "PureJakartaJodaTimeNoZoneAccessTypePublicMember"),
+            value = PureJakartaJodaTimeNoZoneAccessTypePublicMember.class,
+            name = "PureJakartaJodaTimeNoZoneAccessTypePublicMember"),
     @JsonSubTypes.Type(
-            value = PureJakartaJodaTimeModels.PureJakartaJodaTimeZonedAccessTypeField.class,
-            name = "PureJakartaJodaTimeModels" + "$" + "PureJakartaJodaTimeZonedAccessTypeField"),
+            value = PureJakartaJodaTimeZonedAccessTypeField.class,
+            name = "PureJakartaJodaTimeZonedAccessTypeField"),
     @JsonSubTypes.Type(
-            value = PureJakartaJodaTimeModels.PureJakartaJodaTimeZonedAccessTypeNone.class,
-            name = "PureJakartaJodaTimeModels" + "$" + "PureJakartaJodaTimeZonedAccessTypeNone"),
+            value = PureJakartaJodaTimeZonedAccessTypeNone.class,
+            name = "PureJakartaJodaTimeZonedAccessTypeNone"),
     @JsonSubTypes.Type(
-            value = PureJakartaJodaTimeModels.PureJakartaJodaTimeZonedAccessTypeProperty.class,
-            name = "PureJakartaJodaTimeModels" + "$" + "PureJakartaJodaTimeZonedAccessTypeProperty"),
+            value = PureJakartaJodaTimeZonedAccessTypeProperty.class,
+            name = "PureJakartaJodaTimeZonedAccessTypeProperty"),
     @JsonSubTypes.Type(
-            value = PureJakartaJodaTimeModels.PureJakartaJodaTimeZonedAccessTypePublicMember.class,
-            name = "PureJakartaJodaTimeModels" + "$" + "PureJakartaJodaTimeZonedAccessTypePublicMember"),
+            value = PureJakartaJodaTimeZonedAccessTypePublicMember.class,
+            name = "PureJakartaJodaTimeZonedAccessTypePublicMember"),
     @JsonSubTypes.Type(
             value = PureJaxbJavaTimeModels.PureJaxbJavaTimeNoZoneAccessTypeField.class,
             name = "PureJaxbJavaTimeModels" + "$" + "PureJaxbJavaTimeNoZoneAccessTypeField"),

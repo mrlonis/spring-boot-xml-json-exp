@@ -1,4 +1,4 @@
-package com.mrlonis.xml.shared.model.pure.jakarta;
+package com.mrlonis.xml.shared.model.pure.jakarta.jakarta;
 
 import static com.mrlonis.xml.shared.util.Constants.AUTHOR;
 import static com.mrlonis.xml.shared.util.Constants.ID;
@@ -9,14 +9,6 @@ import static com.mrlonis.xml.shared.util.Constants.TAGS;
 
 import com.mrlonis.xml.shared.enums.TimeZoneIndicator;
 import com.mrlonis.xml.shared.model.BaseModel;
-import com.mrlonis.xml.shared.model.pure.jakarta.jakarta.PureJakartaJavaTimeNoZoneAccessTypeField;
-import com.mrlonis.xml.shared.model.pure.jakarta.jakarta.PureJakartaJavaTimeNoZoneAccessTypeNone;
-import com.mrlonis.xml.shared.model.pure.jakarta.jakarta.PureJakartaJavaTimeNoZoneAccessTypeProperty;
-import com.mrlonis.xml.shared.model.pure.jakarta.jakarta.PureJakartaJavaTimeNoZoneAccessTypePublicMember;
-import com.mrlonis.xml.shared.model.pure.jakarta.jakarta.PureJakartaJavaTimeZonedAccessTypeField;
-import com.mrlonis.xml.shared.model.pure.jakarta.jakarta.PureJakartaJavaTimeZonedAccessTypeNone;
-import com.mrlonis.xml.shared.model.pure.jakarta.jakarta.PureJakartaJavaTimeZonedAccessTypeProperty;
-import com.mrlonis.xml.shared.model.pure.jakarta.jakarta.PureJakartaJavaTimeZonedAccessTypePublicMember;
 import java.util.Map;
 import lombok.experimental.UtilityClass;
 

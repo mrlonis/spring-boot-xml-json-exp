@@ -3,6 +3,8 @@ package com.mrlonis.xml.shared.model.pure.jakarta;
 import com.mrlonis.xml.shared.enums.TimeLibrary;
 import com.mrlonis.xml.shared.enums.TimeZoneIndicator;
 import com.mrlonis.xml.shared.model.BaseModel;
+import com.mrlonis.xml.shared.model.pure.jakarta.jakarta.PureJakartaJavaTimeConstants;
+import com.mrlonis.xml.shared.model.pure.jakarta.joda.PureJakartaJodaTimeConstants;
 import java.util.Map;
 import lombok.experimental.UtilityClass;
 

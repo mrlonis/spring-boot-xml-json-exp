@@ -9,3 +9,4 @@
 ./mvnw help:effective-pom -Doutput="effective-pom.xml" -pl pure-jakarta
 ./mvnw help:effective-pom -Doutput="effective-pom.xml" -pl pure-jaxb
 ./mvnw help:effective-pom -Doutput="effective-pom.xml" -pl shared
+./mvnw help:effective-pom -Doutput="effective-pom.xml" -pl shared-test

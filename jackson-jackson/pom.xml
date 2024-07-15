@@ -58,10 +58,9 @@
       <optional>true</optional>
     </dependency>
     <dependency>
-      <groupId>com.mrlonis.xml.shared</groupId>
-      <artifactId>shared</artifactId>
+      <groupId>com.mrlonis.xml.shared.test</groupId>
+      <artifactId>shared-test</artifactId>
       <version>${project.version}</version>
-      <type>test-jar</type>
       <scope>test</scope>
     </dependency>
     <dependency>

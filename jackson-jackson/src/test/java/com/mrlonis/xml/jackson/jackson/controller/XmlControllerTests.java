@@ -1,9 +1,9 @@
 package com.mrlonis.xml.jackson.jackson.controller;
 
-import static com.mrlonis.xml.shared.TestUtils.generateTestArguments;
+import static com.mrlonis.xml.shared.test.TestUtils.generateTestArguments;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import com.mrlonis.xml.shared.BaseXmlControllerTests;
+import com.mrlonis.xml.shared.test.BaseXmlControllerTests;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.provider.Arguments;

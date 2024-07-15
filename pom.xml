@@ -24,6 +24,7 @@
     <module>pure-jakarta</module>
     <module>pure-jaxb</module>
     <module>shared</module>
+    <module>shared-test</module>
   </modules>
   <properties>
     <checker-qual.version>3.45.0</checker-qual.version>

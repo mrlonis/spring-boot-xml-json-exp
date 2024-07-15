@@ -6,39 +6,20 @@
     <artifactId>spring-boot-xml-json-exp</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <groupId>com.mrlonis.xml.shared</groupId>
-  <artifactId>shared</artifactId>
+  <groupId>com.mrlonis.xml.shared.test</groupId>
+  <artifactId>shared-test</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <name>shared</name>
-  <description>shared</description>
+  <name>shared-test</name>
+  <description>shared-test</description>
   <dependencies>
     <dependency>
-      <groupId>com.fasterxml.jackson.dataformat</groupId>
-      <artifactId>jackson-dataformat-xml</artifactId>
-      <optional>true</optional>
+      <groupId>com.mrlonis.xml.shared</groupId>
+      <artifactId>shared</artifactId>
+      <version>${project.version}</version>
     </dependency>
     <dependency>
-      <groupId>com.fasterxml.jackson.datatype</groupId>
-      <artifactId>jackson-datatype-joda</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>com.fasterxml.jackson.datatype</groupId>
-      <artifactId>jackson-datatype-jsr310</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>jakarta.annotation</groupId>
-      <artifactId>jakarta.annotation-api</artifactId>
-      <optional>true</optional>
-    </dependency>
-    <dependency>
-      <groupId>jakarta.xml.bind</groupId>
-      <artifactId>jakarta.xml.bind-api</artifactId>
-      <optional>true</optional>
-    </dependency>
-    <dependency>
-      <groupId>javax.xml.bind</groupId>
-      <artifactId>jaxb-api</artifactId>
-      <optional>true</optional>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-text</artifactId>
     </dependency>
     <dependency>
       <groupId>org.checkerframework</groupId>
@@ -52,17 +33,7 @@
     </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-web</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.commons</groupId>
-      <artifactId>commons-text</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-test</artifactId>
-      <scope>test</scope>
     </dependency>
   </dependencies>
   <build>
@@ -82,10 +53,6 @@
               <rules>
                 <rule>
                   <element>BUNDLE</element>
-                  <excludes>
-                    <exclude>com.mrlonis.xml.shared.exception</exclude>
-                    <exclude>com.mrlonis.xml.shared.model</exclude>
-                  </excludes>
                   <limits>
                     <limit>
                       <counter>LINE</counter>

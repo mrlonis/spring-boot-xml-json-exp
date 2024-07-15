@@ -1,6 +1,7 @@
 ./mvnw help:effective-pom -Doutput="effective-pom.xml"
 ./mvnw help:effective-pom -Doutput="effective-pom.xml" --projects="all"
 ./mvnw help:effective-pom -Doutput="effective-pom.xml" --projects="jackson-all"
+./mvnw help:effective-pom -Doutput="effective-pom.xml" --projects="jackson-jackson"
 ./mvnw help:effective-pom -Doutput="effective-pom.xml" --projects="jackson-jakarta"
 ./mvnw help:effective-pom -Doutput="effective-pom.xml" --projects="jackson-jaxb"
 ./mvnw help:effective-pom -Doutput="effective-pom.xml" --projects="jakarta"

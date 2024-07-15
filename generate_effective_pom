@@ -2,6 +2,7 @@
 ./mvnw help:effective-pom -Doutput="effective-pom.xml"
 ./mvnw help:effective-pom -Doutput="effective-pom.xml" -pl all
 ./mvnw help:effective-pom -Doutput="effective-pom.xml" -pl jackson-all
+./mvnw help:effective-pom -Doutput="effective-pom.xml" -pl jackson-jackson
 ./mvnw help:effective-pom -Doutput="effective-pom.xml" -pl jackson-jakarta
 ./mvnw help:effective-pom -Doutput="effective-pom.xml" -pl jackson-jaxb
 ./mvnw help:effective-pom -Doutput="effective-pom.xml" -pl jakarta

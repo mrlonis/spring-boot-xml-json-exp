@@ -9,42 +9,47 @@ import static com.mrlonis.xml.shared.util.Constants.TAGS;
 
 import com.mrlonis.xml.shared.enums.TimeZoneIndicator;
 import com.mrlonis.xml.shared.model.BaseModel;
+import com.mrlonis.xml.shared.model.pure.jaxb.joda.PureJaxbJodaTimeNoZoneAccessTypeField;
+import com.mrlonis.xml.shared.model.pure.jaxb.joda.PureJaxbJodaTimeNoZoneAccessTypeNone;
+import com.mrlonis.xml.shared.model.pure.jaxb.joda.PureJaxbJodaTimeNoZoneAccessTypeProperty;
+import com.mrlonis.xml.shared.model.pure.jaxb.joda.PureJaxbJodaTimeNoZoneAccessTypePublicMember;
+import com.mrlonis.xml.shared.model.pure.jaxb.joda.PureJaxbJodaTimeZonedAccessTypeField;
+import com.mrlonis.xml.shared.model.pure.jaxb.joda.PureJaxbJodaTimeZonedAccessTypeNone;
+import com.mrlonis.xml.shared.model.pure.jaxb.joda.PureJaxbJodaTimeZonedAccessTypeProperty;
+import com.mrlonis.xml.shared.model.pure.jaxb.joda.PureJaxbJodaTimeZonedAccessTypePublicMember;
 import com.mrlonis.xml.shared.util.Constants;
 import java.util.Map;
 import lombok.experimental.UtilityClass;
 
 @UtilityClass
 public class PureJaxbJodaTimeConstants {
-    private static final PureJaxbJodaTimeModels.PureJaxbJodaTimeNoZoneAccessTypeField
-            PURE_JAXB_JODA_TIME_NO_ZONE_ACCESS_TYPE_FIELD =
-                    PureJaxbJodaTimeModels.PureJaxbJodaTimeNoZoneAccessTypeField.builder()
-                            .id(ID)
-                            .name(NAME)
-                            .author(AUTHOR)
-                            .date(JODA_LOCAL_DATE_TIME)
-                            .tag(TAGS)
-                            .build();
-    private static final PureJaxbJodaTimeModels.PureJaxbJodaTimeNoZoneAccessTypeNone
-            PURE_JAXB_JODA_TIME_NO_ZONE_ACCESS_TYPE_NONE =
-                    PureJaxbJodaTimeModels.PureJaxbJodaTimeNoZoneAccessTypeNone.builder()
-                            .id(ID)
-                            .name(NAME)
-                            .author(AUTHOR)
-                            .date(JODA_LOCAL_DATE_TIME)
-                            .tag(TAGS)
-                            .build();
-    private static final PureJaxbJodaTimeModels.PureJaxbJodaTimeNoZoneAccessTypeProperty
-            PURE_JAXB_JODA_TIME_NO_ZONE_ACCESS_TYPE_PROPERTY =
-                    PureJaxbJodaTimeModels.PureJaxbJodaTimeNoZoneAccessTypeProperty.builder()
-                            .id(ID)
-                            .name(NAME)
-                            .author(AUTHOR)
-                            .date(JODA_LOCAL_DATE_TIME)
-                            .tag(TAGS)
-                            .build();
-    private static final PureJaxbJodaTimeModels.PureJaxbJodaTimeNoZoneAccessTypePublicMember
+    private static final PureJaxbJodaTimeNoZoneAccessTypeField PURE_JAXB_JODA_TIME_NO_ZONE_ACCESS_TYPE_FIELD =
+            PureJaxbJodaTimeNoZoneAccessTypeField.builder()
+                    .id(ID)
+                    .name(NAME)
+                    .author(AUTHOR)
+                    .date(JODA_LOCAL_DATE_TIME)
+                    .tag(TAGS)
+                    .build();
+    private static final PureJaxbJodaTimeNoZoneAccessTypeNone PURE_JAXB_JODA_TIME_NO_ZONE_ACCESS_TYPE_NONE =
+            PureJaxbJodaTimeNoZoneAccessTypeNone.builder()
+                    .id(ID)
+                    .name(NAME)
+                    .author(AUTHOR)
+                    .date(JODA_LOCAL_DATE_TIME)
+                    .tag(TAGS)
+                    .build();
+    private static final PureJaxbJodaTimeNoZoneAccessTypeProperty PURE_JAXB_JODA_TIME_NO_ZONE_ACCESS_TYPE_PROPERTY =
+            PureJaxbJodaTimeNoZoneAccessTypeProperty.builder()
+                    .id(ID)
+                    .name(NAME)
+                    .author(AUTHOR)
+                    .date(JODA_LOCAL_DATE_TIME)
+                    .tag(TAGS)
+                    .build();
+    private static final PureJaxbJodaTimeNoZoneAccessTypePublicMember
             PURE_JAXB_JODA_TIME_NO_ZONE_ACCESS_TYPE_PUBLIC_MEMBER =
-                    PureJaxbJodaTimeModels.PureJaxbJodaTimeNoZoneAccessTypePublicMember.builder()
+                    PureJaxbJodaTimeNoZoneAccessTypePublicMember.builder()
                             .id(ID)
                             .name(NAME)
                             .author(AUTHOR)
@@ -62,42 +67,38 @@ public class PureJaxbJodaTimeConstants {
             Constants.PUBLIC_MEMBER,
             PURE_JAXB_JODA_TIME_NO_ZONE_ACCESS_TYPE_PUBLIC_MEMBER);
 
-    private static final PureJaxbJodaTimeModels.PureJaxbJodaTimeZonedAccessTypeField
-            PURE_JAXB_JODA_TIME_ZONED_ACCESS_TYPE_FIELD =
-                    PureJaxbJodaTimeModels.PureJaxbJodaTimeZonedAccessTypeField.builder()
-                            .id(ID)
-                            .name(NAME)
-                            .author(AUTHOR)
-                            .date(JODA_DATE_TIME)
-                            .tag(TAGS)
-                            .build();
-    private static final PureJaxbJodaTimeModels.PureJaxbJodaTimeZonedAccessTypeNone
-            PURE_JAXB_JODA_TIME_ZONED_ACCESS_TYPE_NONE =
-                    PureJaxbJodaTimeModels.PureJaxbJodaTimeZonedAccessTypeNone.builder()
-                            .id(ID)
-                            .name(NAME)
-                            .author(AUTHOR)
-                            .date(JODA_DATE_TIME)
-                            .tag(TAGS)
-                            .build();
-    private static final PureJaxbJodaTimeModels.PureJaxbJodaTimeZonedAccessTypeProperty
-            PURE_JAXB_JODA_TIME_ZONED_ACCESS_TYPE_PROPERTY =
-                    PureJaxbJodaTimeModels.PureJaxbJodaTimeZonedAccessTypeProperty.builder()
-                            .id(ID)
-                            .name(NAME)
-                            .author(AUTHOR)
-                            .date(JODA_DATE_TIME)
-                            .tag(TAGS)
-                            .build();
-    private static final PureJaxbJodaTimeModels.PureJaxbJodaTimeZonedAccessTypePublicMember
-            PURE_JAXB_JODA_TIME_ZONED_ACCESS_TYPE_PUBLIC_MEMBER =
-                    PureJaxbJodaTimeModels.PureJaxbJodaTimeZonedAccessTypePublicMember.builder()
-                            .id(ID)
-                            .name(NAME)
-                            .author(AUTHOR)
-                            .date(JODA_DATE_TIME)
-                            .tag(TAGS)
-                            .build();
+    private static final PureJaxbJodaTimeZonedAccessTypeField PURE_JAXB_JODA_TIME_ZONED_ACCESS_TYPE_FIELD =
+            PureJaxbJodaTimeZonedAccessTypeField.builder()
+                    .id(ID)
+                    .name(NAME)
+                    .author(AUTHOR)
+                    .date(JODA_DATE_TIME)
+                    .tag(TAGS)
+                    .build();
+    private static final PureJaxbJodaTimeZonedAccessTypeNone PURE_JAXB_JODA_TIME_ZONED_ACCESS_TYPE_NONE =
+            PureJaxbJodaTimeZonedAccessTypeNone.builder()
+                    .id(ID)
+                    .name(NAME)
+                    .author(AUTHOR)
+                    .date(JODA_DATE_TIME)
+                    .tag(TAGS)
+                    .build();
+    private static final PureJaxbJodaTimeZonedAccessTypeProperty PURE_JAXB_JODA_TIME_ZONED_ACCESS_TYPE_PROPERTY =
+            PureJaxbJodaTimeZonedAccessTypeProperty.builder()
+                    .id(ID)
+                    .name(NAME)
+                    .author(AUTHOR)
+                    .date(JODA_DATE_TIME)
+                    .tag(TAGS)
+                    .build();
+    private static final PureJaxbJodaTimeZonedAccessTypePublicMember
+            PURE_JAXB_JODA_TIME_ZONED_ACCESS_TYPE_PUBLIC_MEMBER = PureJaxbJodaTimeZonedAccessTypePublicMember.builder()
+                    .id(ID)
+                    .name(NAME)
+                    .author(AUTHOR)
+                    .date(JODA_DATE_TIME)
+                    .tag(TAGS)
+                    .build();
 
     private static final Map<String, BaseModel<?>> PURE_JAXB_JODA_TIME_ZONED_MAP = Map.of(
             Constants.FIELD,

@@ -124,26 +124,22 @@ public abstract class BaseXmlControllerTests {
 
     private String getResponseTestJson(
             AnnotationLibrary formatLibrary, String accessType, TimeLibrary dateLibrary, TimeZoneIndicator zoned) {
-        String json_zoned = TestConstants.JSON_ZONED;
-        String json_no_zone = TestConstants.JSON_NO_ZONE;
-        if (AnnotationLibrary.PURE_JAXB.equals(formatLibrary) || AnnotationLibrary.PURE_JAKARTA.equals(formatLibrary)) {
-            json_zoned = TestConstants.JSON_ZONED_BAD;
-            json_no_zone = TestConstants.JSON_NO_ZONE_BAD;
-        }
         return replaceTypeInData(
-                formatLibrary, accessType, dateLibrary, zoned, getDataByZone(zoned, json_zoned, json_no_zone));
+                formatLibrary,
+                accessType,
+                dateLibrary,
+                zoned,
+                getDataByZone(zoned, TestConstants.JSON_ZONED, TestConstants.JSON_NO_ZONE));
     }
 
     private String getResponseTestXml(
             AnnotationLibrary formatLibrary, String accessType, TimeLibrary dateLibrary, TimeZoneIndicator zoned) {
-        String xml_zoned = TestConstants.XML_ZONED;
-        String xml_no_zone = TestConstants.XML_NO_ZONE;
-        if (AnnotationLibrary.PURE_JAXB.equals(formatLibrary) || AnnotationLibrary.PURE_JAKARTA.equals(formatLibrary)) {
-            xml_zoned = TestConstants.XML_ZONED_BAD;
-            xml_no_zone = TestConstants.XML_NO_ZONE_BAD;
-        }
         return replaceTypeInData(
-                formatLibrary, accessType, dateLibrary, zoned, getDataByZone(zoned, xml_zoned, xml_no_zone));
+                formatLibrary,
+                accessType,
+                dateLibrary,
+                zoned,
+                getDataByZone(zoned, TestConstants.XML_ZONED, TestConstants.XML_NO_ZONE));
     }
 
     private String getDataByZone(TimeZoneIndicator zonedIndicator, String zonedData, String noZoneData) {

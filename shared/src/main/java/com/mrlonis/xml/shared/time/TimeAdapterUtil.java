@@ -67,7 +67,6 @@ public class TimeAdapterUtil {
 
     public static <T> T deserialize(JsonParser jsonparser, DeserializationContext context, @Nullable Class<T> type)
             throws IOException {
-        log.info("TimeAdapterUtil: deserialize(): type: {}", type != null ? type.getName() : null);
         if (type == LocalDateTime.class) {
             return type.cast(JavaTimeUtil.deserializeLocalDateTime(jsonparser, context));
         } else if (type == ZonedDateTime.class) {

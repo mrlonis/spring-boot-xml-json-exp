@@ -148,21 +148,18 @@ public class XmlModel {
     @Getter(onMethod_ = {@JsonGetter}) // Only needed if XmlAccessType.NONE
     private long id;
 
-    @JacksonXmlProperty(localName = "title") // jackson-dataformat-xml
     @JsonProperty("title") // jackson-annotations
     private String name;
 
     @XmlTransient // Jaxb/Jakarta Annotation
     private String author;
 
-    @JacksonXmlProperty // jackson-dataformat-xml
+    @JsonProperty // jackson-annotations
     @XmlJavaTypeAdapter(ZonedDateTimeAdapter.class) // Jaxb/Jakarta Annotation
-    @Getter(onMethod_ = {@JsonGetter}) // Only needed if XmlAccessType.NONE
     private ZonedDateTime date;
 
     @JacksonXmlElementWrapper(localName = "tags") // jackson-dataformat-xml
-    @JacksonXmlProperty(localName = "tag") // jackson-dataformat-xml
-    @Getter(onMethod_ = {@JsonGetter("tag")}) // Only needed if XmlAccessType.NONE
+    @JsonProperty("tag") // jackson-annotations
     private List<String> tag;
 }
 ```

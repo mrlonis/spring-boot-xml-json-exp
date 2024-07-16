@@ -6,7 +6,6 @@ import com.mrlonis.xml.shared.model.BaseModel;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlTransient;
 import lombok.Data;
 import lombok.experimental.SuperBuilder;
@@ -17,7 +16,6 @@ public abstract class BaseJaxbModel<T> implements BaseModel<T> {
     @XmlAttribute
     private long id;
 
-    @XmlElement(name = "title")
     @JsonProperty("title")
     private String name;
 
@@ -25,7 +23,6 @@ public abstract class BaseJaxbModel<T> implements BaseModel<T> {
     private String author;
 
     @JacksonXmlElementWrapper(localName = "tags")
-    @XmlElementWrapper(name = "tags")
     @XmlElement(name = "tag")
     private List<String> tag;
 }

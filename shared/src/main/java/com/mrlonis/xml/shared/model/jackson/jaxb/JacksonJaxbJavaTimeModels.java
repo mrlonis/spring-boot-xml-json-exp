@@ -1,7 +1,6 @@
 package com.mrlonis.xml.shared.model.jackson.jaxb;
 
-import com.fasterxml.jackson.annotation.JsonGetter;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 import com.mrlonis.xml.shared.adapter.JaxbJavaTimeAdapters;
 import java.time.LocalDateTime;
@@ -12,7 +11,6 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.Getter;
 import lombok.experimental.SuperBuilder;
 import lombok.experimental.UtilityClass;
 import lombok.extern.jackson.Jacksonized;
@@ -27,9 +25,8 @@ public class JacksonJaxbJavaTimeModels {
     @Jacksonized
     @SuperBuilder
     public static class JacksonJaxbJavaTimeNoZoneAccessTypeField extends BaseJacksonJaxbModel<LocalDateTime> {
-        @JacksonXmlProperty
+        @JsonProperty
         @XmlJavaTypeAdapter(JaxbJavaTimeAdapters.JaxbLocalDateTimeAdapter.class)
-        @Getter(onMethod_ = {@JsonGetter})
         private LocalDateTime date;
     }
 
@@ -41,9 +38,8 @@ public class JacksonJaxbJavaTimeModels {
     @Jacksonized
     @SuperBuilder
     public static class JacksonJaxbJavaTimeNoZoneAccessTypeNone extends BaseJacksonJaxbModel<LocalDateTime> {
-        @JacksonXmlProperty
+        @JsonProperty
         @XmlJavaTypeAdapter(JaxbJavaTimeAdapters.JaxbLocalDateTimeAdapter.class)
-        @Getter(onMethod_ = {@JsonGetter})
         private LocalDateTime date;
     }
 
@@ -55,9 +51,8 @@ public class JacksonJaxbJavaTimeModels {
     @Jacksonized
     @SuperBuilder
     public static class JacksonJaxbJavaTimeNoZoneAccessTypeProperty extends BaseJacksonJaxbModel<LocalDateTime> {
-        @JacksonXmlProperty
+        @JsonProperty
         @XmlJavaTypeAdapter(JaxbJavaTimeAdapters.JaxbLocalDateTimeAdapter.class)
-        @Getter(onMethod_ = {@JsonGetter})
         private LocalDateTime date;
     }
 
@@ -69,9 +64,8 @@ public class JacksonJaxbJavaTimeModels {
     @Jacksonized
     @SuperBuilder
     public static class JacksonJaxbJavaTimeNoZoneAccessTypePublicMember extends BaseJacksonJaxbModel<LocalDateTime> {
-        @JacksonXmlProperty
+        @JsonProperty
         @XmlJavaTypeAdapter(JaxbJavaTimeAdapters.JaxbLocalDateTimeAdapter.class)
-        @Getter(onMethod_ = {@JsonGetter})
         private LocalDateTime date;
     }
 
@@ -83,9 +77,8 @@ public class JacksonJaxbJavaTimeModels {
     @Jacksonized
     @SuperBuilder
     public static class JacksonJaxbJavaTimeZonedAccessTypeField extends BaseJacksonJaxbModel<ZonedDateTime> {
-        @JacksonXmlProperty
+        @JsonProperty
         @XmlJavaTypeAdapter(JaxbJavaTimeAdapters.JaxbZonedDateTimeAdapter.class)
-        @Getter(onMethod_ = {@JsonGetter})
         private ZonedDateTime date;
     }
 
@@ -97,9 +90,8 @@ public class JacksonJaxbJavaTimeModels {
     @Jacksonized
     @SuperBuilder
     public static class JacksonJaxbJavaTimeZonedAccessTypeNone extends BaseJacksonJaxbModel<ZonedDateTime> {
-        @JacksonXmlProperty
+        @JsonProperty
         @XmlJavaTypeAdapter(JaxbJavaTimeAdapters.JaxbZonedDateTimeAdapter.class)
-        @Getter(onMethod_ = {@JsonGetter})
         private ZonedDateTime date;
     }
 
@@ -111,9 +103,8 @@ public class JacksonJaxbJavaTimeModels {
     @Jacksonized
     @SuperBuilder
     public static class JacksonJaxbJavaTimeZonedAccessTypeProperty extends BaseJacksonJaxbModel<ZonedDateTime> {
-        @JacksonXmlProperty
+        @JsonProperty
         @XmlJavaTypeAdapter(JaxbJavaTimeAdapters.JaxbZonedDateTimeAdapter.class)
-        @Getter(onMethod_ = {@JsonGetter})
         private ZonedDateTime date;
     }
 
@@ -125,9 +116,8 @@ public class JacksonJaxbJavaTimeModels {
     @Jacksonized
     @SuperBuilder
     public static class JacksonJaxbJavaTimeZonedAccessTypePublicMember extends BaseJacksonJaxbModel<ZonedDateTime> {
-        @JacksonXmlProperty
+        @JsonProperty
         @XmlJavaTypeAdapter(JaxbJavaTimeAdapters.JaxbZonedDateTimeAdapter.class)
-        @Getter(onMethod_ = {@JsonGetter})
         private ZonedDateTime date;
     }
 }

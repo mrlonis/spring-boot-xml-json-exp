@@ -18,7 +18,6 @@ public abstract class BaseJacksonJakartaModel<T> implements BaseModel<T> {
     @Getter(onMethod_ = {@JsonGetter})
     private long id;
 
-    @JacksonXmlProperty(localName = "title")
     @JsonProperty("title")
     private String name;
 
@@ -26,7 +25,6 @@ public abstract class BaseJacksonJakartaModel<T> implements BaseModel<T> {
     private String author;
 
     @JacksonXmlElementWrapper(localName = "tags")
-    @JacksonXmlProperty(localName = "tag")
-    @Getter(onMethod_ = {@JsonGetter("tag")})
+    @JsonProperty("tag")
     private List<String> tag;
 }

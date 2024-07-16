@@ -3,13 +3,16 @@
 <!-- TOC -->
 * [spring-boot-xml-json-exp](#spring-boot-xml-json-exp)
   * [Goals](#goals)
+  * [Basic POJO](#basic-pojo)
   * [Sample Output](#sample-output)
     * [XML](#xml)
     * [JSON](#json)
-  * [Branches](#branches)
-  * [Git pre-commit/post-commit scripts](#git-pre-commitpost-commit-scripts)
-    * [Testing Scenarios](#testing-scenarios)
-  * [Spotless](#spotless)
+  * [Findings](#findings)
+    * [Pure Jaxb & Pure Jakarta Deserialization Issues](#pure-jaxb--pure-jakarta-deserialization-issues)
+      * [Adding @Jacksonized](#adding-jacksonized)
+      * [Adding Jaxb/Jakarta Annotations to Getters/Setters](#adding-jaxbjakarta-annotations-to-getterssetters)
+      * [Supplementing with Jackson Annotations](#supplementing-with-jackson-annotations)
+    * [Pure Jackson](#pure-jackson)
 
 <!-- TOC -->
 
@@ -17,6 +20,35 @@
 
 The goal is to have the application return the same XML/JSON output for various different POJOs using different XML
 annotation libraries.
+
+## Basic POJO
+
+```java
+@XmlRootElement(name = "book")
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(propOrder = {"id", "name", "date", "tags"})
+@Data
+@Jacksonized
+@Builder
+public class XmlModel {
+    @XmlAttribute
+    private long id;
+
+    @XmlElement(name = "title")
+    private String name;
+
+    @XmlTransient
+    private String author;
+
+    @XmlElement
+    @XmlJavaTypeAdapter(ZonedDateTimeAdapter.class)
+    private ZonedDateTime date;
+
+    @XmlElementWrapper(name = "tags")
+    @XmlElement(name = "tag")
+    private List<String> tag;
+}
+```
 
 ## Sample Output
 
@@ -51,53 +83,139 @@ annotation libraries.
 }
 ```
 
-## Branches
+## Findings
 
-- `main`
-  - The default Spring Boot 2.7.x branch
-  - Data Formats: `[JAXB, Jakarta, Jackson]`
-- `feature/spring-boot-2/jaxb`
-  - Data Formats: `[JAXB]`
-- `feature/spring-boot-2/jakarta`
-  - Data Formats: `[Jakarta]`
-- `feature/spring-boot-2/jackson`
-  - Data Formats: `[Jackson]`
-- `feature/spring-boot-3`
-  - The Spring Boot 3.x.x branch
-  - Data Formats: `[JAXB, Jakarta, Jackson]`
-- `feature/spring-boot-3/jaxb`
-  - Data Formats: `[JAXB]`
-- `feature/spring-boot-3/jakarta`
-  - Data Formats: `[Jakarta]`
-- `feature/spring-boot-3/jackson`
-  - Data Formats: `[Jackson]`
+### Pure Jaxb & Pure Jakarta Deserialization Issues
 
-## Git pre-commit/post-commit scripts
+While both libraries are consistent with each other and the XML output they produce, they are both ultimately unable to deserialize their respective XML and JSON outputs without added assistance from Jackson annotations such as `@JsonProperty` and `@JacksonXmlElementWrapper`.
 
-This project uses a pre-commit script to format the code before committing. The script is located in the
-`.hooks/pre-commit` file. The script is written in bash and uses spotless to format the code. The script is executed
-before the commit takes place. If the script fails, the commit is aborted.
+#### Adding @Jacksonized
 
-This project also uses a post-commit script to format the code after committing. The script is located in the
-`.hooks/post-commit` file. The script is written in bash and uses spotless to format the code. The script is executed
-after the commit takes place. The goal of this script is to ensure that the code is always formatted correctly. This
-ensures that if a
-commit is made, unstaged files will be formatted. Additionally, this helps cover scenarios where the un-staged file is
-identical to the staged file **pre**-formatting, resulting in the bad formatting persisting
-after the `pre-commit` script is executed, the change is just unstaged and not committed. This `post-commit` script will
-format the file in this case so that the file is removed from the staging area.
+The `@Jacksonized` annotation is a lombok annotation that is an add-on annotation for `@Builder` and `@SuperBuilder`. It automatically configures the generated builder class to be used by `Jackson`'s deserialization.
 
-### Testing Scenarios
+However, this annotation is not enough to fix the deserialization issues.
 
-- [X] Scenario 1: File is modified. After spotless it is still modified, but now formatted and ready for commit.
-- [X] Scenario 2: File is modified, but after spotless it is no longer modified and the commit is now empty.
-- [X] Scenario 3: 2 Files are modified, but after spotless 1 is no longer modified but the commit is not empty. Only the
-  modified file is committed.
-- [X] Scenario 4: 2 Files are modified, but after spotless both are no longer modified and the commit is empty.
-- [X] Scenario 5: 2 Files are modified, but after spotless both are still modified and the commit is not empty. Both
-  files are committed.
-- [ ] Scenario 6: File is modified, and added to git for commit. The file is then re-modified. A commit takes place
-  without adding the new changes to the commit. This causes us to have staged and unstaged changes. The pre-commit
-  script handle this merge and result in a file that is formatted and ready for commit.
+#### Adding Jaxb/Jakarta Annotations to Getters/Setters
 
-## Spotless
+Jackson uses the POJO's getters and setters for serialization and deserialization. By adding the Jaxb/Jakarta annotations to the getters and setters, we should theoretically be able to deserialize the XML and JSON outputs.
+
+```java
+@XmlRootElement(name = "book")
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(propOrder = {"id", "name", "date", "tags"})
+@Data
+@Jacksonized
+@Builder
+public class XmlModel {
+    @XmlAttribute
+    private long id;
+
+    @XmlElement(name = "title")
+    @Getter(onMethod_ = {@XmlElement(name = "title")})
+    @Setter(onMethod_ = {@XmlElement(name = "title")})
+    private String name;
+
+    @XmlTransient
+    private String author;
+
+    @XmlElement
+    @XmlJavaTypeAdapter(ZonedDateTimeAdapter.class)
+    private ZonedDateTime date;
+
+    @XmlElementWrapper(name = "tags")
+    @XmlElement(name = "tag")
+    @Getter(onMethod_ = {@XmlElementWrapper(name = "tags"), @XmlElement(name = "tag")})
+    @Setter(onMethod_ = {@XmlElementWrapper(name = "tags"), @XmlElement(name = "tag")})
+    private List<String> tag;
+}
+```
+
+However, even this is not enough to have proper deserialization.
+
+#### Supplementing with Jackson Annotations
+
+We can supplement out existing Jaxb/Jakarta annotations with Jackson annotations to have proper deserialization.
+
+```java
+@JacksonXmlRootElement(localName = "book") // jackson-dataformat-xml
+@XmlAccessorType(XmlAccessType.NONE) // Jaxb/Jakarta Annotation
+@XmlType(propOrder = {"id", "name", "date", "tags"}) // Jaxb/Jakarta Annotation
+@Data
+@Jacksonized
+@Builder
+public class XmlModel {
+    @JacksonXmlProperty(isAttribute = true) // jackson-dataformat-xml
+    @Getter(onMethod_ = {@JsonGetter}) // Only needed if XmlAccessType.NONE
+    private long id;
+
+    @JacksonXmlProperty(localName = "title") // jackson-dataformat-xml
+    @JsonProperty("title") // jackson-annotations
+    private String name;
+
+    @XmlTransient // Jaxb/Jakarta Annotation
+    private String author;
+
+    @JacksonXmlProperty // jackson-dataformat-xml
+    @XmlJavaTypeAdapter(ZonedDateTimeAdapter.class) // Jaxb/Jakarta Annotation
+    @Getter(onMethod_ = {@JsonGetter}) // Only needed if XmlAccessType.NONE
+    private ZonedDateTime date;
+
+    @JacksonXmlElementWrapper(localName = "tags") // jackson-dataformat-xml
+    @JacksonXmlProperty(localName = "tag") // jackson-dataformat-xml
+    @Getter(onMethod_ = {@JsonGetter("tag")}) // Only needed if XmlAccessType.NONE
+    private List<String> tag;
+}
+```
+
+This is however, an excessive amount of annotations to have a simple POJO be able to serialize and deserialize XML and JSON. It is also not very maintainable as it requires a lot of background understand of Jackson / Jaxb / Jakarta XML Binding in order to properly implement the annotations.
+
+What if there was a better way to do this?
+
+### Pure Jackson
+
+Instead, we can resolve all of these concerns by migrating to `jackson-dataformat-xml` and `jackson-annotations`. Not only do these libraries go back to the early Spring Framework days, but they also provide a more readable and maintainable way to serialize and deserialize XML and JSON.
+
+```java
+// No need for XmlAccessorType. Jackson annotations integrate with lombok as you would expect
+@JacksonXmlRootElement(localName = "book")
+@JsonPropertyOrder({"id", "name", "date", "tags"})
+@Data
+@Jacksonized
+@SuperBuilder
+public class XmlModel {
+    // @JacksonXmlProperty is a super-set of @JsonProperty to allow for XML specific things,
+    // in this case, specifying that id is an attribute of the root <book> element.
+    //
+    // This is also more readable because we can immediately tell, if we are working in XML,
+    // the id property is an attribute. Instead if we are working in JSON, we can essentially ignore
+    // this annotation since id will appear as expected with the "id" property.
+    @JacksonXmlProperty(isAttribute = true)
+    private long id;
+
+    // Despite being @JsonProperty, this applies to both XML and JSON. Since we aren't doing to do anything special
+    // With this property in XML, we can just use @JsonProperty to specify the name of the property when serialized/deserialized.
+    @JsonProperty("title")
+    private String name;
+
+    // No need for a special @XmlIgnore tag since @JsonIgnore works for both XML and JSON
+    @JsonIgnore
+    private String author;
+
+    // @JsonProperty is implied via the @JsonSerialization and @JsonDeserialization annotations
+    @JsonSerialize(using = ZonedDateTimeSerializer.class)
+    @JsonDeserialize(using = ZonedDateTimeDeserializer.class)
+    private ZonedDateTime date;
+
+    // Here we use @JacksonXmlElementWrapper to specify that the tags should be wrapped in a <tags> element
+    // but we can use the @JsonProperty annotation to specify that the element should be named "tag"
+    // when JSON is being serialized. The @JsonProperty here in combination with @JacksonXmlElementWrapper
+    // produces the expected nested XML of <tags><tag>...</tag>...<tag>...</tag></tags>.
+    //
+    // This is more readable when you think about it. The @JacksonXmlElementWrapper is only for XML, so if you are
+    // looking in the XML for this POJO, you know to look for the <tags> element. Instead, if you are working in
+    // JSON, you know you are looking for the "tag" element.
+    @JacksonXmlElementWrapper(localName = "tags")
+    @JsonProperty("tag")
+    private List<String> tag;
+}
+```

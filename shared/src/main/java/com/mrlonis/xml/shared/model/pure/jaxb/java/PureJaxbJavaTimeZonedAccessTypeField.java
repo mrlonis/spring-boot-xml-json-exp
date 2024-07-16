@@ -15,17 +15,23 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import lombok.Builder;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.extern.jackson.Jacksonized;
 
 @XmlRootElement(name = "book")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(propOrder = {"id", "name", "date", "tags"})
 @Data
+@Jacksonized
 @Builder
 public class PureJaxbJavaTimeZonedAccessTypeField implements BaseModel<ZonedDateTime> {
     @XmlAttribute
     private long id;
 
     @XmlElement(name = "title")
+    @Getter(onMethod_ = {@XmlElement(name = "title")})
+    @Setter(onMethod_ = {@XmlElement(name = "title")})
     private String name;
 
     @XmlTransient
@@ -37,5 +43,7 @@ public class PureJaxbJavaTimeZonedAccessTypeField implements BaseModel<ZonedDate
 
     @XmlElementWrapper(name = "tags")
     @XmlElement(name = "tag")
+    @Getter(onMethod_ = {@XmlElementWrapper(name = "tags"), @XmlElement(name = "tag")})
+    @Setter(onMethod_ = {@XmlElementWrapper(name = "tags"), @XmlElement(name = "tag")})
     private List<String> tag;
 }

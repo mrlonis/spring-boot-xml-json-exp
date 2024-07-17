@@ -13,7 +13,7 @@ public class SharedConfig {
     }
 
     @Bean
-    public XmlController xmlController() {
-        return new XmlController(fetchModelUtil());
+    public XmlController xmlController(FetchModelUtil fetchModelUtil) {
+        return new XmlController(fetchModelUtil);
     }
 }

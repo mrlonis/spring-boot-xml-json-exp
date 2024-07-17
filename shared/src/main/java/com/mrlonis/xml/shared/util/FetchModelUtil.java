@@ -14,9 +14,12 @@ import com.mrlonis.xml.shared.model.BaseModel;
 import com.mrlonis.xml.shared.model.jakarta.JakartaConstants;
 import com.mrlonis.xml.shared.model.jaxb.JaxbConstants;
 import java.util.Map;
-import lombok.experimental.UtilityClass;
+import lombok.NoArgsConstructor;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.stereotype.Component;
 
-@UtilityClass
+@Component
+@NoArgsConstructor
 public class FetchModelUtil {
     private static final Map<
                     AnnotationLibrary, Map<TimeLibrary, Map<TimeZoneIndicator, Map<XmlAccessorType, BaseModel<?>>>>>
@@ -36,7 +39,8 @@ public class FetchModelUtil {
                     AnnotationLibrary.JACKSON_JACKSON,
                     JACKSON_JACKSON_MAP);
 
-    public static BaseModel<?> fetchModel(
+    @Cacheable("fetchModels")
+    public BaseModel<?> fetchModel(
             AnnotationLibrary formatLibrary,
             XmlAccessorType accessType,
             TimeLibrary dateLibrary,

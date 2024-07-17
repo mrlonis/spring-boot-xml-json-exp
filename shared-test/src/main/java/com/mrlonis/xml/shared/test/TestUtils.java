@@ -1,7 +1,5 @@
 package com.mrlonis.xml.shared.test;
 
-import static org.junit.jupiter.params.provider.Arguments.arguments;
-
 import com.mrlonis.xml.shared.enums.AnnotationLibrary;
 import com.mrlonis.xml.shared.enums.TimeLibrary;
 import com.mrlonis.xml.shared.enums.TimeZoneIndicator;

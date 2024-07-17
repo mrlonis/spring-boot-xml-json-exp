@@ -4,7 +4,7 @@
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>3.3.1</version>
+    <version>2.7.18</version>
     <relativePath/>
   </parent>
   <groupId>com.mrlonis.xml</groupId>
@@ -39,7 +39,7 @@
     <jaxb-api.version>2.3.1</jaxb-api.version>
     <palantir-java-format.version>2.47.0</palantir-java-format.version>
     <spotless.version>2.43.0</spotless.version>
-    <spring-cloud.version>2023.0.3</spring-cloud.version>
+    <spring-cloud.version>2021.0.9</spring-cloud.version>
     <versions-maven-plugin.version>2.17.1</versions-maven-plugin.version>
   </properties>
   <dependencyManagement>

@@ -29,9 +29,11 @@ import org.springframework.web.util.UriComponentsBuilder;
 public abstract class BaseXmlControllerTests {
     private static final String FULL_DESERIALIZE_PATH = Constants.XML_PATH + Constants.DESERIALIZE_PATH;
     private final MockMvc mockMvc;
+    private final FetchModelUtil fetchModelUtil;
 
-    public BaseXmlControllerTests(MockMvc mockMvc) {
+    public BaseXmlControllerTests(MockMvc mockMvc, FetchModelUtil fetchModelUtil) {
         this.mockMvc = mockMvc;
+        this.fetchModelUtil = fetchModelUtil;
     }
 
     public abstract Stream<Arguments> testArguments();
@@ -181,7 +183,7 @@ public abstract class BaseXmlControllerTests {
             TimeLibrary dateLibrary,
             TimeZoneIndicator zoned,
             String stringToReplace) {
-        BaseModel<?> model = FetchModelUtil.fetchModel(formatLibrary, accessType, dateLibrary, zoned);
+        BaseModel<?> model = fetchModelUtil.fetchModel(formatLibrary, accessType, dateLibrary, zoned);
         String className = model.getClass().getName();
         className = className.substring(className.lastIndexOf('.') + 1);
         Map<String, String> valuesMap = new HashMap<>();

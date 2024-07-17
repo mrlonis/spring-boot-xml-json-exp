@@ -7,6 +7,7 @@ import com.mrlonis.xml.shared.enums.XmlAccessorType;
 import com.mrlonis.xml.shared.model.BaseModel;
 import com.mrlonis.xml.shared.util.Constants;
 import com.mrlonis.xml.shared.util.FetchModelUtil;
+import lombok.AllArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,7 +19,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping(Constants.XML_PATH)
+@AllArgsConstructor
 public class XmlController {
+    private FetchModelUtil fetchModelUtil;
+
     @GetMapping(
             value = "/{formatLibrary}",
             produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
@@ -27,7 +31,7 @@ public class XmlController {
             @RequestParam XmlAccessorType accessType,
             @RequestParam TimeLibrary dateLibrary,
             @RequestParam TimeZoneIndicator zoned) {
-        return FetchModelUtil.fetchModel(formatLibrary, accessType, dateLibrary, zoned);
+        return fetchModelUtil.fetchModel(formatLibrary, accessType, dateLibrary, zoned);
     }
 
     @PostMapping(

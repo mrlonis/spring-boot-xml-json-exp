@@ -13,7 +13,7 @@
             <list>
               <option value="spotless:apply" />
               <option value="-T" />
-              <option value="10" />
+              <option value="8" />
             </list>
           </option>
           <option name="multimoduleDir" />

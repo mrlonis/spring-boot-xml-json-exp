@@ -6,10 +6,8 @@ import com.mrlonis.xml.shared.enums.AnnotationLibrary;
 import com.mrlonis.xml.shared.enums.TimeLibrary;
 import com.mrlonis.xml.shared.enums.TimeZoneIndicator;
 import com.mrlonis.xml.shared.enums.XmlAccessorType;
-import com.mrlonis.xml.shared.model.BaseModel;
 import com.mrlonis.xml.shared.util.Constants;
 import com.mrlonis.xml.shared.util.FetchModelUtil;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Stream;
 import org.apache.commons.text.StringSubstitutor;
@@ -164,16 +162,10 @@ public abstract class BaseXmlControllerTests {
     }
 
     private String getDataByZone(TimeZoneIndicator zonedIndicator, String zonedData, String noZoneData) {
-        String data;
         if (TimeZoneIndicator.ZONED.equals(zonedIndicator)) {
-            data = zonedData;
-        } else {
-            data = TimeZoneIndicator.NO_ZONE.equals(zonedIndicator) ? noZoneData : null;
+            return zonedData;
         }
-        if (data == null) {
-            throw new IllegalArgumentException("Invalid zoned value: " + zonedIndicator);
-        }
-        return data;
+        return noZoneData;
     }
 
     private String replaceTypeInData(
@@ -182,13 +174,19 @@ public abstract class BaseXmlControllerTests {
             TimeLibrary dateLibrary,
             TimeZoneIndicator zoned,
             String stringToReplace) {
-        BaseModel<?> model = fetchModelUtil.fetchModel(formatLibrary, accessType, dateLibrary, zoned);
-        String className = model.getClass().getName();
-        className = className.substring(className.lastIndexOf('.') + 1);
-        Map<String, String> valuesMap = new HashMap<>();
-        valuesMap.put("className", className);
-        StringSubstitutor sub = new StringSubstitutor(valuesMap);
-        return sub.replace(stringToReplace);
+        return new StringSubstitutor(Map.of(
+                        "className",
+                        fetchModelUtil
+                                .fetchModel(formatLibrary, accessType, dateLibrary, zoned)
+                                .getClass()
+                                .getName()
+                                .substring(fetchModelUtil
+                                                .fetchModel(formatLibrary, accessType, dateLibrary, zoned)
+                                                .getClass()
+                                                .getName()
+                                                .lastIndexOf('.')
+                                        + 1)))
+                .replace(stringToReplace);
     }
 
     private String getRequestData(
@@ -211,14 +209,14 @@ public abstract class BaseXmlControllerTests {
             XmlAccessorType accessType,
             TimeLibrary dateLibrary,
             TimeZoneIndicator zoned) {
-        String json_zoned = TestConstants.JSON_ZONED;
-        String json_no_zone = TestConstants.JSON_NO_ZONE;
+        String jsonZoned = TestConstants.JSON_ZONED;
+        String jsonNoZone = TestConstants.JSON_NO_ZONE;
         if (AnnotationLibrary.PURE_JAXB.equals(formatLibrary) || AnnotationLibrary.PURE_JAKARTA.equals(formatLibrary)) {
-            json_zoned = TestConstants.JSON_ZONED_BAD_POST;
-            json_no_zone = TestConstants.JSON_NO_ZONE_BAD_POST;
+            jsonZoned = TestConstants.JSON_ZONED_BAD_POST;
+            jsonNoZone = TestConstants.JSON_NO_ZONE_BAD_POST;
         }
         return replaceTypeInData(
-                formatLibrary, accessType, dateLibrary, zoned, getDataByZone(zoned, json_zoned, json_no_zone));
+                formatLibrary, accessType, dateLibrary, zoned, getDataByZone(zoned, jsonZoned, jsonNoZone));
     }
 
     private String getRequestTestXml(
@@ -226,13 +224,13 @@ public abstract class BaseXmlControllerTests {
             XmlAccessorType accessType,
             TimeLibrary dateLibrary,
             TimeZoneIndicator zoned) {
-        String xml_zoned = TestConstants.XML_ZONED;
-        String xml_no_zone = TestConstants.XML_NO_ZONE;
+        String xmlZoned = TestConstants.XML_ZONED;
+        String xmlNoZone = TestConstants.XML_NO_ZONE;
         if (AnnotationLibrary.PURE_JAXB.equals(formatLibrary) || AnnotationLibrary.PURE_JAKARTA.equals(formatLibrary)) {
-            xml_zoned = TestConstants.XML_ZONED_BAD_POST;
-            xml_no_zone = TestConstants.XML_NO_ZONE_BAD_POST;
+            xmlZoned = TestConstants.XML_ZONED_BAD_POST;
+            xmlNoZone = TestConstants.XML_NO_ZONE_BAD_POST;
         }
         return replaceTypeInData(
-                formatLibrary, accessType, dateLibrary, zoned, getDataByZone(zoned, xml_zoned, xml_no_zone));
+                formatLibrary, accessType, dateLibrary, zoned, getDataByZone(zoned, xmlZoned, xmlNoZone));
     }
 }

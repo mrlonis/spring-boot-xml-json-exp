@@ -13,11 +13,6 @@
   <description>jaxb</description>
   <dependencies>
     <dependency>
-      <!-- TODO: Remove this. This module/app should be pure JAXB -->
-      <groupId>com.fasterxml.jackson.dataformat</groupId>
-      <artifactId>jackson-dataformat-xml</artifactId>
-    </dependency>
-    <dependency>
       <groupId>com.fasterxml.jackson.module</groupId>
       <artifactId>jackson-module-jaxb-annotations</artifactId>
     </dependency>

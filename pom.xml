@@ -15,7 +15,6 @@
   <description>Demo project for Spring Boot 2.7.18 XML</description>
   <modules>
     <module>all</module>
-    <module>jackson-all</module>
     <module>jackson-jackson</module>
     <module>jackson-jakarta</module>
     <module>jackson-jaxb</module>
@@ -33,7 +32,6 @@
     <commons-text.version>1.12.0</commons-text.version>
     <exec-maven-plugin.version>3.3.0</exec-maven-plugin.version>
     <git-build-hook-maven-plugin.version>3.5.0</git-build-hook-maven-plugin.version>
-    <jackson-bom.version>2.17.1</jackson-bom.version>
     <jacoco-maven-plugin.version>0.8.12</jacoco-maven-plugin.version>
     <jakarta-annotation.version>3.0.0</jakarta-annotation.version>
     <jakarta.xml.bind-api.version>4.0.2</jakarta.xml.bind-api.version>
@@ -42,7 +40,7 @@
     <palantir-java-format.version>2.47.0</palantir-java-format.version>
     <spotless.version>2.43.0</spotless.version>
     <spring-cloud.version>2023.0.3</spring-cloud.version>
-    <versions-maven-plugin.version>2.17.0</versions-maven-plugin.version>
+    <versions-maven-plugin.version>2.17.1</versions-maven-plugin.version>
   </properties>
   <dependencyManagement>
     <dependencies>
@@ -87,6 +85,11 @@
         <groupId>org.apache.commons</groupId>
         <artifactId>commons-text</artifactId>
         <version>${commons-text.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.checkerframework</groupId>
+        <artifactId>checker-qual</artifactId>
+        <version>${checker-qual.version}</version>
       </dependency>
       <dependency>
         <groupId>org.springframework.cloud</groupId>

@@ -128,7 +128,7 @@ choco install maven -y
 If this is your first time in the project, you will need to run the following command to setup the project:
 
 ```shell
-./mvnw clean verify
+./mvnw clean spotless:apply verify -T 10
 ```
 
 ##### Windows Setup Caveats
@@ -139,7 +139,7 @@ file path.
 
 Example:
 
-`C:\Users\John Doe\Documents\spring-boot-xml-json-exp` will not work. Instead, something like C:\GitHub\spring-boot-xml-json-exp`
+`C:\Users\John Doe\Documents\spring-boot-xml-json-exp` will not work. Instead, something like `C:\GitHub\spring-boot-xml-json-exp`
 will work.
 
 ###### Alternative
@@ -148,7 +148,7 @@ If you are unable to move the project to a directory without spaces, you can ins
 `choco install maven` and run the following command:
 
 ```shell
-mvn clean verify
+mvn clean spotless:apply verify -T 10
 ```
 
 ## Goals

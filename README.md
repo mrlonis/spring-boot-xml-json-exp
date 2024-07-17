@@ -2,22 +2,150 @@
 
 ## Table of Contents
 
-<!-- TOC -->
-* [spring-boot-xml-json-exp](#spring-boot-xml-json-exp)
-  * [Table of Contents](#table-of-contents)
-  * [Goals](#goals)
-  * [Basic POJO](#basic-pojo)
-  * [Sample Output](#sample-output)
-    * [XML](#xml)
-    * [JSON](#json)
-  * [Findings](#findings)
-    * [Pure Jaxb & Pure Jakarta Deserialization Issues](#pure-jaxb--pure-jakarta-deserialization-issues)
-      * [Adding @Jacksonized](#adding-jacksonized)
-      * [Adding Jaxb/Jakarta Annotations to Getters/Setters](#adding-jaxbjakarta-annotations-to-getterssetters)
-      * [Supplementing with Jackson Annotations](#supplementing-with-jackson-annotations)
-    * [Pure Jackson](#pure-jackson)
+- [spring-boot-xml-json-exp](#spring-boot-xml-json-exp)
+  - [Table of Contents](#table-of-contents)
+  - [Setup](#setup)
+    - [Java](#java)
+      - [Mac/Linux](#maclinux)
+      - [Windows](#windows)
+        - [Advanced PowerShell Profile Setup](#advanced-powershell-profile-setup)
+          - [Install All Java LTS Versions](#install-all-java-lts-versions)
+          - [Helpful PowerShell Module](#helpful-powershell-module)
+          - [PowerShell Profile](#powershell-profile)
+    - [Maven](#maven)
+      - [Installation](#installation)
+        - [Mac-OS Maven Installation](#mac-os-maven-installation)
+        - [Windows Maven Installation](#windows-maven-installation)
+      - [Initial Project Setup](#initial-project-setup)
+        - [Windows Setup Caveats](#windows-setup-caveats)
+          - [Alternative](#alternative)
+  - [Goals](#goals)
+  - [Basic POJO](#basic-pojo)
+  - [Sample Output](#sample-output)
+    - [XML](#xml)
+    - [JSON](#json)
+  - [Findings](#findings)
+    - [Pure Jaxb \& Pure Jakarta Deserialization Issues](#pure-jaxb--pure-jakarta-deserialization-issues)
+      - [Adding @Jacksonized](#adding-jacksonized)
+      - [Adding Jaxb/Jakarta Annotations to Getters/Setters](#adding-jaxbjakarta-annotations-to-getterssetters)
+      - [Supplementing with Jackson Annotations](#supplementing-with-jackson-annotations)
+    - [Pure Jackson](#pure-jackson)
 
-<!-- TOC -->
+## Setup
+
+### Java
+
+This project requires Java 17.
+
+#### Mac/Linux
+
+[SDKMAN! Install](https://sdkman.io/install)
+
+```shell
+sdk install java 17-tem
+```
+
+#### Windows
+
+[Chocolatey Installation](https://chocolatey.org/install)
+
+```powershell
+choco install temurin17 -y
+$env:JAVA_HOME = 'C:\Program Files\Eclipse Adoptium\jdk-17.0.11.9-hotspot' # Replace with your correct version
+```
+
+To permanently set the `JAVA_HOME` environment variable, you can run the following command in an Administrator PowerShell session:
+
+```powershell
+[Environment]::SetEnvironmentVariable('JAVA_HOME', 'C:\Program Files\Eclipse Adoptium\jdk-17.0.11.9-hotspot', 'Machine') # Replace with your correct version
+```
+
+##### Advanced PowerShell Profile Setup
+
+###### Install All Java LTS Versions
+
+Let's start by installing all of the major Java LTS versions:
+
+```powershell
+choco install temurin8 -y
+choco install temurin11 -y
+choco install temurin17 -y
+choco install temurin21 -y
+```
+
+###### Helpful PowerShell Module
+
+```powershell
+Install-Module PSReadLine -RequiredVersion 2.1.0
+Update-Module PSReadLine
+Update-Module
+```
+
+###### PowerShell Profile
+
+To make it easier to switch between different Java versions, you can add the following to your PowerShell profile (`$PROFILE`):
+
+```powershell
+$JAVA_8_PATH = 'C:\Program Files\Eclipse Adoptium\jdk-8.0.412.8-hotspot' # Replace with your correct version
+$JAVA_11_PATH = 'C:\Program Files\Eclipse Adoptium\jdk-11.0.23.9-hotspot' # Replace with your correct version
+$JAVA_17_PATH = 'C:\Program Files\Eclipse Adoptium\jdk-17.0.11.9-hotspot' # Replace with your correct version
+$JAVA_21_PATH = 'C:\Program Files\Eclipse Adoptium\jdk-21.0.3.9-hotspot' # Replace with your correct version
+Set-Alias -Name java8 -Value ($env:JAVA_HOME = $JAVA_8_PATH)
+Set-Alias -Name java11 -Value ($env:JAVA_HOME = $JAVA_11_PATH)
+Set-Alias -Name java17 -Value ($env:JAVA_HOME = $JAVA_17_PATH)
+Set-Alias -Name java21 -Value ($env:JAVA_HOME = $JAVA_21_PATH)
+Set-Alias -Name default_java8 -Value ([Environment]::SetEnvironmentVariable('JAVA_HOME', $JAVA_8_PATH, 'Machine'))
+Set-Alias -Name default_java11 -Value ([Environment]::SetEnvironmentVariable('JAVA_HOME', $JAVA_11_PATH, 'Machine'))
+Set-Alias -Name default_java17 -Value ([Environment]::SetEnvironmentVariable('JAVA_HOME', $JAVA_17_PATH, 'Machine'))
+Set-Alias -Name default_java21 -Value ([Environment]::SetEnvironmentVariable('JAVA_HOME', $JAVA_21_PATH, 'Machine'))
+Set-Alias -Name java -Value (Join-Path $env:JAVA_HOME 'bin\java.exe') # Load java from JAVA_HOME instead of the system path
+Import-Module PSReadLine
+Set-PSReadLineOption -PredictionSource History
+```
+
+### Maven
+
+#### Installation
+
+##### Mac-OS Maven Installation
+
+```shell
+brew install maven -y
+```
+
+##### Windows Maven Installation
+
+```powershell
+choco install maven -y
+```
+
+#### Initial Project Setup
+
+If this is your first time in the project, you will need to run the following command to setup the project:
+
+```shell
+./mvnw clean spotless:apply verify -T 10
+```
+
+##### Windows Setup Caveats
+
+If you are on Windows, your project cannot be inside of a filepath with spaces. This is because the `maven-wrapper` script
+does not properly handle spaces in the file path. You will need to move the project to a directory without spaces in the
+file path.
+
+Example:
+
+`C:\Users\John Doe\Documents\spring-boot-xml-json-exp` will not work. Instead, something like `C:\GitHub\spring-boot-xml-json-exp`
+will work.
+
+###### Alternative
+
+If you are unable to move the project to a directory without spaces, you can instead install Maven globally with
+`choco install maven` and run the following command:
+
+```shell
+mvn clean spotless:apply verify -T 10
+```
 
 ## Goals
 

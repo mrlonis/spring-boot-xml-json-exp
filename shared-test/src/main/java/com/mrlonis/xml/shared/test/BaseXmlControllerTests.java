@@ -27,6 +27,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public abstract class BaseXmlControllerTests {
+    private static final String FULL_DESERIALIZE_PATH = Constants.XML_PATH + Constants.DESERIALIZE_PATH;
     private final MockMvc mockMvc;
 
     public BaseXmlControllerTests(MockMvc mockMvc) {
@@ -109,7 +110,7 @@ public abstract class BaseXmlControllerTests {
             throws Exception {
         String json = getResponseData(formatLibrary, accessType, dateLibrary, zoned, mediaType);
         String jsonPost = getRequestData(formatLibrary, accessType, dateLibrary, zoned, mediaType);
-        var whatIsThis = mockMvc.perform(post(Constants.XML_PATH + Constants.DESERIALIZE_PATH)
+        var whatIsThis = mockMvc.perform(post(FULL_DESERIALIZE_PATH)
                 .header(HttpHeaders.ACCEPT, mediaType)
                 .header(HttpHeaders.CONTENT_TYPE, mediaType)
                 .content(jsonPost));

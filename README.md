@@ -54,7 +54,8 @@ choco install temurin17 -y
 $env:JAVA_HOME = 'C:\Program Files\Eclipse Adoptium\jdk-17.0.11.9-hotspot' # Replace with your correct version
 ```
 
-To permanently set the `JAVA_HOME` environment variable, you can run the following command in an Administrator PowerShell session:
+To permanently set the `JAVA_HOME` environment variable, you can run the following command in an Administrator
+PowerShell session:
 
 ```powershell
 [Environment]::SetEnvironmentVariable('JAVA_HOME', 'C:\Program Files\Eclipse Adoptium\jdk-17.0.11.9-hotspot', 'Machine') # Replace with your correct version
@@ -83,7 +84,8 @@ Update-Module
 
 ###### PowerShell Profile
 
-To make it easier to switch between different Java versions, you can add the following to your PowerShell profile (`$PROFILE`):
+To make it easier to switch between different Java versions, you can add the following to your PowerShell
+profile (`$PROFILE`):
 
 ```powershell
 $JAVA_8_PATH = 'C:\Program Files\Eclipse Adoptium\jdk-8.0.412.8-hotspot' # Replace with your correct version
@@ -133,13 +135,15 @@ If this is your first time in the project, you will need to run the following co
 
 ##### Windows Setup Caveats
 
-If you are on Windows, your project cannot be inside of a filepath with spaces. This is because the `maven-wrapper` script
+If you are on Windows, your project cannot be inside of a filepath with spaces. This is because the `maven-wrapper`
+script
 does not properly handle spaces in the file path. You will need to move the project to a directory without spaces in the
 file path.
 
 Example:
 
-`C:\Users\John Doe\Documents\spring-boot-xml-json-exp` will not work. Instead, something like `C:\GitHub\spring-boot-xml-json-exp`
+`C:\Users\John Doe\Documents\spring-boot-xml-json-exp` will not work. Instead, something
+like `C:\GitHub\spring-boot-xml-json-exp`
 will work.
 
 ###### Alternative
@@ -237,17 +241,21 @@ public class XmlModel {
 
 ### Pure Jaxb & Pure Jakarta Deserialization Issues
 
-While both libraries are consistent with each other and the XML output they produce, they are both ultimately unable to deserialize their respective XML and JSON outputs without added assistance from Jackson annotations such as `@JsonProperty` and `@JacksonXmlElementWrapper`.
+While both libraries are consistent with each other and the XML output they produce, they are both ultimately unable to
+deserialize their respective XML and JSON outputs without added assistance from Jackson annotations such
+as `@JsonProperty` and `@JacksonXmlElementWrapper`.
 
 #### Adding @Jacksonized
 
-The `@Jacksonized` annotation is a lombok annotation that is an add-on annotation for `@Builder` and `@SuperBuilder`. It automatically configures the generated builder class to be used by `Jackson`'s deserialization.
+The `@Jacksonized` annotation is a lombok annotation that is an add-on annotation for `@Builder` and `@SuperBuilder`. It
+automatically configures the generated builder class to be used by `Jackson`'s deserialization.
 
 However, this annotation is not enough to fix the deserialization issues.
 
 #### Adding Jaxb/Jakarta Annotations to Getters/Setters
 
-Jackson uses the POJO's getters and setters for serialization and deserialization. By adding the Jaxb/Jakarta annotations to the getters and setters, we should theoretically be able to deserialize the XML and JSON outputs.
+Jackson uses the POJO's getters and setters for serialization and deserialization. By adding the Jaxb/Jakarta
+annotations to the getters and setters, we should theoretically be able to deserialize the XML and JSON outputs.
 
 ```java
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -345,13 +353,17 @@ public class XmlModel {
 }
 ```
 
-This is however, an excessive amount of annotations to have a simple POJO be able to serialize and deserialize XML and JSON. It is also not very maintainable as it requires a lot of background understand of Jackson / Jaxb / Jakarta XML Binding in order to properly implement the annotations.
+This is however, an excessive amount of annotations to have a simple POJO be able to serialize and deserialize XML and
+JSON. It is also not very maintainable as it requires a lot of background understand of Jackson / Jaxb / Jakarta XML
+Binding in order to properly implement the annotations.
 
 What if there was a better way to do this?
 
 ### Pure Jackson
 
-Instead, we can resolve all of these concerns by migrating to `jackson-dataformat-xml` and `jackson-annotations`. Not only do these libraries go back to the early Spring Framework days, but they also provide a more readable and maintainable way to serialize and deserialize XML and JSON.
+Instead, we can resolve all of these concerns by migrating to `jackson-dataformat-xml` and `jackson-annotations`. Not
+only do these libraries go back to the early Spring Framework days, but they also provide a more readable and
+maintainable way to serialize and deserialize XML and JSON.
 
 ```java
 import com.fasterxml.jackson.annotation.JsonIgnore;

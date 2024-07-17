@@ -24,6 +24,21 @@ annotation libraries.
 ## Basic POJO
 
 ```java
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementWrapper;
+import jakarta.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.XmlTransient;
+import jakarta.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import java.time.ZonedDateTime;
+import java.util.List;
+import lombok.Builder;
+import lombok.Data;
+import lombok.extern.jackson.Jacksonized;
+
 @XmlRootElement(name = "book")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(propOrder = {"id", "name", "date", "tags"})
@@ -100,6 +115,23 @@ However, this annotation is not enough to fix the deserialization issues.
 Jackson uses the POJO's getters and setters for serialization and deserialization. By adding the Jaxb/Jakarta annotations to the getters and setters, we should theoretically be able to deserialize the XML and JSON outputs.
 
 ```java
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementWrapper;
+import jakarta.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.XmlTransient;
+import jakarta.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import java.time.ZonedDateTime;
+import java.util.List;
+import lombok.Builder;
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.extern.jackson.Jacksonized;
+
 @XmlRootElement(name = "book")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(propOrder = {"id", "name", "date", "tags"})
@@ -137,6 +169,20 @@ However, even this is not enough to have proper deserialization.
 We can supplement out existing Jaxb/Jakarta annotations with Jackson annotations to have proper deserialization.
 
 ```java
+import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlTransient;
+import jakarta.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import java.time.ZonedDateTime;
+import java.util.List;
+import lombok.Builder;
+import lombok.Data;
+import lombok.extern.jackson.Jacksonized;
+
 @JacksonXmlRootElement(localName = "book") // jackson-dataformat-xml
 @XmlAccessorType(XmlAccessType.NONE) // Jaxb/Jakarta Annotation
 @XmlType(propOrder = {"id", "name", "date", "tags"}) // Jaxb/Jakarta Annotation
@@ -173,6 +219,19 @@ What if there was a better way to do this?
 Instead, we can resolve all of these concerns by migrating to `jackson-dataformat-xml` and `jackson-annotations`. Not only do these libraries go back to the early Spring Framework days, but they also provide a more readable and maintainable way to serialize and deserialize XML and JSON.
 
 ```java
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import java.time.ZonedDateTime;
+import java.util.List;
+import lombok.Builder;
+import lombok.Data;
+import lombok.extern.jackson.Jacksonized;
+
 // No need for XmlAccessorType. Jackson annotations integrate with lombok as you would expect
 @JacksonXmlRootElement(localName = "book")
 @JsonPropertyOrder({"id", "name", "date", "tags"})

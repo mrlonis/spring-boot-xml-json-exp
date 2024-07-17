@@ -1,7 +1,10 @@
 # spring-boot-xml-json-exp
 
+## Table of Contents
+
 <!-- TOC -->
 * [spring-boot-xml-json-exp](#spring-boot-xml-json-exp)
+  * [Table of Contents](#table-of-contents)
   * [Goals](#goals)
   * [Basic POJO](#basic-pojo)
   * [Sample Output](#sample-output)

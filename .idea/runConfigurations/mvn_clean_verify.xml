@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="mvn clean spotless:apply verify" type="MavenRunConfiguration" factoryName="Maven">
+  <configuration default="false" name="mvn clean verify" type="MavenRunConfiguration" factoryName="Maven">
     <MavenSettings>
       <option name="myGeneralSettings" />
       <option name="myRunnerSettings" />
@@ -14,8 +14,6 @@
               <option value="clean" />
               <option value="spotless:apply" />
               <option value="verify" />
-              <option value="-T" />
-              <option value="8" />
             </list>
           </option>
           <option name="multimoduleDir" />

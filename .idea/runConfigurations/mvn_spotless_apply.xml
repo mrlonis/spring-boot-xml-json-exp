@@ -12,8 +12,6 @@
           <option name="goals">
             <list>
               <option value="spotless:apply" />
-              <option value="-T" />
-              <option value="8" />
             </list>
           </option>
           <option name="multimoduleDir" />

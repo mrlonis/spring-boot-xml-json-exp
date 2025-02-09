@@ -26,7 +26,7 @@
     <module>shared-test</module>
   </modules>
   <properties>
-    <checker-qual.version>3.48.4</checker-qual.version>
+    <checker-qual.version>3.49.0</checker-qual.version>
     <cleanthat.vesion>2.20</cleanthat.vesion>
     <commons-lang3.version>3.17.0</commons-lang3.version>
     <commons-text.version>1.13.0</commons-text.version>
@@ -115,6 +115,11 @@
                 <include>.mvn/wrapper/maven-wrapper.properties</include>
                 <include>.gitattributes</include>
                 <include>.gitignore</include>
+                <include>.gitmodules</include>
+                <include>generate_effective_pom</include>
+                <include>generate_effective_pom.ps1</include>
+                <include>LICENSE</include>
+                <include>lombok.config</include>
                 <include>mvnw</include>
                 <include>mvnw.cmd</include>
               </includes>
@@ -137,7 +142,7 @@
                 <devDependencyProperties>
                   <property>
                     <name>prettier</name>
-                    <value>3.3.2</value>
+                    <value>3.4.2</value>
                   </property>
                   <property>
                     <name>@prettier/plugin-xml</name>
@@ -148,7 +153,7 @@
                   <printWidth>120</printWidth>
                   <xmlSelfClosingSpace>false</xmlSelfClosingSpace>
                   <xmlSortAttributesByKey>true</xmlSortAttributesByKey>
-                  <xmlWhitespaceSensitivity>ignore</xmlWhitespaceSensitivity>
+                  <xmlWhitespaceSensitivity>strict</xmlWhitespaceSensitivity>
                   <plugins>@prettier/plugin-xml</plugins>
                 </config>
               </prettier>
@@ -159,6 +164,7 @@
           <java>
             <cleanthat>
               <version>${cleanthat.vesion}</version>
+              <sourceJdk>${java.version}</sourceJdk>
               <mutators>
                 <mutator>SafeAndConsensual</mutator>
                 <mutator>SafeButNotConsensual</mutator>
@@ -181,14 +187,20 @@
               <include>**/pom.xml</include>
             </includes>
             <sortPom>
+              <encoding>UTF-8</encoding>
+              <endWithNewline>true</endWithNewline>
               <expandEmptyElements>false</expandEmptyElements>
-              <lineSeparator>\n</lineSeparator>
+              <indentBlankLines>false</indentBlankLines>
               <keepBlankLines>false</keepBlankLines>
+              <lineSeparator>\n</lineSeparator>
+              <nrOfIndentSpace>2</nrOfIndentSpace>
+              <predefinedSortOrder>custom_1</predefinedSortOrder>
               <sortDependencies>scope,groupId,artifactId</sortDependencies>
               <sortDependencyExclusions>groupId,artifactId</sortDependencyExclusions>
               <sortDependencyManagement>groupId,artifactId</sortDependencyManagement>
               <sortPlugins>groupId,artifactId</sortPlugins>
               <sortProperties>true</sortProperties>
+              <spaceBeforeCloseEmptyElement>false</spaceBeforeCloseEmptyElement>
             </sortPom>
             <trimTrailingWhitespace/>
             <endWithNewline/>

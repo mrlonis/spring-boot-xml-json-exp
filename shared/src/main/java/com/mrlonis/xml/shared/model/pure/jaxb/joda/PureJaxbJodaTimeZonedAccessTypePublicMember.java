@@ -13,6 +13,7 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import lombok.Builder;
 import lombok.Data;
+import lombok.extern.jackson.Jacksonized;
 import org.joda.time.DateTime;
 
 @XmlRootElement(name = "book")
@@ -20,6 +21,7 @@ import org.joda.time.DateTime;
 @XmlType(propOrder = {"id", "name", "date", "tags"})
 @Data
 @Builder
+@Jacksonized
 public class PureJaxbJodaTimeZonedAccessTypePublicMember implements BaseModel<DateTime> {
     @XmlAttribute
     private long id;

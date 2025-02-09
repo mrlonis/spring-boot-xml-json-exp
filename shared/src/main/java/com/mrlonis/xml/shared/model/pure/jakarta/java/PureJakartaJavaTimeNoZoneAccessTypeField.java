@@ -15,11 +15,13 @@ import java.time.LocalDateTime;
 import java.util.List;
 import lombok.Builder;
 import lombok.Data;
+import lombok.extern.jackson.Jacksonized;
 
 @XmlRootElement(name = "book")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(propOrder = {"id", "name", "date", "tags"})
 @Data
+@Jacksonized
 @Builder
 public class PureJakartaJavaTimeNoZoneAccessTypeField implements BaseModel<LocalDateTime> {
     @XmlAttribute

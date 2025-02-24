@@ -38,7 +38,7 @@
     <jakarta.xml.bind-api.version>4.0.2</jakarta.xml.bind-api.version>
     <java.version>17</java.version>
     <jaxb-api.version>2.3.1</jaxb-api.version>
-    <palantir-java-format.version>2.52.0</palantir-java-format.version>
+    <palantir-java-format.version>2.55.0</palantir-java-format.version>
     <spotless.version>2.44.3</spotless.version>
     <spring-cloud.version>2024.0.0</spring-cloud.version>
     <versions-maven-plugin.version>2.18.0</versions-maven-plugin.version>

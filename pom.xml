@@ -41,7 +41,7 @@
     <palantir-java-format.version>2.74.0</palantir-java-format.version>
     <spotless.version>2.46.1</spotless.version>
     <spring-cloud.version>2025.0.0</spring-cloud.version>
-    <versions-maven-plugin.version>2.19.0</versions-maven-plugin.version>
+    <versions-maven-plugin.version>2.19.1</versions-maven-plugin.version>
     <xmlunit2.version>2.10.0</xmlunit2.version>
   </properties>
   <dependencyManagement>
